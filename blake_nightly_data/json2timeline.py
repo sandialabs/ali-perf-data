@@ -3,12 +3,21 @@ import glob
 import json
 import os
 import sys
+import warnings
 
 ###################################################################################################
-def json2timeline(files, case, np, timer):
+def json2timeline(files, case, np, timer, warn = True):
     '''
     Extract dates and wall-clock times (s) from ctest.json files
     '''
+    # Print all warnings
+    warnings.simplefilter("always")
+
+    # Force warnings.warn() to omit the source code line in the message
+    formatwarning_orig = warnings.formatwarning
+    warnings.formatwarning = lambda message, category, filename, lineno, line=None: \
+                formatwarning_orig(message, category, filename, lineno, line='')
+
     dates = []
     wtimes = []
     for file in files:
@@ -17,14 +26,18 @@ def json2timeline(files, case, np, timer):
             ctestData = json.load(jf)
 
         # Organize data for strong scaling plots
-        for ctest in ctestData.values():
-            if ctest['case'] == case and ctest['np'] == np:
-                dates.append(ctest['date'])
-                if timer in ctest['timers']:
-                    wtimes.append(ctest['timers'][timer])
+        for name,info in ctestData.items():
+            if info['case'] == case and info['np'] == np:
+                date = info['date']
+                dates.append(date)
+                if timer in info['timers']:
+                    wtimes.append(info['timers'][timer])
+                elif warn:
+                    warnings.warn(timer + ' not found in '+name+', '+file+'!', Warning)
 
     # Sort based on dates
-    dates, wtimes = zip(*sorted(zip(dates, wtimes)))
+    if wtimes:
+        dates, wtimes = zip(*sorted(zip(dates, wtimes)))
 
     return dates, wtimes
 
