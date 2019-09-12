@@ -1,11 +1,11 @@
 #!/bin/bash
 cd blake_nightly_data 
-now=$(date +"%Y%m%d")
-FILE=ctest-$now.json
+now=$(date +"%m_%d_%Y")
+FILE=Blob_PerfTestsBlake_$now.html
 echo $FILE
 if test -f "$FILE"; then
   echo "$FILE file exists"
-  rm index11 
+  cd ../
   cat index1 blake_nightly_data/html_entry >& index11
   mv index11 index1
   cat index1 index2 >& index.html
