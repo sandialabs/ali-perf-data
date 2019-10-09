@@ -12,7 +12,7 @@ if test -f "$FILE"; then
   git commit -m "Checking in jupyter notebook from $now" 
   git push
   rm html_entry 
-  echo "<li><p><strong><a href="ali/blake_nightly_ali_data/Ali_PerfTestsBlake_$now.html">$now</a></strong>.</p>" >& html_entry
+  echo "<li><p><strong><a href="blake_nightly_ali_data/Ali_PerfTestsBlake_$now.html">$now</a></strong>.</p>" >& html_entry
 else  
   echo "$FILE does not exist! Not Jupyter notebook in repo."
 fi
