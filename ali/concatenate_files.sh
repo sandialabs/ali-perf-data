@@ -1,12 +1,12 @@
 #!/bin/bash
-cd ../blake_ali_nightly_data 
+cd blake_nightly_ali_data 
 now=$(date +"%m_%d_%Y")
 FILE=Ali_PerfTestsBlake_$now.html
 echo $FILE
 if test -f "$FILE"; then
   echo "$FILE file exists"
   cd ../
-  cat index1 blake_ali_nightly_data/html_entry >& index11
+  cat index1 blake_nightly_ali_data/html_entry >& index11
   mv index11 index1
   cat index1 index2 >& index.html
   git add index.html index1 
