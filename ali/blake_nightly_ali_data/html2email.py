@@ -10,7 +10,7 @@ def html2email(subject, html):
     '''
     # Input
     sender = 'jwatkin@sandia.gov'
-    recipients = ['jwatkin@sandia.gov','ikalash@sandia.gov']
+    recipients = ['jwatkin@sandia.gov','ikalash@sandia.gov','mperego@sandia.gov','lbertag@sandia.gov']
     #recipients = ['jwatkin@sandia.gov']
 
     # Details
