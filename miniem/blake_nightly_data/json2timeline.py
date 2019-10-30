@@ -25,12 +25,12 @@ def json2timeline(files, case, np, timer, warn = True):
         with open(file) as jf:
             ctestData = json.load(jf)
 
-        # Organize data for strong scaling plots
+        # Organize data for timeline plots
         for name,info in ctestData.items():
             if info['case'] == case and info['np'] == np:
-                date = info['date']
-                dates.append(date)
                 if timer in info['timers']:
+                    date = info['date']
+                    dates.append(date)
                     wtimes.append(info['timers'][timer])
                 elif warn:
                     warnings.warn(timer + ' not found in '+name+', '+file+'!', Warning)
