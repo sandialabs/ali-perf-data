@@ -1,4 +1,5 @@
 # Import libraries
+import datetime
 import glob
 import numpy as np
 import os
@@ -210,6 +211,12 @@ if __name__ == "__main__":
     '''
     Send email showing status report of performance tests
     '''
+    # Email inputs
+    sender = 'jwatkin@sandia.gov'
+    #recipients = ['jwatkin@sandia.gov']
+    #recipients = ['jwatkin@sandia.gov','ikalash@sandia.gov']
+    recipients = ['jwatkin@sandia.gov','ikalash@sandia.gov','mperego@sandia.gov','lbertag@sandia.gov']
+
     # Pass directory name
     if len(sys.argv) < 2:
         dir = ''
@@ -218,6 +225,16 @@ if __name__ == "__main__":
 
     # Extract file names
     files = glob.glob(os.path.join(dir,'ctest-*'))
+
+    # If today's json file doesn't exist, send error message
+    date = datetime.datetime.today().strftime('%Y%m%d')
+    files_with_date = [filename for filename in files if date in filename]
+    if not files_with_date:
+        print("Today's json doesn't exist, sending error email...")
+        html2email('Albany Land Ice Performance Tests', 
+                '''<b>Error: Today's json file doesn't exist!</b>''',
+                sender, ['jwatkin@sandia.gov','ikalash@sandia.gov'])
+        sys.exit()
 
     # Specify case to extract from ctest.json file
     cases = ('ant-2-20km_ml_line','ant-2-20km_muelu_line','ant-2-20km_muelu_decoupled_line')
@@ -243,5 +260,5 @@ if __name__ == "__main__":
 
     # Email status report
     print("Sending email...")
-    html2email('Albany Land Ice Performance Tests', perfTestsHTML)
+    html2email('Albany Land Ice Performance Tests', perfTestsHTML, sender, recipients)
 

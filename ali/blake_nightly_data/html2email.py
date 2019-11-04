@@ -4,15 +4,10 @@ from email.mime.image import MIMEImage
 from email.mime.multipart import MIMEMultipart
 
 ###################################################################################################
-def html2email(subject, html):
+def html2email(subject, html, sender = 'jwatkin@sandia.gov', recipients = ['jwatkin@sandia.gov']):
     '''
     Send email with html string
     '''
-    # Input
-    sender = 'jwatkin@sandia.gov'
-    recipients = ['jwatkin@sandia.gov','ikalash@sandia.gov','mperego@sandia.gov','lbertag@sandia.gov']
-    #recipients = ['jwatkin@sandia.gov']
-
     # Details
     msgRoot = MIMEMultipart('related')
     msgRoot['Subject'] = subject
