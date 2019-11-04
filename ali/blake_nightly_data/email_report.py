@@ -204,7 +204,17 @@ def build_perf_tests_html(perfTests):
             </table>
             '''
             timerTabs = timerTabs + timerTab
-    return style + title + statusTab + timerTabs
+
+    # Links
+    date = datetime.datetime.today().strftime('%m_%d_%Y')
+    notebookHtmlLink = 'https://ikalash.github.io/ali/blake_nightly_data/Ali_PerfTestsBlake_' + date + '.html'
+    notebookLink = 'https://mybinder.org/v2/gh/ikalash/ikalash.github.io/master?filepath=ali/blake_nightly_data%2FAli_PerfTestsBlake.ipynb'
+    links = '''
+    <br>
+    Click <a href="{}">here</a> for more details or <a href="{}">here</a> for an interactive jupyter notebook of the data.
+    '''.format(notebookHtmlLink, notebookLink)
+
+    return style + title + statusTab + timerTabs + links
 
 ###################################################################################################
 if __name__ == "__main__":
