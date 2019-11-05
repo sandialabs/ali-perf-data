@@ -207,12 +207,13 @@ def build_perf_tests_html(perfTests):
 
     # Links
     date = datetime.datetime.today().strftime('%m_%d_%Y')
+    testLogsLink = 'https://my.cdash.org/index.php?subproject=IKTBlakeALIPerformTests&project=Albany'
     notebookHtmlLink = 'https://ikalash.github.io/ali/blake_nightly_data/Ali_PerfTestsBlake_' + date + '.html'
     notebookLink = 'https://mybinder.org/v2/gh/ikalash/ikalash.github.io/master?filepath=ali/blake_nightly_data%2FAli_PerfTestsBlake.ipynb'
     links = '''
     <br>
-    Click <a href="{}">here</a> for more details or <a href="{}">here</a> for an interactive jupyter notebook of the data.
-    '''.format(notebookHtmlLink, notebookLink)
+    Click <a href="{}">here</a> for test logs, <a href="{}">here</a> for more details on performance or <a href="{}">here</a> for an interactive notebook of the data.
+    '''.format(testLogsLink, notebookHtmlLink, notebookLink)
 
     return style + title + statusTab + timerTabs + links
 
@@ -242,8 +243,14 @@ if __name__ == "__main__":
     if not files_with_date:
         print("Today's json doesn't exist, sending error email...")
         html2email('Albany Land Ice Performance Tests', 
-                '''<b>Error: Today's json file doesn't exist!</b>''',
+                '''
+                <b>Error: Today's json file doesn't exist!</b>
+                <br><br>
+                Click <a href="https://my.cdash.org/index.php?subproject=IKTBlakeALIPerformTests&project=Albany">here</a> for test logs and
+                <a href="https://github.com/ikalash/ikalash.github.io/tree/master/ali/blake_nightly_data">here</a> for the repo.
+                ''',
                 sender, ['jwatkin@sandia.gov','ikalash@sandia.gov'])
+                #sender, ['jwatkin@sandia.gov'])
         sys.exit()
 
     # Specify case to extract from ctest.json file
