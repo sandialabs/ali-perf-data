@@ -169,10 +169,12 @@ def build_perf_tests_html(perfTests):
     </table>
     '''
 
-    # Timer Tables
+    # Subject and Timer Tables
+    subjectTestsFailed = False
     timerTabs = ''
     for name, info in perfTests.items():
         if info['runTest'] == 'Failed':
+            subjectTestsFailed = True
             timerTabs = timerTabs + '''
             <br><br>
             <font size="+1">{} test failed...</font>
@@ -200,10 +202,18 @@ def build_perf_tests_html(perfTests):
                 </tr>
                 '''.format(timer,timerInfo['perfTestColor'],timerInfo['measured'],timerInfo['mean'],timerInfo['std'])
                 timerTab = timerTab + row
+
+                if timerInfo['perfTestColor'] == 'red':
+                    subjectTestsFailed = True
             timerTab = timerTab + '''
             </table>
             '''
             timerTabs = timerTabs + timerTab
+    subject = 'Albany Land Ice Performance Tests'
+    if subjectTestsFailed:
+        subject = '[ALIPerfTestsFailed] ' + subject
+    else:
+        subject = '[ALIPerfTestsPassed] ' + subject
 
     # Links
     date = datetime.datetime.today().strftime('%m_%d_%Y')
@@ -215,7 +225,7 @@ def build_perf_tests_html(perfTests):
     Click <a href="{}">here</a> for test logs, <a href="{}">here</a> for more details on performance or <a href="{}">here</a> for an interactive notebook of the data.
     '''.format(testLogsLink, notebookHtmlLink, notebookLink)
 
-    return style + title + statusTab + timerTabs + links
+    return subject, style + title + statusTab + timerTabs + links
 
 ###################################################################################################
 if __name__ == "__main__":
@@ -242,7 +252,7 @@ if __name__ == "__main__":
     files_with_date = [filename for filename in files if date in filename]
     if not files_with_date:
         print("Today's json doesn't exist, sending error email...")
-        html2email('Albany Land Ice Performance Tests', 
+        html2email('[ALIPerfTestsFailed] Albany Land Ice Performance Tests',
                 '''
                 <b>Error: Today's json file doesn't exist!</b>
                 <br><br>
@@ -272,10 +282,10 @@ if __name__ == "__main__":
 
     # Build html string
     print("Building HTML...")
-    perfTestsHTML = build_perf_tests_html(perfTests)
+    subject, perfTestsHTML = build_perf_tests_html(perfTests)
     #print(perfTestsHTML)
 
     # Email status report
     print("Sending email...")
-    html2email('Albany Land Ice Performance Tests', perfTestsHTML, sender, recipients)
+    html2email(subject, perfTestsHTML, sender, recipients)
 
