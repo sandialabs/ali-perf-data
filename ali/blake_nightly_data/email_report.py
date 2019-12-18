@@ -27,9 +27,9 @@ def simple_perf_test(wtimes, stdCoeff = 2.0):
     sig = np.std(wt)
 
     # Performance test
-    if abs(wt[-1] - mu) < stdCoeff*sig:
+    if wt[-1] - mu < stdCoeff*sig:
         status = 'pass'
-    elif abs(wt[-2] - mu) < stdCoeff*sig:
+    elif wt[-2] - mu < stdCoeff*sig:
         status = 'warn'
     else:
         status = 'fail'
