@@ -42,7 +42,17 @@ if __name__ == "__main__":
     files = glob.glob(os.path.join(dir,'ctest-*'))
 
     # Specify case to extract from ctest.json file
-    cases = ('ant-2-20km_ml_line','ant-2-20km_muelu_line','ant-2-20km_muelu_decoupled_line')
+    cases = ('ant-2-20km_ml_ls',
+             'ant-2-20km_mu_ls',
+             'ant-2-20km_mu_dls',
+             'green-1-7km_fea_1ws',
+             'green-1-7km_ml_ls_1ws',
+             'green-1-7km_mu_ls_1ws',
+             'green-1-7km_mu_dls_1ws',
+             'green-1-7km_fea_mem',
+             'green-1-7km_ml_ls_mem',
+             'green-1-7km_mu_ls_mem',
+             'green-1-7km_mu_dls_mem')
 
     # Specify number of processes to extract from ctest.json file
     np = 384
