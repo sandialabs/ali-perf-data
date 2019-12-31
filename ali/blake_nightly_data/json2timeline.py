@@ -27,7 +27,7 @@ def json2timeline(files, case, np, timer, warn = True):
 
         # Organize data for timeline plots
         for name,info in ctestData.items():
-            if info['case'] == case and info['np'] == np:
+            if info['case'] == case and info['np'] == np and info['passed']:
                 if timer in info['timers']:
                     date = info['date']
                     dates.append(date)
@@ -78,7 +78,7 @@ if __name__ == "__main__":
               'Albany Fill: Residual:',
               'Albany Residual Fill: Evaluate:',
               'Albany Residual Fill: Export:',
-              'Albany Fill: Jacobian:'
+              'Albany Fill: Jacobian:',
               'Albany Jacobian Fill: Evaluate:',
               'Albany Jacobian Fill: Export:',
               'NOX Total Preconditioner Construction:',
