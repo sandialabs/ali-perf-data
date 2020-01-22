@@ -209,7 +209,7 @@ def build_perf_tests_html(perfTests):
             </table>
             '''
             timerTabs = timerTabs + timerTab
-    subject = 'Albany Land Ice Performance Tests'
+    subject = 'Albany Land Ice Performance Tests - Blake'
     if subjectTestsFailed:
         subject = '[ALIPerfTestsFailed] ' + subject
     else:
