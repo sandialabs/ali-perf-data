@@ -268,7 +268,7 @@ if __name__ == "__main__":
              'green-1-7km_fea_mem') 
 
     # Specify number of processes to extract from ctest.json file
-    nps = 384
+    nps = 8
 
     # Specify timers to extract from ctest.json file (note: must be unique names per test in file)
     timers = ('Albany Total Time:',
