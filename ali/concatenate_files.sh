@@ -10,7 +10,7 @@ if test -f "$FILE"; then
   mv index11 index1
   cat index1 index2 >& index.html
   git add index.html index1 
-  git commit -m "Adding html entry from Ali nightly tests."
+  git commit -m "Adding html entry from Ali blake nightly tests."
   git push
 else 
   echo "$FILE does not exist! Not updating index.html."
