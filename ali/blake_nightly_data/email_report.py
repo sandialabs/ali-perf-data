@@ -236,7 +236,7 @@ if __name__ == "__main__":
     sender = 'jwatkin@sandia.gov'
     #recipients = ['jwatkin@sandia.gov']
     #recipients = ['jwatkin@sandia.gov','ikalash@sandia.gov']
-    recipients = ['jwatkin@sandia.gov','ikalash@sandia.gov','mperego@sandia.gov','lbertag@sandia.gov','kyleshan@stanford.edu']
+    recipients = ['jwatkin@sandia.gov','ikalash@sandia.gov','mperego@sandia.gov','lbertag@sandia.gov','kyleshan@stanford.edu','rstumin@sandia.gov']
 
     # Pass directory name
     if len(sys.argv) < 2:
