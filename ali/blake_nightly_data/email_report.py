@@ -1,13 +1,12 @@
 # Import libraries
 import datetime
 import glob
+import json
 import numpy as np
 import os
 import sys
 
 # Import scripts
-from json2status import json2status
-from json2timeline import json2timeline
 from html2email import html2email
 
 ###################################################################################################
@@ -40,51 +39,133 @@ def build_perf_tests(files, cases, nps, timers):
     '''
     Returns dictionary with performance tests
     '''
-    # Loop over cases
+    sender = 'jwatkin@sandia.gov'
+    #recipients = ['jwatkin@sandia.gov']
+    recipients = ['jwatkin@sandia.gov','ikalash@sandia.gov']
+
+    # If today's json file doesn't exist, send error message
+    date = datetime.datetime.today().strftime('%Y%m%d')
+    filesWithDate = [filename for filename in files if date in filename]
+    if not filesWithDate:
+        print("Today's json doesn't exist, sending error email...")
+        html2email('[ALIPerfTestsFailed] Albany Land Ice Performance Tests - Blake',
+                '''
+                <b>Error: Today's json file doesn't exist!</b>
+                <br><br>
+                Click <a href="https://my.cdash.org/index.php?subproject=IKTBlakeALIPerformTests&project=Albany">here</a> for test logs and
+                <a href="https://github.com/ikalash/ikalash.github.io/tree/master/ali/blake_nightly_data">here</a> for the repo.
+                ''',
+                sender, recipients)
+        sys.exit()
+
+    # Open today's json file
+    latestFile = filesWithDate[0]
+    with open(latestFile) as jf:
+        ctestData = json.load(jf)
+
+    # If today's json file is empty, send error message
+    if not ctestData:
+        print("Today's json is empty, sending error email...")
+        html2email('[ALIPerfTestsFailed] Albany Land Ice Performance Tests - Blake',
+                '''
+                <b>Error: Today's json file is empty!</b>
+                <br><br>
+                Click <a href="https://my.cdash.org/index.php?subproject=IKTBlakeALIPerformTests&project=Albany">here</a> for test logs and
+                <a href="https://github.com/ikalash/ikalash.github.io/tree/master/ali/blake_nightly_data">here</a> for the repo.
+                ''',
+                sender, recipients)
+        sys.exit()
+
+    # Determine status of today's tests before running performance tests
     perfTests = {}
-    colorMap = {'pass':'green','warn':'yellow','fail':'red'}
+    allPerfTestsFailedToRun = True
     for case in cases:
         name = case + '_np' + str(nps)
         perfTests[name] = {}
-        testDict = perfTests[name]
+        perfTestsCaseDict = perfTests[name]
 
-        # Extract test status
-        dates, status = json2status(files, case, nps)
-        if status[-1]:
-            testDict['runTest'] = 'Passed'
-            testDict['runTestColor'] = 'green'
+        if name in ctestData:
+            if ctestData[name]['passed']:
+                perfTestsCaseDict['runTest'] = 'Passed'
+                perfTestsCaseDict['runTestColor'] = 'green'
+                allPerfTestsFailedToRun = False
 
-            # Loop over timers
-            testDict['timers'] = {}
-            colorCounter = {'green':0,'yellow':0,'red':0}
-            for timer in timers:
-                testDict['timers'][timer] = {}
-                timerDict = testDict['timers'][timer]
-
-                # Extract timer data and run performance test
-                dates, wtimes = json2timeline(files, case, nps, timer, False)
-                perfStatus, timerDict['measured'], timerDict['mean'], timerDict['std'] = simple_perf_test(wtimes, 2.0)
-
-                # Extract performance test status
-                color = colorMap[perfStatus]
-                timerDict['perfTestColor'] = color
-                colorCounter[color] = colorCounter[color] + 1
-
-            # Extract overall performance tests status
-            testDict['perfTests'] = '{}/{}/{}'.format(colorCounter['green'],colorCounter['yellow'],colorCounter['red'])
-            if colorCounter['red']:
-                testDict['perfTestsColor'] = 'red'
-            elif colorCounter['yellow']:
-                testDict['perfTestsColor'] = 'yellow'
+            # Failed test
             else:
-                testDict['perfTestsColor'] = 'green'
+                perfTestsCaseDict['runTest'] = 'Failed'
+                perfTestsCaseDict['runTestColor'] = 'red'
+                perfTestsCaseDict['perfTests'] = 'Failed'
+                perfTestsCaseDict['perfTestsColor'] = 'red'
 
         # Failed test
         else:
-            testDict['runTest'] = 'Failed'
-            testDict['runTestColor'] = 'red'
-            testDict['perfTests'] = 'Failed'
-            testDict['perfTestsColor'] = 'red'
+            perfTestsCaseDict['runTest'] = 'Failed'
+            perfTestsCaseDict['runTestColor'] = 'red'
+            perfTestsCaseDict['perfTests'] = 'Failed'
+            perfTestsCaseDict['perfTestsColor'] = 'red'
+
+    # If today's performance tests are empty, send error message
+    if allPerfTestsFailedToRun:
+        print("Today's json doesn't have any performance tests, sending error email...")
+        html2email('[ALIPerfTestsFailed] Albany Land Ice Performance Tests - Blake',
+                '''
+                <b>Error: All performance tests failed to run!</b>
+                <br><br>
+                Click <a href="https://my.cdash.org/index.php?subproject=IKTBlakeALIPerformTests&project=Albany">here</a> for test logs and
+                <a href="https://github.com/ikalash/ikalash.github.io/tree/master/ali/blake_nightly_data">here</a> for the repo.
+                ''',
+                sender, recipients)
+        sys.exit()
+
+    # Initialize wtime lists
+    wtimes = {}
+    for name,perfTestsCaseDict in perfTests.items():
+        if perfTestsCaseDict['runTest'] == 'Failed':
+            continue
+
+        wtimes[name] = {}
+        for timer in timers:
+            wtimes[name][timer] = []
+
+    # Loop over files and construct list of wtimes for performance testing
+    for filename in files:
+        # Load ctest data
+        with open(filename) as jf:
+            ctestData = json.load(jf)
+
+        # Loop over timers
+        for name,wtimesCaseDict in wtimes.items():
+            if name in ctestData:
+                if ctestData[name]['passed']:
+                    for timer,wtimesTimerList in wtimesCaseDict.items():
+                        if timer in ctestData[name]['timers']:
+                            wtimesTimerList.append(ctestData[name]['timers'][timer])
+
+    # Run performance tests
+    colorMap = {'pass':'green','warn':'yellow','fail':'red'}
+    for name,wtimesCaseDict in wtimes.items():
+        perfTestsCaseDict = perfTests[name]
+        perfTestsCaseDict['timers'] = {}
+        perfTestsTimersDict = perfTestsCaseDict['timers']
+        colorCounter = {'green':0,'yellow':0,'red':0}
+        for timer,wtimesTimerList in wtimesCaseDict.items():
+            perfTestsTimersDict[timer] = {}
+            perfTestsTimerDict = perfTestsTimersDict[timer]
+            perfStatus, perfTestsTimerDict['measured'], perfTestsTimerDict['mean'], perfTestsTimerDict['std'] = simple_perf_test(wtimesTimerList, 2.0)
+
+            # Extract performance test status
+            color = colorMap[perfStatus]
+            perfTestsTimerDict['perfTestColor'] = color
+            colorCounter[color] = colorCounter[color] + 1
+
+        # Extract overall performance tests status
+        perfTestsCaseDict['perfTests'] = '{}/{}/{}'.format(colorCounter['green'],colorCounter['yellow'],colorCounter['red'])
+        if colorCounter['red']:
+            perfTestsCaseDict['perfTestsColor'] = 'red'
+        elif colorCounter['yellow']:
+            perfTestsCaseDict['perfTestsColor'] = 'yellow'
+        else:
+            perfTestsCaseDict['perfTestsColor'] = 'green'
 
     return perfTests
 
@@ -246,22 +327,6 @@ if __name__ == "__main__":
 
     # Extract file names
     files = glob.glob(os.path.join(dir,'ctest-*'))
-
-    # If today's json file doesn't exist, send error message
-    date = datetime.datetime.today().strftime('%Y%m%d')
-    files_with_date = [filename for filename in files if date in filename]
-    if not files_with_date:
-        print("Today's json doesn't exist, sending error email...")
-        html2email('[ALIPerfTestsFailed] Albany Land Ice Performance Tests',
-                '''
-                <b>Error: Today's json file doesn't exist!</b>
-                <br><br>
-                Click <a href="https://my.cdash.org/index.php?subproject=IKTBlakeALIPerformTests&project=Albany">here</a> for test logs and
-                <a href="https://github.com/ikalash/ikalash.github.io/tree/master/ali/blake_nightly_data">here</a> for the repo.
-                ''',
-                sender, ['jwatkin@sandia.gov','ikalash@sandia.gov'])
-                #sender, ['jwatkin@sandia.gov'])
-        sys.exit()
 
     # Specify case to extract from ctest.json file
     cases = ('ant-2-20km_ml_ls',
