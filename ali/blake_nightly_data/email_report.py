@@ -326,7 +326,7 @@ if __name__ == "__main__":
         dir = sys.argv[1]
 
     # Extract file names
-    files = glob.glob(os.path.join(dir,'ctest-*'))
+    files = sorted(glob.glob(os.path.join(dir,'ctest-*')))
 
     # Specify case to extract from ctest.json file
     cases = ('ant-2-20km_ml_ls',
