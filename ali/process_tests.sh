@@ -16,6 +16,8 @@ fi
 source execute_jupyter_nbs.sh $machineName >& execute_jupyter_nb_$machineName.out 
 source concatenate_file.sh $machineName >& concatenate_file_$machineName.out 
 
+cd ../
+
 dataDir=""$machineName"_nightly_data"
 cd $dataDir
 rm -rf *out
