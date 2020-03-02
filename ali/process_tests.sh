@@ -17,8 +17,8 @@ source execute_jupyter_nbs.sh $machineName >& execute_jupyter_nb_$machineName.ou
 source concatenate_file.sh $machineName >& concatenate_file_$machineName.out 
 
 cd ../
-
-dataDir=""$machineName"_nightly_data"
+PWD=`pwd`
+dataDir="$PWD/"$machineName"_nightly_data"
 cd $dataDir
 rm -rf *out
 python email_report.py >& email.out
