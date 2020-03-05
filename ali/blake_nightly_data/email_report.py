@@ -8,6 +8,8 @@ import sys
 
 # Import scripts
 from html2email import html2email
+sys.path.insert(0,'kcshan-perf-analysis')
+from email_report import changepoint_test
 
 ###################################################################################################
 def simple_perf_test(wtimes, stdCoeff = 2.0):
@@ -151,7 +153,7 @@ def build_perf_tests(files, cases, nps, timers):
         for timer,wtimesTimerList in wtimesCaseDict.items():
             perfTestsTimersDict[timer] = {}
             perfTestsTimerDict = perfTestsTimersDict[timer]
-            perfStatus, perfTestsTimerDict['measured'], perfTestsTimerDict['mean'], perfTestsTimerDict['std'] = simple_perf_test(wtimesTimerList, 2.0)
+            perfStatus, perfTestsTimerDict['measured'], perfTestsTimerDict['mean'], perfTestsTimerDict['std'] = changepoint_test(wtimesTimerList)
 
             # Extract performance test status
             color = colorMap[perfStatus]
