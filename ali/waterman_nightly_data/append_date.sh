@@ -8,8 +8,10 @@ if test -f "$FILE"; then
   now=$(date +"%m_%d_%Y")
   echo $now
   mv Ali_PerfTestsWaterman.html Ali_PerfTestsWaterman_$now.html
+  mv Comparison_Interactive.html Comparison_Interactive_$now.html
   git add Ali_PerfTestsWaterman_$now.html
-  git commit -m "Checking in jupyter notebook from $now" 
+  git add Comparison_Interactive_$now.html 
+  git commit -m "Checking in Waterman Jupyter notebooks from $now ." 
   git push
   rm html_entry 
   echo "<li><p><strong><a href="waterman_nightly_data/Ali_PerfTestsWaterman_$now.html">$now</a></strong>.</p>" >& html_entry

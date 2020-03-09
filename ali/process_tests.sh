@@ -13,6 +13,9 @@ if [ "$machineName" != "waterman" ]; then
   fi 
 fi 
 
+git submodule init 
+git submodule update 
+
 source execute_jupyter_nbs.sh $machineName >& execute_jupyter_nb_$machineName.out 
 source concatenate_file.sh $machineName >& concatenate_file_$machineName.out 
 
