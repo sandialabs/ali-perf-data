@@ -15,6 +15,7 @@ fi
 echo $FILE 
 if test -f "$FILE"; then
   echo "$FILE file exists"
+  cd ..
   i1=index1_$machineName
   ee=""$machineName"_nightly_data/html_entry"
   cat $i1 $ee >& index11
