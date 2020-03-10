@@ -13,8 +13,13 @@ if [ "$machineName" != "waterman" ]; then
   fi 
 fi 
 
-git submodule init 
-git submodule update 
+cd ../ext/kcshan-perf-analysis
+git reset --hard origin/master
+git pull 
+#git submodule init 
+#git submodule update 
+
+cd ../../ali 
 
 source execute_jupyter_nbs.sh $machineName >& execute_jupyter_nb_$machineName.out 
 source concatenate_file.sh $machineName >& concatenate_file_$machineName.out 

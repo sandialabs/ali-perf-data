@@ -7,7 +7,11 @@ dataDir="$PWD/$1_nightly_data"
 echo $dataDir 
 cd $dataDir 
 git reset --hard origin/master
+git pull
+cd ../../ext/kcshan-perf-analysis 
+git reset --hard origin/master
 git pull 
+cd ../../ali/$1_nightly_data
 if [ "$machineName" == "waterman" ]; then 
   FILE=Ali_PerfTestsWaterman.ipynb
   FILE2=Comparison_Interactive.ipynb
