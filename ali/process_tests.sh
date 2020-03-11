@@ -15,9 +15,10 @@ fi
 
 cd ../ext/kcshan-perf-analysis
 git reset --hard origin/master
-git pull 
-#git submodule init 
-#git submodule update 
+git checkout master
+git pull origin master
+git submodule init 
+git submodule update 
 
 cd ../../ali 
 
