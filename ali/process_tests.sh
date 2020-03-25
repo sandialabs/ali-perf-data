@@ -29,10 +29,10 @@ source concatenate_file.sh $machineName >& concatenate_file_$machineName.out
 #PWD=`pwd`
 #dataDir="$PWD/ali/"$machineName"_nightly_data"
 #cd $dataDir
-if [ "$machineName" -eq "blake" ]; then 
+if [ "$machineName" == "blake" ]; then 
   cd /home/ikalash/Desktop/PerfTesting/ikalash.github.io/ali/blake_nightly_data
 fi 
-if [ "$machineName" -eq "waterman" ]; then 
+if [ "$machineName" == "waterman" ]; then 
   cd /home/ikalash/Desktop/PerfTesting/ikalash.github.io/ali/waterman_nightly_data
 fi 
 
