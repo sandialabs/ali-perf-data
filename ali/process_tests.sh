@@ -27,7 +27,7 @@ source concatenate_file.sh $machineName >& concatenate_file_$machineName.out
 
 cd ../
 PWD=`pwd`
-dataDir="$PWD/ali/"$machineName"_nightly_data"
+dataDir="$PWD/"$machineName"_nightly_data"
 cd $dataDir
 rm -rf *out
 python email_report.py >& email.out
