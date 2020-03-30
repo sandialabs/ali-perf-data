@@ -335,8 +335,6 @@ if __name__ == "__main__":
              'ant-2-20km_mu_ls',
              'ant-2-20km_mu_dls',
              'green-1-7km_fea_1ws',
-             'green-1-7km_ml_ls_1ws',
-             'green-1-7km_mu_ls_1ws',
              'green-1-7km_mu_dls_1ws',
              'green-1-7km_fea_mem',
              'green-1-7km_ml_ls_mem',
