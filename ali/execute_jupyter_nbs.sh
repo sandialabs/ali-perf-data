@@ -1,7 +1,6 @@
 #!/bin/bash
 
 machineName=$1
-alias jupyter=/usr/local/bin/jupyter 
 PWD=`pwd`
 dataDir="$PWD/$1_nightly_data" 
 echo $dataDir 
@@ -22,7 +21,7 @@ if [ "$machineName" == "blake" ]; then
   FILE=Ali_PerfTestsBlake.ipynb
   FILE2=Comparison_Interactive.ipynb
 fi 
-jupyter nbconvert --execute $FILE 
-jupyter nbconvert --execute $FILE2 
+/usr/local/bin/jupyter nbconvert --execute $FILE 
+/usr/local/bin/jupyter nbconvert --execute $FILE2 
 bash append_date.sh >& append_date.out
 cd ../ 
