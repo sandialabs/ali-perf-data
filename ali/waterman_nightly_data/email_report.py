@@ -300,7 +300,7 @@ def build_perf_tests_html(perfTests):
 
     # Links
     date = datetime.datetime.today().strftime('%m_%d_%Y')
-    testLogsLink = 'TBD' #https://my.cdash.org/index.php?subproject=IKTBlakeALIPerformTests&project=Albany'
+    testLogsLink = 'https://sems-cdash-son.sandia.gov/sems/index.php?project=Albany&filtercount=1&showfilters=1&field1=buildname&compare1=61&value1=waterman-CUDA-Albany-Perf-Tests'
     notebookHtmlLink = 'https://ikalash.github.io/ali/waterman_nightly_data/Ali_PerfTestsWaterman_' + date + '.html'
     notebookLink = 'https://mybinder.org/v2/gh/ikalash/ikalash.github.io/master?filepath=ali/waterman_nightly_data%2FAli_PerfTestsWaterman.ipynb'
     links = '''

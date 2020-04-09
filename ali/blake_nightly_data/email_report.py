@@ -54,7 +54,7 @@ def build_perf_tests(files, cases, nps, timers):
                 '''
                 <b>Error: Today's json file doesn't exist!</b>
                 <br><br>
-                Click <a href="https://my.cdash.org/index.php?subproject=IKTBlakeALIPerformTests&project=Albany">here</a> for test logs and
+                Click <a href="https://sems-cdash-son.sandia.gov/sems/index.php?project=Albany&filtercount=1&showfilters=1&field1=buildname&compare1=61&value1=blake-serial-sfad-Albany-PerfTests">here</a> for test logs and
                 <a href="https://github.com/ikalash/ikalash.github.io/tree/master/ali/blake_nightly_data">here</a> for the repo.
                 ''',
                 sender, recipients)
@@ -72,7 +72,7 @@ def build_perf_tests(files, cases, nps, timers):
                 '''
                 <b>Error: Today's json file is empty!</b>
                 <br><br>
-                Click <a href="https://my.cdash.org/index.php?subproject=IKTBlakeALIPerformTests&project=Albany">here</a> for test logs and
+                Click <a href="https://sems-cdash-son.sandia.gov/sems/index.php?project=Albany&filtercount=1&showfilters=1&field1=buildname&compare1=61&value1=blake-serial-sfad-Albany-PerfTests">here</a> for test logs and
                 <a href="https://github.com/ikalash/ikalash.github.io/tree/master/ali/blake_nightly_data">here</a> for the repo.
                 ''',
                 sender, recipients)
@@ -113,7 +113,7 @@ def build_perf_tests(files, cases, nps, timers):
                 '''
                 <b>Error: All performance tests failed to run!</b>
                 <br><br>
-                Click <a href="https://my.cdash.org/index.php?subproject=IKTBlakeALIPerformTests&project=Albany">here</a> for test logs and
+                Click <a href="https://sems-cdash-son.sandia.gov/sems/index.php?project=Albany&filtercount=1&showfilters=1&field1=buildname&compare1=61&value1=blake-serial-sfad-Albany-PerfTests">here</a> for test logs and
                 <a href="https://github.com/ikalash/ikalash.github.io/tree/master/ali/blake_nightly_data">here</a> for the repo.
                 ''',
                 sender, recipients)
@@ -300,7 +300,7 @@ def build_perf_tests_html(perfTests):
 
     # Links
     date = datetime.datetime.today().strftime('%m_%d_%Y')
-    testLogsLink = 'https://my.cdash.org/index.php?subproject=IKTBlakeALIPerformTests&project=Albany'
+    testLogsLink = 'https://sems-cdash-son.sandia.gov/sems/index.php?project=Albany&filtercount=1&showfilters=1&field1=buildname&compare1=61&value1=blake-serial-sfad-Albany-PerfTests'
     notebookHtmlLink = 'https://ikalash.github.io/ali/blake_nightly_data/Ali_PerfTestsBlake_' + date + '.html'
     notebookLink = 'https://mybinder.org/v2/gh/ikalash/ikalash.github.io/master?filepath=ali/blake_nightly_data%2FAli_PerfTestsBlake.ipynb'
     links = '''
