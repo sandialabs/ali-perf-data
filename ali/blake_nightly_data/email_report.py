@@ -151,6 +151,10 @@ def build_perf_tests(files, cases, nps, timers):
         perfTestsTimersDict = perfTestsCaseDict['timers']
         colorCounter = {'green':0,'yellow':0,'red':0}
         for timer,wtimesTimerList in wtimesCaseDict.items():
+            # Skip this test if timer list is empty
+            if not wtimesTimerList:
+                continue
+
             perfTestsTimersDict[timer] = {}
             perfTestsTimerDict = perfTestsTimersDict[timer]
             perfStatus, perfTestsTimerDict['measured'], perfTestsTimerDict['mean'], perfTestsTimerDict['std'] = changepoint_test(wtimesTimerList)
@@ -339,7 +343,10 @@ if __name__ == "__main__":
              'green-1-7km_fea_mem',
              'green-1-7km_ml_ls_mem',
              'green-1-7km_mu_ls_mem',
-             'green-1-7km_mu_dls_mem')
+             'green-1-7km_mu_dls_mem',
+             'green-3-20km_beta_1ws',
+             'green-3-20km_beta_mem',
+             'green-3-20km_beta_memp')
 
     # Specify number of processes to extract from ctest.json file
     nps = 384
