@@ -26,15 +26,15 @@ source execute_jupyter_nbs.sh $machineName >& execute_jupyter_nb_$machineName.ou
 source concatenate_file.sh $machineName >& concatenate_file_$machineName.out 
 
 #cd ../
-#PWD=`pwd`
-#dataDir="$PWD/ali/"$machineName"_nightly_data"
-#cd $dataDir
-if [ "$machineName" == "blake" ]; then 
-  cd /home/ikalash/Desktop/PerfTesting/ikalash.github.io/ali/blake_nightly_data
-fi 
-if [ "$machineName" == "waterman" ]; then 
-  cd /home/ikalash/Desktop/PerfTesting/ikalash.github.io/ali/waterman_nightly_data
-fi 
+PWD=`pwd`
+dataDir=${PWD}/ali/${machineName}_nightly_data
+cd $dataDir
+#if [ "$machineName" == "blake" ]; then 
+#  cd /home/ikalash/Desktop/PerfTesting/ikalash.github.io/ali/blake_nightly_data
+#fi 
+#if [ "$machineName" == "waterman" ]; then 
+#  cd /home/ikalash/Desktop/PerfTesting/ikalash.github.io/ali/waterman_nightly_data
+#fi 
 
 rm -rf *out
 python email_report.py >& email.out

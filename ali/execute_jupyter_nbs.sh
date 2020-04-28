@@ -21,7 +21,7 @@ if [ "$machineName" == "blake" ]; then
   FILE=Ali_PerfTestsBlake.ipynb
   FILE2=Comparison_Interactive.ipynb
 fi 
-/usr/local/bin/jupyter nbconvert --execute $FILE 
-/usr/local/bin/jupyter nbconvert --execute $FILE2 
+jupyter nbconvert --execute $FILE 
+jupyter nbconvert --execute $FILE2 
 bash append_date.sh >& append_date.out
 cd ../ 
