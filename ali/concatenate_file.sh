@@ -14,7 +14,7 @@ if [ "$machineName" == "blake" ]; then
 fi 
 echo $FILE 
 cd ..
-if test -f "$FILE"; then
+if test -f "${dataDir}/${FILE}"; then
   echo "$FILE file exists"
   i1=index1_$machineName
   ee=""$machineName"_nightly_data/html_entry"
