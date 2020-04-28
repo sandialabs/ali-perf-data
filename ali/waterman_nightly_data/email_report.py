@@ -44,6 +44,7 @@ def build_perf_tests(files, cases, nps, timers):
     sender = 'jwatkin@sandia.gov'
     #recipients = ['jwatkin@sandia.gov']
     recipients = ['jwatkin@sandia.gov','ikalash@sandia.gov']
+    recipients = ['jwatkin@sandia.gov']
 
     # If today's json file doesn't exist, send error message
     date = datetime.datetime.today().strftime('%Y%m%d')
@@ -317,9 +318,9 @@ if __name__ == "__main__":
     '''
     # Email inputs
     sender = 'jwatkin@sandia.gov'
-    #recipients = ['jwatkin@sandia.gov']
     #recipients = ['jwatkin@sandia.gov','ikalash@sandia.gov']
     recipients = ['jwatkin@sandia.gov','ikalash@sandia.gov','mperego@sandia.gov','lbertag@sandia.gov','kyleshan@stanford.edu']
+    recipients = ['jwatkin@sandia.gov']
 
     # Pass directory name
     if len(sys.argv) < 2:
