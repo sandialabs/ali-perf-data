@@ -1,19 +1,16 @@
 #!/bin/bash
 
 machineName=$1 
-PWD=`pwd`
-dataDir="$PWD/$1_nightly_data" 
-cd $dataDir 
 now=$(date +"%m_%d_%Y")
-echo $now 
 if [ "$machineName" == "waterman" ]; then 
   FILE=Ali_PerfTestsWaterman_$now.html
 fi 
 if [ "$machineName" == "blake" ]; then 
   FILE=Ali_PerfTestsBlake_$now.html
 fi 
-echo $FILE 
-cd ..
+
+PWD=`pwd`
+dataDir="$PWD/${machineName}_nightly_data"
 if test -f "${dataDir}/${FILE}"; then
   echo "$FILE file exists"
   i1=index1_$machineName
@@ -22,6 +19,8 @@ if test -f "${dataDir}/${FILE}"; then
   mv index11 $i1
   html="index_$machineName.html"
   cat $i1 index2 >& $html
+
+  echo "Checking in ${html} and ${i1}..."
   git add $html $i1
   if [ "$machineName" == "waterman" ]; then 
     git commit -m "Adding html entry from Ali waterman nightly tests."
@@ -33,3 +32,4 @@ if test -f "${dataDir}/${FILE}"; then
 else 
   echo "$FILE does not exist! Not updating index.html."
 fi
+
