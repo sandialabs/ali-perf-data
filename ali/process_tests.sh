@@ -38,5 +38,5 @@ cd $dataDir
 
 rm -rf *out
 python email_report.py >& email.out
-
+cd ..
 
