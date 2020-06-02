@@ -317,7 +317,7 @@ if __name__ == "__main__":
     '''
     # Email inputs
     sender = 'jwatkin@sandia.gov'
-    recipients = ['jwatkin@sandia.gov','ikalash@sandia.gov','mperego@sandia.gov','lbertag@sandia.gov','kyleshan@stanford.edu']
+    recipients = ['jwatkin@sandia.gov','ikalash@sandia.gov','mperego@sandia.gov','lbertag@sandia.gov','kyleshan@stanford.edu','maxcarl@sandia.gov']
     #recipients = ['jwatkin@sandia.gov']
 
     # Pass directory name
