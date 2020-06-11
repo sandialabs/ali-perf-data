@@ -343,6 +343,7 @@ if __name__ == "__main__":
              'green-1-7km_ml_ls_mem',
              'green-1-7km_mu_ls_mem',
              'green-1-7km_mu_dls_mem',
+             'green-1-7km_muk_ls_mem',
              'green-3-20km_beta_1ws',
              'green-3-20km_beta_mem',
              'green-3-20km_beta_memp')
