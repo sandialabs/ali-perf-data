@@ -37,7 +37,7 @@ def simple_perf_test(wtimes, stdCoeff = 2.0):
     return status, wt[-1], mu, sig
 
 ###################################################################################################
-def build_perf_tests(files, cases, nps, timers):
+def build_perf_tests(files, cases, nps, timers, metadata):
     '''
     Returns dictionary with performance tests
     '''
@@ -119,49 +119,55 @@ def build_perf_tests(files, cases, nps, timers):
                 sender, recipients)
         sys.exit()
 
-    # Initialize wtime lists
-    wtimes = {}
+    # Initialize metrics lists
+    metrics = {}
     for name,perfTestsCaseDict in perfTests.items():
         if perfTestsCaseDict['runTest'] == 'Failed':
             continue
 
-        wtimes[name] = {}
+        metrics[name] = {}
         for timer in timers:
-            wtimes[name][timer] = []
+            metrics[name][timer] = []
+        for data in metadata:
+            metrics[name][data] = []
 
-    # Loop over files and construct list of wtimes for performance testing
+    # Loop over files and construct list of metrics for performance testing
     for filename in files:
         # Load ctest data
         with open(filename) as jf:
             ctestData = json.load(jf)
 
         # Loop over timers
-        for name,wtimesCaseDict in wtimes.items():
+        for name,metricsCaseDict in metrics.items():
             if name in ctestData:
                 if ctestData[name]['passed']:
-                    for timer,wtimesTimerList in wtimesCaseDict.items():
-                        if timer in ctestData[name]['timers']:
-                            wtimesTimerList.append(ctestData[name]['timers'][timer])
+                    for metric,metricList in metricsCaseDict.items():
+                        if metric in ctestData[name]['timers']:
+                            metricList.append(ctestData[name]['timers'][metric])
+                        elif metric in ctestData[name]:
+                            metricList.append(ctestData[name][metric])
 
     # Run performance tests
     colorMap = {'pass':'green','warn':'yellow','fail':'red'}
-    for name,wtimesCaseDict in wtimes.items():
+    for name,metricsCaseDict in metrics.items():
         perfTestsCaseDict = perfTests[name]
-        perfTestsCaseDict['timers'] = {}
-        perfTestsTimersDict = perfTestsCaseDict['timers']
+        
+        # Test metrics
+        perfTestsCaseDict['metrics'] = {}
+        perfTestsMetricsDict = perfTestsCaseDict['metrics']
         colorCounter = {'green':0,'yellow':0,'red':0}
-        for timer,wtimesTimerList in wtimesCaseDict.items():
-            # Skip this test if timer list is empty
-            if not wtimesTimerList:
+        for metric,metricList in metricsCaseDict.items():
+            # Skip this test if metric list is empty
+            if not metricList:
                 continue
 
-            perfTestsTimersDict[timer] = {}
-            perfTestsTimerDict = perfTestsTimersDict[timer]
-            perfStatus, perfTestsTimerDict['measured'], perfTestsTimerDict['mean'], perfTestsTimerDict['std'] = changepoint_test(wtimesTimerList)
+            perfTestsMetricsDict[metric] = {}
+            perfTestsMetricDict = perfTestsMetricsDict[metric]
+            perfStatus, perfTestsMetricDict['measured'], perfTestsMetricDict['mean'], perfTestsMetricDict['std'] = changepoint_test(metricList)
 
             # Extract performance test status
             color = colorMap[perfStatus]
-            perfTestsTimerDict['perfTestColor'] = color
+            perfTestsMetricDict['perfTestColor'] = color
             colorCounter[color] = colorCounter[color] + 1
 
         # Extract overall performance tests status
@@ -256,30 +262,30 @@ def build_perf_tests_html(perfTests):
     </table>
     '''
 
-    # Subject and Timer Tables
+    # Subject and Metrics Tables
     subjectTestsFailed = False
-    timerTabs = ''
+    metricTabs = ''
     for name, info in perfTests.items():
         if info['runTest'] == 'Failed':
             subjectTestsFailed = True
-            timerTabs = timerTabs + '''
+            metricTabs = metricTabs + '''
             <br><br>
             <font size="+1">{} test failed...</font>
             '''.format(name)
             continue
         else:
-            timerTab = '''
+            metricTab = '''
             <br><br>
             <table>
-                <caption><font size="+2"><b>{} Timers (s)</b></font></caption>
+                <caption><font size="+2"><b>{} timers (s) or memory (MiB)</b></font></caption>
                 <tr>
-                    <th>Timer</th>
+                    <th>Metrics</th>
                     <th>Measured</th>
                     <th>Mean</th>
                     <th>Std</th>
                 </tr>
             '''.format(name)
-            for timer, timerInfo in info['timers'].items():
+            for metric, metricInfo in info['metrics'].items():
                 row = '''
                 <tr>
                     <td>{}</td>
@@ -287,15 +293,15 @@ def build_perf_tests_html(perfTests):
                     <td>{:g}</td>
                     <td>{:g}</td>
                 </tr>
-                '''.format(timer,timerInfo['perfTestColor'],timerInfo['measured'],timerInfo['mean'],timerInfo['std'])
-                timerTab = timerTab + row
+                '''.format(metric,metricInfo['perfTestColor'],metricInfo['measured'],metricInfo['mean'],metricInfo['std'])
+                metricTab = metricTab + row
 
-                if timerInfo['perfTestColor'] == 'red':
+                if metricInfo['perfTestColor'] == 'red':
                     subjectTestsFailed = True
-            timerTab = timerTab + '''
+            metricTab = metricTab + '''
             </table>
             '''
-            timerTabs = timerTabs + timerTab
+            metricTabs = metricTabs + metricTab
     subject = 'Albany Land Ice Performance Tests - Blake'
     if subjectTestsFailed:
         subject = '[ALIPerfTestsFailed] ' + subject
@@ -312,7 +318,7 @@ def build_perf_tests_html(perfTests):
     Click <a href="{}">here</a> for test logs, <a href="{}">here</a> for more details on performance or <a href="{}">here</a> for an interactive notebook of the data.
     '''.format(testLogsLink, notebookHtmlLink, notebookLink)
 
-    return subject, style + title + statusTab + timerTabs + links
+    return subject, style + title + statusTab + metricTabs + links
 
 ###################################################################################################
 if __name__ == "__main__":
@@ -364,9 +370,13 @@ if __name__ == "__main__":
               'NOX Total Preconditioner Construction:',
               'NOX Total Linear Solve:')
 
+    # Specify metadata to extract from ctest.json file
+    metadata = ('max host memory',
+                'max kokkos memory')
+
     # Run performance tests and build dictionary
     print("Running performance analysis...")
-    perfTests = build_perf_tests(files, cases, nps, timers)
+    perfTests = build_perf_tests(files, cases, nps, timers, metadata)
     #print(perfTests)
 
     # Build html string
