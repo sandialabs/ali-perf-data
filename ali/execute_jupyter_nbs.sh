@@ -9,10 +9,6 @@ if [ "$machineName" == "blake" ]; then
   FILE=Ali_PerfTestsBlake.ipynb
   FILE2=Comparison_Interactive.ipynb
 fi 
-if [ "$machineName" == "weaver" ]; then 
-  FILE=Ali_PerfTestsWeaver.ipynb
-  FILE2=Comparison_Interactive.ipynb
-fi 
 
 echo "Executing ${FILE} and converting to html..."
 PWD=`pwd`
