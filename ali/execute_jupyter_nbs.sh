@@ -1,8 +1,8 @@
 #!/bin/bash
 
 machineName=$1
-if [ "$machineName" == "waterman" ]; then 
-  FILE=Ali_PerfTestsWaterman.ipynb
+if [ "$machineName" == "weaver" ]; then 
+  FILE=Ali_PerfTestsWeaver.ipynb
   FILE2=Comparison_Interactive.ipynb
 fi 
 if [ "$machineName" == "blake" ]; then 

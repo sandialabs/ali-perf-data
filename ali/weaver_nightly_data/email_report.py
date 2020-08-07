@@ -50,12 +50,12 @@ def build_perf_tests(files, cases, nps, timers, metadata):
     filesWithDate = [filename for filename in files if date in filename]
     if not filesWithDate:
         print("Today's json doesn't exist, sending error email...")
-        html2email('[ALIPerfTestsFailed] Albany Land Ice Performance Tests - Waterman',
+        html2email('[ALIPerfTestsFailed] Albany Land Ice Performance Tests - Weaver',
                 '''
                 <b>Error: Today's json file doesn't exist!</b>
                 <br><br>
                 Click 
-                <a href="https://github.com/ikalash/ikalash.github.io/tree/master/ali/waterman_nightly_data">here</a> for the repo.
+                <a href="https://github.com/ikalash/ikalash.github.io/tree/master/ali/weaver_nightly_data">here</a> for the repo.
                 ''',
                 sender, recipients)
         sys.exit()
@@ -68,12 +68,12 @@ def build_perf_tests(files, cases, nps, timers, metadata):
     # If today's json file is empty, send error message
     if not ctestData:
         print("Today's json is empty, sending error email...")
-        html2email('[ALIPerfTestsFailed] Albany Land Ice Performance Tests - Waterman',
+        html2email('[ALIPerfTestsFailed] Albany Land Ice Performance Tests - Weaver',
                 '''
                 <b>Error: Today's json file is empty!</b>
                 <br><br>
                 Click 
-                <a href="https://github.com/ikalash/ikalash.github.io/tree/master/ali/waterman_nightly_data">here</a> for the repo.
+                <a href="https://github.com/ikalash/ikalash.github.io/tree/master/ali/weaver_nightly_data">here</a> for the repo.
                 ''',
                 sender, recipients)
         sys.exit()
@@ -109,12 +109,12 @@ def build_perf_tests(files, cases, nps, timers, metadata):
     # If today's performance tests are empty, send error message
     if allPerfTestsFailedToRun:
         print("Today's json doesn't have any performance tests, sending error email...")
-        html2email('[ALIPerfTestsFailed] Albany Land Ice Performance Tests - Waterman',
+        html2email('[ALIPerfTestsFailed] Albany Land Ice Performance Tests - Weaver',
                 '''
                 <b>Error: All performance tests failed to run!</b>
                 <br><br>
                 Click 
-                <a href="https://github.com/ikalash/ikalash.github.io/tree/master/ali/waterman_nightly_data">here</a> for the repo.
+                <a href="https://github.com/ikalash/ikalash.github.io/tree/master/ali/weaver_nightly_data">here</a> for the repo.
                 ''',
                 sender, recipients)
         sys.exit()
@@ -235,7 +235,7 @@ def build_perf_tests_html(perfTests):
 
     # Title
     title = '''
-    <font size="+2"><b>Albany Land Ice Performance Status Report on Waterman</b></font>
+    <font size="+2"><b>Albany Land Ice Performance Status Report on Weaver</b></font>
     <br><br>
     '''
 
@@ -302,7 +302,7 @@ def build_perf_tests_html(perfTests):
             </table>
             '''
             metricTabs = metricTabs + metricTab
-    subject = 'Albany Land Ice Performance Tests - Waterman'
+    subject = 'Albany Land Ice Performance Tests - Weaver'
     if subjectTestsFailed:
         subject = '[ALIPerfTestsFailed] ' + subject
     else:
@@ -310,9 +310,9 @@ def build_perf_tests_html(perfTests):
 
     # Links
     date = datetime.datetime.today().strftime('%m_%d_%Y')
-    testLogsLink = 'https://sems-cdash-son.sandia.gov/sems/index.php?project=Albany&filtercount=1&showfilters=1&field1=buildname&compare1=61&value1=waterman-CUDA-Albany-Perf-Tests'
-    notebookHtmlLink = 'https://ikalash.github.io/ali/waterman_nightly_data/Ali_PerfTestsWaterman_' + date + '.html'
-    notebookLink = 'https://mybinder.org/v2/gh/ikalash/ikalash.github.io/master?filepath=ali/waterman_nightly_data%2FAli_PerfTestsWaterman.ipynb'
+    testLogsLink = 'https://sems-cdash-son.sandia.gov/sems/index.php?project=Albany&filtercount=1&showfilters=1&field1=buildname&compare1=61&value1=weaver-CUDA-Albany-Perf-Tests'
+    notebookHtmlLink = 'https://ikalash.github.io/ali/weaver_nightly_data/Ali_PerfTestsWeaver_' + date + '.html'
+    notebookLink = 'https://mybinder.org/v2/gh/ikalash/ikalash.github.io/master?filepath=ali/weaver_nightly_data%2FAli_PerfTestsWeaver.ipynb'
     links = '''
     <br>
     Click <a href="{}">here</a> for test logs, <a href="{}">here</a> for more details on performance or <a href="{}">here</a> for an interactive notebook of the data.

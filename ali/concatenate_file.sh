@@ -2,8 +2,8 @@
 
 machineName=$1 
 now=$(date +"%m_%d_%Y")
-if [ "$machineName" == "waterman" ]; then 
-  FILE=Ali_PerfTestsWaterman_$now.html
+if [ "$machineName" == "weaver" ]; then 
+  FILE=Ali_PerfTestsWeaver_$now.html
 fi 
 if [ "$machineName" == "blake" ]; then 
   FILE=Ali_PerfTestsBlake_$now.html
@@ -22,8 +22,8 @@ if test -f "${dataDir}/${FILE}"; then
 
   echo "Checking in ${html} and ${i1}..."
   git add $html $i1
-  if [ "$machineName" == "waterman" ]; then 
-    git commit -m "Adding html entry from Ali waterman nightly tests."
+  if [ "$machineName" == "weaver" ]; then 
+    git commit -m "Adding html entry from Ali weaver nightly tests."
   fi 
   if [ "$machineName" == "blake" ]; then 
     git commit -m "Adding html entry from Ali blake nightly tests."
