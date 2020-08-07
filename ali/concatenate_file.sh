@@ -8,6 +8,9 @@ fi
 if [ "$machineName" == "blake" ]; then 
   FILE=Ali_PerfTestsBlake_$now.html
 fi 
+if [ "$machineName" == "weaver" ]; then 
+  FILE=Ali_PerfTestsWeaver_$now.html
+fi 
 
 PWD=`pwd`
 dataDir="$PWD/${machineName}_nightly_data"
@@ -27,6 +30,9 @@ if test -f "${dataDir}/${FILE}"; then
   fi 
   if [ "$machineName" == "blake" ]; then 
     git commit -m "Adding html entry from Ali blake nightly tests."
+  fi 
+  if [ "$machineName" == "weaver" ]; then 
+    git commit -m "Adding html entry from Ali weaver nightly tests."
   fi 
   git push
 else 

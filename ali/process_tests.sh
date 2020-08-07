@@ -8,8 +8,10 @@ fi
 machineName=$1 
 if [ "$machineName" != "waterman" ]; then 
   if [ "$machineName" != "blake" ]; then 
-    echo "Invalid machine name!  Valid names are 'blake' and 'waterman'.  You specified " $machineName 
-    exit 1 
+    if [ "$machineName" != "weaver" ]; then 
+      echo "Invalid machine name!  Valid names are 'blake', 'waterman' and 'weaver'.  You specified " $machineName 
+      exit 1
+    fi 
   fi 
 fi 
 
