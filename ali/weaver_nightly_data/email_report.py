@@ -88,9 +88,17 @@ def build_perf_tests(files, cases, nps, timers, metadata):
 
         if name in ctestData:
             if ctestData[name]['passed']:
-                perfTestsCaseDict['runTest'] = 'Passed'
-                perfTestsCaseDict['runTestColor'] = 'green'
-                allPerfTestsFailedToRun = False
+                if ctestData[name]['timers']:
+                    perfTestsCaseDict['runTest'] = 'Passed'
+                    perfTestsCaseDict['runTestColor'] = 'green'
+                    allPerfTestsFailedToRun = False
+
+                # Failed test if no timers
+                else:
+                    perfTestsCaseDict['runTest'] = 'Failed'
+                    perfTestsCaseDict['runTestColor'] = 'red'
+                    perfTestsCaseDict['perfTests'] = 'Failed'
+                    perfTestsCaseDict['perfTestsColor'] = 'red'
 
             # Failed test
             else:
