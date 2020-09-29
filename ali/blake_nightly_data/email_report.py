@@ -127,7 +127,7 @@ def build_perf_tests(files, cases, nps, timers, metadata):
                 sender, recipients)
         sys.exit()
 
-    # Initialize metrics lists
+    # Initialize metrics lists if metric is in today's test
     metrics = {}
     for name,perfTestsCaseDict in perfTests.items():
         if perfTestsCaseDict['runTest'] == 'Failed':
@@ -135,9 +135,11 @@ def build_perf_tests(files, cases, nps, timers, metadata):
 
         metrics[name] = {}
         for timer in timers:
-            metrics[name][timer] = []
+            if timer in ctestData[name]['timers']:
+                metrics[name][timer] = []
         for data in metadata:
-            metrics[name][data] = []
+            if data in ctestData[name]:
+                metrics[name][data] = []
 
     # Loop over files and construct list of metrics for performance testing
     for filename in files:
