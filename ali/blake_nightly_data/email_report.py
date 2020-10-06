@@ -356,7 +356,8 @@ if __name__ == "__main__":
              'green-1-7km_ml_ls_mem',
              'green-1-7km_mu_dls_mem',
              'green-1-7km_muk_ls_mem',
-             'green-3-20km_beta_memp')
+             'green-3-20km_beta_memp'
+             )
 
     # Specify number of processes to extract from ctest.json file
     nps = 384
