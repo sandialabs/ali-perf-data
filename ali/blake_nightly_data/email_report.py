@@ -352,6 +352,7 @@ if __name__ == "__main__":
     # Specify case to extract from ctest.json file
     cases = ('ant-2-20km_ml_ls',
              'ant-2-20km_mu_dls',
+             'green-1-10km_vel_mu_wdg',
              'green-1-10km_ent_mu_wdg',
              'green-1-7km_ml_ls_mem',
              'green-1-7km_mu_dls_mem',
