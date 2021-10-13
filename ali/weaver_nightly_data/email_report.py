@@ -55,7 +55,7 @@ def build_perf_tests(files, cases, nps, timers, metadata):
                 <b>Error: Today's json file doesn't exist!</b>
                 <br><br>
                 Click 
-                <a href="https://github.com/ikalash/ikalash.github.io/tree/master/ali/weaver_nightly_data">here</a> for the repo.
+                <a href="https://github.com/sandialabs/ikalash.github.io/tree/master/ali/weaver_nightly_data">here</a> for the repo.
                 ''',
                 sender, recipients)
         sys.exit()
@@ -73,7 +73,7 @@ def build_perf_tests(files, cases, nps, timers, metadata):
                 <b>Error: Today's json file is empty!</b>
                 <br><br>
                 Click 
-                <a href="https://github.com/ikalash/ikalash.github.io/tree/master/ali/weaver_nightly_data">here</a> for the repo.
+                <a href="https://github.com/sandialabs/ikalash.github.io/tree/master/ali/weaver_nightly_data">here</a> for the repo.
                 ''',
                 sender, recipients)
         sys.exit()
@@ -122,7 +122,7 @@ def build_perf_tests(files, cases, nps, timers, metadata):
                 <b>Error: All performance tests failed to run!</b>
                 <br><br>
                 Click 
-                <a href="https://github.com/ikalash/ikalash.github.io/tree/master/ali/weaver_nightly_data">here</a> for the repo.
+                <a href="https://github.com/sandialabs/ikalash.github.io/tree/master/ali/weaver_nightly_data">here</a> for the repo.
                 ''',
                 sender, recipients)
         sys.exit()
@@ -322,7 +322,7 @@ def build_perf_tests_html(perfTests):
     date = datetime.datetime.today().strftime('%m_%d_%Y')
     testLogsLink = 'https://sems-cdash-son.sandia.gov/sems/index.php?project=Albany&filtercount=1&showfilters=1&field1=buildname&compare1=61&value1=weaver-CUDA-Albany-Perf-Tests'
     notebookHtmlLink = 'https://ikalash.github.io/ali/weaver_nightly_data/Ali_PerfTestsWeaver_' + date + '.html'
-    notebookLink = 'https://mybinder.org/v2/gh/ikalash/ikalash.github.io/master?filepath=ali/weaver_nightly_data%2FAli_PerfTestsWeaver.ipynb'
+    notebookLink = 'https://mybinder.org/v2/gh/sandialabs/ikalash.github.io/master?filepath=ali/weaver_nightly_data%2FAli_PerfTestsWeaver.ipynb'
     links = '''
     <br>
     Click <a href="{}">here</a> for test logs, <a href="{}">here</a> for more details on performance or <a href="{}">here</a> for an interactive notebook of the data.
