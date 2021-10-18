@@ -321,7 +321,7 @@ def build_perf_tests_html(perfTests):
     # Links
     date = datetime.datetime.today().strftime('%m_%d_%Y')
     testLogsLink = 'https://sems-cdash-son.sandia.gov/sems/index.php?project=Albany&filtercount=1&showfilters=1&field1=buildname&compare1=61&value1=blake-serial-sfad-Albany-PerfTests'
-    notebookHtmlLink = 'https://ikalash.github.io/ali/blake_nightly_data/Ali_PerfTestsBlake_' + date + '.html'
+    notebookHtmlLink = 'https://sandialabs.github.io/ikalash.github.io/ali/blake_nightly_data/Ali_PerfTestsBlake_' + date + '.html'
     notebookLink = 'https://mybinder.org/v2/gh/sandialabs/ikalash.github.io/master?filepath=ali/blake_nightly_data%2FAli_PerfTestsBlake.ipynb'
     links = '''
     <br>
