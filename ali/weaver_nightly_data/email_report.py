@@ -321,7 +321,7 @@ def build_perf_tests_html(perfTests):
     # Links
     date = datetime.datetime.today().strftime('%m_%d_%Y')
     testLogsLink = 'https://sems-cdash-son.sandia.gov/sems/index.php?project=Albany&filtercount=1&showfilters=1&field1=buildname&compare1=61&value1=weaver-CUDA-Albany-Perf-Tests'
-    notebookHtmlLink = 'https://ikalash.github.io/ali/weaver_nightly_data/Ali_PerfTestsWeaver_' + date + '.html'
+    notebookHtmlLink = 'https://sandialabs.github.io/ikalash.github.io/ali/weaver_nightly_data/Ali_PerfTestsWeaver_' + date + '.html'
     notebookLink = 'https://mybinder.org/v2/gh/sandialabs/ikalash.github.io/master?filepath=ali/weaver_nightly_data%2FAli_PerfTestsWeaver.ipynb'
     links = '''
     <br>
