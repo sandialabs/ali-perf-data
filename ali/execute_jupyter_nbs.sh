@@ -14,10 +14,10 @@ echo "Executing ${FILE} and converting to html..."
 PWD=`pwd`
 dataDir="$PWD/${machineName}_nightly_data"
 cd $dataDir
-jupyter nbconvert --to html --ExecutePreprocessor.timeout=300 --execute $FILE
+jupyter nbconvert --to html --ExecutePreprocessor.timeout=600 --execute $FILE
 
 echo "Executing ${FILE2} and converting to html..."
-jupyter nbconvert --to html --ExecutePreprocessor.timeout=300 --execute $FILE2
+jupyter nbconvert --to html --ExecutePreprocessor.timeout=600 --execute $FILE2
 
 echo "####### Running append_date.sh for ${machineName} #######"
 source append_date.sh
