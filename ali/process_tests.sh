@@ -14,7 +14,7 @@ if [ "$machineName" != "weaver" ]; then
 fi 
 
 echo "####### Running process_tests.sh ${machineName} #######"
-echo "Pull the latest from ikalash.github.io..."
+echo "Pull the latest from ali-perf-data..."
 git reset --hard origin/master
 git checkout master
 git pull origin master
