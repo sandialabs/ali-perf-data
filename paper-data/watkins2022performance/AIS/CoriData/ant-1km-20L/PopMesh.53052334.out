@@ -1,0 +1,113 @@
+***************************************************************
+**  ______   __       ______   ______   __   __   __  __     **
+** /\  __ \ /\ \     /\  == \ /\  __ \ /\ "-.\ \ /\ \_\ \    **
+** \ \  __ \\ \ \____\ \  __< \ \  __ \\ \ \-.  \\ \____ \   **
+**  \ \_\ \_\\ \_____\\ \_____\\ \_\ \_\\ \_\\"\_\\/\_____\  **
+**   \/_/\/_/ \/_____/ \/_____/ \/_/\/_/ \/_/ \/_/ \/_____/  **
+**                                                           **
+***************************************************************
+** Trilinos git commit id - 155e45e86c2
+** Albany git branch ------ master
+** Albany git commit id --- 9d292d8f5
+** Albany cxx compiler ---- Intel 19.0.0.20190206
+** Albany FadType --------- SFad16
+** Albany TanFadType ------ DFad
+** Albany HessianVecFad  -- DFad
+** Simulation start time -- 2022-01-10 at 13:51:07
+***************************************************************
+Albany_IOSS: Loading STKMesh from Exodus file  mesh-decomp/antarctica_2d.exo
+IOSS-STK: number of node sets = 1
+IOSS-STK: number of side sets = 1
+Restart Index not set. Not reading solution from exodus (-1)
+IOSS-STK: number of node sets = 1
+IOSS-STK: number of side sets = 1
+Restart Index not set. Not reading solution from exodus (-1)
+Restart Index not set. Not reading solution from exodus (-1)
+[GenericSTKMeshStruct] Processing field requirements...
+  - Reading Node Scalar field 'basal_friction' from file 'mesh/basal_friction_reg.ascii' ... done!
+  - Reading Node Scalar field 'ice_thickness' from file 'mesh/thickness.ascii' ... done!
+  - Reading Node Scalar field 'surface_height' from file 'mesh/surface_height.ascii' ... done!
+  - Reading Node Layered Scalar field 'temperature' from file 'mesh/temperature.ascii' ... done!
+[ExtrudedSTKMesh] Adding nodes... done!
+[ExtrudedSTKMesh] Adding elements... done!
+[ExtrudedSTKMesh] Adding basalside sides... done!
+[ExtrudedSTKMesh] Adding upperside sides... done!
+[ExtrudedSTKMesh] Adding lateral sides... done!
+[GenericSTKMeshStruct] Processing field requirements...
+[GenericSTKMeshStruct] Processing field requirements...
+  - Reading Node Vector field 'surface_velocity' from file 'mesh/surface_velocity.ascii' ... done!
+STKDisc: 16360 elements on Proc 0 
+STKDisc: nodeset basal_node has size 898  on Proc 0.
+STKDisc: nodeset bottom has size 898  on Proc 0.
+STKDisc: nodeset extruded_node has size 18858  on Proc 0.
+STKDisc: nodeset lateral has size 0  on Proc 0.
+STKDisc: nodeset top has size 898  on Proc 0.
+STKDisc: sideset basalside has size 818  on Proc 0.
+STKDisc: sideset extruded_lateralside has size 0  on Proc 0.
+STKDisc: sideset extruded_lateralside_quad4_edge2 has size 0  on Proc 0.
+STKDisc: sideset lateralside has size 0  on Proc 0.
+STKDisc: sideset upperside has size 818  on Proc 0.
+STKDisc: 818 elements on Proc 0 
+STKDisc: nodeset node has size 898  on Proc 0.
+STKDisc: sideset lateralside has size 0  on Proc 0.
+STKDisc: 818 elements on Proc 0 
+STKDisc: nodeset all_nodes has size 898  on Proc 0.
+
+StateManager: initializing state:  basal_friction
+StateManager: initializing state:  ice_thickness
+StateManager: initializing state:  surface_height
+StateManager: initializing state:  temperature
+
+StateManager: initializing state:  surface_velocity
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ Sacado ParameterLibrary has been initialized:
+ Library of all registered parameters:
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+Total number of parameters  = 0
+Number of non-distributed parameters  = 0
+Number of response vectors  = 0
+Number of distributed parameters vectors  = 0
+WARNING: Derivative dimension for <Jacobian> is 8 but ALBANY_SFAD_SIZE is 16!
+Continuing with this size may cause issues...
+ - Rebuild with ALBANY_SFAD_SIZE=8
+STKDiscretization::writeSolution: writing time 0 to index 1 in file mesh-pop/ais_basal_populated.exo
+STKDiscretization::writeSolution: writing time 0 to index 1 in file mesh-pop/ais_upper_populated.exo
+Finished eval of first model: Params, Responses 
+
+Main_Solve: MeanValue of final solution 0
+
+Number of Failed Comparisons: 0
+*** Teuchos::StackedTimer::report() - Remainder for a level will be ***
+*** incorrect if a timer in the level does not exist on every rank  ***
+*** of the MPI Communicator.                                        ***
+Albany Total Time: 592.758 [1] {min=592.038, max=593.567, std dev=0.38058}
+|   Albany: Setup Time: 587.466 - 99.1073% [1] {min=586.452, max=588.349, std dev=0.415475}
+|   Piro::NOXSolver::evalModelImpl::solve: 1.19389 - 0.201413% [1] {min=1.14233, max=1.26116, std dev=0.0250909}
+|   |   Thyra::NOXNonlinearSolver::solve: 1.15364 - 96.6282% [1] {min=1.04218, max=1.24886, std dev=0.0560825}
+|   |   |   Thyra::DefaultModelEvaluatorWithSolveFactory<double>::evalModel(...): 0.115632 - 10.0232% [1] {min=0.0152333, max=0.422032, std dev=0.0788949}
+|   |   |   |   Albany: Total Fill Time: 0.097174 - 84.0373% [1] {min=0.01338, max=0.413046, std dev=0.0812736}
+|   |   |   |   |   Albany Fill: Residual: 0.0964892 - 99.2952% [1] {min=0.0131971, max=0.412921, std dev=0.0805832}
+|   |   |   |   |   |   Phalanx::SortAndOrderEvaluators: 0.00103803 - 1.0758% [1] {min=1.1971e-05, max=0.00363004, std dev=0.000971177}
+|   |   |   |   |   |   Albany Residual Fill: Evaluate: 0.0332218 - 34.4306% [1] {min=0.00458052, max=0.0918088, std dev=0.0201681}
+|   |   |   |   |   |   |   Phalanx: Evaluator 0: [<Residual>] Gather Solution<Residual>: 0.00507303 - 15.2702% [1] {min=0.00197638, max=0.0367516, std dev=0.00498841}
+|   |   |   |   |   |   |   Phalanx: Evaluator 2: [<Residual>] DummyResidual<Residual>: 0.014464 - 43.5377% [1] {min=0.00017548, max=0.0429719, std dev=0.0146151}
+|   |   |   |   |   |   |   Phalanx: Evaluator 1: [<Residual>] Scatter Dummy Residual<Residual>: 0.0119307 - 35.9122% [1] {min=0.00168001, max=0.0450824, std dev=0.00802185}
+|   |   |   |   |   |   |   Remainder: 0.0017541 - 5.27996%
+|   |   |   |   |   |   Albany Residual Fill: Export: 0.0163697 - 16.9653% [1] {min=0.000153689, max=0.292197, std dev=0.0478555}
+|   |   |   |   |   |   Remainder: 0.0458597 - 47.5283%
+|   |   |   |   |   Remainder: 0.000684835 - 0.704751%
+|   |   |   |   Remainder: 0.018458 - 15.9627%
+|   |   |   Remainder: 1.03801 - 89.9768%
+|   |   Remainder: 0.0402555 - 3.37178%
+|   Piro::SteadyStateSolver::evalConvergedModelResponsesAndSensitivities::calc g, df/dp, dg/dp, dg/dx: 0.000271301 - 4.57692e-05% [1] {min=0.000197991, max=0.000408635, std dev=4.21385e-05}
+|   |   Thyra::DefaultModelEvaluatorWithSolveFactory<double>::evalModel(...): 0.000145623 - 53.676% [1] {min=0.000109091, max=0.00024399, std dev=2.07322e-05}
+|   |   |   Albany: Total Fill Time: 1.9801e-05 - 13.5974% [1] {min=1.453e-05, max=9.438e-05, std dev=4.42686e-06}
+|   |   |   Remainder: 0.000125822 - 86.4026%
+|   |   Remainder: 0.000125677 - 46.324%
+|   Albany Fill: State Residual: 0.0155797 - 0.00262834% [1] {min=0.0011895, max=0.0574202, std dev=0.00787431}
+|   |   Phalanx::SortAndOrderEvaluators: 2.5113e-05 - 0.161191% [5] {min=2.182e-05, max=9.007e-05, std dev=3.60479e-06}
+|   |   Remainder: 0.0155546 - 99.8388%
+|   Albany: Output to File: 2.50316 - 0.422291% [1] {min=2.46452, max=2.52129, std dev=0.00858819}
+|   Remainder: 1.57866 - 0.266325%

@@ -1,0 +1,2726 @@
+***************************************************************
+**  ______   __       ______   ______   __   __   __  __     **
+** /\  __ \ /\ \     /\  == \ /\  __ \ /\ "-.\ \ /\ \_\ \    **
+** \ \  __ \\ \ \____\ \  __< \ \  __ \\ \ \-.  \\ \____ \   **
+**  \ \_\ \_\\ \_____\\ \_____\\ \_\ \_\\ \_\\"\_\\/\_____\  **
+**   \/_/\/_/ \/_____/ \/_____/ \/_/\/_/ \/_/ \/_/ \/_____/  **
+**                                                           **
+***************************************************************
+** Trilinos git commit id - 155e45e86c2
+** Albany git branch ------ master
+** Albany git commit id --- 9d292d8f5
+** Albany cxx compiler ---- GNU 9.1.0
+** Albany cuda compiler --- Cuda 110
+** Albany FadType --------- SFad16
+** Albany TanFadType ------ DFad
+** Albany HessianVecFad  -- DFad
+** Simulation start time -- 2022-01-07 at 23:28:05
+***************************************************************
+Albany_IOSS: Loading STKMesh from Exodus file  mesh-pop/ais_basal_populated.exo
+IOSS-STK: number of node sets = 1
+IOSS-STK: number of side sets = 1
+IOSS-STK: number of node sets = 1
+IOSS-STK: number of side sets = 1
+Restart Index set, reading solution index : 1
+[GenericSTKMeshStruct] Processing field requirements...
+  - Skipping field 'basal_friction' since it's listed as present in the mesh.
+  - Skipping field 'ice_thickness' since it's listed as present in the mesh.
+  - Skipping field 'surface_height' since it's listed as present in the mesh.
+  - Skipping field 'temperature' since it's listed as present in the mesh.
+[ExtrudedSTKMesh] Adding nodes... done!
+[ExtrudedSTKMesh] Adding elements... done!
+[ExtrudedSTKMesh] Adding basalside sides... done!
+[ExtrudedSTKMesh] Adding upperside sides... done!
+[ExtrudedSTKMesh] Adding lateral sides... done!
+[ExtrudedSTKMesh] Extruding basal fields...
+  - Extruding Scalar Node field ice_thickness...done!
+  - Extruding Scalar Node field surface_height...done!
+  - Extruding Scalar Node field basal_friction...done!
+[ExtrudedSTKMesh] Interpolating layered basal fields...
+  - Interpolating Scalar field temperature...done!
+[GenericSTKMeshStruct] Processing field requirements...
+  - Skipping field 'temperature' since it's listed as present in the mesh.
+  - Skipping field 'ice_thickness' since it's listed as present in the mesh.
+  - Skipping field 'surface_height' since it's listed as present in the mesh.
+  - Skipping field 'basal_friction' since it's listed as present in the mesh.
+STKDisc: 172020 elements on Proc 0 
+STKDisc: nodeset basal_node has size 9039  on Proc 0.
+STKDisc: nodeset bottom has size 9039  on Proc 0.
+STKDisc: nodeset extruded_node has size 189819  on Proc 0.
+STKDisc: nodeset lateral has size 1155  on Proc 0.
+STKDisc: nodeset top has size 9039  on Proc 0.
+STKDisc: sideset basalside has size 8601  on Proc 0.
+STKDisc: sideset extruded_lateralside has size 900  on Proc 0.
+STKDisc: sideset extruded_lateralside_quad4_edge2 has size 900  on Proc 0.
+STKDisc: sideset lateralside has size 900  on Proc 0.
+STKDisc: sideset upperside has size 8601  on Proc 0.
+STKDisc: 8601 elements on Proc 0 
+STKDisc: nodeset node has size 9039  on Proc 0.
+STKDisc: sideset lateralside has size 45  on Proc 0.
+StateManager: initializing state:  temperature
+StateManager: initializing state:  ice_thickness
+StateManager: initializing state:  surface_height
+StateManager: initializing state:  basal_friction
+
+StateManager: initializing state:  basal_friction
+StateManager: initializing state:  ice_thickness
+StateManager: initializing state:  surface_height
+StateManager: initializing state:  temperature
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ Sacado ParameterLibrary has been initialized:
+ Library of all registered parameters:
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+Total number of parameters  = 0
+Number of non-distributed parameters  = 0
+Number of response vectors  = 1
+Number of distributed parameters vectors  = 0
+
+************************************************************************
+-- Nonlinear Solver Step 0 -- 
+||F|| = 5.280e+05  step = 0.000e+00  dx = 0.000e+00
+************************************************************************
+
+Clearing old data (if any)
+Replacing coordinate map
+Using default factory (TransPFactory[31] ) for building 'R'.
+Using default factory (CoalesceDropFactory_kokkos[32] ) for building 'Graph'.
+Using default factory (AmalgamationFactory_kokkos[33] ) for building 'UnAmalgamationInfo'.
+Level 0
+Using default factory (TransPFactory[35] ) for building 'R'.
+Setup Smoother (MueLu::Ifpack2Smoother{type = CHEBYSHEV})
+chebyshev: ratio eigenvalue (computed) = 27.572
+Preconditioner init
+Preconditioner compute
+chebyshev: max eigenvalue (calculated by Ifpack2) = 4.46374
+"Ifpack2::Chebyshev": {Initialized: true, Computed: true, "Ifpack2::Details::Chebyshev":{degree: 2, lambdaMax: 4.46374, alpha: 27.572, lambdaMin: 0.161894, boost factor: 1.1}, Global matrix dimensions: [8826552, 8826552], Global nnz: 456138480}
+Using default factory (CoalesceDropFactory_kokkos[43] ) for building 'Graph'.
+Using default factory (AmalgamationFactory_kokkos[44] ) for building 'UnAmalgamationInfo'.
+Level 1
+Build (MueLu::RebalanceTransferFactory)
+Build (MueLu::RepartitionFactory)
+Computing Ac (MueLu::RAPFactory)
+Prolongator toggle (MueLu::TogglePFactory)
+TogglePFactory: call transfer factory: MueLu::SemiCoarsenPFactory_kokkos
+Build (MueLu::SemiCoarsenPFactory_kokkos)
+Line detection (Ray style) (MueLu::LineDetectionFactory)
+Number of layers for line detection: 21 (information reconstructed from provided node coordinates)
+BuildSemiCoarsenP
+Fill P
+TransferCoordinates
+
+******* WARNING *******
+Level::Set: unable to store "Ptent" generated by factory TogglePFactory[7](0x6a3d3220) on level 1, as it has not been requested and no keep flags were set for it
+MxM: A x P
+Transpose P (MueLu::TransPFactory)
+MxM: R x (AP) (explicit)
+
+******* WARNING *******
+CheckRepairMainDiagonal: repaired 0 too small entries (threshold = 0) on main diagonal of Ac.
+
+******* WARNING *******
+Level::Set: unable to store "AP reuse data" generated by factory RAPFactory[10](0x7aea63d0) on level 1, as it has not been requested and no keep flags were set for it
+
+******* WARNING *******
+Level::Set: unable to store "RAP reuse data" generated by factory RAPFactory[10](0x7aea63d0) on level 1, as it has not been requested and no keep flags were set for it
+Projections
+RAPFactory: call transfer factory: MueLu::ToggleCoordinatesTransferFactory
+Coordinate transfer toggle (MueLu::ToggleCoordinatesTransferFactory)
+Transfer Coordinates0 to coarse level
+Build (MueLu::RepartitionHeuristicFactory)
+
+******* WARNING *******
+Level::Set: unable to store "repartition: heuristic target rows per process" generated by factory RepartitionHeuristicFactory[11](0x7aecddd0) on level 1, as it has not been requested and no keep flags were set for it
+Repartitioning?  NO:
+  min # rows per proc = 16850, min allowable = 3000
+  nonzero imbalance = 1.07626363986762175e+00, max allowable = 1.32699999999999996e+00
+Build (MueLu::ZoltanInterface)
+
+******* WARNING *******
+No repartitioning necessary: partitions were left unchanged by the repartitioner
+Rebalancing prolongator
+Using original prolongator
+Transpose P (MueLu::TransPFactory)
+Computing Ac (MueLu::RebalanceAcFactory)
+No rebalancing
+Setup Smoother (MueLu::Ifpack2Smoother{type = CHEBYSHEV})
+chebyshev: ratio eigenvalue (computed) = 25.6539
+Preconditioner init
+Preconditioner compute
+chebyshev: max eigenvalue (calculated by Ifpack2) = 3.1308
+"Ifpack2::Chebyshev": {Initialized: true, Computed: true, "Ifpack2::Details::Chebyshev":{degree: 4, lambdaMax: 3.1308, alpha: 25.6539, lambdaMin: 0.12204, boost factor: 1.1}, Global matrix dimensions: [420312, 420312], Global nnz: 7477680}
+Level 2
+Build (MueLu::RebalanceTransferFactory)
+Build (MueLu::RepartitionFactory)
+Computing Ac (MueLu::RAPFactory)
+Prolongator toggle (MueLu::TogglePFactory)
+Number of layers for semicoarsening: 1
+TogglePFactory: call transfer factory: MueLu::SaPFactory_kokkos
+Prolongator smoothing (MueLu::SaPFactory_kokkos)
+macro  KOKKOS_ENABLE_CUDA      : defined
+macro  CUDA_VERSION          = 11000 = version 11.0
+Kokkos::Cuda[ 0 ] Tesla V100-SXM2-16GB capability 7.0, Total Global Memory: 15.75 G, Shared Memory per Block: 48 K : Selected
+Build (MueLu::TentativePFactory_kokkos)
+Build (MueLu::UncoupledAggregationFactory_kokkos)
+Build (MueLu::CoalesceDropFactory_kokkos)
+Build (MueLu::AmalgamationFactory_kokkos)
+AmalagamationFactory::Build(): found fullblocksize=2 and stridedblocksize=2 from strided maps. offset=0
+
+******* WARNING *******
+lightweight wrap is deprecated
+algorithm = "classical": threshold = 0, blocksize = 2
+Detected 0 Dirichlet nodes
+
+******* WARNING *******
+Level::Set: unable to store "A" generated by factory CoalesceDropFactory_kokkos[43](0x7b208f90) on level 1, as it has not been requested and no keep flags were set for it
+Algo Graph Coloring
+  algorithm: serial
+  num colors: 13
+Algo Phase - (Dirichlet)
+BuildAggregates (Phase - (Dirichlet))
+  aggregated : 0 (phase), 0/210156 [0.00%] (total)
+  remaining  : 210156
+  aggregates : 0 (phase), 0 (total)
+Algo Phase 1 (main)
+BuildAggregatesRandom (Phase 1 (main))
+  aggregated : 191096 (phase), 191096/210156 [90.93%] (total)
+  remaining  : 19060
+  aggregates : 22386 (phase), 22386 (total)
+Algo Phase 2a (secondary)
+BuildAggregatesRandom (Phase 2a (secondary))
+  aggregated : 0 (phase), 191096/210156 [90.93%] (total)
+  remaining  : 19060
+  aggregates : 0 (phase), 22386 (total)
+Algo Phase 2b (expansion)
+BuildAggregatesRandom (Phase 2b (expansion))
+  aggregated : 19060 (phase), 210156/210156 [100.00%] (total)
+  remaining  : 0
+  aggregates : 0 (phase), 22386 (total)
+Algo Phase 3 (cleanup)
+BuildAggregatesRandom (Phase 3 (cleanup))
+  aggregated : 0 (phase), 210156/210156 [100.00%] (total)
+  remaining  : 0
+  aggregates : 0 (phase), 22386 (total)
+"UC": MueLu::Aggregates_kokkos{nGlobalAggregates = 22386}
+Build (MueLu::CoarseMapFactory_kokkos)
+AverageCoords
+Get Aggregates graph
+Check good map
+Calc AggSizes
+Create Agg2RowMap
+Stage 0 (InitViews)
+Stage 1 (LocalQR)
+Stage 2 (CompressRows)
+Stage 2 (CompressCols)
+TentativePFactory : aggregates do not cross process boundaries
+Stage 3 (LocalMatrix+FillComplete)
+
+******* WARNING *******
+Level::Set: unable to store "Coordinates" generated by factory TentativePFactory_kokkos[4](0x7aebe040) on level 2, as it has not been requested and no keep flags were set for it
+Eigenvalue estimate
+Using cached max eigenvalue estimate
+Prolongator damping factor = 0.43 (1.33 / 3.13)
+Fused (I-omega*D^{-1} A)*Ptent
+Diagonal Extraction
+Xpetra::IteratorOps::Jacobi
+
+******* WARNING *******
+Level::Set: unable to store "Ptent" generated by factory TogglePFactory[7](0x6a3d3220) on level 2, as it has not been requested and no keep flags were set for it
+MxM: A x P
+Transpose P (MueLu::TransPFactory)
+MxM: R x (AP) (explicit)
+
+******* WARNING *******
+CheckRepairMainDiagonal: repaired 0 too small entries (threshold = 0.00) on main diagonal of Ac.
+
+******* WARNING *******
+Level::Set: unable to store "AP reuse data" generated by factory RAPFactory[10](0x7aea63d0) on level 2, as it has not been requested and no keep flags were set for it
+
+******* WARNING *******
+Level::Set: unable to store "RAP reuse data" generated by factory RAPFactory[10](0x7aea63d0) on level 2, as it has not been requested and no keep flags were set for it
+Projections
+RAPFactory: call transfer factory: MueLu::ToggleCoordinatesTransferFactory
+Coordinate transfer toggle (MueLu::ToggleCoordinatesTransferFactory)
+Transfer Coordinates1 to coarse level
+Build (MueLu::CoordinatesTransferFactory_kokkos)
+Transferring coordinates
+AverageCoords
+Build (MueLu::RepartitionHeuristicFactory)
+
+******* WARNING *******
+Level::Set: unable to store "repartition: heuristic target rows per process" generated by factory RepartitionHeuristicFactory[11](0x7aecddd0) on level 2, as it has not been requested and no keep flags were set for it
+Repartitioning? YES:
+  min # rows per proc = 2472, min allowable = 3000
+Number of partitions to use = 22
+Build (MueLu::ZoltanInterface)
+Zoltan RCB
+
+  Build configuration:
+  ZOLTAN_ID_TYPE: unsigned int (4 bytes)
+  ZOLTAN_GNO_TYPE: ssize_t, (8 bytes)
+  MPI_Datatype for ZOLTAN_ID_TYPE: MPI_UNSIGNED
+  MPI_Datatype for ZOLTAN_GNO_TYPE: MPI_LONG
+ZOLTAN Parameter IMBALANCE_TOL[0] = 1.100000
+ZOLTAN Parameter AUTO_MIGRATE = FALSE
+ZOLTAN Parameter MIGRATE_ONLY_PROC_CHANGES = 1
+ZOLTAN Parameter OBJ_WEIGHT_DIM = 1
+ZOLTAN Parameter EDGE_WEIGHT_DIM = 0
+ZOLTAN Parameter DEBUG_LEVEL = 1
+ZOLTAN Parameter DEBUG_PROCESSOR = 0
+ZOLTAN Parameter DETERMINISTIC = TRUE
+ZOLTAN Parameter TIMER = 1 (wall)
+ZOLTAN Parameter NUM_GID_ENTRIES = 1
+ZOLTAN Parameter NUM_LID_ENTRIES = 0
+ZOLTAN Parameter RETURN_LISTS = IMPORT AND EXPORT
+ZOLTAN Parameter NUM_GLOBAL_PARTS = 22
+ZOLTAN Parameter NUM_LOCAL_PARTS = -1
+ZOLTAN Parameter REMAP = 1
+ZOLTAN Parameter SEED = 123456789 (123456789)
+ZOLTAN Parameter LB_APPROACH = repartition
+ZOLTAN Parameter RCB_OVERALLOC = 1.200000
+ZOLTAN Parameter RCB_REUSE = 0
+ZOLTAN Parameter CHECK_GEOM = 1
+ZOLTAN Parameter RCB_OUTPUT_LEVEL = 0
+ZOLTAN Parameter KEEP_CUTS = 0
+ZOLTAN Parameter RCB_LOCK_DIRECTIONS = 0
+ZOLTAN Parameter RCB_SET_DIRECTIONS = 0
+ZOLTAN Parameter RCB_RECTILINEAR_BLOCKS = 0
+ZOLTAN Parameter OBJ_WEIGHTS_COMPARABLE = 0
+ZOLTAN Parameter RCB_MULTICRITERIA_NORM = 1
+ZOLTAN Parameter RCB_MAX_ASPECT_RATIO = 10.000000
+ZOLTAN Parameter AVERAGE_CUTS = 0
+ZOLTAN Parameter RANDOM_PIVOTS = 0
+ZOLTAN Parameter RCB_RECOMPUTE_BOX = 0
+ZOLTAN Parameter REDUCE_DIMENSIONS = 0
+ZOLTAN Parameter DEGENERATE_RATIO = 0.000000
+ZOLTAN Parameter FINAL_OUTPUT = 0
+ZOLTAN Parameter KEEP_CUTS = 0
+ZOLTAN Parameter REDUCE_DIMENSIONS = 0
+ZOLTAN Parameter DEGENERATE_RATIO = 10.000000
+DeterminePartitionPlacement
+Number of unassigned partitions before cleanup stage: 1 / 22
+Import construction
+Rebalancing prolongator
+Using original prolongator
+Rebalancing coordinates
+
+******* WARNING *******
+Level::Set: unable to store "Coordinates" generated by factory RebalanceTransferFactory[14](0x7aea21c0) on level 2, as it has not been requested and no keep flags were set for it
+Rebalancing nullspace
+
+******* WARNING *******
+Level::Set: unable to store "Nullspace" generated by factory RebalanceTransferFactory[14](0x7aea21c0) on level 2, as it has not been requested and no keep flags were set for it
+Transpose P (MueLu::TransPFactory)
+Computing Ac (MueLu::RebalanceAcFactory)
+Rebalancing existing Ac
+Replacing maps with a subcommunicator
+Setup Smoother (MueLu::Ifpack2Smoother{type = CHEBYSHEV})
+chebyshev: ratio eigenvalue (computed) = 25.65
+Preconditioner init
+Preconditioner compute
+chebyshev: max eigenvalue (calculated by Ifpack2) = 2.45
+"Ifpack2::Chebyshev": {Initialized: true, Computed: true, "Ifpack2::Details::Chebyshev":{degree: 4, lambdaMax: 2.45005, alpha: 25.6539, lambdaMin: 0.0955041, boost factor: 1.1}, Global matrix dimensions: [67158, 67158], Global nnz: 2472066}
+
+******* WARNING *******
+Level::Set: unable to store "PostSmoother" generated by factory SmootherFactory[26](0x7ae971e0) on level 2, as it has not been requested and no keep flags were set for it
+
+--------------------------------------------------------------------------------
+---                            Multigrid Summary                             ---
+--------------------------------------------------------------------------------
+Scalar              = double
+Number of levels    = 3
+Operator complexity = 1.02
+Smoother complexity = 1.04
+Cycle type          = V
+
+level  rows     nnz        nnz/row  c ratio  procs
+  0  8826552  456138480  51.68                 24  
+  1  420312   7477680    17.79    21.00        24  
+  2  67158    2472066    36.81    6.26         22  
+
+Smoother (level 0) both : "Ifpack2::Chebyshev": {Initialized: true, Computed: true, "Ifpack2::Details::Chebyshev":{degree: 2, lambdaMax: 4.46374, alpha: 27.572, lambdaMin: 0.161894, boost factor: 1.1}, Global matrix dimensions: [8826552, 8826552], Global nnz: 456138480}
+
+Smoother (level 1) both : "Ifpack2::Chebyshev": {Initialized: true, Computed: true, "Ifpack2::Details::Chebyshev":{degree: 4, lambdaMax: 3.1308, alpha: 25.6539, lambdaMin: 0.12204, boost factor: 1.1}, Global matrix dimensions: [420312, 420312], Global nnz: 7477680}
+
+Smoother (level 2) pre  : "Ifpack2::Chebyshev": {Initialized: true, Computed: true, "Ifpack2::Details::Chebyshev":{degree: 4, lambdaMax: 2.45005, alpha: 25.6539, lambdaMin: 0.0955041, boost factor: 1.1}, Global matrix dimensions: [67158, 67158], Global nnz: 2472066}
+Smoother (level 2) post : no smoother
+
+=====================================================================================================================
+
+                                       TimeMonitor results over 24 processors
+
+Timer Name          Local time (num calls)    MinOverProcs    MeanOverProcs    MaxOverProcs    MeanOverCallCounts    
+---------------------------------------------------------------------------------------------------------------------
+MueLu setup time    1.0285 (1)                1.0284 (1)      1.0284 (1)       1.0285 (1)      1.0284 (1)            
+=====================================================================================================================
+  
+  *******************************************************
+  ***** Belos Iterative Solver:  Block Gmres 
+  ***** Maximum Iterations: 200
+  ***** Block Size: 1
+  ***** Residual Test: 
+  *****   Test 1 : Belos::StatusTestImpResNorm<>: (2-Norm Res Vec) / (2-Norm Res0), tol = 1e-06
+  *******************************************************
+  Iter   0, [ 1] :    1.000000e+00
+  Iter  20, [ 1] :    6.137703e-03
+  Iter  40, [ 1] :    1.406809e-04
+  Iter  60, [ 1] :    3.365722e-06
+  Iter  67, [ 1] :    9.659209e-07
+
+************************************************************************
+-- Nonlinear Solver Step 1 -- 
+||F|| = 5.189e+05  step = 5.000e-01  dx = 1.997e+05
+************************************************************************
+
+Clearing old data (if any)
+Replacing coordinate map
+Using default factory (TransPFactory[87] ) for building 'R'.
+Using default factory (CoalesceDropFactory_kokkos[88] ) for building 'Graph'.
+Using default factory (AmalgamationFactory_kokkos[89] ) for building 'UnAmalgamationInfo'.
+Level 0
+Using default factory (TransPFactory[91] ) for building 'R'.
+Setup Smoother (MueLu::Ifpack2Smoother{type = CHEBYSHEV})
+chebyshev: ratio eigenvalue (computed) = 27.57
+Preconditioner init
+Preconditioner compute
+chebyshev: max eigenvalue (calculated by Ifpack2) = 6.32
+"Ifpack2::Chebyshev": {Initialized: true, Computed: true, "Ifpack2::Details::Chebyshev":{degree: 2, lambdaMax: 6.31583, alpha: 27.572, lambdaMin: 0.229067, boost factor: 1.1}, Global matrix dimensions: [8826552, 8826552], Global nnz: 456138480}
+Using default factory (CoalesceDropFactory_kokkos[99] ) for building 'Graph'.
+Using default factory (AmalgamationFactory_kokkos[100] ) for building 'UnAmalgamationInfo'.
+Level 1
+Build (MueLu::RebalanceTransferFactory)
+Build (MueLu::RepartitionFactory)
+Computing Ac (MueLu::RAPFactory)
+Prolongator toggle (MueLu::TogglePFactory)
+TogglePFactory: call transfer factory: MueLu::SemiCoarsenPFactory_kokkos
+Build (MueLu::SemiCoarsenPFactory_kokkos)
+Line detection (Ray style) (MueLu::LineDetectionFactory)
+Number of layers for line detection: 21 (information reconstructed from provided node coordinates)
+BuildSemiCoarsenP
+Fill P
+TransferCoordinates
+
+******* WARNING *******
+Level::Set: unable to store "Ptent" generated by factory TogglePFactory[64](0x85d0b600) on level 1, as it has not been requested and no keep flags were set for it
+MxM: A x P
+Transpose P (MueLu::TransPFactory)
+MxM: R x (AP) (explicit)
+
+******* WARNING *******
+CheckRepairMainDiagonal: repaired 0 too small entries (threshold = 0.00) on main diagonal of Ac.
+
+******* WARNING *******
+Level::Set: unable to store "AP reuse data" generated by factory RAPFactory[67](0x7aeaa2b0) on level 1, as it has not been requested and no keep flags were set for it
+
+******* WARNING *******
+Level::Set: unable to store "RAP reuse data" generated by factory RAPFactory[67](0x7aeaa2b0) on level 1, as it has not been requested and no keep flags were set for it
+Projections
+RAPFactory: call transfer factory: MueLu::ToggleCoordinatesTransferFactory
+Coordinate transfer toggle (MueLu::ToggleCoordinatesTransferFactory)
+Transfer Coordinates0 to coarse level
+Build (MueLu::RepartitionHeuristicFactory)
+
+******* WARNING *******
+Level::Set: unable to store "repartition: heuristic target rows per process" generated by factory RepartitionHeuristicFactory[68](0x85d0c4e0) on level 1, as it has not been requested and no keep flags were set for it
+Repartitioning?  NO:
+  min # rows per proc = 16850, min allowable = 3000
+  nonzero imbalance = 1.07626363986762175e+00, max allowable = 1.32699999999999996e+00
+Build (MueLu::ZoltanInterface)
+
+******* WARNING *******
+No repartitioning necessary: partitions were left unchanged by the repartitioner
+Rebalancing prolongator
+Using original prolongator
+Transpose P (MueLu::TransPFactory)
+Computing Ac (MueLu::RebalanceAcFactory)
+No rebalancing
+Setup Smoother (MueLu::Ifpack2Smoother{type = CHEBYSHEV})
+chebyshev: ratio eigenvalue (computed) = 25.65
+Preconditioner init
+Preconditioner compute
+chebyshev: max eigenvalue (calculated by Ifpack2) = 3.01
+"Ifpack2::Chebyshev": {Initialized: true, Computed: true, "Ifpack2::Details::Chebyshev":{degree: 4, lambdaMax: 3.01485, alpha: 25.6539, lambdaMin: 0.11752, boost factor: 1.1}, Global matrix dimensions: [420312, 420312], Global nnz: 7477680}
+Level 2
+Build (MueLu::RebalanceTransferFactory)
+Build (MueLu::RepartitionFactory)
+Computing Ac (MueLu::RAPFactory)
+Prolongator toggle (MueLu::TogglePFactory)
+Number of layers for semicoarsening: 1
+TogglePFactory: call transfer factory: MueLu::SaPFactory_kokkos
+Prolongator smoothing (MueLu::SaPFactory_kokkos)
+macro  KOKKOS_ENABLE_CUDA      : defined
+macro  CUDA_VERSION          = 11000 = version 11.0
+Kokkos::Cuda[ 0 ] Tesla V100-SXM2-16GB capability 7.0, Total Global Memory: 15.75 G, Shared Memory per Block: 48 K : Selected
+Build (MueLu::TentativePFactory_kokkos)
+Build (MueLu::UncoupledAggregationFactory_kokkos)
+Build (MueLu::CoalesceDropFactory_kokkos)
+Build (MueLu::AmalgamationFactory_kokkos)
+AmalagamationFactory::Build(): found fullblocksize=2 and stridedblocksize=2 from strided maps. offset=0
+
+******* WARNING *******
+lightweight wrap is deprecated
+algorithm = "classical": threshold = 0.00, blocksize = 2
+Detected 0 Dirichlet nodes
+
+******* WARNING *******
+Level::Set: unable to store "A" generated by factory CoalesceDropFactory_kokkos[99](0x85930980) on level 1, as it has not been requested and no keep flags were set for it
+Algo Graph Coloring
+  algorithm: serial
+  num colors: 13
+Algo Phase - (Dirichlet)
+BuildAggregates (Phase - (Dirichlet))
+  aggregated : 0 (phase), 0/210156 [0.00%] (total)
+  remaining  : 210156
+  aggregates : 0 (phase), 0 (total)
+Algo Phase 1 (main)
+BuildAggregatesRandom (Phase 1 (main))
+  aggregated : 191096 (phase), 191096/210156 [90.93%] (total)
+  remaining  : 19060
+  aggregates : 22386 (phase), 22386 (total)
+Algo Phase 2a (secondary)
+BuildAggregatesRandom (Phase 2a (secondary))
+  aggregated : 0 (phase), 191096/210156 [90.93%] (total)
+  remaining  : 19060
+  aggregates : 0 (phase), 22386 (total)
+Algo Phase 2b (expansion)
+BuildAggregatesRandom (Phase 2b (expansion))
+  aggregated : 19060 (phase), 210156/210156 [100.00%] (total)
+  remaining  : 0
+  aggregates : 0 (phase), 22386 (total)
+Algo Phase 3 (cleanup)
+BuildAggregatesRandom (Phase 3 (cleanup))
+  aggregated : 0 (phase), 210156/210156 [100.00%] (total)
+  remaining  : 0
+  aggregates : 0 (phase), 22386 (total)
+"UC": MueLu::Aggregates_kokkos{nGlobalAggregates = 22386}
+Build (MueLu::CoarseMapFactory_kokkos)
+AverageCoords
+Get Aggregates graph
+Check good map
+Calc AggSizes
+Create Agg2RowMap
+Stage 0 (InitViews)
+Stage 1 (LocalQR)
+Stage 2 (CompressRows)
+Stage 2 (CompressCols)
+TentativePFactory : aggregates do not cross process boundaries
+Stage 3 (LocalMatrix+FillComplete)
+
+******* WARNING *******
+Level::Set: unable to store "Coordinates" generated by factory TentativePFactory_kokkos[61](0x859a5f80) on level 2, as it has not been requested and no keep flags were set for it
+Eigenvalue estimate
+Using cached max eigenvalue estimate
+Prolongator damping factor = 0.44 (1.33 / 3.01)
+Fused (I-omega*D^{-1} A)*Ptent
+Diagonal Extraction
+Xpetra::IteratorOps::Jacobi
+
+******* WARNING *******
+Level::Set: unable to store "Ptent" generated by factory TogglePFactory[64](0x85d0b600) on level 2, as it has not been requested and no keep flags were set for it
+MxM: A x P
+Transpose P (MueLu::TransPFactory)
+MxM: R x (AP) (explicit)
+
+******* WARNING *******
+CheckRepairMainDiagonal: repaired 0 too small entries (threshold = 0.00) on main diagonal of Ac.
+
+******* WARNING *******
+Level::Set: unable to store "AP reuse data" generated by factory RAPFactory[67](0x7aeaa2b0) on level 2, as it has not been requested and no keep flags were set for it
+
+******* WARNING *******
+Level::Set: unable to store "RAP reuse data" generated by factory RAPFactory[67](0x7aeaa2b0) on level 2, as it has not been requested and no keep flags were set for it
+Projections
+RAPFactory: call transfer factory: MueLu::ToggleCoordinatesTransferFactory
+Coordinate transfer toggle (MueLu::ToggleCoordinatesTransferFactory)
+Transfer Coordinates1 to coarse level
+Build (MueLu::CoordinatesTransferFactory_kokkos)
+Transferring coordinates
+AverageCoords
+Build (MueLu::RepartitionHeuristicFactory)
+
+******* WARNING *******
+Level::Set: unable to store "repartition: heuristic target rows per process" generated by factory RepartitionHeuristicFactory[68](0x85d0c4e0) on level 2, as it has not been requested and no keep flags were set for it
+Repartitioning? YES:
+  min # rows per proc = 2472, min allowable = 3000
+Number of partitions to use = 22
+Build (MueLu::ZoltanInterface)
+Zoltan RCB
+
+  Build configuration:
+  ZOLTAN_ID_TYPE: unsigned int (4 bytes)
+  ZOLTAN_GNO_TYPE: ssize_t, (8 bytes)
+  MPI_Datatype for ZOLTAN_ID_TYPE: MPI_UNSIGNED
+  MPI_Datatype for ZOLTAN_GNO_TYPE: MPI_LONG
+ZOLTAN Parameter IMBALANCE_TOL[0] = 1.100000
+ZOLTAN Parameter AUTO_MIGRATE = FALSE
+ZOLTAN Parameter MIGRATE_ONLY_PROC_CHANGES = 1
+ZOLTAN Parameter OBJ_WEIGHT_DIM = 1
+ZOLTAN Parameter EDGE_WEIGHT_DIM = 0
+ZOLTAN Parameter DEBUG_LEVEL = 1
+ZOLTAN Parameter DEBUG_PROCESSOR = 0
+ZOLTAN Parameter DETERMINISTIC = TRUE
+ZOLTAN Parameter TIMER = 1 (wall)
+ZOLTAN Parameter NUM_GID_ENTRIES = 1
+ZOLTAN Parameter NUM_LID_ENTRIES = 0
+ZOLTAN Parameter RETURN_LISTS = IMPORT AND EXPORT
+ZOLTAN Parameter NUM_GLOBAL_PARTS = 22
+ZOLTAN Parameter NUM_LOCAL_PARTS = -1
+ZOLTAN Parameter REMAP = 1
+ZOLTAN Parameter SEED = 460185016 (460185016)
+ZOLTAN Parameter LB_APPROACH = repartition
+ZOLTAN Parameter RCB_OVERALLOC = 1.200000
+ZOLTAN Parameter RCB_REUSE = 0
+ZOLTAN Parameter CHECK_GEOM = 1
+ZOLTAN Parameter RCB_OUTPUT_LEVEL = 0
+ZOLTAN Parameter KEEP_CUTS = 0
+ZOLTAN Parameter RCB_LOCK_DIRECTIONS = 0
+ZOLTAN Parameter RCB_SET_DIRECTIONS = 0
+ZOLTAN Parameter RCB_RECTILINEAR_BLOCKS = 0
+ZOLTAN Parameter OBJ_WEIGHTS_COMPARABLE = 0
+ZOLTAN Parameter RCB_MULTICRITERIA_NORM = 1
+ZOLTAN Parameter RCB_MAX_ASPECT_RATIO = 10.000000
+ZOLTAN Parameter AVERAGE_CUTS = 0
+ZOLTAN Parameter RANDOM_PIVOTS = 0
+ZOLTAN Parameter RCB_RECOMPUTE_BOX = 0
+ZOLTAN Parameter REDUCE_DIMENSIONS = 0
+ZOLTAN Parameter DEGENERATE_RATIO = 0.000000
+ZOLTAN Parameter FINAL_OUTPUT = 0
+ZOLTAN Parameter KEEP_CUTS = 0
+ZOLTAN Parameter REDUCE_DIMENSIONS = 0
+ZOLTAN Parameter DEGENERATE_RATIO = 10.000000
+DeterminePartitionPlacement
+Number of unassigned partitions before cleanup stage: 1 / 22
+Import construction
+Rebalancing prolongator
+Using original prolongator
+Rebalancing coordinates
+
+******* WARNING *******
+Level::Set: unable to store "Coordinates" generated by factory RebalanceTransferFactory[71](0x858d2f20) on level 2, as it has not been requested and no keep flags were set for it
+Rebalancing nullspace
+
+******* WARNING *******
+Level::Set: unable to store "Nullspace" generated by factory RebalanceTransferFactory[71](0x858d2f20) on level 2, as it has not been requested and no keep flags were set for it
+Transpose P (MueLu::TransPFactory)
+Computing Ac (MueLu::RebalanceAcFactory)
+Rebalancing existing Ac
+Replacing maps with a subcommunicator
+Setup Smoother (MueLu::Ifpack2Smoother{type = CHEBYSHEV})
+chebyshev: ratio eigenvalue (computed) = 25.65
+Preconditioner init
+Preconditioner compute
+chebyshev: max eigenvalue (calculated by Ifpack2) = 2.54
+"Ifpack2::Chebyshev": {Initialized: true, Computed: true, "Ifpack2::Details::Chebyshev":{degree: 4, lambdaMax: 2.5434, alpha: 25.6539, lambdaMin: 0.099143, boost factor: 1.1}, Global matrix dimensions: [67158, 67158], Global nnz: 2472336}
+
+******* WARNING *******
+Level::Set: unable to store "PostSmoother" generated by factory SmootherFactory[83](0x858ff5d0) on level 2, as it has not been requested and no keep flags were set for it
+
+--------------------------------------------------------------------------------
+---                            Multigrid Summary                             ---
+--------------------------------------------------------------------------------
+Scalar              = double
+Number of levels    = 3
+Operator complexity = 1.02
+Smoother complexity = 1.04
+Cycle type          = V
+
+level  rows     nnz        nnz/row  c ratio  procs
+  0  8826552  456138480  51.68                 24  
+  1  420312   7477680    17.79    21.00        24  
+  2  67158    2472336    36.81    6.26         22  
+
+Smoother (level 0) both : "Ifpack2::Chebyshev": {Initialized: true, Computed: true, "Ifpack2::Details::Chebyshev":{degree: 2, lambdaMax: 6.31583, alpha: 27.572, lambdaMin: 0.229067, boost factor: 1.1}, Global matrix dimensions: [8826552, 8826552], Global nnz: 456138480}
+
+Smoother (level 1) both : "Ifpack2::Chebyshev": {Initialized: true, Computed: true, "Ifpack2::Details::Chebyshev":{degree: 4, lambdaMax: 3.01485, alpha: 25.6539, lambdaMin: 0.11752, boost factor: 1.1}, Global matrix dimensions: [420312, 420312], Global nnz: 7477680}
+
+Smoother (level 2) pre  : "Ifpack2::Chebyshev": {Initialized: true, Computed: true, "Ifpack2::Details::Chebyshev":{degree: 4, lambdaMax: 2.5434, alpha: 25.6539, lambdaMin: 0.099143, boost factor: 1.1}, Global matrix dimensions: [67158, 67158], Global nnz: 2472336}
+Smoother (level 2) post : no smoother
+
+=====================================================================================================================
+
+                                       TimeMonitor results over 24 processors
+
+Timer Name          Local time (num calls)    MinOverProcs    MeanOverProcs    MaxOverProcs    MeanOverCallCounts    
+---------------------------------------------------------------------------------------------------------------------
+MueLu setup time    0.6988 (1)                0.6987 (1)      0.6987 (1)       0.6988 (1)      0.6987 (1)            
+=====================================================================================================================
+  
+  *******************************************************
+  ***** Belos Iterative Solver:  Block Gmres 
+  ***** Maximum Iterations: 200
+  ***** Block Size: 1
+  ***** Residual Test: 
+  *****   Test 1 : Belos::StatusTestImpResNorm<>: (2-Norm Res Vec) / (2-Norm Res0), tol = 1e-06
+  *******************************************************
+  Iter   0, [ 1] :    1.000000e+00
+  Iter  20, [ 1] :    1.405455e-02
+  Iter  40, [ 1] :    7.360853e-04
+  Iter  60, [ 1] :    3.951740e-05
+  Iter  80, [ 1] :    2.301782e-06
+  Iter  87, [ 1] :    8.958634e-07
+
+************************************************************************
+-- Nonlinear Solver Step 2 -- 
+||F|| = 4.937e+05  step = 2.500e-01  dx = 1.866e+05
+************************************************************************
+
+Clearing old data (if any)
+Replacing coordinate map
+Using default factory (TransPFactory[143] ) for building 'R'.
+Using default factory (CoalesceDropFactory_kokkos[144] ) for building 'Graph'.
+Using default factory (AmalgamationFactory_kokkos[145] ) for building 'UnAmalgamationInfo'.
+Level 0
+Using default factory (TransPFactory[147] ) for building 'R'.
+Setup Smoother (MueLu::Ifpack2Smoother{type = CHEBYSHEV})
+chebyshev: ratio eigenvalue (computed) = 27.57
+Preconditioner init
+Preconditioner compute
+chebyshev: max eigenvalue (calculated by Ifpack2) = 6.34
+"Ifpack2::Chebyshev": {Initialized: true, Computed: true, "Ifpack2::Details::Chebyshev":{degree: 2, lambdaMax: 6.33993, alpha: 27.572, lambdaMin: 0.229941, boost factor: 1.1}, Global matrix dimensions: [8826552, 8826552], Global nnz: 456138480}
+Using default factory (CoalesceDropFactory_kokkos[155] ) for building 'Graph'.
+Using default factory (AmalgamationFactory_kokkos[156] ) for building 'UnAmalgamationInfo'.
+Level 1
+Build (MueLu::RebalanceTransferFactory)
+Build (MueLu::RepartitionFactory)
+Computing Ac (MueLu::RAPFactory)
+Prolongator toggle (MueLu::TogglePFactory)
+TogglePFactory: call transfer factory: MueLu::SemiCoarsenPFactory_kokkos
+Build (MueLu::SemiCoarsenPFactory_kokkos)
+Line detection (Ray style) (MueLu::LineDetectionFactory)
+Number of layers for line detection: 21 (information reconstructed from provided node coordinates)
+BuildSemiCoarsenP
+Fill P
+TransferCoordinates
+
+******* WARNING *******
+Level::Set: unable to store "Ptent" generated by factory TogglePFactory[120](0x6a3d3220) on level 1, as it has not been requested and no keep flags were set for it
+MxM: A x P
+Transpose P (MueLu::TransPFactory)
+MxM: R x (AP) (explicit)
+
+******* WARNING *******
+CheckRepairMainDiagonal: repaired 0 too small entries (threshold = 0.00) on main diagonal of Ac.
+
+******* WARNING *******
+Level::Set: unable to store "AP reuse data" generated by factory RAPFactory[123](0x7aeaa4c0) on level 1, as it has not been requested and no keep flags were set for it
+
+******* WARNING *******
+Level::Set: unable to store "RAP reuse data" generated by factory RAPFactory[123](0x7aeaa4c0) on level 1, as it has not been requested and no keep flags were set for it
+Projections
+RAPFactory: call transfer factory: MueLu::ToggleCoordinatesTransferFactory
+Coordinate transfer toggle (MueLu::ToggleCoordinatesTransferFactory)
+Transfer Coordinates0 to coarse level
+Build (MueLu::RepartitionHeuristicFactory)
+
+******* WARNING *******
+Level::Set: unable to store "repartition: heuristic target rows per process" generated by factory RepartitionHeuristicFactory[124](0x88995680) on level 1, as it has not been requested and no keep flags were set for it
+Repartitioning?  NO:
+  min # rows per proc = 16850, min allowable = 3000
+  nonzero imbalance = 1.07626363986762175e+00, max allowable = 1.32699999999999996e+00
+Build (MueLu::ZoltanInterface)
+
+******* WARNING *******
+No repartitioning necessary: partitions were left unchanged by the repartitioner
+Rebalancing prolongator
+Using original prolongator
+Transpose P (MueLu::TransPFactory)
+Computing Ac (MueLu::RebalanceAcFactory)
+No rebalancing
+Setup Smoother (MueLu::Ifpack2Smoother{type = CHEBYSHEV})
+chebyshev: ratio eigenvalue (computed) = 25.65
+Preconditioner init
+Preconditioner compute
+chebyshev: max eigenvalue (calculated by Ifpack2) = 2.91
+"Ifpack2::Chebyshev": {Initialized: true, Computed: true, "Ifpack2::Details::Chebyshev":{degree: 4, lambdaMax: 2.906, alpha: 25.6539, lambdaMin: 0.113277, boost factor: 1.1}, Global matrix dimensions: [420312, 420312], Global nnz: 7477680}
+Level 2
+Build (MueLu::RebalanceTransferFactory)
+Build (MueLu::RepartitionFactory)
+Computing Ac (MueLu::RAPFactory)
+Prolongator toggle (MueLu::TogglePFactory)
+Number of layers for semicoarsening: 1
+TogglePFactory: call transfer factory: MueLu::SaPFactory_kokkos
+Prolongator smoothing (MueLu::SaPFactory_kokkos)
+macro  KOKKOS_ENABLE_CUDA      : defined
+macro  CUDA_VERSION          = 11000 = version 11.0
+Kokkos::Cuda[ 0 ] Tesla V100-SXM2-16GB capability 7.0, Total Global Memory: 15.75 G, Shared Memory per Block: 48 K : Selected
+Build (MueLu::TentativePFactory_kokkos)
+Build (MueLu::UncoupledAggregationFactory_kokkos)
+Build (MueLu::CoalesceDropFactory_kokkos)
+Build (MueLu::AmalgamationFactory_kokkos)
+AmalagamationFactory::Build(): found fullblocksize=2 and stridedblocksize=2 from strided maps. offset=0
+
+******* WARNING *******
+lightweight wrap is deprecated
+algorithm = "classical": threshold = 0.00, blocksize = 2
+Detected 0 Dirichlet nodes
+
+******* WARNING *******
+Level::Set: unable to store "A" generated by factory CoalesceDropFactory_kokkos[155](0x7ae5c0c0) on level 1, as it has not been requested and no keep flags were set for it
+Algo Graph Coloring
+  algorithm: serial
+  num colors: 13
+Algo Phase - (Dirichlet)
+BuildAggregates (Phase - (Dirichlet))
+  aggregated : 0 (phase), 0/210156 [0.00%] (total)
+  remaining  : 210156
+  aggregates : 0 (phase), 0 (total)
+Algo Phase 1 (main)
+BuildAggregatesRandom (Phase 1 (main))
+  aggregated : 191096 (phase), 191096/210156 [90.93%] (total)
+  remaining  : 19060
+  aggregates : 22386 (phase), 22386 (total)
+Algo Phase 2a (secondary)
+BuildAggregatesRandom (Phase 2a (secondary))
+  aggregated : 0 (phase), 191096/210156 [90.93%] (total)
+  remaining  : 19060
+  aggregates : 0 (phase), 22386 (total)
+Algo Phase 2b (expansion)
+BuildAggregatesRandom (Phase 2b (expansion))
+  aggregated : 19060 (phase), 210156/210156 [100.00%] (total)
+  remaining  : 0
+  aggregates : 0 (phase), 22386 (total)
+Algo Phase 3 (cleanup)
+BuildAggregatesRandom (Phase 3 (cleanup))
+  aggregated : 0 (phase), 210156/210156 [100.00%] (total)
+  remaining  : 0
+  aggregates : 0 (phase), 22386 (total)
+"UC": MueLu::Aggregates_kokkos{nGlobalAggregates = 22386}
+Build (MueLu::CoarseMapFactory_kokkos)
+AverageCoords
+Get Aggregates graph
+Check good map
+Calc AggSizes
+Create Agg2RowMap
+Stage 0 (InitViews)
+Stage 1 (LocalQR)
+Stage 2 (CompressRows)
+Stage 2 (CompressCols)
+TentativePFactory : aggregates do not cross process boundaries
+Stage 3 (LocalMatrix+FillComplete)
+
+******* WARNING *******
+Level::Set: unable to store "Coordinates" generated by factory TentativePFactory_kokkos[117](0x89284280) on level 2, as it has not been requested and no keep flags were set for it
+Eigenvalue estimate
+Using cached max eigenvalue estimate
+Prolongator damping factor = 0.46 (1.33 / 2.91)
+Fused (I-omega*D^{-1} A)*Ptent
+Diagonal Extraction
+Xpetra::IteratorOps::Jacobi
+
+******* WARNING *******
+Level::Set: unable to store "Ptent" generated by factory TogglePFactory[120](0x6a3d3220) on level 2, as it has not been requested and no keep flags were set for it
+MxM: A x P
+Transpose P (MueLu::TransPFactory)
+MxM: R x (AP) (explicit)
+
+******* WARNING *******
+CheckRepairMainDiagonal: repaired 0 too small entries (threshold = 0.00) on main diagonal of Ac.
+
+******* WARNING *******
+Level::Set: unable to store "AP reuse data" generated by factory RAPFactory[123](0x7aeaa4c0) on level 2, as it has not been requested and no keep flags were set for it
+
+******* WARNING *******
+Level::Set: unable to store "RAP reuse data" generated by factory RAPFactory[123](0x7aeaa4c0) on level 2, as it has not been requested and no keep flags were set for it
+Projections
+RAPFactory: call transfer factory: MueLu::ToggleCoordinatesTransferFactory
+Coordinate transfer toggle (MueLu::ToggleCoordinatesTransferFactory)
+Transfer Coordinates1 to coarse level
+Build (MueLu::CoordinatesTransferFactory_kokkos)
+Transferring coordinates
+AverageCoords
+Build (MueLu::RepartitionHeuristicFactory)
+
+******* WARNING *******
+Level::Set: unable to store "repartition: heuristic target rows per process" generated by factory RepartitionHeuristicFactory[124](0x88995680) on level 2, as it has not been requested and no keep flags were set for it
+Repartitioning? YES:
+  min # rows per proc = 2472, min allowable = 3000
+Number of partitions to use = 22
+Build (MueLu::ZoltanInterface)
+Zoltan RCB
+
+  Build configuration:
+  ZOLTAN_ID_TYPE: unsigned int (4 bytes)
+  ZOLTAN_GNO_TYPE: ssize_t, (8 bytes)
+  MPI_Datatype for ZOLTAN_ID_TYPE: MPI_UNSIGNED
+  MPI_Datatype for ZOLTAN_GNO_TYPE: MPI_LONG
+ZOLTAN Parameter IMBALANCE_TOL[0] = 1.100000
+ZOLTAN Parameter AUTO_MIGRATE = FALSE
+ZOLTAN Parameter MIGRATE_ONLY_PROC_CHANGES = 1
+ZOLTAN Parameter OBJ_WEIGHT_DIM = 1
+ZOLTAN Parameter EDGE_WEIGHT_DIM = 0
+ZOLTAN Parameter DEBUG_LEVEL = 1
+ZOLTAN Parameter DEBUG_PROCESSOR = 0
+ZOLTAN Parameter DETERMINISTIC = TRUE
+ZOLTAN Parameter TIMER = 1 (wall)
+ZOLTAN Parameter NUM_GID_ENTRIES = 1
+ZOLTAN Parameter NUM_LID_ENTRIES = 0
+ZOLTAN Parameter RETURN_LISTS = IMPORT AND EXPORT
+ZOLTAN Parameter NUM_GLOBAL_PARTS = 22
+ZOLTAN Parameter NUM_LOCAL_PARTS = -1
+ZOLTAN Parameter REMAP = 1
+ZOLTAN Parameter SEED = 120144603 (120144603)
+ZOLTAN Parameter LB_APPROACH = repartition
+ZOLTAN Parameter RCB_OVERALLOC = 1.200000
+ZOLTAN Parameter RCB_REUSE = 0
+ZOLTAN Parameter CHECK_GEOM = 1
+ZOLTAN Parameter RCB_OUTPUT_LEVEL = 0
+ZOLTAN Parameter KEEP_CUTS = 0
+ZOLTAN Parameter RCB_LOCK_DIRECTIONS = 0
+ZOLTAN Parameter RCB_SET_DIRECTIONS = 0
+ZOLTAN Parameter RCB_RECTILINEAR_BLOCKS = 0
+ZOLTAN Parameter OBJ_WEIGHTS_COMPARABLE = 0
+ZOLTAN Parameter RCB_MULTICRITERIA_NORM = 1
+ZOLTAN Parameter RCB_MAX_ASPECT_RATIO = 10.000000
+ZOLTAN Parameter AVERAGE_CUTS = 0
+ZOLTAN Parameter RANDOM_PIVOTS = 0
+ZOLTAN Parameter RCB_RECOMPUTE_BOX = 0
+ZOLTAN Parameter REDUCE_DIMENSIONS = 0
+ZOLTAN Parameter DEGENERATE_RATIO = 0.000000
+ZOLTAN Parameter FINAL_OUTPUT = 0
+ZOLTAN Parameter KEEP_CUTS = 0
+ZOLTAN Parameter REDUCE_DIMENSIONS = 0
+ZOLTAN Parameter DEGENERATE_RATIO = 10.000000
+DeterminePartitionPlacement
+Number of unassigned partitions before cleanup stage: 1 / 22
+Import construction
+Rebalancing prolongator
+Using original prolongator
+Rebalancing coordinates
+
+******* WARNING *******
+Level::Set: unable to store "Coordinates" generated by factory RebalanceTransferFactory[127](0x89286310) on level 2, as it has not been requested and no keep flags were set for it
+Rebalancing nullspace
+
+******* WARNING *******
+Level::Set: unable to store "Nullspace" generated by factory RebalanceTransferFactory[127](0x89286310) on level 2, as it has not been requested and no keep flags were set for it
+Transpose P (MueLu::TransPFactory)
+Computing Ac (MueLu::RebalanceAcFactory)
+Rebalancing existing Ac
+Replacing maps with a subcommunicator
+Setup Smoother (MueLu::Ifpack2Smoother{type = CHEBYSHEV})
+chebyshev: ratio eigenvalue (computed) = 25.65
+Preconditioner init
+Preconditioner compute
+chebyshev: max eigenvalue (calculated by Ifpack2) = 2.90
+"Ifpack2::Chebyshev": {Initialized: true, Computed: true, "Ifpack2::Details::Chebyshev":{degree: 4, lambdaMax: 2.90436, alpha: 25.6539, lambdaMin: 0.113213, boost factor: 1.1}, Global matrix dimensions: [67158, 67158], Global nnz: 2472300}
+
+******* WARNING *******
+Level::Set: unable to store "PostSmoother" generated by factory SmootherFactory[139](0x859ac4a0) on level 2, as it has not been requested and no keep flags were set for it
+
+--------------------------------------------------------------------------------
+---                            Multigrid Summary                             ---
+--------------------------------------------------------------------------------
+Scalar              = double
+Number of levels    = 3
+Operator complexity = 1.02
+Smoother complexity = 1.04
+Cycle type          = V
+
+level  rows     nnz        nnz/row  c ratio  procs
+  0  8826552  456138480  51.68                 24  
+  1  420312   7477680    17.79    21.00        24  
+  2  67158    2472300    36.81    6.26         22  
+
+Smoother (level 0) both : "Ifpack2::Chebyshev": {Initialized: true, Computed: true, "Ifpack2::Details::Chebyshev":{degree: 2, lambdaMax: 6.33993, alpha: 27.572, lambdaMin: 0.229941, boost factor: 1.1}, Global matrix dimensions: [8826552, 8826552], Global nnz: 456138480}
+
+Smoother (level 1) both : "Ifpack2::Chebyshev": {Initialized: true, Computed: true, "Ifpack2::Details::Chebyshev":{degree: 4, lambdaMax: 2.906, alpha: 25.6539, lambdaMin: 0.113277, boost factor: 1.1}, Global matrix dimensions: [420312, 420312], Global nnz: 7477680}
+
+Smoother (level 2) pre  : "Ifpack2::Chebyshev": {Initialized: true, Computed: true, "Ifpack2::Details::Chebyshev":{degree: 4, lambdaMax: 2.90436, alpha: 25.6539, lambdaMin: 0.113213, boost factor: 1.1}, Global matrix dimensions: [67158, 67158], Global nnz: 2472300}
+Smoother (level 2) post : no smoother
+
+=====================================================================================================================
+
+                                       TimeMonitor results over 24 processors
+
+Timer Name          Local time (num calls)    MinOverProcs    MeanOverProcs    MaxOverProcs    MeanOverCallCounts    
+---------------------------------------------------------------------------------------------------------------------
+MueLu setup time    0.6919 (1)                0.6918 (1)      0.6918 (1)       0.6919 (1)      0.6918 (1)            
+=====================================================================================================================
+  
+  *******************************************************
+  ***** Belos Iterative Solver:  Block Gmres 
+  ***** Maximum Iterations: 200
+  ***** Block Size: 1
+  ***** Residual Test: 
+  *****   Test 1 : Belos::StatusTestImpResNorm<>: (2-Norm Res Vec) / (2-Norm Res0), tol = 1e-06
+  *******************************************************
+  Iter   0, [ 1] :    1.000000e+00
+  Iter  20, [ 1] :    1.387431e-02
+  Iter  40, [ 1] :    7.684166e-04
+  Iter  60, [ 1] :    4.535551e-05
+  Iter  80, [ 1] :    2.892822e-06
+  Iter  89, [ 1] :    8.840972e-07
+
+************************************************************************
+-- Nonlinear Solver Step 3 -- 
+||F|| = 4.545e+05  step = 5.000e-01  dx = 1.914e+05
+************************************************************************
+
+Clearing old data (if any)
+Replacing coordinate map
+Using default factory (TransPFactory[199] ) for building 'R'.
+Using default factory (CoalesceDropFactory_kokkos[200] ) for building 'Graph'.
+Using default factory (AmalgamationFactory_kokkos[201] ) for building 'UnAmalgamationInfo'.
+Level 0
+Using default factory (TransPFactory[203] ) for building 'R'.
+Setup Smoother (MueLu::Ifpack2Smoother{type = CHEBYSHEV})
+chebyshev: ratio eigenvalue (computed) = 27.57
+Preconditioner init
+Preconditioner compute
+chebyshev: max eigenvalue (calculated by Ifpack2) = 6.38
+"Ifpack2::Chebyshev": {Initialized: true, Computed: true, "Ifpack2::Details::Chebyshev":{degree: 2, lambdaMax: 6.38214, alpha: 27.572, lambdaMin: 0.231472, boost factor: 1.1}, Global matrix dimensions: [8826552, 8826552], Global nnz: 456138480}
+Using default factory (CoalesceDropFactory_kokkos[211] ) for building 'Graph'.
+Using default factory (AmalgamationFactory_kokkos[212] ) for building 'UnAmalgamationInfo'.
+Level 1
+Build (MueLu::RebalanceTransferFactory)
+Build (MueLu::RepartitionFactory)
+Computing Ac (MueLu::RAPFactory)
+Prolongator toggle (MueLu::TogglePFactory)
+TogglePFactory: call transfer factory: MueLu::SemiCoarsenPFactory_kokkos
+Build (MueLu::SemiCoarsenPFactory_kokkos)
+Line detection (Ray style) (MueLu::LineDetectionFactory)
+Number of layers for line detection: 21 (information reconstructed from provided node coordinates)
+BuildSemiCoarsenP
+Fill P
+TransferCoordinates
+
+******* WARNING *******
+Level::Set: unable to store "Ptent" generated by factory TogglePFactory[176](0x85d0b600) on level 1, as it has not been requested and no keep flags were set for it
+MxM: A x P
+Transpose P (MueLu::TransPFactory)
+MxM: R x (AP) (explicit)
+
+******* WARNING *******
+CheckRepairMainDiagonal: repaired 0 too small entries (threshold = 0.00) on main diagonal of Ac.
+
+******* WARNING *******
+Level::Set: unable to store "AP reuse data" generated by factory RAPFactory[179](0x85c8a140) on level 1, as it has not been requested and no keep flags were set for it
+
+******* WARNING *******
+Level::Set: unable to store "RAP reuse data" generated by factory RAPFactory[179](0x85c8a140) on level 1, as it has not been requested and no keep flags were set for it
+Projections
+RAPFactory: call transfer factory: MueLu::ToggleCoordinatesTransferFactory
+Coordinate transfer toggle (MueLu::ToggleCoordinatesTransferFactory)
+Transfer Coordinates0 to coarse level
+Build (MueLu::RepartitionHeuristicFactory)
+
+******* WARNING *******
+Level::Set: unable to store "repartition: heuristic target rows per process" generated by factory RepartitionHeuristicFactory[180](0x8597f7f0) on level 1, as it has not been requested and no keep flags were set for it
+Repartitioning?  NO:
+  min # rows per proc = 16850, min allowable = 3000
+  nonzero imbalance = 1.07626363986762175e+00, max allowable = 1.32699999999999996e+00
+Build (MueLu::ZoltanInterface)
+
+******* WARNING *******
+No repartitioning necessary: partitions were left unchanged by the repartitioner
+Rebalancing prolongator
+Using original prolongator
+Transpose P (MueLu::TransPFactory)
+Computing Ac (MueLu::RebalanceAcFactory)
+No rebalancing
+Setup Smoother (MueLu::Ifpack2Smoother{type = CHEBYSHEV})
+chebyshev: ratio eigenvalue (computed) = 25.65
+Preconditioner init
+Preconditioner compute
+chebyshev: max eigenvalue (calculated by Ifpack2) = 2.90
+"Ifpack2::Chebyshev": {Initialized: true, Computed: true, "Ifpack2::Details::Chebyshev":{degree: 4, lambdaMax: 2.902, alpha: 25.6539, lambdaMin: 0.113121, boost factor: 1.1}, Global matrix dimensions: [420312, 420312], Global nnz: 7477680}
+Level 2
+Build (MueLu::RebalanceTransferFactory)
+Build (MueLu::RepartitionFactory)
+Computing Ac (MueLu::RAPFactory)
+Prolongator toggle (MueLu::TogglePFactory)
+Number of layers for semicoarsening: 1
+TogglePFactory: call transfer factory: MueLu::SaPFactory_kokkos
+Prolongator smoothing (MueLu::SaPFactory_kokkos)
+macro  KOKKOS_ENABLE_CUDA      : defined
+macro  CUDA_VERSION          = 11000 = version 11.0
+Kokkos::Cuda[ 0 ] Tesla V100-SXM2-16GB capability 7.0, Total Global Memory: 15.75 G, Shared Memory per Block: 48 K : Selected
+Build (MueLu::TentativePFactory_kokkos)
+Build (MueLu::UncoupledAggregationFactory_kokkos)
+Build (MueLu::CoalesceDropFactory_kokkos)
+Build (MueLu::AmalgamationFactory_kokkos)
+AmalagamationFactory::Build(): found fullblocksize=2 and stridedblocksize=2 from strided maps. offset=0
+
+******* WARNING *******
+lightweight wrap is deprecated
+algorithm = "classical": threshold = 0.00, blocksize = 2
+Detected 0 Dirichlet nodes
+
+******* WARNING *******
+Level::Set: unable to store "A" generated by factory CoalesceDropFactory_kokkos[211](0x859b3830) on level 1, as it has not been requested and no keep flags were set for it
+Algo Graph Coloring
+  algorithm: serial
+  num colors: 13
+Algo Phase - (Dirichlet)
+BuildAggregates (Phase - (Dirichlet))
+  aggregated : 0 (phase), 0/210156 [0.00%] (total)
+  remaining  : 210156
+  aggregates : 0 (phase), 0 (total)
+Algo Phase 1 (main)
+BuildAggregatesRandom (Phase 1 (main))
+  aggregated : 191096 (phase), 191096/210156 [90.93%] (total)
+  remaining  : 19060
+  aggregates : 22386 (phase), 22386 (total)
+Algo Phase 2a (secondary)
+BuildAggregatesRandom (Phase 2a (secondary))
+  aggregated : 0 (phase), 191096/210156 [90.93%] (total)
+  remaining  : 19060
+  aggregates : 0 (phase), 22386 (total)
+Algo Phase 2b (expansion)
+BuildAggregatesRandom (Phase 2b (expansion))
+  aggregated : 19060 (phase), 210156/210156 [100.00%] (total)
+  remaining  : 0
+  aggregates : 0 (phase), 22386 (total)
+Algo Phase 3 (cleanup)
+BuildAggregatesRandom (Phase 3 (cleanup))
+  aggregated : 0 (phase), 210156/210156 [100.00%] (total)
+  remaining  : 0
+  aggregates : 0 (phase), 22386 (total)
+"UC": MueLu::Aggregates_kokkos{nGlobalAggregates = 22386}
+Build (MueLu::CoarseMapFactory_kokkos)
+AverageCoords
+Get Aggregates graph
+Check good map
+Calc AggSizes
+Create Agg2RowMap
+Stage 0 (InitViews)
+Stage 1 (LocalQR)
+Stage 2 (CompressRows)
+Stage 2 (CompressCols)
+TentativePFactory : aggregates do not cross process boundaries
+Stage 3 (LocalMatrix+FillComplete)
+
+******* WARNING *******
+Level::Set: unable to store "Coordinates" generated by factory TentativePFactory_kokkos[173](0x85c96740) on level 2, as it has not been requested and no keep flags were set for it
+Eigenvalue estimate
+Using cached max eigenvalue estimate
+Prolongator damping factor = 0.46 (1.33 / 2.90)
+Fused (I-omega*D^{-1} A)*Ptent
+Diagonal Extraction
+Xpetra::IteratorOps::Jacobi
+
+******* WARNING *******
+Level::Set: unable to store "Ptent" generated by factory TogglePFactory[176](0x85d0b600) on level 2, as it has not been requested and no keep flags were set for it
+MxM: A x P
+Transpose P (MueLu::TransPFactory)
+MxM: R x (AP) (explicit)
+
+******* WARNING *******
+CheckRepairMainDiagonal: repaired 0 too small entries (threshold = 0.00) on main diagonal of Ac.
+
+******* WARNING *******
+Level::Set: unable to store "AP reuse data" generated by factory RAPFactory[179](0x85c8a140) on level 2, as it has not been requested and no keep flags were set for it
+
+******* WARNING *******
+Level::Set: unable to store "RAP reuse data" generated by factory RAPFactory[179](0x85c8a140) on level 2, as it has not been requested and no keep flags were set for it
+Projections
+RAPFactory: call transfer factory: MueLu::ToggleCoordinatesTransferFactory
+Coordinate transfer toggle (MueLu::ToggleCoordinatesTransferFactory)
+Transfer Coordinates1 to coarse level
+Build (MueLu::CoordinatesTransferFactory_kokkos)
+Transferring coordinates
+AverageCoords
+Build (MueLu::RepartitionHeuristicFactory)
+
+******* WARNING *******
+Level::Set: unable to store "repartition: heuristic target rows per process" generated by factory RepartitionHeuristicFactory[180](0x8597f7f0) on level 2, as it has not been requested and no keep flags were set for it
+Repartitioning? YES:
+  min # rows per proc = 2472, min allowable = 3000
+Number of partitions to use = 22
+Build (MueLu::ZoltanInterface)
+Zoltan RCB
+
+  Build configuration:
+  ZOLTAN_ID_TYPE: unsigned int (4 bytes)
+  ZOLTAN_GNO_TYPE: ssize_t, (8 bytes)
+  MPI_Datatype for ZOLTAN_ID_TYPE: MPI_UNSIGNED
+  MPI_Datatype for ZOLTAN_GNO_TYPE: MPI_LONG
+ZOLTAN Parameter IMBALANCE_TOL[0] = 1.100000
+ZOLTAN Parameter AUTO_MIGRATE = FALSE
+ZOLTAN Parameter MIGRATE_ONLY_PROC_CHANGES = 1
+ZOLTAN Parameter OBJ_WEIGHT_DIM = 1
+ZOLTAN Parameter EDGE_WEIGHT_DIM = 0
+ZOLTAN Parameter DEBUG_LEVEL = 1
+ZOLTAN Parameter DEBUG_PROCESSOR = 0
+ZOLTAN Parameter DETERMINISTIC = TRUE
+ZOLTAN Parameter TIMER = 1 (wall)
+ZOLTAN Parameter NUM_GID_ENTRIES = 1
+ZOLTAN Parameter NUM_LID_ENTRIES = 0
+ZOLTAN Parameter RETURN_LISTS = IMPORT AND EXPORT
+ZOLTAN Parameter NUM_GLOBAL_PARTS = 22
+ZOLTAN Parameter NUM_LOCAL_PARTS = -1
+ZOLTAN Parameter REMAP = 1
+ZOLTAN Parameter SEED = 1220988223 (1220988223)
+ZOLTAN Parameter LB_APPROACH = repartition
+ZOLTAN Parameter RCB_OVERALLOC = 1.200000
+ZOLTAN Parameter RCB_REUSE = 0
+ZOLTAN Parameter CHECK_GEOM = 1
+ZOLTAN Parameter RCB_OUTPUT_LEVEL = 0
+ZOLTAN Parameter KEEP_CUTS = 0
+ZOLTAN Parameter RCB_LOCK_DIRECTIONS = 0
+ZOLTAN Parameter RCB_SET_DIRECTIONS = 0
+ZOLTAN Parameter RCB_RECTILINEAR_BLOCKS = 0
+ZOLTAN Parameter OBJ_WEIGHTS_COMPARABLE = 0
+ZOLTAN Parameter RCB_MULTICRITERIA_NORM = 1
+ZOLTAN Parameter RCB_MAX_ASPECT_RATIO = 10.000000
+ZOLTAN Parameter AVERAGE_CUTS = 0
+ZOLTAN Parameter RANDOM_PIVOTS = 0
+ZOLTAN Parameter RCB_RECOMPUTE_BOX = 0
+ZOLTAN Parameter REDUCE_DIMENSIONS = 0
+ZOLTAN Parameter DEGENERATE_RATIO = 0.000000
+ZOLTAN Parameter FINAL_OUTPUT = 0
+ZOLTAN Parameter KEEP_CUTS = 0
+ZOLTAN Parameter REDUCE_DIMENSIONS = 0
+ZOLTAN Parameter DEGENERATE_RATIO = 10.000000
+DeterminePartitionPlacement
+Number of unassigned partitions before cleanup stage: 2 / 22
+Import construction
+Rebalancing prolongator
+Using original prolongator
+Rebalancing coordinates
+
+******* WARNING *******
+Level::Set: unable to store "Coordinates" generated by factory RebalanceTransferFactory[183](0x7ae809c0) on level 2, as it has not been requested and no keep flags were set for it
+Rebalancing nullspace
+
+******* WARNING *******
+Level::Set: unable to store "Nullspace" generated by factory RebalanceTransferFactory[183](0x7ae809c0) on level 2, as it has not been requested and no keep flags were set for it
+Transpose P (MueLu::TransPFactory)
+Computing Ac (MueLu::RebalanceAcFactory)
+Rebalancing existing Ac
+Replacing maps with a subcommunicator
+Setup Smoother (MueLu::Ifpack2Smoother{type = CHEBYSHEV})
+chebyshev: ratio eigenvalue (computed) = 25.65
+Preconditioner init
+Preconditioner compute
+chebyshev: max eigenvalue (calculated by Ifpack2) = 2.62
+"Ifpack2::Chebyshev": {Initialized: true, Computed: true, "Ifpack2::Details::Chebyshev":{degree: 4, lambdaMax: 2.61621, alpha: 25.6539, lambdaMin: 0.101981, boost factor: 1.1}, Global matrix dimensions: [67158, 67158], Global nnz: 2471958}
+
+******* WARNING *******
+Level::Set: unable to store "PostSmoother" generated by factory SmootherFactory[195](0x85901450) on level 2, as it has not been requested and no keep flags were set for it
+
+--------------------------------------------------------------------------------
+---                            Multigrid Summary                             ---
+--------------------------------------------------------------------------------
+Scalar              = double
+Number of levels    = 3
+Operator complexity = 1.02
+Smoother complexity = 1.04
+Cycle type          = V
+
+level  rows     nnz        nnz/row  c ratio  procs
+  0  8826552  456138480  51.68                 24  
+  1  420312   7477680    17.79    21.00        24  
+  2  67158    2471958    36.81    6.26         22  
+
+Smoother (level 0) both : "Ifpack2::Chebyshev": {Initialized: true, Computed: true, "Ifpack2::Details::Chebyshev":{degree: 2, lambdaMax: 6.38214, alpha: 27.572, lambdaMin: 0.231472, boost factor: 1.1}, Global matrix dimensions: [8826552, 8826552], Global nnz: 456138480}
+
+Smoother (level 1) both : "Ifpack2::Chebyshev": {Initialized: true, Computed: true, "Ifpack2::Details::Chebyshev":{degree: 4, lambdaMax: 2.902, alpha: 25.6539, lambdaMin: 0.113121, boost factor: 1.1}, Global matrix dimensions: [420312, 420312], Global nnz: 7477680}
+
+Smoother (level 2) pre  : "Ifpack2::Chebyshev": {Initialized: true, Computed: true, "Ifpack2::Details::Chebyshev":{degree: 4, lambdaMax: 2.61621, alpha: 25.6539, lambdaMin: 0.101981, boost factor: 1.1}, Global matrix dimensions: [67158, 67158], Global nnz: 2471958}
+Smoother (level 2) post : no smoother
+
+=====================================================================================================================
+
+                                       TimeMonitor results over 24 processors
+
+Timer Name          Local time (num calls)    MinOverProcs    MeanOverProcs    MaxOverProcs    MeanOverCallCounts    
+---------------------------------------------------------------------------------------------------------------------
+MueLu setup time    0.7304 (1)                0.7303 (1)      0.7303 (1)       0.7304 (1)      0.7303 (1)            
+=====================================================================================================================
+  
+  *******************************************************
+  ***** Belos Iterative Solver:  Block Gmres 
+  ***** Maximum Iterations: 200
+  ***** Block Size: 1
+  ***** Residual Test: 
+  *****   Test 1 : Belos::StatusTestImpResNorm<>: (2-Norm Res Vec) / (2-Norm Res0), tol = 1e-06
+  *******************************************************
+  Iter   0, [ 1] :    1.000000e+00
+  Iter  20, [ 1] :    1.097663e-02
+  Iter  40, [ 1] :    6.860137e-04
+  Iter  60, [ 1] :    5.299175e-05
+  Iter  80, [ 1] :    5.837129e-06
+  Iter  95, [ 1] :    9.777808e-07
+
+************************************************************************
+-- Nonlinear Solver Step 4 -- 
+||F|| = 2.885e+05  step = 1.000e+00  dx = 1.759e+05
+************************************************************************
+
+Clearing old data (if any)
+Replacing coordinate map
+Using default factory (TransPFactory[255] ) for building 'R'.
+Using default factory (CoalesceDropFactory_kokkos[256] ) for building 'Graph'.
+Using default factory (AmalgamationFactory_kokkos[257] ) for building 'UnAmalgamationInfo'.
+Level 0
+Using default factory (TransPFactory[259] ) for building 'R'.
+Setup Smoother (MueLu::Ifpack2Smoother{type = CHEBYSHEV})
+chebyshev: ratio eigenvalue (computed) = 27.57
+Preconditioner init
+Preconditioner compute
+chebyshev: max eigenvalue (calculated by Ifpack2) = 6.41
+"Ifpack2::Chebyshev": {Initialized: true, Computed: true, "Ifpack2::Details::Chebyshev":{degree: 2, lambdaMax: 6.41314, alpha: 27.572, lambdaMin: 0.232596, boost factor: 1.1}, Global matrix dimensions: [8826552, 8826552], Global nnz: 456138480}
+Using default factory (CoalesceDropFactory_kokkos[267] ) for building 'Graph'.
+Using default factory (AmalgamationFactory_kokkos[268] ) for building 'UnAmalgamationInfo'.
+Level 1
+Build (MueLu::RebalanceTransferFactory)
+Build (MueLu::RepartitionFactory)
+Computing Ac (MueLu::RAPFactory)
+Prolongator toggle (MueLu::TogglePFactory)
+TogglePFactory: call transfer factory: MueLu::SemiCoarsenPFactory_kokkos
+Build (MueLu::SemiCoarsenPFactory_kokkos)
+Line detection (Ray style) (MueLu::LineDetectionFactory)
+Number of layers for line detection: 21 (information reconstructed from provided node coordinates)
+BuildSemiCoarsenP
+Fill P
+TransferCoordinates
+
+******* WARNING *******
+Level::Set: unable to store "Ptent" generated by factory TogglePFactory[232](0x6a3d3220) on level 1, as it has not been requested and no keep flags were set for it
+MxM: A x P
+Transpose P (MueLu::TransPFactory)
+MxM: R x (AP) (explicit)
+
+******* WARNING *******
+CheckRepairMainDiagonal: repaired 0 too small entries (threshold = 0.00) on main diagonal of Ac.
+
+******* WARNING *******
+Level::Set: unable to store "AP reuse data" generated by factory RAPFactory[235](0x88abd600) on level 1, as it has not been requested and no keep flags were set for it
+
+******* WARNING *******
+Level::Set: unable to store "RAP reuse data" generated by factory RAPFactory[235](0x88abd600) on level 1, as it has not been requested and no keep flags were set for it
+Projections
+RAPFactory: call transfer factory: MueLu::ToggleCoordinatesTransferFactory
+Coordinate transfer toggle (MueLu::ToggleCoordinatesTransferFactory)
+Transfer Coordinates0 to coarse level
+Build (MueLu::RepartitionHeuristicFactory)
+
+******* WARNING *******
+Level::Set: unable to store "repartition: heuristic target rows per process" generated by factory RepartitionHeuristicFactory[236](0x88af8c90) on level 1, as it has not been requested and no keep flags were set for it
+Repartitioning?  NO:
+  min # rows per proc = 16850, min allowable = 3000
+  nonzero imbalance = 1.07626363986762175e+00, max allowable = 1.32699999999999996e+00
+Build (MueLu::ZoltanInterface)
+
+******* WARNING *******
+No repartitioning necessary: partitions were left unchanged by the repartitioner
+Rebalancing prolongator
+Using original prolongator
+Transpose P (MueLu::TransPFactory)
+Computing Ac (MueLu::RebalanceAcFactory)
+No rebalancing
+Setup Smoother (MueLu::Ifpack2Smoother{type = CHEBYSHEV})
+chebyshev: ratio eigenvalue (computed) = 25.65
+Preconditioner init
+Preconditioner compute
+chebyshev: max eigenvalue (calculated by Ifpack2) = 2.88
+"Ifpack2::Chebyshev": {Initialized: true, Computed: true, "Ifpack2::Details::Chebyshev":{degree: 4, lambdaMax: 2.88108, alpha: 25.6539, lambdaMin: 0.112306, boost factor: 1.1}, Global matrix dimensions: [420312, 420312], Global nnz: 7477680}
+Level 2
+Build (MueLu::RebalanceTransferFactory)
+Build (MueLu::RepartitionFactory)
+Computing Ac (MueLu::RAPFactory)
+Prolongator toggle (MueLu::TogglePFactory)
+Number of layers for semicoarsening: 1
+TogglePFactory: call transfer factory: MueLu::SaPFactory_kokkos
+Prolongator smoothing (MueLu::SaPFactory_kokkos)
+macro  KOKKOS_ENABLE_CUDA      : defined
+macro  CUDA_VERSION          = 11000 = version 11.0
+Kokkos::Cuda[ 0 ] Tesla V100-SXM2-16GB capability 7.0, Total Global Memory: 15.75 G, Shared Memory per Block: 48 K : Selected
+Build (MueLu::TentativePFactory_kokkos)
+Build (MueLu::UncoupledAggregationFactory_kokkos)
+Build (MueLu::CoalesceDropFactory_kokkos)
+Build (MueLu::AmalgamationFactory_kokkos)
+AmalagamationFactory::Build(): found fullblocksize=2 and stridedblocksize=2 from strided maps. offset=0
+
+******* WARNING *******
+lightweight wrap is deprecated
+algorithm = "classical": threshold = 0.00, blocksize = 2
+Detected 0 Dirichlet nodes
+
+******* WARNING *******
+Level::Set: unable to store "A" generated by factory CoalesceDropFactory_kokkos[267](0x85d18270) on level 1, as it has not been requested and no keep flags were set for it
+Algo Graph Coloring
+  algorithm: serial
+  num colors: 13
+Algo Phase - (Dirichlet)
+BuildAggregates (Phase - (Dirichlet))
+  aggregated : 0 (phase), 0/210156 [0.00%] (total)
+  remaining  : 210156
+  aggregates : 0 (phase), 0 (total)
+Algo Phase 1 (main)
+BuildAggregatesRandom (Phase 1 (main))
+  aggregated : 191096 (phase), 191096/210156 [90.93%] (total)
+  remaining  : 19060
+  aggregates : 22386 (phase), 22386 (total)
+Algo Phase 2a (secondary)
+BuildAggregatesRandom (Phase 2a (secondary))
+  aggregated : 0 (phase), 191096/210156 [90.93%] (total)
+  remaining  : 19060
+  aggregates : 0 (phase), 22386 (total)
+Algo Phase 2b (expansion)
+BuildAggregatesRandom (Phase 2b (expansion))
+  aggregated : 19060 (phase), 210156/210156 [100.00%] (total)
+  remaining  : 0
+  aggregates : 0 (phase), 22386 (total)
+Algo Phase 3 (cleanup)
+BuildAggregatesRandom (Phase 3 (cleanup))
+  aggregated : 0 (phase), 210156/210156 [100.00%] (total)
+  remaining  : 0
+  aggregates : 0 (phase), 22386 (total)
+"UC": MueLu::Aggregates_kokkos{nGlobalAggregates = 22386}
+Build (MueLu::CoarseMapFactory_kokkos)
+AverageCoords
+Get Aggregates graph
+Check good map
+Calc AggSizes
+Create Agg2RowMap
+Stage 0 (InitViews)
+Stage 1 (LocalQR)
+Stage 2 (CompressRows)
+Stage 2 (CompressCols)
+TentativePFactory : aggregates do not cross process boundaries
+Stage 3 (LocalMatrix+FillComplete)
+
+******* WARNING *******
+Level::Set: unable to store "Coordinates" generated by factory TentativePFactory_kokkos[229](0x8898c000) on level 2, as it has not been requested and no keep flags were set for it
+Eigenvalue estimate
+Using cached max eigenvalue estimate
+Prolongator damping factor = 0.46 (1.33 / 2.88)
+Fused (I-omega*D^{-1} A)*Ptent
+Diagonal Extraction
+Xpetra::IteratorOps::Jacobi
+
+******* WARNING *******
+Level::Set: unable to store "Ptent" generated by factory TogglePFactory[232](0x6a3d3220) on level 2, as it has not been requested and no keep flags were set for it
+MxM: A x P
+Transpose P (MueLu::TransPFactory)
+MxM: R x (AP) (explicit)
+
+******* WARNING *******
+CheckRepairMainDiagonal: repaired 0 too small entries (threshold = 0.00) on main diagonal of Ac.
+
+******* WARNING *******
+Level::Set: unable to store "AP reuse data" generated by factory RAPFactory[235](0x88abd600) on level 2, as it has not been requested and no keep flags were set for it
+
+******* WARNING *******
+Level::Set: unable to store "RAP reuse data" generated by factory RAPFactory[235](0x88abd600) on level 2, as it has not been requested and no keep flags were set for it
+Projections
+RAPFactory: call transfer factory: MueLu::ToggleCoordinatesTransferFactory
+Coordinate transfer toggle (MueLu::ToggleCoordinatesTransferFactory)
+Transfer Coordinates1 to coarse level
+Build (MueLu::CoordinatesTransferFactory_kokkos)
+Transferring coordinates
+AverageCoords
+Build (MueLu::RepartitionHeuristicFactory)
+
+******* WARNING *******
+Level::Set: unable to store "repartition: heuristic target rows per process" generated by factory RepartitionHeuristicFactory[236](0x88af8c90) on level 2, as it has not been requested and no keep flags were set for it
+Repartitioning? YES:
+  min # rows per proc = 2472, min allowable = 3000
+Number of partitions to use = 22
+Build (MueLu::ZoltanInterface)
+Zoltan RCB
+
+  Build configuration:
+  ZOLTAN_ID_TYPE: unsigned int (4 bytes)
+  ZOLTAN_GNO_TYPE: ssize_t, (8 bytes)
+  MPI_Datatype for ZOLTAN_ID_TYPE: MPI_UNSIGNED
+  MPI_Datatype for ZOLTAN_GNO_TYPE: MPI_LONG
+ZOLTAN Parameter IMBALANCE_TOL[0] = 1.100000
+ZOLTAN Parameter AUTO_MIGRATE = FALSE
+ZOLTAN Parameter MIGRATE_ONLY_PROC_CHANGES = 1
+ZOLTAN Parameter OBJ_WEIGHT_DIM = 1
+ZOLTAN Parameter EDGE_WEIGHT_DIM = 0
+ZOLTAN Parameter DEBUG_LEVEL = 1
+ZOLTAN Parameter DEBUG_PROCESSOR = 0
+ZOLTAN Parameter DETERMINISTIC = TRUE
+ZOLTAN Parameter TIMER = 1 (wall)
+ZOLTAN Parameter NUM_GID_ENTRIES = 1
+ZOLTAN Parameter NUM_LID_ENTRIES = 0
+ZOLTAN Parameter RETURN_LISTS = IMPORT AND EXPORT
+ZOLTAN Parameter NUM_GLOBAL_PARTS = 22
+ZOLTAN Parameter NUM_LOCAL_PARTS = -1
+ZOLTAN Parameter REMAP = 1
+ZOLTAN Parameter SEED = 398113993 (398113993)
+ZOLTAN Parameter LB_APPROACH = repartition
+ZOLTAN Parameter RCB_OVERALLOC = 1.200000
+ZOLTAN Parameter RCB_REUSE = 0
+ZOLTAN Parameter CHECK_GEOM = 1
+ZOLTAN Parameter RCB_OUTPUT_LEVEL = 0
+ZOLTAN Parameter KEEP_CUTS = 0
+ZOLTAN Parameter RCB_LOCK_DIRECTIONS = 0
+ZOLTAN Parameter RCB_SET_DIRECTIONS = 0
+ZOLTAN Parameter RCB_RECTILINEAR_BLOCKS = 0
+ZOLTAN Parameter OBJ_WEIGHTS_COMPARABLE = 0
+ZOLTAN Parameter RCB_MULTICRITERIA_NORM = 1
+ZOLTAN Parameter RCB_MAX_ASPECT_RATIO = 10.000000
+ZOLTAN Parameter AVERAGE_CUTS = 0
+ZOLTAN Parameter RANDOM_PIVOTS = 0
+ZOLTAN Parameter RCB_RECOMPUTE_BOX = 0
+ZOLTAN Parameter REDUCE_DIMENSIONS = 0
+ZOLTAN Parameter DEGENERATE_RATIO = 0.000000
+ZOLTAN Parameter FINAL_OUTPUT = 0
+ZOLTAN Parameter KEEP_CUTS = 0
+ZOLTAN Parameter REDUCE_DIMENSIONS = 0
+ZOLTAN Parameter DEGENERATE_RATIO = 10.000000
+DeterminePartitionPlacement
+Number of unassigned partitions before cleanup stage: 1 / 22
+Import construction
+Rebalancing prolongator
+Using original prolongator
+Rebalancing coordinates
+
+******* WARNING *******
+Level::Set: unable to store "Coordinates" generated by factory RebalanceTransferFactory[239](0x858f7910) on level 2, as it has not been requested and no keep flags were set for it
+Rebalancing nullspace
+
+******* WARNING *******
+Level::Set: unable to store "Nullspace" generated by factory RebalanceTransferFactory[239](0x858f7910) on level 2, as it has not been requested and no keep flags were set for it
+Transpose P (MueLu::TransPFactory)
+Computing Ac (MueLu::RebalanceAcFactory)
+Rebalancing existing Ac
+Replacing maps with a subcommunicator
+Setup Smoother (MueLu::Ifpack2Smoother{type = CHEBYSHEV})
+chebyshev: ratio eigenvalue (computed) = 25.65
+Preconditioner init
+Preconditioner compute
+chebyshev: max eigenvalue (calculated by Ifpack2) = 2.64
+"Ifpack2::Chebyshev": {Initialized: true, Computed: true, "Ifpack2::Details::Chebyshev":{degree: 4, lambdaMax: 2.64477, alpha: 25.6539, lambdaMin: 0.103094, boost factor: 1.1}, Global matrix dimensions: [67158, 67158], Global nnz: 2472066}
+
+******* WARNING *******
+Level::Set: unable to store "PostSmoother" generated by factory SmootherFactory[251](0x7ae61b20) on level 2, as it has not been requested and no keep flags were set for it
+
+--------------------------------------------------------------------------------
+---                            Multigrid Summary                             ---
+--------------------------------------------------------------------------------
+Scalar              = double
+Number of levels    = 3
+Operator complexity = 1.02
+Smoother complexity = 1.04
+Cycle type          = V
+
+level  rows     nnz        nnz/row  c ratio  procs
+  0  8826552  456138480  51.68                 24  
+  1  420312   7477680    17.79    21.00        24  
+  2  67158    2472066    36.81    6.26         22  
+
+Smoother (level 0) both : "Ifpack2::Chebyshev": {Initialized: true, Computed: true, "Ifpack2::Details::Chebyshev":{degree: 2, lambdaMax: 6.41314, alpha: 27.572, lambdaMin: 0.232596, boost factor: 1.1}, Global matrix dimensions: [8826552, 8826552], Global nnz: 456138480}
+
+Smoother (level 1) both : "Ifpack2::Chebyshev": {Initialized: true, Computed: true, "Ifpack2::Details::Chebyshev":{degree: 4, lambdaMax: 2.88108, alpha: 25.6539, lambdaMin: 0.112306, boost factor: 1.1}, Global matrix dimensions: [420312, 420312], Global nnz: 7477680}
+
+Smoother (level 2) pre  : "Ifpack2::Chebyshev": {Initialized: true, Computed: true, "Ifpack2::Details::Chebyshev":{degree: 4, lambdaMax: 2.64477, alpha: 25.6539, lambdaMin: 0.103094, boost factor: 1.1}, Global matrix dimensions: [67158, 67158], Global nnz: 2472066}
+Smoother (level 2) post : no smoother
+
+=====================================================================================================================
+
+                                       TimeMonitor results over 24 processors
+
+Timer Name          Local time (num calls)    MinOverProcs    MeanOverProcs    MaxOverProcs    MeanOverCallCounts    
+---------------------------------------------------------------------------------------------------------------------
+MueLu setup time    0.6827 (1)                0.6826 (1)      0.6826 (1)       0.6827 (1)      0.6826 (1)            
+=====================================================================================================================
+  
+  *******************************************************
+  ***** Belos Iterative Solver:  Block Gmres 
+  ***** Maximum Iterations: 200
+  ***** Block Size: 1
+  ***** Residual Test: 
+  *****   Test 1 : Belos::StatusTestImpResNorm<>: (2-Norm Res Vec) / (2-Norm Res0), tol = 1e-06
+  *******************************************************
+  Iter   0, [ 1] :    1.000000e+00
+  Iter  20, [ 1] :    6.383439e-03
+  Iter  40, [ 1] :    4.454053e-04
+  Iter  60, [ 1] :    3.936942e-05
+  Iter  80, [ 1] :    4.195541e-06
+  Iter  92, [ 1] :    9.998239e-07
+
+************************************************************************
+-- Nonlinear Solver Step 5 -- 
+||F|| = 4.798e+04  step = 1.000e+00  dx = 7.305e+04
+************************************************************************
+
+Clearing old data (if any)
+Replacing coordinate map
+Using default factory (TransPFactory[311] ) for building 'R'.
+Using default factory (CoalesceDropFactory_kokkos[312] ) for building 'Graph'.
+Using default factory (AmalgamationFactory_kokkos[313] ) for building 'UnAmalgamationInfo'.
+Level 0
+Using default factory (TransPFactory[315] ) for building 'R'.
+Setup Smoother (MueLu::Ifpack2Smoother{type = CHEBYSHEV})
+chebyshev: ratio eigenvalue (computed) = 27.57
+Preconditioner init
+Preconditioner compute
+chebyshev: max eigenvalue (calculated by Ifpack2) = 6.43
+"Ifpack2::Chebyshev": {Initialized: true, Computed: true, "Ifpack2::Details::Chebyshev":{degree: 2, lambdaMax: 6.42779, alpha: 27.572, lambdaMin: 0.233127, boost factor: 1.1}, Global matrix dimensions: [8826552, 8826552], Global nnz: 456138480}
+Using default factory (CoalesceDropFactory_kokkos[323] ) for building 'Graph'.
+Using default factory (AmalgamationFactory_kokkos[324] ) for building 'UnAmalgamationInfo'.
+Level 1
+Build (MueLu::RebalanceTransferFactory)
+Build (MueLu::RepartitionFactory)
+Computing Ac (MueLu::RAPFactory)
+Prolongator toggle (MueLu::TogglePFactory)
+TogglePFactory: call transfer factory: MueLu::SemiCoarsenPFactory_kokkos
+Build (MueLu::SemiCoarsenPFactory_kokkos)
+Line detection (Ray style) (MueLu::LineDetectionFactory)
+Number of layers for line detection: 21 (information reconstructed from provided node coordinates)
+BuildSemiCoarsenP
+Fill P
+TransferCoordinates
+
+******* WARNING *******
+Level::Set: unable to store "Ptent" generated by factory TogglePFactory[288](0x859c2370) on level 1, as it has not been requested and no keep flags were set for it
+MxM: A x P
+Transpose P (MueLu::TransPFactory)
+MxM: R x (AP) (explicit)
+
+******* WARNING *******
+CheckRepairMainDiagonal: repaired 0 too small entries (threshold = 0.00) on main diagonal of Ac.
+
+******* WARNING *******
+Level::Set: unable to store "AP reuse data" generated by factory RAPFactory[291](0x85ce2240) on level 1, as it has not been requested and no keep flags were set for it
+
+******* WARNING *******
+Level::Set: unable to store "RAP reuse data" generated by factory RAPFactory[291](0x85ce2240) on level 1, as it has not been requested and no keep flags were set for it
+Projections
+RAPFactory: call transfer factory: MueLu::ToggleCoordinatesTransferFactory
+Coordinate transfer toggle (MueLu::ToggleCoordinatesTransferFactory)
+Transfer Coordinates0 to coarse level
+Build (MueLu::RepartitionHeuristicFactory)
+
+******* WARNING *******
+Level::Set: unable to store "repartition: heuristic target rows per process" generated by factory RepartitionHeuristicFactory[292](0x7aea2a40) on level 1, as it has not been requested and no keep flags were set for it
+Repartitioning?  NO:
+  min # rows per proc = 16850, min allowable = 3000
+  nonzero imbalance = 1.07626363986762175e+00, max allowable = 1.32699999999999996e+00
+Build (MueLu::ZoltanInterface)
+
+******* WARNING *******
+No repartitioning necessary: partitions were left unchanged by the repartitioner
+Rebalancing prolongator
+Using original prolongator
+Transpose P (MueLu::TransPFactory)
+Computing Ac (MueLu::RebalanceAcFactory)
+No rebalancing
+Setup Smoother (MueLu::Ifpack2Smoother{type = CHEBYSHEV})
+chebyshev: ratio eigenvalue (computed) = 25.65
+Preconditioner init
+Preconditioner compute
+chebyshev: max eigenvalue (calculated by Ifpack2) = 2.86
+"Ifpack2::Chebyshev": {Initialized: true, Computed: true, "Ifpack2::Details::Chebyshev":{degree: 4, lambdaMax: 2.858, alpha: 25.6539, lambdaMin: 0.111406, boost factor: 1.1}, Global matrix dimensions: [420312, 420312], Global nnz: 7477680}
+Level 2
+Build (MueLu::RebalanceTransferFactory)
+Build (MueLu::RepartitionFactory)
+Computing Ac (MueLu::RAPFactory)
+Prolongator toggle (MueLu::TogglePFactory)
+Number of layers for semicoarsening: 1
+TogglePFactory: call transfer factory: MueLu::SaPFactory_kokkos
+Prolongator smoothing (MueLu::SaPFactory_kokkos)
+macro  KOKKOS_ENABLE_CUDA      : defined
+macro  CUDA_VERSION          = 11000 = version 11.0
+Kokkos::Cuda[ 0 ] Tesla V100-SXM2-16GB capability 7.0, Total Global Memory: 15.75 G, Shared Memory per Block: 48 K : Selected
+Build (MueLu::TentativePFactory_kokkos)
+Build (MueLu::UncoupledAggregationFactory_kokkos)
+Build (MueLu::CoalesceDropFactory_kokkos)
+Build (MueLu::AmalgamationFactory_kokkos)
+AmalagamationFactory::Build(): found fullblocksize=2 and stridedblocksize=2 from strided maps. offset=0
+
+******* WARNING *******
+lightweight wrap is deprecated
+algorithm = "classical": threshold = 0.00, blocksize = 2
+Detected 0 Dirichlet nodes
+
+******* WARNING *******
+Level::Set: unable to store "A" generated by factory CoalesceDropFactory_kokkos[323](0x889816e0) on level 1, as it has not been requested and no keep flags were set for it
+Algo Graph Coloring
+  algorithm: serial
+  num colors: 13
+Algo Phase - (Dirichlet)
+BuildAggregates (Phase - (Dirichlet))
+  aggregated : 0 (phase), 0/210156 [0.00%] (total)
+  remaining  : 210156
+  aggregates : 0 (phase), 0 (total)
+Algo Phase 1 (main)
+BuildAggregatesRandom (Phase 1 (main))
+  aggregated : 191096 (phase), 191096/210156 [90.93%] (total)
+  remaining  : 19060
+  aggregates : 22386 (phase), 22386 (total)
+Algo Phase 2a (secondary)
+BuildAggregatesRandom (Phase 2a (secondary))
+  aggregated : 0 (phase), 191096/210156 [90.93%] (total)
+  remaining  : 19060
+  aggregates : 0 (phase), 22386 (total)
+Algo Phase 2b (expansion)
+BuildAggregatesRandom (Phase 2b (expansion))
+  aggregated : 19060 (phase), 210156/210156 [100.00%] (total)
+  remaining  : 0
+  aggregates : 0 (phase), 22386 (total)
+Algo Phase 3 (cleanup)
+BuildAggregatesRandom (Phase 3 (cleanup))
+  aggregated : 0 (phase), 210156/210156 [100.00%] (total)
+  remaining  : 0
+  aggregates : 0 (phase), 22386 (total)
+"UC": MueLu::Aggregates_kokkos{nGlobalAggregates = 22386}
+Build (MueLu::CoarseMapFactory_kokkos)
+AverageCoords
+Get Aggregates graph
+Check good map
+Calc AggSizes
+Create Agg2RowMap
+Stage 0 (InitViews)
+Stage 1 (LocalQR)
+Stage 2 (CompressRows)
+Stage 2 (CompressCols)
+TentativePFactory : aggregates do not cross process boundaries
+Stage 3 (LocalMatrix+FillComplete)
+
+******* WARNING *******
+Level::Set: unable to store "Coordinates" generated by factory TentativePFactory_kokkos[285](0x858be280) on level 2, as it has not been requested and no keep flags were set for it
+Eigenvalue estimate
+Using cached max eigenvalue estimate
+Prolongator damping factor = 0.47 (1.33 / 2.86)
+Fused (I-omega*D^{-1} A)*Ptent
+Diagonal Extraction
+Xpetra::IteratorOps::Jacobi
+
+******* WARNING *******
+Level::Set: unable to store "Ptent" generated by factory TogglePFactory[288](0x859c2370) on level 2, as it has not been requested and no keep flags were set for it
+MxM: A x P
+Transpose P (MueLu::TransPFactory)
+MxM: R x (AP) (explicit)
+
+******* WARNING *******
+CheckRepairMainDiagonal: repaired 0 too small entries (threshold = 0.00) on main diagonal of Ac.
+
+******* WARNING *******
+Level::Set: unable to store "AP reuse data" generated by factory RAPFactory[291](0x85ce2240) on level 2, as it has not been requested and no keep flags were set for it
+
+******* WARNING *******
+Level::Set: unable to store "RAP reuse data" generated by factory RAPFactory[291](0x85ce2240) on level 2, as it has not been requested and no keep flags were set for it
+Projections
+RAPFactory: call transfer factory: MueLu::ToggleCoordinatesTransferFactory
+Coordinate transfer toggle (MueLu::ToggleCoordinatesTransferFactory)
+Transfer Coordinates1 to coarse level
+Build (MueLu::CoordinatesTransferFactory_kokkos)
+Transferring coordinates
+AverageCoords
+Build (MueLu::RepartitionHeuristicFactory)
+
+******* WARNING *******
+Level::Set: unable to store "repartition: heuristic target rows per process" generated by factory RepartitionHeuristicFactory[292](0x7aea2a40) on level 2, as it has not been requested and no keep flags were set for it
+Repartitioning? YES:
+  min # rows per proc = 2472, min allowable = 3000
+Number of partitions to use = 22
+Build (MueLu::ZoltanInterface)
+Zoltan RCB
+
+  Build configuration:
+  ZOLTAN_ID_TYPE: unsigned int (4 bytes)
+  ZOLTAN_GNO_TYPE: ssize_t, (8 bytes)
+  MPI_Datatype for ZOLTAN_ID_TYPE: MPI_UNSIGNED
+  MPI_Datatype for ZOLTAN_GNO_TYPE: MPI_LONG
+ZOLTAN Parameter IMBALANCE_TOL[0] = 1.100000
+ZOLTAN Parameter AUTO_MIGRATE = FALSE
+ZOLTAN Parameter MIGRATE_ONLY_PROC_CHANGES = 1
+ZOLTAN Parameter OBJ_WEIGHT_DIM = 1
+ZOLTAN Parameter EDGE_WEIGHT_DIM = 0
+ZOLTAN Parameter DEBUG_LEVEL = 1
+ZOLTAN Parameter DEBUG_PROCESSOR = 0
+ZOLTAN Parameter DETERMINISTIC = TRUE
+ZOLTAN Parameter TIMER = 1 (wall)
+ZOLTAN Parameter NUM_GID_ENTRIES = 1
+ZOLTAN Parameter NUM_LID_ENTRIES = 0
+ZOLTAN Parameter RETURN_LISTS = IMPORT AND EXPORT
+ZOLTAN Parameter NUM_GLOBAL_PARTS = 22
+ZOLTAN Parameter NUM_LOCAL_PARTS = -1
+ZOLTAN Parameter REMAP = 1
+ZOLTAN Parameter SEED = 602001354 (602001354)
+ZOLTAN Parameter LB_APPROACH = repartition
+ZOLTAN Parameter RCB_OVERALLOC = 1.200000
+ZOLTAN Parameter RCB_REUSE = 0
+ZOLTAN Parameter CHECK_GEOM = 1
+ZOLTAN Parameter RCB_OUTPUT_LEVEL = 0
+ZOLTAN Parameter KEEP_CUTS = 0
+ZOLTAN Parameter RCB_LOCK_DIRECTIONS = 0
+ZOLTAN Parameter RCB_SET_DIRECTIONS = 0
+ZOLTAN Parameter RCB_RECTILINEAR_BLOCKS = 0
+ZOLTAN Parameter OBJ_WEIGHTS_COMPARABLE = 0
+ZOLTAN Parameter RCB_MULTICRITERIA_NORM = 1
+ZOLTAN Parameter RCB_MAX_ASPECT_RATIO = 10.000000
+ZOLTAN Parameter AVERAGE_CUTS = 0
+ZOLTAN Parameter RANDOM_PIVOTS = 0
+ZOLTAN Parameter RCB_RECOMPUTE_BOX = 0
+ZOLTAN Parameter REDUCE_DIMENSIONS = 0
+ZOLTAN Parameter DEGENERATE_RATIO = 0.000000
+ZOLTAN Parameter FINAL_OUTPUT = 0
+ZOLTAN Parameter KEEP_CUTS = 0
+ZOLTAN Parameter REDUCE_DIMENSIONS = 0
+ZOLTAN Parameter DEGENERATE_RATIO = 10.000000
+DeterminePartitionPlacement
+Number of unassigned partitions before cleanup stage: 1 / 22
+Import construction
+Rebalancing prolongator
+Using original prolongator
+Rebalancing coordinates
+
+******* WARNING *******
+Level::Set: unable to store "Coordinates" generated by factory RebalanceTransferFactory[295](0x85d1ce20) on level 2, as it has not been requested and no keep flags were set for it
+Rebalancing nullspace
+
+******* WARNING *******
+Level::Set: unable to store "Nullspace" generated by factory RebalanceTransferFactory[295](0x85d1ce20) on level 2, as it has not been requested and no keep flags were set for it
+Transpose P (MueLu::TransPFactory)
+Computing Ac (MueLu::RebalanceAcFactory)
+Rebalancing existing Ac
+Replacing maps with a subcommunicator
+Setup Smoother (MueLu::Ifpack2Smoother{type = CHEBYSHEV})
+chebyshev: ratio eigenvalue (computed) = 25.65
+Preconditioner init
+Preconditioner compute
+chebyshev: max eigenvalue (calculated by Ifpack2) = 2.51
+"Ifpack2::Chebyshev": {Initialized: true, Computed: true, "Ifpack2::Details::Chebyshev":{degree: 4, lambdaMax: 2.51495, alpha: 25.6539, lambdaMin: 0.0980337, boost factor: 1.1}, Global matrix dimensions: [67158, 67158], Global nnz: 2471742}
+
+******* WARNING *******
+Level::Set: unable to store "PostSmoother" generated by factory SmootherFactory[307](0x88a2c2c0) on level 2, as it has not been requested and no keep flags were set for it
+
+--------------------------------------------------------------------------------
+---                            Multigrid Summary                             ---
+--------------------------------------------------------------------------------
+Scalar              = double
+Number of levels    = 3
+Operator complexity = 1.02
+Smoother complexity = 1.04
+Cycle type          = V
+
+level  rows     nnz        nnz/row  c ratio  procs
+  0  8826552  456138480  51.68                 24  
+  1  420312   7477680    17.79    21.00        24  
+  2  67158    2471742    36.80    6.26         22  
+
+Smoother (level 0) both : "Ifpack2::Chebyshev": {Initialized: true, Computed: true, "Ifpack2::Details::Chebyshev":{degree: 2, lambdaMax: 6.42779, alpha: 27.572, lambdaMin: 0.233127, boost factor: 1.1}, Global matrix dimensions: [8826552, 8826552], Global nnz: 456138480}
+
+Smoother (level 1) both : "Ifpack2::Chebyshev": {Initialized: true, Computed: true, "Ifpack2::Details::Chebyshev":{degree: 4, lambdaMax: 2.858, alpha: 25.6539, lambdaMin: 0.111406, boost factor: 1.1}, Global matrix dimensions: [420312, 420312], Global nnz: 7477680}
+
+Smoother (level 2) pre  : "Ifpack2::Chebyshev": {Initialized: true, Computed: true, "Ifpack2::Details::Chebyshev":{degree: 4, lambdaMax: 2.51495, alpha: 25.6539, lambdaMin: 0.0980337, boost factor: 1.1}, Global matrix dimensions: [67158, 67158], Global nnz: 2471742}
+Smoother (level 2) post : no smoother
+
+=====================================================================================================================
+
+                                       TimeMonitor results over 24 processors
+
+Timer Name          Local time (num calls)    MinOverProcs    MeanOverProcs    MaxOverProcs    MeanOverCallCounts    
+---------------------------------------------------------------------------------------------------------------------
+MueLu setup time    0.6802 (1)                0.6801 (1)      0.6802 (1)       0.6802 (1)      0.6802 (1)            
+=====================================================================================================================
+  
+  *******************************************************
+  ***** Belos Iterative Solver:  Block Gmres 
+  ***** Maximum Iterations: 200
+  ***** Block Size: 1
+  ***** Residual Test: 
+  *****   Test 1 : Belos::StatusTestImpResNorm<>: (2-Norm Res Vec) / (2-Norm Res0), tol = 1e-06
+  *******************************************************
+  Iter   0, [ 1] :    1.000000e+00
+  Iter  20, [ 1] :    6.324169e-03
+  Iter  40, [ 1] :    4.718675e-04
+  Iter  60, [ 1] :    4.136900e-05
+  Iter  80, [ 1] :    3.936415e-06
+  Iter  92, [ 1] :    8.908786e-07
+
+************************************************************************
+-- Nonlinear Solver Step 6 -- 
+||F|| = 2.235e+03  step = 1.000e+00  dx = 1.274e+04
+************************************************************************
+
+Clearing old data (if any)
+Replacing coordinate map
+Using default factory (TransPFactory[367] ) for building 'R'.
+Using default factory (CoalesceDropFactory_kokkos[368] ) for building 'Graph'.
+Using default factory (AmalgamationFactory_kokkos[369] ) for building 'UnAmalgamationInfo'.
+Level 0
+Using default factory (TransPFactory[371] ) for building 'R'.
+Setup Smoother (MueLu::Ifpack2Smoother{type = CHEBYSHEV})
+chebyshev: ratio eigenvalue (computed) = 27.57
+Preconditioner init
+Preconditioner compute
+chebyshev: max eigenvalue (calculated by Ifpack2) = 6.43
+"Ifpack2::Chebyshev": {Initialized: true, Computed: true, "Ifpack2::Details::Chebyshev":{degree: 2, lambdaMax: 6.42885, alpha: 27.572, lambdaMin: 0.233166, boost factor: 1.1}, Global matrix dimensions: [8826552, 8826552], Global nnz: 456138480}
+Using default factory (CoalesceDropFactory_kokkos[379] ) for building 'Graph'.
+Using default factory (AmalgamationFactory_kokkos[380] ) for building 'UnAmalgamationInfo'.
+Level 1
+Build (MueLu::RebalanceTransferFactory)
+Build (MueLu::RepartitionFactory)
+Computing Ac (MueLu::RAPFactory)
+Prolongator toggle (MueLu::TogglePFactory)
+TogglePFactory: call transfer factory: MueLu::SemiCoarsenPFactory_kokkos
+Build (MueLu::SemiCoarsenPFactory_kokkos)
+Line detection (Ray style) (MueLu::LineDetectionFactory)
+Number of layers for line detection: 21 (information reconstructed from provided node coordinates)
+BuildSemiCoarsenP
+Fill P
+TransferCoordinates
+
+******* WARNING *******
+Level::Set: unable to store "Ptent" generated by factory TogglePFactory[344](0x6a3d3220) on level 1, as it has not been requested and no keep flags were set for it
+MxM: A x P
+Transpose P (MueLu::TransPFactory)
+MxM: R x (AP) (explicit)
+
+******* WARNING *******
+CheckRepairMainDiagonal: repaired 0 too small entries (threshold = 0.00) on main diagonal of Ac.
+
+******* WARNING *******
+Level::Set: unable to store "AP reuse data" generated by factory RAPFactory[347](0x7aebc2f0) on level 1, as it has not been requested and no keep flags were set for it
+
+******* WARNING *******
+Level::Set: unable to store "RAP reuse data" generated by factory RAPFactory[347](0x7aebc2f0) on level 1, as it has not been requested and no keep flags were set for it
+Projections
+RAPFactory: call transfer factory: MueLu::ToggleCoordinatesTransferFactory
+Coordinate transfer toggle (MueLu::ToggleCoordinatesTransferFactory)
+Transfer Coordinates0 to coarse level
+Build (MueLu::RepartitionHeuristicFactory)
+
+******* WARNING *******
+Level::Set: unable to store "repartition: heuristic target rows per process" generated by factory RepartitionHeuristicFactory[348](0x7aec81d0) on level 1, as it has not been requested and no keep flags were set for it
+Repartitioning?  NO:
+  min # rows per proc = 16850, min allowable = 3000
+  nonzero imbalance = 1.07626363986762175e+00, max allowable = 1.32699999999999996e+00
+Build (MueLu::ZoltanInterface)
+
+******* WARNING *******
+No repartitioning necessary: partitions were left unchanged by the repartitioner
+Rebalancing prolongator
+Using original prolongator
+Transpose P (MueLu::TransPFactory)
+Computing Ac (MueLu::RebalanceAcFactory)
+No rebalancing
+Setup Smoother (MueLu::Ifpack2Smoother{type = CHEBYSHEV})
+chebyshev: ratio eigenvalue (computed) = 25.65
+Preconditioner init
+Preconditioner compute
+chebyshev: max eigenvalue (calculated by Ifpack2) = 2.86
+"Ifpack2::Chebyshev": {Initialized: true, Computed: true, "Ifpack2::Details::Chebyshev":{degree: 4, lambdaMax: 2.8561, alpha: 25.6539, lambdaMin: 0.111332, boost factor: 1.1}, Global matrix dimensions: [420312, 420312], Global nnz: 7477680}
+Level 2
+Build (MueLu::RebalanceTransferFactory)
+Build (MueLu::RepartitionFactory)
+Computing Ac (MueLu::RAPFactory)
+Prolongator toggle (MueLu::TogglePFactory)
+Number of layers for semicoarsening: 1
+TogglePFactory: call transfer factory: MueLu::SaPFactory_kokkos
+Prolongator smoothing (MueLu::SaPFactory_kokkos)
+macro  KOKKOS_ENABLE_CUDA      : defined
+macro  CUDA_VERSION          = 11000 = version 11.0
+Kokkos::Cuda[ 0 ] Tesla V100-SXM2-16GB capability 7.0, Total Global Memory: 15.75 G, Shared Memory per Block: 48 K : Selected
+Build (MueLu::TentativePFactory_kokkos)
+Build (MueLu::UncoupledAggregationFactory_kokkos)
+Build (MueLu::CoalesceDropFactory_kokkos)
+Build (MueLu::AmalgamationFactory_kokkos)
+AmalagamationFactory::Build(): found fullblocksize=2 and stridedblocksize=2 from strided maps. offset=0
+
+******* WARNING *******
+lightweight wrap is deprecated
+algorithm = "classical": threshold = 0.00, blocksize = 2
+Detected 0 Dirichlet nodes
+
+******* WARNING *******
+Level::Set: unable to store "A" generated by factory CoalesceDropFactory_kokkos[379](0x7ae9d8e0) on level 1, as it has not been requested and no keep flags were set for it
+Algo Graph Coloring
+  algorithm: serial
+  num colors: 13
+Algo Phase - (Dirichlet)
+BuildAggregates (Phase - (Dirichlet))
+  aggregated : 0 (phase), 0/210156 [0.00%] (total)
+  remaining  : 210156
+  aggregates : 0 (phase), 0 (total)
+Algo Phase 1 (main)
+BuildAggregatesRandom (Phase 1 (main))
+  aggregated : 191096 (phase), 191096/210156 [90.93%] (total)
+  remaining  : 19060
+  aggregates : 22386 (phase), 22386 (total)
+Algo Phase 2a (secondary)
+BuildAggregatesRandom (Phase 2a (secondary))
+  aggregated : 0 (phase), 191096/210156 [90.93%] (total)
+  remaining  : 19060
+  aggregates : 0 (phase), 22386 (total)
+Algo Phase 2b (expansion)
+BuildAggregatesRandom (Phase 2b (expansion))
+  aggregated : 19060 (phase), 210156/210156 [100.00%] (total)
+  remaining  : 0
+  aggregates : 0 (phase), 22386 (total)
+Algo Phase 3 (cleanup)
+BuildAggregatesRandom (Phase 3 (cleanup))
+  aggregated : 0 (phase), 210156/210156 [100.00%] (total)
+  remaining  : 0
+  aggregates : 0 (phase), 22386 (total)
+"UC": MueLu::Aggregates_kokkos{nGlobalAggregates = 22386}
+Build (MueLu::CoarseMapFactory_kokkos)
+AverageCoords
+Get Aggregates graph
+Check good map
+Calc AggSizes
+Create Agg2RowMap
+Stage 0 (InitViews)
+Stage 1 (LocalQR)
+Stage 2 (CompressRows)
+Stage 2 (CompressCols)
+TentativePFactory : aggregates do not cross process boundaries
+Stage 3 (LocalMatrix+FillComplete)
+
+******* WARNING *******
+Level::Set: unable to store "Coordinates" generated by factory TentativePFactory_kokkos[341](0x8590b280) on level 2, as it has not been requested and no keep flags were set for it
+Eigenvalue estimate
+Using cached max eigenvalue estimate
+Prolongator damping factor = 0.47 (1.33 / 2.86)
+Fused (I-omega*D^{-1} A)*Ptent
+Diagonal Extraction
+Xpetra::IteratorOps::Jacobi
+
+******* WARNING *******
+Level::Set: unable to store "Ptent" generated by factory TogglePFactory[344](0x6a3d3220) on level 2, as it has not been requested and no keep flags were set for it
+MxM: A x P
+Transpose P (MueLu::TransPFactory)
+MxM: R x (AP) (explicit)
+
+******* WARNING *******
+CheckRepairMainDiagonal: repaired 0 too small entries (threshold = 0.00) on main diagonal of Ac.
+
+******* WARNING *******
+Level::Set: unable to store "AP reuse data" generated by factory RAPFactory[347](0x7aebc2f0) on level 2, as it has not been requested and no keep flags were set for it
+
+******* WARNING *******
+Level::Set: unable to store "RAP reuse data" generated by factory RAPFactory[347](0x7aebc2f0) on level 2, as it has not been requested and no keep flags were set for it
+Projections
+RAPFactory: call transfer factory: MueLu::ToggleCoordinatesTransferFactory
+Coordinate transfer toggle (MueLu::ToggleCoordinatesTransferFactory)
+Transfer Coordinates1 to coarse level
+Build (MueLu::CoordinatesTransferFactory_kokkos)
+Transferring coordinates
+AverageCoords
+Build (MueLu::RepartitionHeuristicFactory)
+
+******* WARNING *******
+Level::Set: unable to store "repartition: heuristic target rows per process" generated by factory RepartitionHeuristicFactory[348](0x7aec81d0) on level 2, as it has not been requested and no keep flags were set for it
+Repartitioning? YES:
+  min # rows per proc = 2472, min allowable = 3000
+Number of partitions to use = 22
+Build (MueLu::ZoltanInterface)
+Zoltan RCB
+
+  Build configuration:
+  ZOLTAN_ID_TYPE: unsigned int (4 bytes)
+  ZOLTAN_GNO_TYPE: ssize_t, (8 bytes)
+  MPI_Datatype for ZOLTAN_ID_TYPE: MPI_UNSIGNED
+  MPI_Datatype for ZOLTAN_GNO_TYPE: MPI_LONG
+ZOLTAN Parameter IMBALANCE_TOL[0] = 1.100000
+ZOLTAN Parameter AUTO_MIGRATE = FALSE
+ZOLTAN Parameter MIGRATE_ONLY_PROC_CHANGES = 1
+ZOLTAN Parameter OBJ_WEIGHT_DIM = 1
+ZOLTAN Parameter EDGE_WEIGHT_DIM = 0
+ZOLTAN Parameter DEBUG_LEVEL = 1
+ZOLTAN Parameter DEBUG_PROCESSOR = 0
+ZOLTAN Parameter DETERMINISTIC = TRUE
+ZOLTAN Parameter TIMER = 1 (wall)
+ZOLTAN Parameter NUM_GID_ENTRIES = 1
+ZOLTAN Parameter NUM_LID_ENTRIES = 0
+ZOLTAN Parameter RETURN_LISTS = IMPORT AND EXPORT
+ZOLTAN Parameter NUM_GLOBAL_PARTS = 22
+ZOLTAN Parameter NUM_LOCAL_PARTS = -1
+ZOLTAN Parameter REMAP = 1
+ZOLTAN Parameter SEED = 691371600 (691371600)
+ZOLTAN Parameter LB_APPROACH = repartition
+ZOLTAN Parameter RCB_OVERALLOC = 1.200000
+ZOLTAN Parameter RCB_REUSE = 0
+ZOLTAN Parameter CHECK_GEOM = 1
+ZOLTAN Parameter RCB_OUTPUT_LEVEL = 0
+ZOLTAN Parameter KEEP_CUTS = 0
+ZOLTAN Parameter RCB_LOCK_DIRECTIONS = 0
+ZOLTAN Parameter RCB_SET_DIRECTIONS = 0
+ZOLTAN Parameter RCB_RECTILINEAR_BLOCKS = 0
+ZOLTAN Parameter OBJ_WEIGHTS_COMPARABLE = 0
+ZOLTAN Parameter RCB_MULTICRITERIA_NORM = 1
+ZOLTAN Parameter RCB_MAX_ASPECT_RATIO = 10.000000
+ZOLTAN Parameter AVERAGE_CUTS = 0
+ZOLTAN Parameter RANDOM_PIVOTS = 0
+ZOLTAN Parameter RCB_RECOMPUTE_BOX = 0
+ZOLTAN Parameter REDUCE_DIMENSIONS = 0
+ZOLTAN Parameter DEGENERATE_RATIO = 0.000000
+ZOLTAN Parameter FINAL_OUTPUT = 0
+ZOLTAN Parameter KEEP_CUTS = 0
+ZOLTAN Parameter REDUCE_DIMENSIONS = 0
+ZOLTAN Parameter DEGENERATE_RATIO = 10.000000
+DeterminePartitionPlacement
+Number of unassigned partitions before cleanup stage: 1 / 22
+Import construction
+Rebalancing prolongator
+Using original prolongator
+Rebalancing coordinates
+
+******* WARNING *******
+Level::Set: unable to store "Coordinates" generated by factory RebalanceTransferFactory[351](0x7aeb70e0) on level 2, as it has not been requested and no keep flags were set for it
+Rebalancing nullspace
+
+******* WARNING *******
+Level::Set: unable to store "Nullspace" generated by factory RebalanceTransferFactory[351](0x7aeb70e0) on level 2, as it has not been requested and no keep flags were set for it
+Transpose P (MueLu::TransPFactory)
+Computing Ac (MueLu::RebalanceAcFactory)
+Rebalancing existing Ac
+Replacing maps with a subcommunicator
+Setup Smoother (MueLu::Ifpack2Smoother{type = CHEBYSHEV})
+chebyshev: ratio eigenvalue (computed) = 25.65
+Preconditioner init
+Preconditioner compute
+chebyshev: max eigenvalue (calculated by Ifpack2) = 2.53
+"Ifpack2::Chebyshev": {Initialized: true, Computed: true, "Ifpack2::Details::Chebyshev":{degree: 4, lambdaMax: 2.52857, alpha: 25.6539, lambdaMin: 0.0985646, boost factor: 1.1}, Global matrix dimensions: [67158, 67158], Global nnz: 2472066}
+
+******* WARNING *******
+Level::Set: unable to store "PostSmoother" generated by factory SmootherFactory[363](0x88b26420) on level 2, as it has not been requested and no keep flags were set for it
+
+--------------------------------------------------------------------------------
+---                            Multigrid Summary                             ---
+--------------------------------------------------------------------------------
+Scalar              = double
+Number of levels    = 3
+Operator complexity = 1.02
+Smoother complexity = 1.04
+Cycle type          = V
+
+level  rows     nnz        nnz/row  c ratio  procs
+  0  8826552  456138480  51.68                 24  
+  1  420312   7477680    17.79    21.00        24  
+  2  67158    2472066    36.81    6.26         22  
+
+Smoother (level 0) both : "Ifpack2::Chebyshev": {Initialized: true, Computed: true, "Ifpack2::Details::Chebyshev":{degree: 2, lambdaMax: 6.42885, alpha: 27.572, lambdaMin: 0.233166, boost factor: 1.1}, Global matrix dimensions: [8826552, 8826552], Global nnz: 456138480}
+
+Smoother (level 1) both : "Ifpack2::Chebyshev": {Initialized: true, Computed: true, "Ifpack2::Details::Chebyshev":{degree: 4, lambdaMax: 2.8561, alpha: 25.6539, lambdaMin: 0.111332, boost factor: 1.1}, Global matrix dimensions: [420312, 420312], Global nnz: 7477680}
+
+Smoother (level 2) pre  : "Ifpack2::Chebyshev": {Initialized: true, Computed: true, "Ifpack2::Details::Chebyshev":{degree: 4, lambdaMax: 2.52857, alpha: 25.6539, lambdaMin: 0.0985646, boost factor: 1.1}, Global matrix dimensions: [67158, 67158], Global nnz: 2472066}
+Smoother (level 2) post : no smoother
+
+=====================================================================================================================
+
+                                       TimeMonitor results over 24 processors
+
+Timer Name          Local time (num calls)    MinOverProcs    MeanOverProcs    MaxOverProcs    MeanOverCallCounts    
+---------------------------------------------------------------------------------------------------------------------
+MueLu setup time    0.6848 (1)                0.6846 (1)      0.6847 (1)       0.6848 (1)      0.6847 (1)            
+=====================================================================================================================
+  
+  *******************************************************
+  ***** Belos Iterative Solver:  Block Gmres 
+  ***** Maximum Iterations: 200
+  ***** Block Size: 1
+  ***** Residual Test: 
+  *****   Test 1 : Belos::StatusTestImpResNorm<>: (2-Norm Res Vec) / (2-Norm Res0), tol = 1e-06
+  *******************************************************
+  Iter   0, [ 1] :    1.000000e+00
+  Iter  20, [ 1] :    6.202457e-03
+  Iter  40, [ 1] :    4.225799e-04
+  Iter  60, [ 1] :    3.517262e-05
+  Iter  80, [ 1] :    3.311185e-06
+  Iter  90, [ 1] :    9.814028e-07
+
+************************************************************************
+-- Nonlinear Solver Step 7 -- 
+||F|| = 1.529e+02  step = 1.000e+00  dx = 9.430e+02
+************************************************************************
+
+Clearing old data (if any)
+Replacing coordinate map
+Using default factory (TransPFactory[423] ) for building 'R'.
+Using default factory (CoalesceDropFactory_kokkos[424] ) for building 'Graph'.
+Using default factory (AmalgamationFactory_kokkos[425] ) for building 'UnAmalgamationInfo'.
+Level 0
+Using default factory (TransPFactory[427] ) for building 'R'.
+Setup Smoother (MueLu::Ifpack2Smoother{type = CHEBYSHEV})
+chebyshev: ratio eigenvalue (computed) = 27.57
+Preconditioner init
+Preconditioner compute
+chebyshev: max eigenvalue (calculated by Ifpack2) = 6.43
+"Ifpack2::Chebyshev": {Initialized: true, Computed: true, "Ifpack2::Details::Chebyshev":{degree: 2, lambdaMax: 6.42885, alpha: 27.572, lambdaMin: 0.233166, boost factor: 1.1}, Global matrix dimensions: [8826552, 8826552], Global nnz: 456138480}
+Using default factory (CoalesceDropFactory_kokkos[435] ) for building 'Graph'.
+Using default factory (AmalgamationFactory_kokkos[436] ) for building 'UnAmalgamationInfo'.
+Level 1
+Build (MueLu::RebalanceTransferFactory)
+Build (MueLu::RepartitionFactory)
+Computing Ac (MueLu::RAPFactory)
+Prolongator toggle (MueLu::TogglePFactory)
+TogglePFactory: call transfer factory: MueLu::SemiCoarsenPFactory_kokkos
+Build (MueLu::SemiCoarsenPFactory_kokkos)
+Line detection (Ray style) (MueLu::LineDetectionFactory)
+Number of layers for line detection: 21 (information reconstructed from provided node coordinates)
+BuildSemiCoarsenP
+Fill P
+TransferCoordinates
+
+******* WARNING *******
+Level::Set: unable to store "Ptent" generated by factory TogglePFactory[400](0x859c2370) on level 1, as it has not been requested and no keep flags were set for it
+MxM: A x P
+Transpose P (MueLu::TransPFactory)
+MxM: R x (AP) (explicit)
+
+******* WARNING *******
+CheckRepairMainDiagonal: repaired 0 too small entries (threshold = 0.00) on main diagonal of Ac.
+
+******* WARNING *******
+Level::Set: unable to store "AP reuse data" generated by factory RAPFactory[403](0x88afe960) on level 1, as it has not been requested and no keep flags were set for it
+
+******* WARNING *******
+Level::Set: unable to store "RAP reuse data" generated by factory RAPFactory[403](0x88afe960) on level 1, as it has not been requested and no keep flags were set for it
+Projections
+RAPFactory: call transfer factory: MueLu::ToggleCoordinatesTransferFactory
+Coordinate transfer toggle (MueLu::ToggleCoordinatesTransferFactory)
+Transfer Coordinates0 to coarse level
+Build (MueLu::RepartitionHeuristicFactory)
+
+******* WARNING *******
+Level::Set: unable to store "repartition: heuristic target rows per process" generated by factory RepartitionHeuristicFactory[404](0x859b4e10) on level 1, as it has not been requested and no keep flags were set for it
+Repartitioning?  NO:
+  min # rows per proc = 16850, min allowable = 3000
+  nonzero imbalance = 1.07626363986762175e+00, max allowable = 1.32699999999999996e+00
+Build (MueLu::ZoltanInterface)
+
+******* WARNING *******
+No repartitioning necessary: partitions were left unchanged by the repartitioner
+Rebalancing prolongator
+Using original prolongator
+Transpose P (MueLu::TransPFactory)
+Computing Ac (MueLu::RebalanceAcFactory)
+No rebalancing
+Setup Smoother (MueLu::Ifpack2Smoother{type = CHEBYSHEV})
+chebyshev: ratio eigenvalue (computed) = 25.65
+Preconditioner init
+Preconditioner compute
+chebyshev: max eigenvalue (calculated by Ifpack2) = 2.86
+"Ifpack2::Chebyshev": {Initialized: true, Computed: true, "Ifpack2::Details::Chebyshev":{degree: 4, lambdaMax: 2.85611, alpha: 25.6539, lambdaMin: 0.111332, boost factor: 1.1}, Global matrix dimensions: [420312, 420312], Global nnz: 7477680}
+Level 2
+Build (MueLu::RebalanceTransferFactory)
+Build (MueLu::RepartitionFactory)
+Computing Ac (MueLu::RAPFactory)
+Prolongator toggle (MueLu::TogglePFactory)
+Number of layers for semicoarsening: 1
+TogglePFactory: call transfer factory: MueLu::SaPFactory_kokkos
+Prolongator smoothing (MueLu::SaPFactory_kokkos)
+macro  KOKKOS_ENABLE_CUDA      : defined
+macro  CUDA_VERSION          = 11000 = version 11.0
+Kokkos::Cuda[ 0 ] Tesla V100-SXM2-16GB capability 7.0, Total Global Memory: 15.75 G, Shared Memory per Block: 48 K : Selected
+Build (MueLu::TentativePFactory_kokkos)
+Build (MueLu::UncoupledAggregationFactory_kokkos)
+Build (MueLu::CoalesceDropFactory_kokkos)
+Build (MueLu::AmalgamationFactory_kokkos)
+AmalagamationFactory::Build(): found fullblocksize=2 and stridedblocksize=2 from strided maps. offset=0
+
+******* WARNING *******
+lightweight wrap is deprecated
+algorithm = "classical": threshold = 0.00, blocksize = 2
+Detected 0 Dirichlet nodes
+
+******* WARNING *******
+Level::Set: unable to store "A" generated by factory CoalesceDropFactory_kokkos[435](0x7ae5a110) on level 1, as it has not been requested and no keep flags were set for it
+Algo Graph Coloring
+  algorithm: serial
+  num colors: 13
+Algo Phase - (Dirichlet)
+BuildAggregates (Phase - (Dirichlet))
+  aggregated : 0 (phase), 0/210156 [0.00%] (total)
+  remaining  : 210156
+  aggregates : 0 (phase), 0 (total)
+Algo Phase 1 (main)
+BuildAggregatesRandom (Phase 1 (main))
+  aggregated : 191096 (phase), 191096/210156 [90.93%] (total)
+  remaining  : 19060
+  aggregates : 22386 (phase), 22386 (total)
+Algo Phase 2a (secondary)
+BuildAggregatesRandom (Phase 2a (secondary))
+  aggregated : 0 (phase), 191096/210156 [90.93%] (total)
+  remaining  : 19060
+  aggregates : 0 (phase), 22386 (total)
+Algo Phase 2b (expansion)
+BuildAggregatesRandom (Phase 2b (expansion))
+  aggregated : 19060 (phase), 210156/210156 [100.00%] (total)
+  remaining  : 0
+  aggregates : 0 (phase), 22386 (total)
+Algo Phase 3 (cleanup)
+BuildAggregatesRandom (Phase 3 (cleanup))
+  aggregated : 0 (phase), 210156/210156 [100.00%] (total)
+  remaining  : 0
+  aggregates : 0 (phase), 22386 (total)
+"UC": MueLu::Aggregates_kokkos{nGlobalAggregates = 22386}
+Build (MueLu::CoarseMapFactory_kokkos)
+AverageCoords
+Get Aggregates graph
+Check good map
+Calc AggSizes
+Create Agg2RowMap
+Stage 0 (InitViews)
+Stage 1 (LocalQR)
+Stage 2 (CompressRows)
+Stage 2 (CompressCols)
+TentativePFactory : aggregates do not cross process boundaries
+Stage 3 (LocalMatrix+FillComplete)
+
+******* WARNING *******
+Level::Set: unable to store "Coordinates" generated by factory TentativePFactory_kokkos[397](0x85d15700) on level 2, as it has not been requested and no keep flags were set for it
+Eigenvalue estimate
+Using cached max eigenvalue estimate
+Prolongator damping factor = 0.47 (1.33 / 2.86)
+Fused (I-omega*D^{-1} A)*Ptent
+Diagonal Extraction
+Xpetra::IteratorOps::Jacobi
+
+******* WARNING *******
+Level::Set: unable to store "Ptent" generated by factory TogglePFactory[400](0x859c2370) on level 2, as it has not been requested and no keep flags were set for it
+MxM: A x P
+Transpose P (MueLu::TransPFactory)
+MxM: R x (AP) (explicit)
+
+******* WARNING *******
+CheckRepairMainDiagonal: repaired 0 too small entries (threshold = 0.00) on main diagonal of Ac.
+
+******* WARNING *******
+Level::Set: unable to store "AP reuse data" generated by factory RAPFactory[403](0x88afe960) on level 2, as it has not been requested and no keep flags were set for it
+
+******* WARNING *******
+Level::Set: unable to store "RAP reuse data" generated by factory RAPFactory[403](0x88afe960) on level 2, as it has not been requested and no keep flags were set for it
+Projections
+RAPFactory: call transfer factory: MueLu::ToggleCoordinatesTransferFactory
+Coordinate transfer toggle (MueLu::ToggleCoordinatesTransferFactory)
+Transfer Coordinates1 to coarse level
+Build (MueLu::CoordinatesTransferFactory_kokkos)
+Transferring coordinates
+AverageCoords
+Build (MueLu::RepartitionHeuristicFactory)
+
+******* WARNING *******
+Level::Set: unable to store "repartition: heuristic target rows per process" generated by factory RepartitionHeuristicFactory[404](0x859b4e10) on level 2, as it has not been requested and no keep flags were set for it
+Repartitioning? YES:
+  min # rows per proc = 2472, min allowable = 3000
+Number of partitions to use = 22
+Build (MueLu::ZoltanInterface)
+Zoltan RCB
+
+  Build configuration:
+  ZOLTAN_ID_TYPE: unsigned int (4 bytes)
+  ZOLTAN_GNO_TYPE: ssize_t, (8 bytes)
+  MPI_Datatype for ZOLTAN_ID_TYPE: MPI_UNSIGNED
+  MPI_Datatype for ZOLTAN_GNO_TYPE: MPI_LONG
+ZOLTAN Parameter IMBALANCE_TOL[0] = 1.100000
+ZOLTAN Parameter AUTO_MIGRATE = FALSE
+ZOLTAN Parameter MIGRATE_ONLY_PROC_CHANGES = 1
+ZOLTAN Parameter OBJ_WEIGHT_DIM = 1
+ZOLTAN Parameter EDGE_WEIGHT_DIM = 0
+ZOLTAN Parameter DEBUG_LEVEL = 1
+ZOLTAN Parameter DEBUG_PROCESSOR = 0
+ZOLTAN Parameter DETERMINISTIC = TRUE
+ZOLTAN Parameter TIMER = 1 (wall)
+ZOLTAN Parameter NUM_GID_ENTRIES = 1
+ZOLTAN Parameter NUM_LID_ENTRIES = 0
+ZOLTAN Parameter RETURN_LISTS = IMPORT AND EXPORT
+ZOLTAN Parameter NUM_GLOBAL_PARTS = 22
+ZOLTAN Parameter NUM_LOCAL_PARTS = -1
+ZOLTAN Parameter REMAP = 1
+ZOLTAN Parameter SEED = 2099584695 (2099584695)
+ZOLTAN Parameter LB_APPROACH = repartition
+ZOLTAN Parameter RCB_OVERALLOC = 1.200000
+ZOLTAN Parameter RCB_REUSE = 0
+ZOLTAN Parameter CHECK_GEOM = 1
+ZOLTAN Parameter RCB_OUTPUT_LEVEL = 0
+ZOLTAN Parameter KEEP_CUTS = 0
+ZOLTAN Parameter RCB_LOCK_DIRECTIONS = 0
+ZOLTAN Parameter RCB_SET_DIRECTIONS = 0
+ZOLTAN Parameter RCB_RECTILINEAR_BLOCKS = 0
+ZOLTAN Parameter OBJ_WEIGHTS_COMPARABLE = 0
+ZOLTAN Parameter RCB_MULTICRITERIA_NORM = 1
+ZOLTAN Parameter RCB_MAX_ASPECT_RATIO = 10.000000
+ZOLTAN Parameter AVERAGE_CUTS = 0
+ZOLTAN Parameter RANDOM_PIVOTS = 0
+ZOLTAN Parameter RCB_RECOMPUTE_BOX = 0
+ZOLTAN Parameter REDUCE_DIMENSIONS = 0
+ZOLTAN Parameter DEGENERATE_RATIO = 0.000000
+ZOLTAN Parameter FINAL_OUTPUT = 0
+ZOLTAN Parameter KEEP_CUTS = 0
+ZOLTAN Parameter REDUCE_DIMENSIONS = 0
+ZOLTAN Parameter DEGENERATE_RATIO = 10.000000
+DeterminePartitionPlacement
+Number of unassigned partitions before cleanup stage: 1 / 22
+Import construction
+Rebalancing prolongator
+Using original prolongator
+Rebalancing coordinates
+
+******* WARNING *******
+Level::Set: unable to store "Coordinates" generated by factory RebalanceTransferFactory[407](0x88b01190) on level 2, as it has not been requested and no keep flags were set for it
+Rebalancing nullspace
+
+******* WARNING *******
+Level::Set: unable to store "Nullspace" generated by factory RebalanceTransferFactory[407](0x88b01190) on level 2, as it has not been requested and no keep flags were set for it
+Transpose P (MueLu::TransPFactory)
+Computing Ac (MueLu::RebalanceAcFactory)
+Rebalancing existing Ac
+Replacing maps with a subcommunicator
+Setup Smoother (MueLu::Ifpack2Smoother{type = CHEBYSHEV})
+chebyshev: ratio eigenvalue (computed) = 25.65
+Preconditioner init
+Preconditioner compute
+chebyshev: max eigenvalue (calculated by Ifpack2) = 2.51
+"Ifpack2::Chebyshev": {Initialized: true, Computed: true, "Ifpack2::Details::Chebyshev":{degree: 4, lambdaMax: 2.51487, alpha: 25.6539, lambdaMin: 0.0980308, boost factor: 1.1}, Global matrix dimensions: [67158, 67158], Global nnz: 2472372}
+
+******* WARNING *******
+Level::Set: unable to store "PostSmoother" generated by factory SmootherFactory[419](0x858d6d30) on level 2, as it has not been requested and no keep flags were set for it
+
+--------------------------------------------------------------------------------
+---                            Multigrid Summary                             ---
+--------------------------------------------------------------------------------
+Scalar              = double
+Number of levels    = 3
+Operator complexity = 1.02
+Smoother complexity = 1.04
+Cycle type          = V
+
+level  rows     nnz        nnz/row  c ratio  procs
+  0  8826552  456138480  51.68                 24  
+  1  420312   7477680    17.79    21.00        24  
+  2  67158    2472372    36.81    6.26         22  
+
+Smoother (level 0) both : "Ifpack2::Chebyshev": {Initialized: true, Computed: true, "Ifpack2::Details::Chebyshev":{degree: 2, lambdaMax: 6.42885, alpha: 27.572, lambdaMin: 0.233166, boost factor: 1.1}, Global matrix dimensions: [8826552, 8826552], Global nnz: 456138480}
+
+Smoother (level 1) both : "Ifpack2::Chebyshev": {Initialized: true, Computed: true, "Ifpack2::Details::Chebyshev":{degree: 4, lambdaMax: 2.85611, alpha: 25.6539, lambdaMin: 0.111332, boost factor: 1.1}, Global matrix dimensions: [420312, 420312], Global nnz: 7477680}
+
+Smoother (level 2) pre  : "Ifpack2::Chebyshev": {Initialized: true, Computed: true, "Ifpack2::Details::Chebyshev":{degree: 4, lambdaMax: 2.51487, alpha: 25.6539, lambdaMin: 0.0980308, boost factor: 1.1}, Global matrix dimensions: [67158, 67158], Global nnz: 2472372}
+Smoother (level 2) post : no smoother
+
+=====================================================================================================================
+
+                                       TimeMonitor results over 24 processors
+
+Timer Name          Local time (num calls)    MinOverProcs    MeanOverProcs    MaxOverProcs    MeanOverCallCounts    
+---------------------------------------------------------------------------------------------------------------------
+MueLu setup time    0.7020 (1)                0.7020 (1)      0.7020 (1)       0.7020 (1)      0.7020 (1)            
+=====================================================================================================================
+  
+  *******************************************************
+  ***** Belos Iterative Solver:  Block Gmres 
+  ***** Maximum Iterations: 200
+  ***** Block Size: 1
+  ***** Residual Test: 
+  *****   Test 1 : Belos::StatusTestImpResNorm<>: (2-Norm Res Vec) / (2-Norm Res0), tol = 1e-06
+  *******************************************************
+  Iter   0, [ 1] :    1.000000e+00
+  Iter  20, [ 1] :    9.571139e-03
+  Iter  40, [ 1] :    4.210483e-04
+  Iter  60, [ 1] :    1.720625e-05
+  Iter  78, [ 1] :    9.351592e-07
+
+************************************************************************
+-- Nonlinear Solver Step 8 -- 
+||F|| = 2.144e+01  step = 1.000e+00  dx = 7.795e+00 (Converged!)
+************************************************************************
+
+************************************************************************
+-- Final Status Test Results --
+Converged....OR Combination -> 
+  Converged....OR Combination -> 
+    **...........F-Norm = 7.216e-03 < 1.000e-05
+                 (Length-Scaled Two-Norm, Absolute Tolerance)
+    Converged....WRMS-Norm = 1.449e-02 < 1
+                 (Min Step Size:  1.000e+00 >= 1)
+  ??...........Number of Iterations = -1 < 50
+************************************************************************
+         Response[0] = -2.79754733e+00 
+Finished eval of first model: Params, Responses 
+
+Response 0: Solution Average
+
+                    -2.797547334220e+00
+
+CheckTestResults: Number of Comparisons Attempted = 1
+
+Main_Solve: MeanValue of final solution -2.797547334220e+00
+
+Number of Failed Comparisons: 0
+*** Teuchos::StackedTimer::report() - Remainder for a level will be ***
+*** incorrect if a timer in the level does not exist on every rank  ***
+*** of the MPI Communicator.                                        ***
+Albany Total Time: 44.8989 [1] {min=44.8524, max=44.9325, std dev=0.0213409}
+|   Albany: Setup Time: 26.1371 - 58.2133% [1] {min=26.0975, max=26.1869, std dev=0.0231253}
+|   Piro::NOXSolver::evalModelImpl::solve: 18.4682 - 41.1328% [1] {min=18.4681, max=18.4682, std dev=2.96427e-05}
+|   |   Thyra::NOXNonlinearSolver::solve: 18.4674 - 99.9956% [1] {min=18.4672, max=18.4675, std dev=7.06976e-05}
+|   |   |   Thyra::DefaultModelEvaluatorWithSolveFactory<double>::evalModel(...): 3.29757 - 17.8562% [21] {min=3.25362, max=3.3499, std dev=0.0383724}
+|   |   |   |   Albany: Total Fill Time: 3.29654 - 99.9687% [21] {min=3.25258, max=3.34889, std dev=0.0383749}
+|   |   |   |   |   Albany Fill: Residual: 0.4849 - 14.7094% [13] {min=0.440726, max=0.53738, std dev=0.0384674}
+|   |   |   |   |   |   Phalanx::SortAndOrderEvaluators: 9.60042e-07 - 0.000197987% [1] {min=5.98e-07, max=1.949e-06, std dev=3.8043e-07}
+|   |   |   |   |   |   Albany Residual Fill: Evaluate: 0.308966 - 63.7174% [13] {min=0.291618, max=0.327626, std dev=0.00971441}
+|   |   |   |   |   |   |   Phalanx: Evaluator 18: [<Residual>] Shared Parameter Glen's Law Homotopy Parameter<Residual>: 0.00055654 - 0.18013% [13] {min=0.000132129, max=0.000930232, std dev=0.000221807}
+|   |   |   |   |   |   |   Phalanx: Evaluator 3: [<Residual>] LoadStateField(temperature)<Residual>: 0.013885 - 4.49402% [13] {min=0.0135048, max=0.0145043, std dev=0.000196501}
+|   |   |   |   |   |   |   Phalanx: Evaluator 56: [<Residual>] P0Interpolation[temperature] <Residual>: 0.00436661 - 1.4133% [13] {min=0.0030521, max=0.00712053, std dev=0.00110303}
+|   |   |   |   |   |   |   Phalanx: Evaluator 2: [<Residual>] Gather Coordinate Vector<Residual>: 0.0125037 - 4.04696% [13] {min=0.01201, max=0.0129179, std dev=0.000316186}
+|   |   |   |   |   |   |   Phalanx: Evaluator 12: [<Residual>] ComputeBasisFunctions<Residual>: 0.0228874 - 7.40776% [13] {min=0.0208373, max=0.0263049, std dev=0.00146918}
+|   |   |   |   |   |   |   Phalanx: Evaluator 0: [<Residual>] Gather Solution<Residual>: 0.00733358 - 2.37359% [13] {min=0.00584221, max=0.00871731, std dev=0.00075584}
+|   |   |   |   |   |   |   Phalanx: Evaluator 49: [<Residual>] FastSolutionVecGradInterpolationBase<Residual>: 0.0699425 - 22.6376% [13] {min=0.0673418, max=0.0713391, std dev=0.00157087}
+|   |   |   |   |   |   |   Phalanx: Evaluator 20: [<Residual>] ViscosityFO<Residual>: 0.00648892 - 2.10021% [13] {min=0.00582674, max=0.00743428, std dev=0.000545939}
+|   |   |   |   |   |   |   Phalanx: Evaluator 5: [<Residual>] LoadStateField(surface_height)<Residual>: 0.01381 - 4.46974% [13] {min=0.0133617, max=0.0145655, std dev=0.000241025}
+|   |   |   |   |   |   |   Phalanx: Evaluator 54: [<Residual>] DOFGradInterpolationBase<Residual>: 0.00459884 - 1.48846% [13] {min=0.00415379, max=0.00599694, std dev=0.000459279}
+|   |   |   |   |   |   |   Phalanx: Evaluator 21: [<Residual>] StokesFOBodyForce<Residual>: 0.000519388 - 0.168105% [13] {min=0.000493109, max=0.000573547, std dev=2.06298e-05}
+|   |   |   |   |   |   |   Phalanx: Evaluator 48: [<Residual>] FastSolutionVecInterpolationBase<Residual>: 0.0254068 - 8.22318% [13] {min=0.024202, max=0.0262875, std dev=0.000673347}
+|   |   |   |   |   |   |   Phalanx: Evaluator 15: [<Residual>] StokesFOResid<Residual>: 0.0663533 - 21.4759% [13] {min=0.0644212, max=0.0676936, std dev=0.00112742}
+|   |   |   |   |   |   |   Phalanx: Evaluator 47: [<Residual>] DOFCellToSide(Coord Vec -> Coord Vec_lateralside)[Vertex Vector]<Residual>: 0.00023105 - 0.0747817% [13] {min=9.2924e-05, max=0.000376696, std dev=0.000104055}
+|   |   |   |   |   |   |   Phalanx: Evaluator 44: [<Residual>] ComputeBasisFunctionsSide<Residual>: 0.00861683 - 2.78892% [13] {min=0.000118558, max=0.0142651, std dev=0.00616304}
+|   |   |   |   |   |   |   Phalanx: Evaluator 69: [<Residual>] DOFCellToSide(surface_height -> surface_height_lateralside)[Node Scalar]<Residual>: 0.00022118 - 0.0715872% [13] {min=8.0035e-05, max=0.00048806, std dev=0.00013081}
+|   |   |   |   |   |   |   Phalanx: Evaluator 70: [<Residual>] DOFInterpolationSide<Residual>: 0.000298897 - 0.096741% [13] {min=8.2205e-05, max=0.000917126, std dev=0.000242542}
+|   |   |   |   |   |   |   Phalanx: Evaluator 4: [<Residual>] LoadStateField(ice_thickness)<Residual>: 0.01387 - 4.48917% [13] {min=0.0134012, max=0.0149927, std dev=0.000348194}
+|   |   |   |   |   |   |   Phalanx: Evaluator 67: [<Residual>] DOFCellToSide(ice_thickness -> ice_thickness_lateralside)[Node Scalar]<Residual>: 0.00107209 - 0.346992% [13] {min=9.0076e-05, max=0.00227051, std dev=0.000786837}
+|   |   |   |   |   |   |   Phalanx: Evaluator 68: [<Residual>] DOFInterpolationSide<Residual>: 0.000138253 - 0.044747% [13] {min=7.3851e-05, max=0.000192232, std dev=4.27095e-05}
+|   |   |   |   |   |   |   Phalanx: Evaluator 22: [<Residual>] StokesFOLateralResid<Residual>: 0.00134327 - 0.434764% [13] {min=8.3381e-05, max=0.00305033, std dev=0.00101569}
+|   |   |   |   |   |   |   Phalanx: Evaluator 43: [<Residual>] DOFCellToSide(Coord Vec -> Coord Vec_basalside)[Vertex Vector]<Residual>: 0.000277109 - 0.0896892% [13] {min=0.000165167, max=0.000792903, std dev=0.000127963}
+|   |   |   |   |   |   |   Phalanx: Evaluator 40: [<Residual>] ComputeBasisFunctionsSide<Residual>: 0.0059315 - 1.91979% [13] {min=0.00486592, max=0.00771865, std dev=0.000910302}
+|   |   |   |   |   |   |   Phalanx: Evaluator 57: [<Residual>] DOFCellToSide(Velocity -> Velocity_basalside)[Node Vector]<Residual>: 0.00111614 - 0.361251% [13] {min=0.000735163, max=0.00197176, std dev=0.000353272}
+|   |   |   |   |   |   |   Phalanx: Evaluator 58: [<Residual>] DOFVecInterpolationSide<Residual>: 0.00168635 - 0.545805% [13] {min=0.00146164, max=0.00197634, std dev=0.000138073}
+|   |   |   |   |   |   |   Phalanx: Evaluator 33: [<Residual>] Shared Parameter Power Exponent<Residual>: 0.000475994 - 0.15406% [13] {min=0.000122453, max=0.00062253, std dev=8.8581e-05}
+|   |   |   |   |   |   |   Phalanx: Evaluator 7: [<Residual>] Load Side Set Field basal_friction_basalside from Side Set State basal_friction<Residual>: 0.00235509 - 0.762249% [13] {min=0.00224832, max=0.00266247, std dev=0.000101602}
+|   |   |   |   |   |   |   Phalanx: Evaluator 60: [<Residual>] DOFInterpolationSide<Residual>: 0.00032208 - 0.104244% [13] {min=0.000274632, max=0.000420431, std dev=4.28074e-05}
+|   |   |   |   |   |   |   Phalanx: Evaluator 34: [<Residual>] BasalFrictionCoefficient<Residual>: 0.000832703 - 0.269513% [13] {min=0.000769808, max=0.000911137, std dev=3.98423e-05}
+|   |   |   |   |   |   |   Phalanx: Evaluator 23: [<Residual>] StokesFOBasalResid<Residual>: 0.00135168 - 0.437485% [13] {min=0.00113474, max=0.00231978, std dev=0.000326559}
+|   |   |   |   |   |   |   Phalanx: Evaluator 1: [<Residual>] Scatter Velocity Residual<Residual>: 0.0018669 - 0.604242% [13] {min=0.00180877, max=0.00194694, std dev=3.88074e-05}
+|   |   |   |   |   |   |   Remainder: 0.0183062 - 5.92499%
+|   |   |   |   |   |   Albany Residual Fill: Export: 0.0273328 - 5.63678% [13] {min=0.0058963, max=0.100382, std dev=0.025373}
+|   |   |   |   |   |   Remainder: 0.148601 - 30.6456%
+|   |   |   |   |   Albany Fill: Jacobian: 2.8114 - 85.2835% [8] {min=2.81078, max=2.81158, std dev=0.000167439}
+|   |   |   |   |   |   Phalanx::SortAndOrderEvaluators: 6.40917e-07 - 2.2797e-05% [1] {min=4.53e-07, max=1.314e-06, std dev=1.66714e-07}
+|   |   |   |   |   |   Albany Jacobian Fill: Evaluate: 1.67201 - 59.4726% [8] {min=1.55409, max=1.71869, std dev=0.0407761}
+|   |   |   |   |   |   |   Phalanx: Evaluator 89: [<Jacobian>] Shared Parameter Glen's Law Homotopy Parameter<Jacobian>: 0.000257651 - 0.0154096% [8] {min=8.7019e-05, max=0.000403693, std dev=0.000109621}
+|   |   |   |   |   |   |   Phalanx: Evaluator 74: [<Jacobian>] LoadStateField(temperature)<Jacobian>: 0.0136793 - 0.818131% [8] {min=0.0133346, max=0.0139338, std dev=0.00015019}
+|   |   |   |   |   |   |   Phalanx: Evaluator 126: [<Jacobian>] P0Interpolation[temperature] <Jacobian>: 0.00348286 - 0.208303% [8] {min=0.00264214, max=0.0042788, std dev=0.000495336}
+|   |   |   |   |   |   |   Phalanx: Evaluator 73: [<Jacobian>] Gather Coordinate Vector<Jacobian>: 0.0136702 - 0.817586% [8] {min=0.0134353, max=0.0139611, std dev=0.000163616}
+|   |   |   |   |   |   |   Phalanx: Evaluator 83: [<Jacobian>] ComputeBasisFunctions<Jacobian>: 0.0228014 - 1.36371% [8] {min=0.0220496, max=0.0252307, std dev=0.000672794}
+|   |   |   |   |   |   |   Phalanx: Evaluator 71: [<Jacobian>] Gather Solution<Jacobian>: 0.00834434 - 0.499059% [8] {min=0.00773456, max=0.00893713, std dev=0.000320014}
+|   |   |   |   |   |   |   Phalanx: Evaluator 120: [<Jacobian>] FastSolutionVecGradInterpolationBase<Jacobian>: 0.161431 - 9.65491% [8] {min=0.149897, max=0.166698, std dev=0.00686577}
+|   |   |   |   |   |   |   Phalanx: Evaluator 91: [<Jacobian>] ViscosityFO<Jacobian>: 0.0657041 - 3.92964% [8] {min=0.062624, max=0.0672198, std dev=0.00170524}
+|   |   |   |   |   |   |   Phalanx: Evaluator 76: [<Jacobian>] LoadStateField(surface_height)<Jacobian>: 0.0136952 - 0.819082% [8] {min=0.0133807, max=0.0139052, std dev=0.000145304}
+|   |   |   |   |   |   |   Phalanx: Evaluator 124: [<Jacobian>] DOFGradInterpolationBase<Jacobian>: 0.00453702 - 0.27135% [8] {min=0.0040394, max=0.00580247, std dev=0.000381083}
+|   |   |   |   |   |   |   Phalanx: Evaluator 92: [<Jacobian>] StokesFOBodyForce<Jacobian>: 0.00281048 - 0.168089% [8] {min=0.00261186, max=0.00294247, std dev=0.000102152}
+|   |   |   |   |   |   |   Phalanx: Evaluator 119: [<Jacobian>] FastSolutionVecInterpolationBase<Jacobian>: 0.0543009 - 3.24763% [8] {min=0.05053, max=0.0559864, std dev=0.00215711}
+|   |   |   |   |   |   |   Phalanx: Evaluator 86: [<Jacobian>] StokesFOResid<Jacobian>: 0.682973 - 40.8473% [8] {min=0.66846, max=0.695656, std dev=0.0078301}
+|   |   |   |   |   |   |   Phalanx: Evaluator 118: [<Jacobian>] DOFCellToSide(Coord Vec -> Coord Vec_lateralside)[Vertex Vector]<Jacobian>: 0.00017212 - 0.0102942% [8] {min=5.7746e-05, max=0.000366106, std dev=9.88527e-05}
+|   |   |   |   |   |   |   Phalanx: Evaluator 115: [<Jacobian>] ComputeBasisFunctionsSide<Jacobian>: 0.00812699 - 0.48606% [8] {min=7.3433e-05, max=0.0134398, std dev=0.00583521}
+|   |   |   |   |   |   |   Phalanx: Evaluator 75: [<Jacobian>] LoadStateField(ice_thickness)<Jacobian>: 0.0136971 - 0.819196% [8] {min=0.0134766, max=0.0139806, std dev=0.000147818}
+|   |   |   |   |   |   |   Phalanx: Evaluator 137: [<Jacobian>] DOFCellToSide(ice_thickness -> ice_thickness_lateralside)[Node Scalar]<Jacobian>: 0.00106716 - 0.0638246% [8] {min=6.2125e-05, max=0.00243409, std dev=0.000830398}
+|   |   |   |   |   |   |   Phalanx: Evaluator 138: [<Jacobian>] DOFInterpolationSide<Jacobian>: 0.000213928 - 0.0127946% [8] {min=4.6827e-05, max=0.000868666, std dev=0.000227672}
+|   |   |   |   |   |   |   Phalanx: Evaluator 139: [<Jacobian>] DOFCellToSide(surface_height -> surface_height_lateralside)[Node Scalar]<Jacobian>: 9.22845e-05 - 0.00551936% [8] {min=4.4654e-05, max=0.000273062, std dev=4.68578e-05}
+|   |   |   |   |   |   |   Phalanx: Evaluator 140: [<Jacobian>] DOFInterpolationSide<Jacobian>: 9.0746e-05 - 0.00542734% [8] {min=4.4596e-05, max=0.000202672, std dev=3.68455e-05}
+|   |   |   |   |   |   |   Phalanx: Evaluator 93: [<Jacobian>] StokesFOLateralResid<Jacobian>: 0.00127855 - 0.0764675% [8] {min=4.7019e-05, max=0.00458181, std dev=0.00110018}
+|   |   |   |   |   |   |   Phalanx: Evaluator 114: [<Jacobian>] DOFCellToSide(Coord Vec -> Coord Vec_basalside)[Vertex Vector]<Jacobian>: 0.000168991 - 0.010107% [8] {min=0.000118773, max=0.000510981, std dev=8.64472e-05}
+|   |   |   |   |   |   |   Phalanx: Evaluator 111: [<Jacobian>] ComputeBasisFunctionsSide<Jacobian>: 0.00538418 - 0.322018% [8] {min=0.00468507, max=0.00637458, std dev=0.000407521}
+|   |   |   |   |   |   |   Phalanx: Evaluator 127: [<Jacobian>] DOFCellToSide(Velocity -> Velocity_basalside)[Node Vector]<Jacobian>: 0.00172086 - 0.102922% [8] {min=0.0016148, max=0.00183534, std dev=6.43668e-05}
+|   |   |   |   |   |   |   Phalanx: Evaluator 128: [<Jacobian>] DOFVecInterpolationSide<Jacobian>: 0.00553272 - 0.330901% [8] {min=0.00542626, max=0.00578674, std dev=8.76717e-05}
+|   |   |   |   |   |   |   Phalanx: Evaluator 104: [<Jacobian>] Shared Parameter Power Exponent<Jacobian>: 0.000289216 - 0.0172975% [8] {min=9.0302e-05, max=0.000352637, std dev=5.27296e-05}
+|   |   |   |   |   |   |   Phalanx: Evaluator 78: [<Jacobian>] Load Side Set Field basal_friction_basalside from Side Set State basal_friction<Jacobian>: 0.00231931 - 0.138714% [8] {min=0.00218612, max=0.00262232, std dev=8.84378e-05}
+|   |   |   |   |   |   |   Phalanx: Evaluator 130: [<Jacobian>] DOFInterpolationSide<Jacobian>: 0.000251401 - 0.0150358% [8] {min=0.000225135, max=0.000310532, std dev=2.17726e-05}
+|   |   |   |   |   |   |   Phalanx: Evaluator 105: [<Jacobian>] BasalFrictionCoefficient<Jacobian>: 0.00073828 - 0.0441551% [8] {min=0.000660535, max=0.00103234, std dev=8.85e-05}
+|   |   |   |   |   |   |   Phalanx: Evaluator 94: [<Jacobian>] StokesFOBasalResid<Jacobian>: 0.00441313 - 0.263941% [8] {min=0.00429526, max=0.00457944, std dev=9.25022e-05}
+|   |   |   |   |   |   |   Phalanx: Evaluator 72: [<Jacobian>] Scatter Velocity Residual<Jacobian>: 0.567999 - 33.9709% [8] {min=0.488749, max=0.598014, std dev=0.0280933}
+|   |   |   |   |   |   |   Remainder: 0.010771 - 0.644193%
+|   |   |   |   |   |   Albany Jacobian Fill: Export: 0.102754 - 3.65492% [8] {min=0.0561981, max=0.220673, std dev=0.0407589}
+|   |   |   |   |   |   Remainder: 1.03663 - 36.8724%
+|   |   |   |   |   Remainder: 0.000235297 - 0.0071377%
+|   |   |   |   Remainder: 0.00103342 - 0.0313388%
+|   |   |   NOX Total Preconditioner Construction: 5.95576 - 32.2502% [8] {min=5.94333, max=5.96166, std dev=0.00408521}
+|   |   |   |   ThyraMueLu::initializePrec: 5.90728 - 99.1859% [8] {min=5.90724, max=5.9073, std dev=1.20009e-05}
+|   |   |   |   |   MueLu: ParameterListInterpreter (ParameterList): 0.0121814 - 0.20621% [8] {min=0.0121279, max=0.012291, std dev=3.67626e-05}
+|   |   |   |   |   MueLu: Hierarchy: Setup (total): 5.83503 - 98.777% [24] {min=5.51244, max=5.86468, std dev=0.0930828}
+|   |   |   |   |   |   MueLu: Hierarchy: Setup (total, level=0): 1.00955 - 17.3016% [8] {min=1.00913, max=1.01012, std dev=0.000361074}
+|   |   |   |   |   |   |   MueLu: Ifpack2Smoother: Setup Smoother (total): 0.916157 - 90.7488% [8] {min=0.915477, max=0.916695, std dev=0.000330658}
+|   |   |   |   |   |   |   |   MueLu: Ifpack2Smoother: SetPrecParameters: 0.000260507 - 0.0284348% [8] {min=0.000236253, max=0.000282076, std dev=1.30256e-05}
+|   |   |   |   |   |   |   |   MueLu: Ifpack2Smoother: Preconditioner init (sub, total): 5.80317e-06 - 0.000633425% [8] {min=4.46e-06, max=6.68e-06, std dev=5.54224e-07}
+|   |   |   |   |   |   |   |   MueLu: Ifpack2Smoother: Preconditioner compute (sub, total): 3.85192e-06 - 0.000420443% [8] {min=3.415e-06, max=4.96e-06, std dev=4.21291e-07}
+|   |   |   |   |   |   |   |   Ifpack2::Chebyshev::compute: 0.91508 - 99.8824% [8] {min=0.914413, max=0.915609, std dev=0.000294762}
+|   |   |   |   |   |   |   |   Remainder: 0.000806785 - 0.0880619%
+|   |   |   |   |   |   |   Remainder: 0.0933954 - 9.25117%
+|   |   |   |   |   |   MueLu: Hierarchy: Setup (total, level=1): 2.36433 - 40.5196% [8] {min=2.36392, max=2.36462, std dev=0.000244477}
+|   |   |   |   |   |   |   MueLu: RebalanceTransferFactory: Build (total): 2.00674 - 84.8756% [8] {min=2.00604, max=2.00738, std dev=0.000396485}
+|   |   |   |   |   |   |   |   MueLu: RepartitionFactory: Build (total): 2.00571 - 99.9484% [8] {min=2.00486, max=2.00634, std dev=0.000420316}
+|   |   |   |   |   |   |   |   |   MueLu: RAPFactory: Computing Ac (total): 1.99707 - 99.5694% [8] {min=1.99633, max=1.99768, std dev=0.000409633}
+|   |   |   |   |   |   |   |   |   |   MueLu: TogglePFactory: Prolongator toggle (total): 1.00412 - 50.2798% [8] {min=1.0035, max=1.00481, std dev=0.000430785}
+|   |   |   |   |   |   |   |   |   |   |   MueLu: SemiCoarsenPFactory_kokkos: Build (total): 1.00302 - 99.8898% [8] {min=1.00232, max=1.00379, std dev=0.000459985}
+|   |   |   |   |   |   |   |   |   |   |   |   MueLu: LineDetectionFactory: Line detection (Ray style) (total): 0.551375 - 54.9717% [8] {min=0.522813, max=0.602702, std dev=0.0161642}
+|   |   |   |   |   |   |   |   |   |   |   |   MueLu: SemiCoarsenPFactory_kokkos: BuildSemiCoarsenP (sub, total): 0.438302 - 43.6984% [8] {min=0.388071, max=0.46711, std dev=0.0159081}
+|   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: SemiCoarsenPFactory_kokkos: Fill P (sub, total): 0.183441 - 41.8526% [8] {min=0.165317, max=0.190505, std dev=0.00614487}
+|   |   |   |   |   |   |   |   |   |   |   |   |   Remainder: 0.254861 - 58.1474%
+|   |   |   |   |   |   |   |   |   |   |   |   MueLu: SemiCoarsenPFactory_kokkos: TransferCoordinates (sub, total): 0.0125712 - 1.25334% [8] {min=0.0119308, max=0.0131804, std dev=0.000290673}
+|   |   |   |   |   |   |   |   |   |   |   |   Remainder: 0.000768283 - 0.0765972%
+|   |   |   |   |   |   |   |   |   |   |   Remainder: 0.00110655 - 0.110201%
+|   |   |   |   |   |   |   |   |   |   MueLu: RAPFactory: MxM: A x P (sub, total): 0.548784 - 27.4795% [8] {min=0.538069, max=0.578455, std dev=0.00937105}
+|   |   |   |   |   |   |   |   |   |   MueLu: TransPFactory: Transpose P (total): 0.0592638 - 2.96754% [8] {min=0.0291378, max=0.0701196, std dev=0.00950443}
+|   |   |   |   |   |   |   |   |   |   MueLu: RAPFactory: MxM: R x (AP) (explicit) (sub, total): 0.368669 - 18.4605% [8] {min=0.368248, max=0.368855, std dev=0.000137018}
+|   |   |   |   |   |   |   |   |   |   Remainder: 0.0162297 - 0.812674%
+|   |   |   |   |   |   |   |   |   MueLu: RAPFactory: Projections (sub, total): 0.000694122 - 0.0346074% [8] {min=0.000641233, max=0.000837474, std dev=4.49349e-05}
+|   |   |   |   |   |   |   |   |   |   MueLu: ToggleCoordinatesTransferFactory: Coordinate transfer toggle (total): 0.00033484 - 48.2394% [8] {min=0.000302763, max=0.000430273, std dev=2.93147e-05}
+|   |   |   |   |   |   |   |   |   |   Remainder: 0.000359282 - 51.7606%
+|   |   |   |   |   |   |   |   |   MueLu: RepartitionHeuristicFactory: Build (total): 0.00198612 - 0.0990234% [8] {min=0.00122727, max=0.00270012, std dev=0.000315203}
+|   |   |   |   |   |   |   |   |   MueLu: ZoltanInterface: Build (total): 0.00141015 - 0.0703069% [8] {min=0.000855582, max=0.00191608, std dev=0.000294575}
+|   |   |   |   |   |   |   |   |   Remainder: 0.00454555 - 0.226631%
+|   |   |   |   |   |   |   |   MueLu: RebalanceTransferFactory: Rebalancing prolongator (sub, total): 2.06137e-05 - 0.00102722% [8] {min=1.7844e-05, max=4.2422e-05, std dev=4.80341e-06}
+|   |   |   |   |   |   |   |   Remainder: 0.00101398 - 0.0505285%
+|   |   |   |   |   |   |   MueLu: TransPFactory: Transpose P (total): 0.0183637 - 0.776696% [8] {min=0.0178779, max=0.0189092, std dev=0.000283315}
+|   |   |   |   |   |   |   MueLu: RebalanceAcFactory: Computing Ac (total): 0.000130693 - 0.00552771% [8] {min=0.0001251, max=0.000182697, std dev=1.36491e-05}
+|   |   |   |   |   |   |   MueLu: Ifpack2Smoother: Setup Smoother (total): 0.334359 - 14.1418% [8] {min=0.334261, max=0.334426, std dev=3.99349e-05}
+|   |   |   |   |   |   |   |   MueLu: Ifpack2Smoother: SetPrecParameters: 0.000242919 - 0.0726522% [8] {min=0.000221738, max=0.000249457, std dev=6.14362e-06}
+|   |   |   |   |   |   |   |   MueLu: Ifpack2Smoother: Preconditioner init (sub, total): 4.55796e-06 - 0.00136319% [8] {min=3.655e-06, max=5.959e-06, std dev=5.88521e-07}
+|   |   |   |   |   |   |   |   MueLu: Ifpack2Smoother: Preconditioner compute (sub, total): 3.2275e-06 - 0.000965279% [8] {min=3.025e-06, max=3.76e-06, std dev=1.7062e-07}
+|   |   |   |   |   |   |   |   Ifpack2::Chebyshev::compute: 0.333574 - 99.7651% [8] {min=0.333496, max=0.333627, std dev=3.89805e-05}
+|   |   |   |   |   |   |   |   Remainder: 0.000534722 - 0.159924%
+|   |   |   |   |   |   |   Remainder: 0.00473836 - 0.20041%
+|   |   |   |   |   |   MueLu: Hierarchy: Setup (total, level=2): 2.46102 - 42.1766% [8] {min=2.13841, max=2.49046, std dev=0.0930954}
+|   |   |   |   |   |   |   MueLu: RebalanceTransferFactory: Build (total): 1.7927 - 72.8436% [8] {min=1.79233, max=1.79307, std dev=0.000261612}
+|   |   |   |   |   |   |   |   MueLu: RepartitionFactory: Build (total): 1.74066 - 97.0975% [8] {min=1.74035, max=1.74087, std dev=0.000116907}
+|   |   |   |   |   |   |   |   |   MueLu: RAPFactory: Computing Ac (total): 1.56333 - 89.8121% [8] {min=1.56269, max=1.56424, std dev=0.000358827}
+|   |   |   |   |   |   |   |   |   |   MueLu: TogglePFactory: Prolongator toggle (total): 0.42279 - 27.0443% [8] {min=0.397641, max=0.454432, std dev=0.0201294}
+|   |   |   |   |   |   |   |   |   |   |   MueLu: SaPFactory_kokkos: Prolongator smoothing (total): 0.421067 - 99.5925% [8] {min=0.395956, max=0.452739, std dev=0.0201278}
+|   |   |   |   |   |   |   |   |   |   |   |   MueLu: TentativePFactory_kokkos: Build (total): 0.206274 - 48.9884% [8] {min=0.206079, max=0.206398, std dev=0.000110318}
+|   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: UncoupledAggregationFactory_kokkos: Build (total): 0.150613 - 73.0158% [8] {min=0.150103, max=0.150762, std dev=0.000136498}
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: CoalesceDropFactory_kokkos: Build (total): 0.0801386 - 53.2084% [8] {min=0.0796406, max=0.0802317, std dev=0.000154332}
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: AmalgamationFactory_kokkos: Build (total): 0.0526441 - 65.6913% [8] {min=0.0521099, max=0.0529407, std dev=0.000176531}
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   Remainder: 0.0274945 - 34.3087%
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: UncoupledAggregationFactory_kokkos: Algo Graph Coloring (sub, total): 0.00605433 - 4.0198% [8] {min=0.00530065, max=0.00697734, std dev=0.000484552}
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: UncoupledAggregationFactory_kokkos: Algo Phase - (Dirichlet) (sub, total): 0.00465031 - 3.08759% [8] {min=0.00367655, max=0.00541716, std dev=0.000492524}
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: PreserveDirichletAggregationAlgorithm_kokkos: BuildAggregates (total): 0.002158 - 46.4054% [8] {min=0.00181583, max=0.00291803, std dev=0.000227789}
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   Remainder: 0.00249231 - 53.5946%
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: UncoupledAggregationFactory_kokkos: Algo Phase 1 (main) (sub, total): 0.00742074 - 4.92703% [8] {min=0.00738868, max=0.00743677, std dev=1.07825e-05}
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: AggregationPhase1Algorithm_kokkos: BuildAggregatesRandom (total): 0.00573382 - 77.2675% [8] {min=0.00448681, max=0.00657523, std dev=0.000467964}
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   Remainder: 0.00168692 - 22.7325%
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: UncoupledAggregationFactory_kokkos: Algo Phase 2a (secondary) (sub, total): 0.00628316 - 4.17173% [8] {min=0.00626511, max=0.00629317, std dev=1.00072e-05}
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: AggregationPhase2aAlgorithm_kokkos: BuildAggregatesRandom (total): 0.00519221 - 82.637% [8] {min=0.00468876, max=0.00567333, std dev=0.000235362}
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   Remainder: 0.00109095 - 17.363%
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: UncoupledAggregationFactory_kokkos: Algo Phase 2b (expansion) (sub, total): 0.0157535 - 10.4596% [8] {min=0.0157364, max=0.0157584, std dev=4.77156e-06}
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: AggregationPhase2bAlgorithm_kokkos: BuildAggregatesRandom (total): 0.013171 - 83.6071% [8] {min=0.0116701, max=0.0144016, std dev=0.000759783}
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   Remainder: 0.00258246 - 16.3929%
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: UncoupledAggregationFactory_kokkos: Algo Phase 3 (cleanup) (sub, total): 0.0153844 - 10.2145% [8] {min=0.0153647, max=0.0153944, std dev=6.8669e-06}
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: AggregationPhase3Algorithm_kokkos: BuildAggregatesRandom (total): 0.0124167 - 80.71% [8] {min=0.0113242, max=0.0136609, std dev=0.000607083}
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   Remainder: 0.00296764 - 19.29%
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   Remainder: 0.0149277 - 9.91133%
+|   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: CoarseMapFactory_kokkos: Build (total): 0.00766861 - 3.71768% [8] {min=0.00739161, max=0.00780596, std dev=0.000117383}
+|   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: TentativePFactory_kokkos: AverageCoords (sub, total): 0.00114306 - 0.554147% [8] {min=0.000782612, max=0.00184045, std dev=0.000212673}
+|   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: TentativePFactory_kokkos: Get Aggregates graph (sub, total): 6.45329e-06 - 0.0031285% [8] {min=5.715e-06, max=7.848e-06, std dev=4.74974e-07}
+|   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: TentativePFactory_kokkos: Check good map (sub, total): 0.000357614 - 0.173368% [8] {min=0.00032831, max=0.000596524, std dev=5.2011e-05}
+|   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: TentativePFactory_kokkos: Calc AggSizes (sub, total): 0.00174197 - 0.844493% [8] {min=0.00113871, max=0.00229983, std dev=0.000329567}
+|   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: TentativePFactory_kokkos: Create Agg2RowMap (sub, total): 0.00231973 - 1.12459% [8] {min=0.00172531, max=0.00309735, std dev=0.00034599}
+|   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: TentativePFactory_kokkos: Stage 0 (InitViews) (sub, total): 0.00129684 - 0.628699% [8] {min=0.000894872, max=0.00154096, std dev=0.000146168}
+|   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: TentativePFactory_kokkos: Stage 1 (LocalQR) (sub, total): 0.00479083 - 2.32255% [8] {min=0.0032806, max=0.00652327, std dev=0.000741116}
+|   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: TentativePFactory_kokkos: Stage 2 (CompressRows) (sub, total): 0.000374733 - 0.181667% [8] {min=0.000350767, max=0.000422143, std dev=1.6183e-05}
+|   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: TentativePFactory_kokkos: Stage 2 (CompressCols) (sub, total): 0.0045622 - 2.21172% [8] {min=0.00401283, max=0.00511379, std dev=0.000265194}
+|   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: TentativePFactory_kokkos: Stage 3 (LocalMatrix+FillComplete) (sub, total): 0.00589225 - 2.85651% [8] {min=0.00316689, max=0.00775663, std dev=0.00123418}
+|   |   |   |   |   |   |   |   |   |   |   |   |   Remainder: 0.0255071 - 12.3656%
+|   |   |   |   |   |   |   |   |   |   |   |   MueLu: SaPFactory_kokkos: Eigenvalue estimate (sub, total): 1.6738e-05 - 0.00397514% [8] {min=1.464e-05, max=3.8936e-05, std dev=4.82514e-06}
+|   |   |   |   |   |   |   |   |   |   |   |   MueLu: SaPFactory_kokkos: Fused (I-omega*D^{-1} A)*Ptent (sub, total): 0.213606 - 50.7297% [8] {min=0.188635, max=0.245192, std dev=0.0201123}
+|   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: SaPFactory_kokkos: Diagonal Extraction (sub, total): 0.00152376 - 0.71335% [8] {min=0.00104375, max=0.00197759, std dev=0.000237535}
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   Utilities_kokkos::GetMatrixDiagonalInverse: 0.00149178 - 97.9012% [8] {min=0.00101644, max=0.00194632, std dev=0.000237318}
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   Remainder: 3.1981e-05 - 2.09882%
+|   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: SaPFactory_kokkos: Xpetra::IteratorOps::Jacobi (sub, total): 0.212014 - 99.2547% [8] {min=0.187037, max=0.243746, std dev=0.0201146}
+|   |   |   |   |   |   |   |   |   |   |   |   |   Remainder: 6.82418e-05 - 0.0319475%
+|   |   |   |   |   |   |   |   |   |   |   |   Remainder: 0.0011702 - 0.277912%
+|   |   |   |   |   |   |   |   |   |   |   Remainder: 0.00172285 - 0.407495%
+|   |   |   |   |   |   |   |   |   |   MueLu: RAPFactory: MxM: A x P (sub, total): 0.268479 - 17.1736% [8] {min=0.235758, max=0.293741, std dev=0.0202767}
+|   |   |   |   |   |   |   |   |   |   MueLu: TransPFactory: Transpose P (total): 0.171885 - 10.9948% [8] {min=0.163987, max=0.178218, std dev=0.00300784}
+|   |   |   |   |   |   |   |   |   |   MueLu: RAPFactory: MxM: R x (AP) (explicit) (sub, total): 0.687228 - 43.9594% [8] {min=0.686782, max=0.687752, std dev=0.000253228}
+|   |   |   |   |   |   |   |   |   |   Remainder: 0.012944 - 0.827976%
+|   |   |   |   |   |   |   |   |   MueLu: RAPFactory: Projections (sub, total): 0.0155081 - 0.890929% [8] {min=0.0143803, max=0.0167553, std dev=0.000543049}
+|   |   |   |   |   |   |   |   |   |   MueLu: ToggleCoordinatesTransferFactory: Coordinate transfer toggle (total): 0.0115208 - 74.289% [8] {min=0.0107407, max=0.0125981, std dev=0.000492148}
+|   |   |   |   |   |   |   |   |   |   |   MueLu: CoordinatesTransferFactory_kokkos: Build (total): 0.010905 - 94.6553% [8] {min=0.0101117, max=0.0119498, std dev=0.000492046}
+|   |   |   |   |   |   |   |   |   |   |   |   MueLu: CoordinatesTransferFactory_kokkos: AverageCoords (sub, total): 0.00111613 - 10.235% [8] {min=0.00063238, max=0.00169295, std dev=0.000218914}
+|   |   |   |   |   |   |   |   |   |   |   |   Remainder: 0.00978889 - 89.765%
+|   |   |   |   |   |   |   |   |   |   |   Remainder: 0.000615756 - 5.34474%
+|   |   |   |   |   |   |   |   |   |   Remainder: 0.00398729 - 25.711%
+|   |   |   |   |   |   |   |   |   MueLu: RepartitionHeuristicFactory: Build (total): 0.00273265 - 0.156989% [8] {min=0.00185141, max=0.0040577, std dev=0.000597958}
+|   |   |   |   |   |   |   |   |   MueLu: ZoltanInterface: Build (total): 0.0946778 - 5.43918% [8] {min=0.0940473, max=0.0953005, std dev=0.000346191}
+|   |   |   |   |   |   |   |   |   |   MueLu: ZoltanInterface: Zoltan RCB (sub, total): 0.0728354 - 76.9297% [8] {min=0.0724278, max=0.0731765, std dev=0.000214987}
+|   |   |   |   |   |   |   |   |   |   Remainder: 0.0218424 - 23.0703%
+|   |   |   |   |   |   |   |   |   MueLu: RepartitionFactory: DeterminePartitionPlacement (sub, total): 0.0118639 - 0.681573% [8] {min=0.0114127, max=0.012154, std dev=0.000205528}
+|   |   |   |   |   |   |   |   |   MueLu: RepartitionFactory: Import construction (sub, total): 0.00991859 - 0.569817% [8] {min=0.00973771, max=0.0103356, std dev=0.000130531}
+|   |   |   |   |   |   |   |   |   Remainder: 0.0426361 - 2.44942%
+|   |   |   |   |   |   |   |   MueLu: RebalanceTransferFactory: Rebalancing prolongator (sub, total): 3.17448e-05 - 0.00177079% [8] {min=2.5819e-05, max=5.4739e-05, std dev=6.05962e-06}
+|   |   |   |   |   |   |   |   MueLu: RebalanceTransferFactory: Rebalancing coordinates (sub, total): 0.0336713 - 1.87825% [8] {min=0.0326409, max=0.0341612, std dev=0.000359031}
+|   |   |   |   |   |   |   |   MueLu: RebalanceTransferFactory: Rebalancing nullspace (sub, total): 0.0172052 - 0.95974% [8] {min=0.0168157, max=0.0180289, std dev=0.000274161}
+|   |   |   |   |   |   |   |   Remainder: 0.00112436 - 0.062719%
+|   |   |   |   |   |   |   MueLu: TransPFactory: Transpose P (total): 0.164526 - 6.68528% [8] {min=0.163968, max=0.165121, std dev=0.000348544}
+|   |   |   |   |   |   |   MueLu: RebalanceAcFactory: Computing Ac (total): 0.20878 - 8.48348% [8] {min=0.175681, max=0.212162, std dev=0.00957389}
+|   |   |   |   |   |   |   |   MueLu: RebalanceAcFactory: Rebalancing existing Ac (sub, total): 0.208541 - 99.8856% [8] {min=0.175432, max=0.211903, std dev=0.00957448}
+|   |   |   |   |   |   |   |   Remainder: 0.000238876 - 0.114415%
+|   |   |   |   |   |   |   MueLu: Ifpack2Smoother: Setup Smoother (total): 0.301437 - 12.2485% [7] {min=0.0408075, max=0.315435, std dev=0.0574448}
+|   |   |   |   |   |   |   |   MueLu: Ifpack2Smoother: SetPrecParameters: 0.000224914 - 0.074614% [7] {min=3.0476e-05, max=0.000250446, std dev=4.41936e-05}
+|   |   |   |   |   |   |   |   MueLu: Ifpack2Smoother: Preconditioner init (sub, total): 4.8167e-06 - 0.00159791% [7] {min=9.38e-07, max=6.204e-06, std dev=1.03697e-06}
+|   |   |   |   |   |   |   |   MueLu: Ifpack2Smoother: Preconditioner compute (sub, total): 3.1657e-06 - 0.0010502% [7] {min=6.21e-07, max=3.759e-06, std dev=5.73991e-07}
+|   |   |   |   |   |   |   |   Ifpack2::Chebyshev::compute: 0.30058 - 99.7157% [7] {min=0.0406857, max=0.314492, std dev=0.0572832}
+|   |   |   |   |   |   |   |   Remainder: 0.000623998 - 0.207008%
+|   |   |   |   |   |   |   Remainder: -0.00641981 - -0.26086%
+|   |   |   |   |   |   Remainder: 0.000125414 - 0.00214933%
+|   |   |   |   |   Remainder: 0.0600664 - 1.01682%
+|   |   |   |   Remainder: 0.0484888 - 0.814149%
+|   |   |   NOX Total Linear Solve: 9.10618 - 49.3096% [8] {min=9.1004, max=9.11815, std dev=0.00404162}
+|   |   |   |   Stratimikos: BelosLOWS: 9.10611 - 99.9992% [8] {min=9.10034, max=9.11807, std dev=0.0040414}
+|   |   |   |   |   Belos: Operation Op*x: 0.0122757 - 0.134808% [8] {min=0.00729673, max=0.0257365, std dev=0.00457885}
+|   |   |   |   |   Belos::MVT::MvAddMv: 0.000359174 - 0.00394432% [8] {min=0.000334473, max=0.000392691, std dev=1.78137e-05}
+|   |   |   |   |   Belos: BlockGmresSolMgr total solve time: 9.06977 - 99.6009% [8] {min=9.06629, max=9.0732, std dev=0.00177826}
+|   |   |   |   |   |   Belos: ICGS[2]: Orthogonalization: 1.58389 - 17.4634% [698] {min=1.42813, max=1.72539, std dev=0.068299}
+|   |   |   |   |   |   |   Belos: ICGS[2]: Ortho (Norm): 0.0739633 - 4.66973% [698] {min=0.0513362, max=0.0924699, std dev=0.0103147}
+|   |   |   |   |   |   |   |   Belos::MVT::MvDot: 0.07311 - 98.8463% [698] {min=0.0504525, max=0.0916649, std dev=0.0103471}
+|   |   |   |   |   |   |   |   Remainder: 0.000853297 - 1.15368%
+|   |   |   |   |   |   |   Belos::MVT::MvScale: 0.0174466 - 1.1015% [698] {min=0.0163423, max=0.0183139, std dev=0.000737966}
+|   |   |   |   |   |   |   Belos: ICGS[2]: Ortho (Inner Product): 1.00126 - 63.2156% [1380] {min=0.847905, max=1.15507, std dev=0.0706626}
+|   |   |   |   |   |   |   |   Belos::MVT::MvTransMv: 0.999139 - 99.7878% [1380] {min=0.845706, max=1.15302, std dev=0.0707009}
+|   |   |   |   |   |   |   |   Remainder: 0.00212497 - 0.212229%
+|   |   |   |   |   |   |   Belos: ICGS[2]: Ortho (Update): 0.485749 - 30.6681% [1380] {min=0.460954, max=0.525249, std dev=0.0157402}
+|   |   |   |   |   |   |   |   Belos::MVT::MvTimesMatAddMv: 0.483786 - 99.596% [1380] {min=0.458994, max=0.523231, std dev=0.0157141}
+|   |   |   |   |   |   |   |   Remainder: 0.00196231 - 0.403976%
+|   |   |   |   |   |   |   Remainder: 0.00546587 - 0.345092%
+|   |   |   |   |   |   Belos::MVT::MvAddMv: 0.00751756 - 0.082886% [32] {min=0.00701269, max=0.00802107, std dev=0.000233033}
+|   |   |   |   |   |   Belos::MVT::MvNorm: 0.00494869 - 0.0545625% [16] {min=0.00209517, max=0.00707569, std dev=0.0011114}
+|   |   |   |   |   |   Belos: Operation Prec*x: 6.46447 - 71.2749% [698] {min=6.36863, max=6.53647, std dev=0.0446892}
+|   |   |   |   |   |   |   MueLu: Hierarchy: Solve (total): 6.45292 - 99.8214% [698] {min=6.35766, max=6.5254, std dev=0.0445687}
+|   |   |   |   |   |   |   |   MueLu: Hierarchy: Solve (level=0): 2.91165 - 45.1214% [1396] {min=2.69265, max=3.03762, std dev=0.0914485}
+|   |   |   |   |   |   |   |   |   MueLu: Hierarchy: Solve : smoothing (level=0): 2.21732 - 76.1533% [1396] {min=2.03262, max=2.33778, std dev=0.0854671}
+|   |   |   |   |   |   |   |   |   |   Ifpack2::Chebyshev::apply: 2.20271 - 99.3413% [1396] {min=2.01859, max=2.32284, std dev=0.0853681}
+|   |   |   |   |   |   |   |   |   |   Remainder: 0.0146061 - 0.658727%
+|   |   |   |   |   |   |   |   |   MueLu: Hierarchy: Solve : residual calculation (level=0): 0.566878 - 19.4693% [698] {min=0.529083, max=0.594616, std dev=0.0214769}
+|   |   |   |   |   |   |   |   |   MueLu: Hierarchy: Solve : restriction (level=0): 0.0530307 - 1.82133% [698] {min=0.039342, max=0.0698399, std dev=0.00761387}
+|   |   |   |   |   |   |   |   |   MueLu: Hierarchy: Solve : prolongation (level=0): 0.0586919 - 2.01576% [698] {min=0.0551335, max=0.0654669, std dev=0.00216543}
+|   |   |   |   |   |   |   |   |   Remainder: 0.015733 - 0.540347%
+|   |   |   |   |   |   |   |   MueLu: Hierarchy: Solve (level=1): 2.79516 - 43.3161% [1337] {min=2.62179, max=3.58713, std dev=0.223282}
+|   |   |   |   |   |   |   |   |   MueLu: Hierarchy: Solve : smoothing (level=1): 1.70554 - 61.0176% [1396] {min=1.62742, max=1.81758, std dev=0.0517269}
+|   |   |   |   |   |   |   |   |   |   Ifpack2::Chebyshev::apply: 1.69115 - 99.1563% [1396] {min=1.61293, max=1.80379, std dev=0.0518514}
+|   |   |   |   |   |   |   |   |   |   Remainder: 0.0143903 - 0.843742%
+|   |   |   |   |   |   |   |   |   MueLu: Hierarchy: Solve : residual calculation (level=1): 0.220175 - 7.87702% [698] {min=0.19787, max=0.231428, std dev=0.00801803}
+|   |   |   |   |   |   |   |   |   MueLu: Hierarchy: Solve : restriction (level=1): 0.244034 - 8.73059% [698] {min=0.224781, max=0.268871, std dev=0.0120698}
+|   |   |   |   |   |   |   |   |   MueLu: Hierarchy: Solve : import (level=2): 0.152174 - 5.44421% [698] {min=0.0593583, max=0.205174, std dev=0.0328268}
+|   |   |   |   |   |   |   |   |   MueLu: Hierarchy: Solve : export (level=2): 0.203928 - 7.29576% [698] {min=0.108658, max=1.00247, std dev=0.231831}
+|   |   |   |   |   |   |   |   |   MueLu: Hierarchy: Solve : prolongation (level=1): 0.249711 - 8.93372% [698] {min=0.208869, max=0.293129, std dev=0.0226433}
+|   |   |   |   |   |   |   |   |   Remainder: 0.0195961 - 0.701074%
+|   |   |   |   |   |   |   |   MueLu: Hierarchy: Solve (level=2): 0.765911 - 11.8692% [667] {min=0.105555, max=0.831391, std dev=0.147586}
+|   |   |   |   |   |   |   |   |   MueLu: Hierarchy: Solve : coarse (level=2): 0.76296 - 99.6147% [667] {min=0.105121, max=0.828271, std dev=0.147031}
+|   |   |   |   |   |   |   |   |   |   Ifpack2::Chebyshev::apply: 0.755503 - 99.0225% [667] {min=0.103938, max=0.820287, std dev=0.145645}
+|   |   |   |   |   |   |   |   |   |   Remainder: 0.00745762 - 0.977458%
+|   |   |   |   |   |   |   |   |   Remainder: 0.0029508 - 0.385267%
+|   |   |   |   |   |   |   |   Remainder: -0.0197952 - -0.306764%
+|   |   |   |   |   |   |   Remainder: 0.0115448 - 0.178588%
+|   |   |   |   |   |   Belos: Operation Op*x: 0.893496 - 9.85137% [698] {min=0.826709, max=1.01298, std dev=0.0372518}
+|   |   |   |   |   |   Belos::MVT::MvTimesMatAddMv: 0.00943428 - 0.104019% [8] {min=0.00827035, max=0.011592, std dev=0.000733017}
+|   |   |   |   |   |   Remainder: 0.106011 - 1.16884%
+|   |   |   |   |   Remainder: 0.0237092 - 0.260366%
+|   |   |   |   Remainder: 7.16982e-05 - 0.000787358%
+|   |   |   Remainder: 0.107851 - 0.584008%
+|   |   Remainder: 0.00080697 - 0.00436952%
+|   Piro::SteadyStateSolver::evalConvergedModelResponsesAndSensitivities::calc g, df/dp, dg/dp, dg/dx: 0.00114251 - 0.00254463% [1] {min=0.000984296, max=0.00125587, std dev=6.03111e-05}
+|   |   Thyra::DefaultModelEvaluatorWithSolveFactory<double>::evalModel(...): 0.00105036 - 91.9346% [1] {min=0.0008948, max=0.00116156, std dev=5.64843e-05}
+|   |   |   Albany: Total Fill Time: 0.00101838 - 96.9549% [1] {min=0.00086523, max=0.00112894, std dev=5.52866e-05}
+|   |   |   |   Albany Fill: Response: 0.00101002 - 99.1793% [1] {min=0.000858041, max=0.00111913, std dev=5.48901e-05}
+|   |   |   |   Remainder: 8.35783e-06 - 0.820701%
+|   |   |   Remainder: 3.1985e-05 - 3.04514%
+|   |   Remainder: 9.21482e-05 - 8.06542%
+|   Albany Fill: State Residual: 0.00179156 - 0.00399022% [1] {min=0.00149807, max=0.00204107, std dev=0.000161199}
+|   |   Phalanx::SortAndOrderEvaluators: 1.48133e-06 - 0.0826839% [5] {min=1.234e-06, max=1.839e-06, std dev=2.11432e-07}
+|   |   Remainder: 0.00179008 - 99.9173%
+|   Albany: Output to File: 0.00773553 - 0.0172288% [1] {min=0.00744534, max=0.00848808, std dev=0.000251176}
+|   Thyra::DefaultModelEvaluatorWithSolveFactory<double>::evalModel(...): 0.00082992 - 0.00184842% [1] {min=0.000310098, max=0.00108445, std dev=0.000203847}
+|   |   Albany: Total Fill Time: 0.000795885 - 95.899% [1] {min=0.000281449, max=0.00104699, std dev=0.000201003}
+|   |   |   Albany Fill: Response: 0.000788154 - 99.0287% [1] {min=0.000274881, max=0.0010362, std dev=0.000199876}
+|   |   |   Remainder: 7.73054e-06 - 0.971314%
+|   |   Remainder: 3.40349e-05 - 4.10099%
+|   Remainder: 0.282062 - 0.628216%

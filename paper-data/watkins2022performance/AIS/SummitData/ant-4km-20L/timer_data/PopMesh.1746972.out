@@ -1,0 +1,150 @@
+***************************************************************
+**  ______   __       ______   ______   __   __   __  __     **
+** /\  __ \ /\ \     /\  == \ /\  __ \ /\ "-.\ \ /\ \_\ \    **
+** \ \  __ \\ \ \____\ \  __< \ \  __ \\ \ \-.  \\ \____ \   **
+**  \ \_\ \_\\ \_____\\ \_____\\ \_\ \_\\ \_\\"\_\\/\_____\  **
+**   \/_/\/_/ \/_____/ \/_____/ \/_/\/_/ \/_/ \/_/ \/_____/  **
+**                                                           **
+***************************************************************
+** Trilinos git commit id - 155e45e86c2
+** Albany git branch ------ master
+** Albany git commit id --- 9d292d8f5
+** Albany cxx compiler ---- GNU 9.1.0
+** Albany FadType --------- SFad16
+** Albany TanFadType ------ DFad
+** Albany HessianVecFad  -- DFad
+** Simulation start time -- 2022-01-07 at 22:45:36
+***************************************************************
+Albany_IOSS: Loading STKMesh from Exodus file  mesh-decomp/antarctica_2d.exo
+IOSS-STK: number of node sets = 1
+IOSS-STK: number of side sets = 1
+Restart Index not set. Not reading solution from exodus (-1)
+IOSS-STK: number of node sets = 1
+IOSS-STK: number of side sets = 1
+Restart Index not set. Not reading solution from exodus (-1)
+Restart Index not set. Not reading solution from exodus (-1)
+[GenericSTKMeshStruct] Processing field requirements...
+  - Reading Node Scalar field 'basal_friction' from file 'mesh/basal_friction_reg.ascii' ... done!
+  - Reading Node Scalar field 'ice_thickness' from file 'mesh/thickness.ascii' ... done!
+  - Reading Node Scalar field 'surface_height' from file 'mesh/surface_height.ascii' ... done!
+  - Reading Node Layered Scalar field 'temperature' from file 'mesh/temperature.ascii' ... done!
+[ExtrudedSTKMesh] Adding nodes... done!
+[ExtrudedSTKMesh] Adding elements... done!
+[ExtrudedSTKMesh] Adding basalside sides... done!
+[ExtrudedSTKMesh] Adding upperside sides... done!
+[ExtrudedSTKMesh] Adding lateral sides... done!
+[GenericSTKMeshStruct] Processing field requirements...
+[GenericSTKMeshStruct] Processing field requirements...
+  - Reading Node Vector field 'surface_velocity' from file 'mesh/surface_velocity.ascii' ... done!
+STKDisc: 24720 elements on Proc 0 
+STKDisc: nodeset basal_node has size 1350  on Proc 0.
+STKDisc: nodeset bottom has size 1350  on Proc 0.
+STKDisc: nodeset extruded_node has size 28350  on Proc 0.
+STKDisc: nodeset lateral has size 0  on Proc 0.
+STKDisc: nodeset top has size 1350  on Proc 0.
+STKDisc: sideset basalside has size 1236  on Proc 0.
+STKDisc: sideset extruded_lateralside has size 0  on Proc 0.
+STKDisc: sideset extruded_lateralside_quad4_edge2 has size 0  on Proc 0.
+STKDisc: sideset lateralside has size 0  on Proc 0.
+STKDisc: sideset upperside has size 1236  on Proc 0.
+STKDisc: 1236 elements on Proc 0 
+STKDisc: nodeset node has size 1350  on Proc 0.
+STKDisc: sideset lateralside has size 0  on Proc 0.
+STKDisc: 1236 elements on Proc 0 
+STKDisc: nodeset all_nodes has size 1350  on Proc 0.
+
+StateManager: initializing state:  basal_friction
+StateManager: initializing state:  ice_thickness
+StateManager: initializing state:  surface_height
+StateManager: initializing state:  temperature
+
+StateManager: initializing state:  surface_velocity
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ Sacado ParameterLibrary has been initialized:
+ Library of all registered parameters:
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+Total number of parameters  = 0
+Number of non-distributed parameters  = 0
+Number of response vectors  = 0
+Number of distributed parameters vectors  = 0
+WARNING: Derivative dimension for <Jacobian> is 8 but ALBANY_SFAD_SIZE is 16!
+Continuing with this size may cause issues...
+ - Rebuild with ALBANY_SFAD_SIZE=8
+STKDiscretization::writeSolution: writing time 0 to index 1 in file mesh-pop/ais_basal_populated.exo
+STKDiscretization::writeSolution: writing time 0 to index 1 in file mesh-pop/ais_upper_populated.exo
+Finished eval of first model: Params, Responses 
+
+Main_Solve: MeanValue of final solution 0
+
+Number of Failed Comparisons: 0
+*** Teuchos::StackedTimer::report() - Remainder for a level will be ***
+*** incorrect if a timer in the level does not exist on every rank  ***
+*** of the MPI Communicator.                                        ***
+Albany Total Time: 7.81446 [1] {min=7.80076, max=7.85863, std dev=0.00453709}
+|   Albany: Setup Time: 7.54786 - 96.5884% [1] {min=7.5406, max=7.55321, std dev=0.0024865}
+|   Piro::NOXSolver::evalModelImpl::solve: 0.0380337 - 0.486709% [1] {min=0.0372911, max=0.0383136, std dev=0.000239655}
+|   |   Thyra::NOXNonlinearSolver::solve: 0.0373551 - 98.2157% [1] {min=0.0364706, max=0.0381856, std dev=0.00041588}
+|   |   |   Thyra::DefaultModelEvaluatorWithSolveFactory<double>::evalModel(...): 0.00700287 - 18.7468% [1] {min=0.00556203, max=0.00897221, std dev=0.000463582}
+|   |   |   |   Albany: Total Fill Time: 0.00698451 - 99.7379% [1] {min=0.00554325, max=0.00895147, std dev=0.000463488}
+|   |   |   |   |   Albany Fill: Residual: 0.0069771 - 99.8939% [1] {min=0.00553427, max=0.00894167, std dev=0.000463413}
+|   |   |   |   |   |   Phalanx::SortAndOrderEvaluators: 7.62216e-07 - 0.0109245% [1] {min=5.2e-07, max=1.918e-06, std dev=1.98474e-07}
+|   |   |   |   |   |   Albany Residual Fill: Evaluate: 0.00168455 - 24.1439% [1] {min=0.00125102, max=0.00199225, std dev=0.000161734}
+|   |   |   |   |   |   |   Phalanx: Evaluator 0: [<Residual>] Gather Solution<Residual>: 0.000434525 - 25.7948% [1] {min=0.000340504, max=0.00063219, std dev=4.5057e-05}
+|   |   |   |   |   |   |   Phalanx: Evaluator 2: [<Residual>] DummyResidual<Residual>: 0.000348051 - 20.6614% [1] {min=0.000111213, max=0.000565746, std dev=9.98012e-05}
+|   |   |   |   |   |   |   Phalanx: Evaluator 1: [<Residual>] Scatter Dummy Residual<Residual>: 0.000651115 - 38.6523% [1] {min=0.000628853, max=0.000824553, std dev=2.41743e-05}
+|   |   |   |   |   |   |   Remainder: 0.000250856 - 14.8916%
+|   |   |   |   |   |   Albany Residual Fill: Export: 0.000312645 - 4.48102% [1] {min=3.2469e-05, max=0.0024832, std dev=0.000412884}
+|   |   |   |   |   |   Remainder: 0.00497915 - 71.3641%
+|   |   |   |   |   Remainder: 7.40919e-06 - 0.10608%
+|   |   |   |   Remainder: 1.83532e-05 - 0.262081%
+|   |   |   Remainder: 0.0303522 - 81.2532%
+|   |   Remainder: 0.000678637 - 1.7843%
+|   Piro::SteadyStateSolver::evalConvergedModelResponsesAndSensitivities::calc g, df/dp, dg/dp, dg/dx: 3.70444e-05 - 0.00047405% [1] {min=2.9827e-05, max=6.5902e-05, std dev=3.19825e-06}
+|   |   Thyra::DefaultModelEvaluatorWithSolveFactory<double>::evalModel(...): 1.87931e-05 - 50.7312% [1] {min=1.595e-05, max=3.3686e-05, std dev=1.31706e-06}
+|   |   |   Albany: Total Fill Time: 3.25572e-06 - 17.3241% [1] {min=2.42e-06, max=7.742e-06, std dev=5.16299e-07}
+|   |   |   Remainder: 1.55374e-05 - 82.6759%
+|   |   Remainder: 1.82513e-05 - 49.2688%
+|   Albany Fill: State Residual: 0.000392734 - 0.00502574% [1] {min=0.000237096, max=0.000519114, std dev=4.81626e-05}
+|   |   Phalanx::SortAndOrderEvaluators: 1.70779e-06 - 0.434845% [5] {min=1.411e-06, max=4.717e-06, std dev=2.45291e-07}
+|   |   Remainder: 0.000391027 - 99.5652%
+|   Albany: Output to File: 0.18867 - 2.41437% [1] {min=0.186682, max=0.190233, std dev=0.000762807}
+|   Remainder: 0.0394648 - 0.505023%
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@batch5>
+Subject: Job 1746972: <PopMesh> in cluster <summit> Done
+
+Job <PopMesh> was submitted from host <login5> by user <jwatkins> in cluster <summit> at Fri Jan  7 22:43:25 2022
+Job was executed on host(s) <1*batch5>, in queue <batch>, as user <jwatkins> in cluster <summit> at Fri Jan  7 22:45:05 2022
+                            <42*d19n07>
+                            <42*d19n08>
+                            <42*d34n11>
+                            <42*d34n12>
+                            <42*d34n13>
+                            <42*d34n14>
+                            <42*d34n15>
+                            <42*d34n16>
+                            <42*d34n17>
+                            <42*d34n18>
+                            <42*d34n09>
+                            <42*d34n08>
+                            <42*d34n07>
+                            <42*d34n06>
+                            <42*d34n05>
+                            <42*d34n04>
+</ccs/home/jwatkins> was used as the home directory.
+</gpfs/alpine/scratch/jwatkins/cli115/LandIce/AIS/WeakScaling/Scale2D/ant-4km-20L> was used as the working directory.
+Started at Fri Jan  7 22:45:05 2022
+Terminated at Fri Jan  7 22:45:47 2022
+Results reported at Fri Jan  7 22:45:47 2022
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <PopMesh.1746972.err> for stderr output of this job.
+

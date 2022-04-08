@@ -1,0 +1,557 @@
+*** Teuchos::StackedTimer::report() - Remainder for a level will be ***
+*** incorrect if a timer in the level does not exist on every rank  ***
+*** of the MPI Communicator.                                        ***
+Albany Velocity Solver: 274.894 [1] {min=274.335, max=275.819, std dev=0.522471}
+|   Albany: Compute 2D Grid: 0.00143445 - 0.00052182% [2] {min=0.000723475, max=0.00192953, std dev=0.00022437}
+|   Albany: Extrude 3D Grid: 18.05 - 6.56615% [2] {min=18.0486, max=18.0516, std dev=0.000614066}
+|   Albany: SolveFO: 242.625 - 88.2612% [2] {min=242.597, max=242.652, std dev=0.0142978}
+|   |   Piro::NOXSolver::evalModelImpl::solve: 231.33 - 95.3448% [2] {min=231.319, max=231.336, std dev=0.00608867}
+|   |   |   Thyra::NOXNonlinearSolver::solve: 231.315 - 99.9931% [2] {min=231.297, max=231.328, std dev=0.0100312}
+|   |   |   |   Thyra::DefaultModelEvaluatorWithSolveFactory<double>::evalModel(...): 126.089 - 54.5097% [63] {min=103.448, max=131.17, std dev=5.90452}
+|   |   |   |   |   Albany: Total Fill Time: 126.068 - 99.9831% [63] {min=103.433, max=131.154, std dev=5.90451}
+|   |   |   |   |   |   Albany Fill: Residual: 25.7118 - 20.3953% [37] {min=3.08201, max=30.8051, std dev=5.90526}
+|   |   |   |   |   |   |   Phalanx::SortAndOrderEvaluators: 2.47968e-05 - 9.64412e-05% [4] {min=2.204e-05, max=8.455e-05, std dev=4.54967e-06}
+|   |   |   |   |   |   |   Albany Residual Fill: Evaluate: 15.2197 - 59.1934% [37] {min=0.229562, max=29.9348, std dev=10.0548}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 2: [<Residual>] Gather Coordinate Vector<Residual>: 0.00463692 - 0.0304665% [9] {min=0.000289132, max=0.010007, std dev=0.00282375}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 16: [<Residual>] ComputeBasisFunctions<Residual>: 1.80615 - 11.8672% [9] {min=0.00158572, max=3.57291, std dev=1.21215}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 6: [<Residual>] LoadStateField(surface_height)<Residual>: 0.00419122 - 0.0275381% [9] {min=0.00019442, max=0.0205935, std dev=0.00295797}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 58: [<Residual>] DOFGradInterpolationBase<Residual>: 0.0531195 - 0.349018% [9] {min=0.00020287, max=0.105763, std dev=0.0357296}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 28: [<Residual>] StokesFOBodyForce<Residual>: 0.00335416 - 0.0220383% [9] {min=0.000215502, max=0.0359812, std dev=0.00450308}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 51: [<Residual>] P0Interpolation[body_force] <Residual>: 0.0742384 - 0.487778% [9] {min=0.000998445, max=0.145188, std dev=0.0488571}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 13: [<Residual>] Save Field body_force to State body_forceResidual: 0.00150523 - 0.00988998% [9] {min=0.000218081, max=0.032884, std dev=0.00466402}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 37: [<Residual>] Shared Parameter Power Exponent<Residual>: 9.26849e-05 - 0.000608979% [9] {min=8.512e-05, max=0.000146571, std dev=8.03954e-06}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 8: [<Residual>] LoadStateField(mu)<Residual>: 0.00376321 - 0.0247259% [9] {min=0.00015348, max=0.00786096, std dev=0.00242214}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 73: [<Residual>] DOFCellToSide(mu -> mu_basalside)[Node Scalar]<Residual>: 0.000302346 - 0.00198654% [9] {min=0.00018783, max=0.000444202, std dev=5.26297e-05}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 12: [<Residual>] LoadStateField(effective_pressure)<Residual>: 0.00372521 - 0.0244762% [9] {min=0.00013813, max=0.00723921, std dev=0.00241576}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 67: [<Residual>] DOFCellToSide(effective_pressure -> effective_pressure_basalside)[Node Scalar]<Residual>: 0.000227414 - 0.0014942% [9] {min=0.00014204, max=0.000344655, std dev=4.70169e-05}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 5: [<Residual>] LoadStateField(ice_thickness)<Residual>: 0.00371776 - 0.0244273% [9] {min=0.0001256, max=0.0077183, std dev=0.00241668}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 71: [<Residual>] DOFCellToSide(ice_thickness -> ice_thickness_basalside)[Node Scalar]<Residual>: 0.000218824 - 0.00143776% [9] {min=0.00013121, max=0.000328772, std dev=4.77562e-05}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 7: [<Residual>] LoadStateField(bed_topography)<Residual>: 0.00371484 - 0.0244081% [9] {min=0.0001219, max=0.00723944, std dev=0.00242066}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 64: [<Residual>] DOFCellToSide(bed_topography -> bed_topography_basalside)[Node Scalar]<Residual>: 0.000215051 - 0.00141298% [9] {min=0.00012982, max=0.000369592, std dev=4.75033e-05}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 39: [<Residual>] BasalFrictionCoefficient<Residual>: 0.00333854 - 0.0219356% [9] {min=0.000503232, max=0.00991167, std dev=0.00173361}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 14: [<Residual>] Save Side Set Field beta_basalside to Side Set State beta <Residual>: 0.00887073 - 0.0582845% [9] {min=0.00071361, max=0.0175424, std dev=0.00519545}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 22: [<Residual>] Shared Parameter Glen's Law Homotopy Parameter<Residual>: 0.000102375 - 0.000672645% [9] {min=8.377e-05, max=0.000152712, std dev=1.14339e-05}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 4: [<Residual>] LoadStateField(temperature)<Residual>: 0.00068899 - 0.00452696% [9] {min=0.00014448, max=0.00122594, std dev=0.000344462}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 59: [<Residual>] P0Interpolation[surface_height] <Residual>: 0.00709146 - 0.0465939% [9] {min=0.00021332, max=0.0137951, std dev=0.00456994}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 15: [<Residual>] MapToPhysicalFrame<Residual>: 0.0877406 - 0.576493% [9] {min=0.000404231, max=0.17717, std dev=0.0587967}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 17: [<Residual>] P0Interpolation[Coord Vec] <Residual>: 0.0923603 - 0.606846% [9] {min=0.00026852, max=0.182025, std dev=0.0619844}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 3: [<Residual>] Pressure Corrected Temperature<Residual>: 0.000395494 - 0.00259856% [9] {min=0.00014484, max=0.000592593, std dev=0.000108071}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 11: [<Residual>] LoadStateField(stiffening_factor)<Residual>: 0.00375782 - 0.0246905% [9] {min=0.00013501, max=0.00777887, std dev=0.00242247}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 56: [<Residual>] DOFInterpolationBase<Residual>: 0.0116301 - 0.0764149% [9] {min=0.00016689, max=0.0232915, std dev=0.00768859}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 0: [<Residual>] Gather Solution<Residual>: 0.0203567 - 0.133752% [9] {min=0.00029397, max=0.0401943, std dev=0.0135453}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 49: [<Residual>] FastSolutionVecGradInterpolationBase<Residual>: 0.879943 - 5.7816% [9] {min=0.000895668, max=1.74774, std dev=0.592783}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 24: [<Residual>] ViscosityFO<Residual>: 0.534126 - 3.50943% [9] {min=0.00154055, max=1.07472, std dev=0.359536}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 25: [<Residual>] Dissipation: 0.0307385 - 0.201965% [9] {min=0.000321033, max=0.0633419, std dev=0.020334}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 26: [<Residual>] P0Interpolation[LandIce Dissipation] <Residual>: 0.0218584 - 0.143619% [9] {min=0.00023983, max=0.0454122, std dev=0.0145063}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 27: [<Residual>] Save Field LandIce Dissipation to State dissipation_heatResidual: 0.000712886 - 0.00468396% [9] {min=0.00020542, max=0.0011707, std dev=0.00026553}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 48: [<Residual>] FastSolutionVecInterpolationBase<Residual>: 0.19933 - 1.30969% [9] {min=0.00035315, max=0.414393, std dev=0.133519}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 19: [<Residual>] StokesFOResid<Residual>: 0.792293 - 5.2057% [9] {min=0.00151715, max=1.65866, std dev=0.515298}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 47: [<Residual>] DOFCellToSide(Coord Vec -> Coord Vec_ice_margin_side)[Vertex Vector]<Residual>: 0.000555043 - 0.00364687% [9] {min=0.00010923, max=0.00116255, std dev=0.000225782}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 44: [<Residual>] ComputeBasisFunctionsSide<Residual>: 0.0109572 - 0.0719933% [9] {min=0.000268363, max=0.035449, std dev=0.00739895}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 78: [<Residual>] DOFCellToSide(surface_height -> surface_height_ice_margin_side)[Node Scalar]<Residual>: 0.0002764 - 0.00181606% [9] {min=8.3201e-05, max=0.000589874, std dev=9.83113e-05}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 80: [<Residual>] DOFInterpolationSide<Residual>: 0.000332903 - 0.00218731% [9] {min=8.4631e-05, max=0.0015038, std dev=0.00018046}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 76: [<Residual>] DOFCellToSide(ice_thickness -> ice_thickness_ice_margin_side)[Node Scalar]<Residual>: 0.000251424 - 0.00165196% [9] {min=8.248e-05, max=0.000542194, std dev=9.39904e-05}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 77: [<Residual>] DOFInterpolationSide<Residual>: 0.000249055 - 0.0016364% [9] {min=7.969e-05, max=0.000634374, std dev=0.000101892}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 29: [<Residual>] StokesFOLateralResid<Residual>: 0.00466488 - 0.0306502% [9] {min=0.0001034, max=0.0158878, std dev=0.0032479}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 43: [<Residual>] DOFCellToSide(Coord Vec -> Coord Vec_basalside)[Vertex Vector]<Residual>: 0.000462746 - 0.00304043% [9] {min=0.00017219, max=0.000705761, std dev=0.000152738}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 40: [<Residual>] ComputeBasisFunctionsSide<Residual>: 0.0310165 - 0.203792% [9] {min=0.00034328, max=0.0616792, std dev=0.0207746}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 61: [<Residual>] DOFCellToSide(Velocity -> Velocity_basalside)[Node Vector]<Residual>: 0.00169144 - 0.0111135% [9] {min=0.000277449, max=0.00321606, std dev=0.000925335}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 62: [<Residual>] DOFVecInterpolationSide<Residual>: 0.00449064 - 0.0295054% [9] {min=0.000282249, max=0.00897987, std dev=0.00279371}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 74: [<Residual>] DOFInterpolationSide<Residual>: 0.000619403 - 0.00406974% [9] {min=0.000155932, max=0.00111002, std dev=0.000305408}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 68: [<Residual>] DOFInterpolationSide<Residual>: 0.000505898 - 0.00332396% [9] {min=0.000134261, max=0.000919293, std dev=0.000249306}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 38: [<Residual>] BasalFrictionCoefficient<Residual>: 0.00849747 - 0.0558319% [9] {min=0.00040089, max=0.0171975, std dev=0.00543747}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 30: [<Residual>] StokesFOBasalResid<Residual>: 0.00494028 - 0.0324597% [9] {min=0.000321651, max=0.00965684, std dev=0.00303443}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 1: [<Residual>] Scatter Velocity Residual<Residual>: 0.02069 - 0.135942% [9] {min=0.00105002, max=0.0449116, std dev=0.013888}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 801: [<Residual>] Gather Coordinate Vector<Residual>: 0.00561934 - 0.0369215% [28] {min=0.000829877, max=0.0108693, std dev=0.00320852}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 815: [<Residual>] ComputeBasisFunctions<Residual>: 1.80302 - 11.8466% [28] {min=0.00176229, max=3.59305, std dev=1.21671}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 805: [<Residual>] LoadStateField(surface_height)<Residual>: 0.00415169 - 0.0272784% [28] {min=0.000500702, max=0.00783097, std dev=0.00241957}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 857: [<Residual>] DOFGradInterpolationBase<Residual>: 0.0535577 - 0.351897% [28] {min=0.00052955, max=0.111044, std dev=0.0358387}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 827: [<Residual>] StokesFOBodyForce<Residual>: 0.00263288 - 0.0172991% [28] {min=0.0004833, max=0.00476201, std dev=0.00141069}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 850: [<Residual>] P0Interpolation[body_force] <Residual>: 0.227783 - 1.49663% [28] {min=0.0011308, max=0.451179, std dev=0.15231}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 812: [<Residual>] Save Field body_force to State body_forceResidual: 0.00114378 - 0.00751514% [28] {min=0.000536006, max=0.0015252, std dev=0.000232612}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 836: [<Residual>] Shared Parameter Power Exponent<Residual>: 0.000288112 - 0.00189302% [28] {min=0.00026372, max=0.000391573, std dev=1.47647e-05}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 807: [<Residual>] LoadStateField(mu)<Residual>: 0.00415326 - 0.0272887% [28] {min=0.000441781, max=0.00767632, std dev=0.00243588}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 872: [<Residual>] DOFCellToSide(mu -> mu_basalside)[Node Scalar]<Residual>: 0.000669063 - 0.00439602% [28] {min=0.000515769, max=0.000848985, std dev=6.47082e-05}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 811: [<Residual>] LoadStateField(effective_pressure)<Residual>: 0.00406354 - 0.0266992% [28] {min=0.000423122, max=0.00815175, std dev=0.00242398}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 866: [<Residual>] DOFCellToSide(effective_pressure -> effective_pressure_basalside)[Node Scalar]<Residual>: 0.000573419 - 0.0037676% [28] {min=0.00044535, max=0.00073251, std dev=5.59256e-05}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 804: [<Residual>] LoadStateField(ice_thickness)<Residual>: 0.00404429 - 0.0265727% [28] {min=0.000407639, max=0.0080675, std dev=0.00242333}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 870: [<Residual>] DOFCellToSide(ice_thickness -> ice_thickness_basalside)[Node Scalar]<Residual>: 0.000542791 - 0.00356637% [28] {min=0.00041986, max=0.00071777, std dev=5.67609e-05}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 806: [<Residual>] LoadStateField(bed_topography)<Residual>: 0.00401587 - 0.0263859% [28] {min=0.000405753, max=0.00748105, std dev=0.00242026}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 863: [<Residual>] DOFCellToSide(bed_topography -> bed_topography_basalside)[Node Scalar]<Residual>: 0.000536034 - 0.00352197% [28] {min=0.000417712, max=0.000687452, std dev=5.64383e-05}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 838: [<Residual>] BasalFrictionCoefficient<Residual>: 0.00952324 - 0.0625717% [28] {min=0.00124659, max=0.0172503, std dev=0.00537854}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 813: [<Residual>] Save Side Set Field beta_basalside to Side Set State beta <Residual>: 0.0259831 - 0.17072% [28] {min=0.00111866, max=0.0535788, std dev=0.017048}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 821: [<Residual>] Shared Parameter Glen's Law Homotopy Parameter<Residual>: 0.000322158 - 0.00211671% [28] {min=0.00025562, max=0.000435042, std dev=3.06527e-05}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 803: [<Residual>] LoadStateField(temperature)<Residual>: 0.00122569 - 0.00805327% [28] {min=0.000461581, max=0.00188203, std dev=0.00044052}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 858: [<Residual>] P0Interpolation[surface_height] <Residual>: 0.0216512 - 0.142257% [28] {min=0.000589747, max=0.0424113, std dev=0.0141319}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 814: [<Residual>] MapToPhysicalFrame<Residual>: 0.0880943 - 0.578816% [28] {min=0.000641429, max=0.174566, std dev=0.0589574}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 816: [<Residual>] P0Interpolation[Coord Vec] <Residual>: 0.286007 - 1.87919% [28] {min=0.000797156, max=0.567622, std dev=0.192138}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 802: [<Residual>] Pressure Corrected Temperature<Residual>: 0.00103227 - 0.00678247% [28] {min=0.00047068, max=0.00138587, std dev=0.000189683}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 810: [<Residual>] LoadStateField(stiffening_factor)<Residual>: 0.00415109 - 0.0272744% [28] {min=0.000408394, max=0.00818685, std dev=0.0024255}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 855: [<Residual>] DOFInterpolationBase<Residual>: 0.0119141 - 0.0782807% [28] {min=0.000440892, max=0.023435, std dev=0.00769957}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 799: [<Residual>] Gather Solution<Residual>: 0.0627806 - 0.412495% [28] {min=0.000751785, max=0.127056, std dev=0.0420567}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 848: [<Residual>] FastSolutionVecGradInterpolationBase<Residual>: 2.69572 - 17.712% [28] {min=0.0024801, max=5.53439, std dev=1.82016}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 823: [<Residual>] ViscosityFO<Residual>: 1.65654 - 10.8842% [28] {min=0.00245645, max=3.29499, std dev=1.11591}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 824: [<Residual>] Dissipation: 0.0955279 - 0.627659% [28] {min=0.000913517, max=0.189724, std dev=0.0634074}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 825: [<Residual>] P0Interpolation[LandIce Dissipation] <Residual>: 0.0679142 - 0.446225% [28] {min=0.000651296, max=0.136152, std dev=0.045175}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 826: [<Residual>] Save Field LandIce Dissipation to State dissipation_heatResidual: 0.00223099 - 0.0146585% [28] {min=0.00060947, max=0.00353013, std dev=0.000811841}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 847: [<Residual>] FastSolutionVecInterpolationBase<Residual>: 0.611004 - 4.01455% [28] {min=0.00103158, max=1.23291, std dev=0.409836}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 818: [<Residual>] StokesFOResid<Residual>: 2.39261 - 15.7205% [28] {min=0.00252226, max=4.89772, std dev=1.57778}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 846: [<Residual>] DOFCellToSide(Coord Vec -> Coord Vec_ice_margin_side)[Vertex Vector]<Residual>: 0.00128364 - 0.00843406% [28] {min=0.0003503, max=0.00195877, std dev=0.000376398}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 843: [<Residual>] ComputeBasisFunctionsSide<Residual>: 0.00990165 - 0.065058% [28] {min=0.00087631, max=0.034712, std dev=0.00710624}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 877: [<Residual>] DOFCellToSide(surface_height -> surface_height_ice_margin_side)[Node Scalar]<Residual>: 0.000629906 - 0.00413875% [28] {min=0.000261731, max=0.000946447, std dev=0.000143626}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 879: [<Residual>] DOFInterpolationSide<Residual>: 0.000613815 - 0.00403302% [28] {min=0.0002709, max=0.00101509, std dev=0.000141268}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 875: [<Residual>] DOFCellToSide(ice_thickness -> ice_thickness_ice_margin_side)[Node Scalar]<Residual>: 0.000560321 - 0.00368154% [28] {min=0.00025692, max=0.000948473, std dev=0.000128196}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 876: [<Residual>] DOFInterpolationSide<Residual>: 0.000559268 - 0.00367462% [28] {min=0.000249391, max=0.000956335, std dev=0.000131719}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 828: [<Residual>] StokesFOLateralResid<Residual>: 0.013944 - 0.091618% [28] {min=0.00029505, max=0.0489629, std dev=0.0103506}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 842: [<Residual>] DOFCellToSide(Coord Vec -> Coord Vec_basalside)[Vertex Vector]<Residual>: 0.00110103 - 0.00723421% [28] {min=0.000515449, max=0.00154871, std dev=0.000271535}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 839: [<Residual>] ComputeBasisFunctionsSide<Residual>: 0.029531 - 0.194031% [28] {min=0.00065282, max=0.0577079, std dev=0.0193793}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 860: [<Residual>] DOFCellToSide(Velocity -> Velocity_basalside)[Node Vector]<Residual>: 0.00531395 - 0.0349149% [28] {min=0.00085285, max=0.0100015, std dev=0.00289229}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 861: [<Residual>] DOFVecInterpolationSide<Residual>: 0.0138069 - 0.0907172% [28] {min=0.0008097, max=0.0273816, std dev=0.00875994}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 873: [<Residual>] DOFInterpolationSide<Residual>: 0.00119534 - 0.00785388% [28] {min=0.000479483, max=0.0018329, std dev=0.000440447}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 867: [<Residual>] DOFInterpolationSide<Residual>: 0.000833935 - 0.0054793% [28] {min=0.00040727, max=0.00126513, std dev=0.000263887}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 837: [<Residual>] BasalFrictionCoefficient<Residual>: 0.0265352 - 0.174347% [28] {min=0.00119552, max=0.0513958, std dev=0.0169366}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 829: [<Residual>] StokesFOBasalResid<Residual>: 0.0152729 - 0.100349% [28] {min=0.0008403, max=0.0302592, std dev=0.00978442}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 800: [<Residual>] Scatter Velocity Residual<Residual>: 0.0640166 - 0.420616% [28] {min=0.000737619, max=0.136755, std dev=0.0439442}
+|   |   |   |   |   |   |   |   Remainder: 0.13489 - 0.886283%
+|   |   |   |   |   |   |   Albany Residual Fill: Export: 10.0519 - 39.0945% [37] {min=0.0122566, max=28.5505, std dev=7.82844}
+|   |   |   |   |   |   |   Phalanx: Evaluator 397: [<Residual>] SDBC on NS dirichlet for DOF U0 prescribe Field<Residual>: 0.000197587 - 0.000768468% [9] {min=0.000138661, max=0.000257273, std dev=1.72562e-05}
+|   |   |   |   |   |   |   Phalanx: Evaluator 402: [<Residual>] SDBC on NS dirichlet for DOF U1 prescribe Field<Residual>: 0.000133172 - 0.000517942% [9] {min=0.00011889, max=0.00017198, std dev=8.86188e-06}
+|   |   |   |   |   |   |   Phalanx: Evaluator 407: [<Residual>] Dirichlet Aggregator<Residual>: 8.09125e-05 - 0.00031469% [9] {min=7.6441e-05, max=0.0001185, std dev=5.79289e-06}
+|   |   |   |   |   |   |   Phalanx: Evaluator 1196: [<Residual>] SDBC on NS dirichlet for DOF U0 prescribe Field<Residual>: 0.000716376 - 0.00278617% [28] {min=0.000535591, max=0.000870013, std dev=5.25174e-05}
+|   |   |   |   |   |   |   Phalanx: Evaluator 1201: [<Residual>] SDBC on NS dirichlet for DOF U1 prescribe Field<Residual>: 0.000315888 - 0.00122857% [28] {min=0.000284944, max=0.00037818, std dev=1.98396e-05}
+|   |   |   |   |   |   |   Phalanx: Evaluator 1206: [<Residual>] Dirichlet Aggregator<Residual>: 0.000256518 - 0.000997666% [28] {min=0.000242133, max=0.000298361, std dev=1.03423e-05}
+|   |   |   |   |   |   |   Remainder: 0.438471 - 1.70533%
+|   |   |   |   |   |   Albany Fill: Jacobian: 100.342 - 79.5935% [26] {min=100.319, max=100.343, std dev=0.00141803}
+|   |   |   |   |   |   |   Phalanx::SortAndOrderEvaluators: 2.4298e-05 - 2.42153e-05% [4] {min=2.1271e-05, max=2.9971e-05, std dev=1.3708e-06}
+|   |   |   |   |   |   |   Albany Jacobian Fill: Evaluate: 46.456 - 46.2979% [26] {min=0.124456, max=93.8429, std dev=31.6236}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 83: [<Jacobian>] Gather Coordinate Vector<Jacobian>: 0.00575882 - 0.0123963% [8] {min=0.00031032, max=0.0123728, std dev=0.00331714}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 128: [<Jacobian>] DOFCellToSide(Coord Vec -> Coord Vec_ice_margin_side)[Vertex Vector]<Jacobian>: 0.000486702 - 0.00104766% [8] {min=8.7401e-05, max=0.00107413, std dev=0.000216828}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 125: [<Jacobian>] ComputeBasisFunctionsSide<Jacobian>: 0.0098409 - 0.0211833% [8] {min=0.00016146, max=0.0350728, std dev=0.00740471}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 87: [<Jacobian>] LoadStateField(surface_height)<Jacobian>: 0.00381855 - 0.0082197% [8] {min=0.000252242, max=0.00733421, std dev=0.0023313}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 157: [<Jacobian>] DOFCellToSide(surface_height -> surface_height_ice_margin_side)[Node Scalar]<Jacobian>: 0.000260061 - 0.0005598% [8] {min=8.2281e-05, max=0.000537143, std dev=9.73009e-05}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 159: [<Jacobian>] DOFInterpolationSide<Jacobian>: 0.000399835 - 0.000860673% [8] {min=8.816e-05, max=0.00330358, std dev=0.000460672}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 97: [<Jacobian>] ComputeBasisFunctions<Jacobian>: 1.80499 - 3.88537% [8] {min=0.00141447, max=3.56707, std dev=1.21831}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 92: [<Jacobian>] LoadStateField(stiffening_factor)<Jacobian>: 0.00369929 - 0.007963% [8] {min=0.00013081, max=0.00725161, std dev=0.00239897}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 136: [<Jacobian>] DOFInterpolationBase<Jacobian>: 0.0119281 - 0.0256761% [8] {min=0.00016876, max=0.024174, std dev=0.00797093}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 103: [<Jacobian>] Shared Parameter Glen's Law Homotopy Parameter<Jacobian>: 8.86976e-05 - 0.000190928% [8] {min=7.989e-05, max=0.000195702, std dev=1.09575e-05}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 85: [<Jacobian>] LoadStateField(temperature)<Jacobian>: 0.000594066 - 0.00127877% [8] {min=0.000127871, max=0.00111752, std dev=0.000306571}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 139: [<Jacobian>] P0Interpolation[surface_height] <Jacobian>: 0.00642601 - 0.0138325% [8] {min=0.00028991, max=0.0125871, std dev=0.00408894}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 96: [<Jacobian>] MapToPhysicalFrame<Jacobian>: 0.0876621 - 0.188699% [8] {min=0.00026191, max=0.175649, std dev=0.0591008}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 98: [<Jacobian>] P0Interpolation[Coord Vec] <Jacobian>: 0.082499 - 0.177585% [8] {min=0.00027862, max=0.169615, std dev=0.055349}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 84: [<Jacobian>] Pressure Corrected Temperature<Jacobian>: 0.000432636 - 0.000931282% [8] {min=0.000150801, max=0.00136789, std dev=0.000138653}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 81: [<Jacobian>] Gather Solution<Jacobian>: 0.076458 - 0.164581% [8] {min=0.00031234, max=0.164991, std dev=0.05231}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 130: [<Jacobian>] FastSolutionVecGradInterpolationBase<Jacobian>: 2.54732 - 5.4833% [8] {min=0.00173888, max=5.31105, std dev=1.73146}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 105: [<Jacobian>] ViscosityFO<Jacobian>: 4.38797 - 9.44543% [8] {min=0.00652106, max=8.68497, std dev=2.96308}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 129: [<Jacobian>] FastSolutionVecInterpolationBase<Jacobian>: 0.654062 - 1.40792% [8] {min=0.000617318, max=1.32079, std dev=0.442099}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 138: [<Jacobian>] DOFGradInterpolationBase<Jacobian>: 0.0604365 - 0.130094% [8] {min=0.000242429, max=0.130955, std dev=0.0428591}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 109: [<Jacobian>] StokesFOBodyForce<Jacobian>: 0.0184817 - 0.0397833% [8] {min=0.00022008, max=0.0427285, std dev=0.0128823}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 100: [<Jacobian>] StokesFOResid<Jacobian>: 4.08767 - 8.79901% [8] {min=0.00513918, max=8.11931, std dev=2.76778}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 86: [<Jacobian>] LoadStateField(ice_thickness)<Jacobian>: 0.00385441 - 0.0082969% [8] {min=0.000167031, max=0.00735787, std dev=0.0024112}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 155: [<Jacobian>] DOFCellToSide(ice_thickness -> ice_thickness_ice_margin_side)[Node Scalar]<Jacobian>: 0.000259205 - 0.000557957% [8] {min=9.439e-05, max=0.000549844, std dev=9.69068e-05}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 156: [<Jacobian>] DOFInterpolationSide<Jacobian>: 0.00025944 - 0.000558464% [8] {min=7.9632e-05, max=0.000633414, std dev=0.000105028}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 110: [<Jacobian>] StokesFOLateralResid<Jacobian>: 0.0111519 - 0.0240054% [8] {min=8.092e-05, max=0.0408452, std dev=0.00860429}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 124: [<Jacobian>] DOFCellToSide(Coord Vec -> Coord Vec_basalside)[Vertex Vector]<Jacobian>: 0.000480304 - 0.00103389% [8] {min=0.000166581, max=0.000716464, std dev=0.000146579}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 121: [<Jacobian>] ComputeBasisFunctionsSide<Jacobian>: 0.030976 - 0.066678% [8] {min=0.000377203, max=0.0619114, std dev=0.0207089}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 141: [<Jacobian>] DOFCellToSide(Velocity -> Velocity_basalside)[Node Vector]<Jacobian>: 0.00635729 - 0.0136845% [8] {min=0.000349549, max=0.0133622, std dev=0.00417312}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 142: [<Jacobian>] DOFVecInterpolationSide<Jacobian>: 0.0178119 - 0.0383414% [8] {min=0.00028371, max=0.0352946, std dev=0.0117302}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 118: [<Jacobian>] Shared Parameter Power Exponent<Jacobian>: 9.49539e-05 - 0.000204395% [8] {min=8.197e-05, max=0.000140713, std dev=6.79072e-06}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 89: [<Jacobian>] LoadStateField(mu)<Jacobian>: 0.00381837 - 0.00821932% [8] {min=0.00014425, max=0.00759792, std dev=0.00243484}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 152: [<Jacobian>] DOFCellToSide(mu -> mu_basalside)[Node Scalar]<Jacobian>: 0.000253588 - 0.000545867% [8] {min=0.000145463, max=0.000414722, std dev=5.29346e-05}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 153: [<Jacobian>] DOFInterpolationSide<Jacobian>: 0.000517262 - 0.00111345% [8] {min=0.000129041, max=0.000994971, std dev=0.000255288}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 150: [<Jacobian>] DOFCellToSide(ice_thickness -> ice_thickness_basalside)[Node Scalar]<Jacobian>: 0.000198356 - 0.000426975% [8] {min=0.00011988, max=0.000314801, std dev=4.90795e-05}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 93: [<Jacobian>] LoadStateField(effective_pressure)<Jacobian>: 0.00368409 - 0.00793029% [8] {min=0.00011931, max=0.00768121, std dev=0.00240478}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 146: [<Jacobian>] DOFCellToSide(effective_pressure -> effective_pressure_basalside)[Node Scalar]<Jacobian>: 0.000204337 - 0.00043985% [8] {min=0.00011917, max=0.000303251, std dev=4.88863e-05}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 147: [<Jacobian>] DOFInterpolationSide<Jacobian>: 0.000489441 - 0.00105356% [8] {min=0.000118812, max=0.000885116, std dev=0.000247639}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 88: [<Jacobian>] LoadStateField(bed_topography)<Jacobian>: 0.00368125 - 0.00792417% [8] {min=0.0001128, max=0.00717184, std dev=0.00240161}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 144: [<Jacobian>] DOFCellToSide(bed_topography -> bed_topography_basalside)[Node Scalar]<Jacobian>: 0.000199142 - 0.000428668% [8] {min=0.000118351, max=0.00029337, std dev=4.76349e-05}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 119: [<Jacobian>] BasalFrictionCoefficient<Jacobian>: 0.00913285 - 0.0196591% [8] {min=0.000522051, max=0.0169234, std dev=0.00544039}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 111: [<Jacobian>] StokesFOBasalResid<Jacobian>: 0.0233759 - 0.0503184% [8] {min=0.00029097, max=0.0463403, std dev=0.0154508}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 82: [<Jacobian>] Scatter Velocity Residual<Jacobian>: 1.08309 - 2.33142% [8] {min=0.00316546, max=2.40952, std dev=0.804956}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 882: [<Jacobian>] Gather Coordinate Vector<Jacobian>: 0.0063651 - 0.0137014% [18] {min=0.00067373, max=0.0118025, std dev=0.00336625}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 927: [<Jacobian>] DOFCellToSide(Coord Vec -> Coord Vec_ice_margin_side)[Vertex Vector]<Jacobian>: 0.000694191 - 0.0014943% [18] {min=0.000187971, max=0.00132681, std dev=0.000244101}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 924: [<Jacobian>] ComputeBasisFunctionsSide<Jacobian>: 0.00995863 - 0.0214367% [18] {min=0.000330451, max=0.0349055, std dev=0.00725795}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 886: [<Jacobian>] LoadStateField(surface_height)<Jacobian>: 0.003947 - 0.00849621% [18] {min=0.000339864, max=0.007451, std dev=0.00240203}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 956: [<Jacobian>] DOFCellToSide(surface_height -> surface_height_ice_margin_side)[Node Scalar]<Jacobian>: 0.000461563 - 0.000993548% [18] {min=0.00017232, max=0.000786365, std dev=0.00012676}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 958: [<Jacobian>] DOFInterpolationSide<Jacobian>: 0.00046053 - 0.000991324% [18] {min=0.00017052, max=0.000818965, std dev=0.000131744}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 896: [<Jacobian>] ComputeBasisFunctions<Jacobian>: 1.80436 - 3.88401% [18] {min=0.00157206, max=3.57589, std dev=1.21812}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 891: [<Jacobian>] LoadStateField(stiffening_factor)<Jacobian>: 0.0038907 - 0.00837502% [18] {min=0.000282134, max=0.00816727, std dev=0.00240031}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 935: [<Jacobian>] DOFInterpolationBase<Jacobian>: 0.0120061 - 0.0258441% [18] {min=0.000316321, max=0.0290958, std dev=0.00801446}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 902: [<Jacobian>] Shared Parameter Glen's Law Homotopy Parameter<Jacobian>: 0.000196786 - 0.000423596% [18] {min=0.00017713, max=0.000271371, std dev=1.44953e-05}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 884: [<Jacobian>] LoadStateField(temperature)<Jacobian>: 0.000791888 - 0.0017046% [18] {min=0.000291909, max=0.00126129, std dev=0.00030412}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 938: [<Jacobian>] P0Interpolation[surface_height] <Jacobian>: 0.0143107 - 0.0308048% [18] {min=0.000580948, max=0.0277219, std dev=0.00913529}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 895: [<Jacobian>] MapToPhysicalFrame<Jacobian>: 0.0880446 - 0.189522% [18] {min=0.00045256, max=0.173449, std dev=0.0590463}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 897: [<Jacobian>] P0Interpolation[Coord Vec] <Jacobian>: 0.18537 - 0.399024% [18] {min=0.000591209, max=0.372836, std dev=0.124261}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 883: [<Jacobian>] Pressure Corrected Temperature<Jacobian>: 0.000754688 - 0.00162452% [18] {min=0.00032322, max=0.000997896, std dev=0.000151774}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 880: [<Jacobian>] Gather Solution<Jacobian>: 0.169366 - 0.364572% [18] {min=0.000611839, max=0.358894, std dev=0.115549}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 929: [<Jacobian>] FastSolutionVecGradInterpolationBase<Jacobian>: 5.69702 - 12.2633% [18] {min=0.00384482, max=11.4217, std dev=3.87407}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 904: [<Jacobian>] ViscosityFO<Jacobian>: 9.93548 - 21.3869% [18] {min=0.00739831, max=19.803, std dev=6.71538}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 928: [<Jacobian>] FastSolutionVecInterpolationBase<Jacobian>: 1.47199 - 3.16856% [18] {min=0.00123068, max=2.98416, std dev=0.996032}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 937: [<Jacobian>] DOFGradInterpolationBase<Jacobian>: 0.0605353 - 0.130307% [18] {min=0.000459421, max=0.186696, std dev=0.0429707}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 908: [<Jacobian>] StokesFOBodyForce<Jacobian>: 0.0191109 - 0.0411376% [18] {min=0.000389279, max=0.0468155, std dev=0.0130329}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 899: [<Jacobian>] StokesFOResid<Jacobian>: 9.23489 - 19.8788% [18] {min=0.00663114, max=18.8769, std dev=6.27804}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 885: [<Jacobian>] LoadStateField(ice_thickness)<Jacobian>: 0.00426861 - 0.00918851% [18] {min=0.000405339, max=0.00885779, std dev=0.00244034}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 954: [<Jacobian>] DOFCellToSide(ice_thickness -> ice_thickness_ice_margin_side)[Node Scalar]<Jacobian>: 0.000474914 - 0.00102229% [18] {min=0.0002069, max=0.000767943, std dev=0.000119924}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 955: [<Jacobian>] DOFInterpolationSide<Jacobian>: 0.000447988 - 0.000964327% [18] {min=0.00017662, max=0.000819107, std dev=0.000124509}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 909: [<Jacobian>] StokesFOLateralResid<Jacobian>: 0.025223 - 0.0542943% [18] {min=0.00018103, max=0.0911985, std dev=0.0197097}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 923: [<Jacobian>] DOFCellToSide(Coord Vec -> Coord Vec_basalside)[Vertex Vector]<Jacobian>: 0.000855882 - 0.00184235% [18] {min=0.000357243, max=0.0013035, std dev=0.000195928}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 920: [<Jacobian>] ComputeBasisFunctionsSide<Jacobian>: 0.0295656 - 0.0636422% [18] {min=0.00059382, max=0.0580503, std dev=0.0195363}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 940: [<Jacobian>] DOFCellToSide(Velocity -> Velocity_basalside)[Node Vector]<Jacobian>: 0.0139164 - 0.029956% [18] {min=0.00067982, max=0.0297209, std dev=0.00898798}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 941: [<Jacobian>] DOFVecInterpolationSide<Jacobian>: 0.0400778 - 0.0862705% [18] {min=0.00065427, max=0.0810497, std dev=0.0263878}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 917: [<Jacobian>] Shared Parameter Power Exponent<Jacobian>: 0.000216358 - 0.000465727% [18] {min=0.00018259, max=0.000265762, std dev=1.36861e-05}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 888: [<Jacobian>] LoadStateField(mu)<Jacobian>: 0.00416879 - 0.00897363% [18] {min=0.000315093, max=0.00826995, std dev=0.00247967}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 951: [<Jacobian>] DOFCellToSide(mu -> mu_basalside)[Node Scalar]<Jacobian>: 0.000438327 - 0.000943531% [18] {min=0.000289644, max=0.000572933, std dev=5.88022e-05}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 952: [<Jacobian>] DOFInterpolationSide<Jacobian>: 0.000716212 - 0.0015417% [18] {min=0.000293714, max=0.00117773, std dev=0.000256856}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 949: [<Jacobian>] DOFCellToSide(ice_thickness -> ice_thickness_basalside)[Node Scalar]<Jacobian>: 0.000369874 - 0.00079618% [18] {min=0.000269956, max=0.000507324, std dev=5.19087e-05}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 892: [<Jacobian>] LoadStateField(effective_pressure)<Jacobian>: 0.0038581 - 0.00830486% [18] {min=0.000280702, max=0.00789034, std dev=0.00240735}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 945: [<Jacobian>] DOFCellToSide(effective_pressure -> effective_pressure_basalside)[Node Scalar]<Jacobian>: 0.000383864 - 0.000826296% [18] {min=0.000278046, max=0.000541792, std dev=5.71543e-05}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 946: [<Jacobian>] DOFInterpolationSide<Jacobian>: 0.000661764 - 0.0014245% [18] {min=0.00027699, max=0.00109304, std dev=0.0002524}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 887: [<Jacobian>] LoadStateField(bed_topography)<Jacobian>: 0.00384594 - 0.00827867% [18] {min=0.00026538, max=0.00759935, std dev=0.00241088}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 943: [<Jacobian>] DOFCellToSide(bed_topography -> bed_topography_basalside)[Node Scalar]<Jacobian>: 0.000368785 - 0.000793837% [18] {min=0.000269834, max=0.000516865, std dev=5.29982e-05}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 918: [<Jacobian>] BasalFrictionCoefficient<Jacobian>: 0.0198523 - 0.0427336% [18] {min=0.000991289, max=0.0388508, std dev=0.0125045}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 910: [<Jacobian>] StokesFOBasalResid<Jacobian>: 0.052811 - 0.11368% [18] {min=0.00060964, max=0.107443, std dev=0.0352286}
+|   |   |   |   |   |   |   |   Phalanx: Evaluator 881: [<Jacobian>] Scatter Velocity Residual<Jacobian>: 2.43551 - 5.24262% [18] {min=0.00116177, max=5.43147, std dev=1.80921}
+|   |   |   |   |   |   |   |   Remainder: 0.0468085 - 0.100759%
+|   |   |   |   |   |   |   Albany Jacobian Fill: Export: 48.3127 - 48.1482% [26] {min=0.874353, max=94.6926, std dev=31.656}
+|   |   |   |   |   |   |   Phalanx: Evaluator 398: [<Jacobian>] SDBC on NS dirichlet for DOF U0 prescribe Field<Jacobian>: 0.362549 - 0.361315% [8] {min=0.311351, max=0.406971, std dev=0.0272974}
+|   |   |   |   |   |   |   Phalanx: Evaluator 403: [<Jacobian>] SDBC on NS dirichlet for DOF U1 prescribe Field<Jacobian>: 0.327788 - 0.326673% [8] {min=0.315451, max=0.329898, std dev=0.00269004}
+|   |   |   |   |   |   |   Phalanx: Evaluator 408: [<Jacobian>] Dirichlet Aggregator<Jacobian>: 8.92805e-05 - 8.89765e-05% [8] {min=7.794e-05, max=0.000138312, std dev=6.9957e-06}
+|   |   |   |   |   |   |   Phalanx: Evaluator 1197: [<Jacobian>] SDBC on NS dirichlet for DOF U0 prescribe Field<Jacobian>: 0.874079 - 0.871103% [18] {min=0.773211, max=0.969663, std dev=0.0618183}
+|   |   |   |   |   |   |   Phalanx: Evaluator 1202: [<Jacobian>] SDBC on NS dirichlet for DOF U1 prescribe Field<Jacobian>: 0.751798 - 0.749239% [18] {min=0.748446, max=0.758134, std dev=0.00113353}
+|   |   |   |   |   |   |   Phalanx: Evaluator 1207: [<Jacobian>] Dirichlet Aggregator<Jacobian>: 0.000201359 - 0.000200673% [18] {min=0.000177861, max=0.0002522, std dev=1.10241e-05}
+|   |   |   |   |   |   |   Remainder: 3.25638 - 3.2453%
+|   |   |   |   |   |   Remainder: 0.0140733 - 0.0111633%
+|   |   |   |   |   Remainder: 0.0213255 - 0.0169131%
+|   |   |   |   NOX Total Preconditioner Construction: 37.5946 - 16.2526% [26] {min=37.5055, max=37.6939, std dev=0.0397295}
+|   |   |   |   |   ThyraMueLu::initializePrec: 37.4001 - 99.4826% [26] {min=37.377, max=37.4045, std dev=0.00802052}
+|   |   |   |   |   |   MueLu: ParameterListInterpreter (ParameterList): 0.537476 - 1.4371% [26] {min=0.484379, max=0.58339, std dev=0.0305776}
+|   |   |   |   |   |   MueLu: N5MueLu9HierarchyIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Setup (total): 22.9118 - 61.2614% [70] {min=18.4753, max=36.3533, std dev=4.32374}
+|   |   |   |   |   |   |   MueLu: N5MueLu9HierarchyIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Setup (total, level=0): 3.25531 - 14.208% [26] {min=0.529095, max=5.94594, std dev=1.83801}
+|   |   |   |   |   |   |   |   MueLu: N5MueLu15Ifpack2SmootherIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Setup Smoother (total): 2.90351 - 89.193% [26] {min=0.163308, max=5.59596, std dev=1.84587}
+|   |   |   |   |   |   |   |   |   MueLu: N5MueLu20LineDetectionFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Line detection (Ray style) (total): 0.181618 - 6.25513% [26] {min=0.0166524, max=0.338863, std dev=0.108796}
+|   |   |   |   |   |   |   |   |   MueLu: N5MueLu15Ifpack2SmootherIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: SetPrecParameters: 0.0083704 - 0.288286% [26] {min=0.00586266, max=0.0101756, std dev=0.000774078}
+|   |   |   |   |   |   |   |   |   Ifpack2::BlockRelaxation::initialize: 1.19875 - 41.2861% [26] {min=0.0187662, max=2.33142, std dev=0.788759}
+|   |   |   |   |   |   |   |   |   Ifpack2::BlockRelaxation::compute: 1.44246 - 49.6801% [26] {min=0.0344105, max=2.83652, std dev=0.945732}
+|   |   |   |   |   |   |   |   |   Remainder: 0.0723065 - 2.49032%
+|   |   |   |   |   |   |   |   Remainder: 0.351803 - 10.807%
+|   |   |   |   |   |   |   MueLu: N5MueLu9HierarchyIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Setup (total, level=1): 15.3531 - 67.0096% [26] {min=12.7641, max=18.1545, std dev=1.76465}
+|   |   |   |   |   |   |   |   MueLu: N5MueLu24RebalanceTransferFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Build (total): 14.3578 - 93.5171% [26] {min=11.6605, max=17.104, std dev=1.84286}
+|   |   |   |   |   |   |   |   |   MueLu: N5MueLu18RepartitionFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Build (total): 13.9341 - 97.0493% [26] {min=11.2352, max=16.6849, std dev=1.84466}
+|   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu10RAPFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Computing Ac (total): 11.2573 - 80.789% [26] {min=8.56203, max=14.0107, std dev=1.844}
+|   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu14TogglePFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Prolongator toggle (total): 6.03382 - 53.5994% [26] {min=3.33574, max=8.78249, std dev=1.8435}
+|   |   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu26SemiCoarsenPFactory_kokkosIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Build (total): 6.01983 - 99.7682% [26] {min=3.32171, max=8.7688, std dev=1.84291}
+|   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu26SemiCoarsenPFactory_kokkosIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: BuildSemiCoarsenP (sub, total): 5.99007 - 99.5055% [26] {min=3.29601, max=8.7332, std dev=1.83948}
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu26SemiCoarsenPFactory_kokkosIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Fill P (sub, total): 1.44506 - 24.1243% [26] {min=0.00488398, max=2.87388, std dev=0.967834}
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   Remainder: 4.545 - 75.8757%
+|   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu26SemiCoarsenPFactory_kokkosIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: TransferCoordinates (sub, total): 0.0212369 - 0.352782% [26] {min=0.0155007, max=0.0316079, std dev=0.00372377}
+|   |   |   |   |   |   |   |   |   |   |   |   |   Remainder: 0.00852923 - 0.141685%
+|   |   |   |   |   |   |   |   |   |   |   |   Remainder: 0.0139843 - 0.231766%
+|   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu10RAPFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: MxM: A x P (sub, total): 2.31588 - 20.5723% [26] {min=0.815225, max=4.00116, std dev=1.06205}
+|   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu13TransPFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Transpose P (total): 1.96454 - 17.4513% [26] {min=0.278127, max=3.46682, std dev=1.06306}
+|   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu10RAPFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: MxM: R x (AP) (explicit) (sub, total): 0.889673 - 7.90311% [26] {min=0.888065, max=0.891033, std dev=0.000788785}
+|   |   |   |   |   |   |   |   |   |   |   Remainder: 0.0533481 - 0.4739%
+|   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu10RAPFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Projections (sub, total): 0.00951634 - 0.0682951% [26] {min=0.00847946, max=0.0107346, std dev=0.000328551}
+|   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu32ToggleCoordinatesTransferFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Coordinate transfer toggle (total): 0.00473871 - 49.7956% [26] {min=0.00433862, max=0.00503095, std dev=0.000127606}
+|   |   |   |   |   |   |   |   |   |   |   Remainder: 0.00477763 - 50.2044%
+|   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu27RepartitionHeuristicFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Build (total): 0.0288177 - 0.206813% [26] {min=0.0179226, max=0.0556224, std dev=0.00947966}
+|   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu15ZoltanInterfaceIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Build (total): 0.786653 - 5.64551% [26] {min=0.782741, max=0.790129, std dev=0.00190732}
+|   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu15ZoltanInterfaceIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Zoltan RCB (sub, total): 0.739911 - 94.058% [26] {min=0.736316, max=0.743984, std dev=0.001837}
+|   |   |   |   |   |   |   |   |   |   |   Remainder: 0.0467428 - 5.94198%
+|   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu18RepartitionFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: DeterminePartitionPlacement (sub, total): 0.285022 - 2.04549% [26] {min=0.219036, max=0.432133, std dev=0.0843715}
+|   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu18RepartitionFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Import construction (sub, total): 1.0876 - 7.80529% [26] {min=1.08492, max=1.09022, std dev=0.00068121}
+|   |   |   |   |   |   |   |   |   |   Remainder: 0.479278 - 3.43959%
+|   |   |   |   |   |   |   |   |   MueLu: N5MueLu24RebalanceTransferFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Rebalancing prolongator (sub, total): 0.00109454 - 0.00762331% [26] {min=0.000446406, max=0.0017872, std dev=0.000241611}
+|   |   |   |   |   |   |   |   |   MueLu: N5MueLu24RebalanceTransferFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Rebalancing coordinates (sub, total): 0.194488 - 1.35458% [26] {min=0.188241, max=0.200701, std dev=0.00440294}
+|   |   |   |   |   |   |   |   |   MueLu: N5MueLu24RebalanceTransferFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Rebalancing nullspace (sub, total): 0.208399 - 1.45147% [26] {min=0.205715, max=0.210274, std dev=0.00071913}
+|   |   |   |   |   |   |   |   |   Remainder: 0.0196709 - 0.137005%
+|   |   |   |   |   |   |   |   MueLu: N5MueLu13TransPFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Transpose P (total): 0.241212 - 1.57109% [26] {min=0.234578, max=0.247871, std dev=0.0040417}
+|   |   |   |   |   |   |   |   MueLu: N5MueLu18RebalanceAcFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Computing Ac (total): 0.649206 - 4.22849% [26] {min=0.553343, max=0.720006, std dev=0.0788894}
+|   |   |   |   |   |   |   |   |   MueLu: N5MueLu18RebalanceAcFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Rebalancing existing Ac (sub, total): 0.645533 - 99.4343% [26] {min=0.549704, max=0.716477, std dev=0.0787688}
+|   |   |   |   |   |   |   |   |   Remainder: 0.00367284 - 0.565744%
+|   |   |   |   |   |   |   |   MueLu: N5MueLu15Ifpack2SmootherIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Setup Smoother (total): 0.0584301 - 0.380575% [26] {min=0.0340236, max=0.078041, std dev=0.00990766}
+|   |   |   |   |   |   |   |   |   MueLu: N5MueLu15Ifpack2SmootherIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: SetPrecParameters: 0.0199566 - 34.1546% [26] {min=0.0100975, max=0.0219545, std dev=0.00348062}
+|   |   |   |   |   |   |   |   |   Ifpack2::Relaxation::initialize: 0.00112942 - 1.93294% [26] {min=0.000339024, max=0.00168751, std dev=0.000362074}
+|   |   |   |   |   |   |   |   |   Ifpack2::Relaxation::compute: 0.0264301 - 45.2337% [26] {min=0.0151542, max=0.0448989, std dev=0.00726405}
+|   |   |   |   |   |   |   |   |   Remainder: 0.010914 - 18.6788%
+|   |   |   |   |   |   |   |   Remainder: 0.0464869 - 0.302784%
+|   |   |   |   |   |   |   MueLu: N5MueLu9HierarchyIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Setup (total, level=2): 6.13473 - 26.7754% [26] {min=6.04465, max=6.38854, std dev=0.113475}
+|   |   |   |   |   |   |   |   MueLu: N5MueLu24RebalanceTransferFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Build (total): 4.97866 - 81.1553% [26] {min=4.95624, max=5.00427, std dev=0.0104534}
+|   |   |   |   |   |   |   |   |   MueLu: N5MueLu18RepartitionFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Build (total): 4.77932 - 95.9961% [26] {min=4.75727, max=4.80307, std dev=0.0102314}
+|   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu10RAPFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Computing Ac (total): 3.9595 - 82.8465% [26] {min=3.93772, max=3.98293, std dev=0.0104002}
+|   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu14TogglePFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Prolongator toggle (total): 2.1806 - 55.0726% [26] {min=2.16029, max=2.2008, std dev=0.00981691}
+|   |   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu10SaPFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Prolongator smoothing (total): 2.1648 - 99.2753% [26] {min=2.14436, max=2.18512, std dev=0.00986131}
+|   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu17TentativePFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Build (total): 1.27457 - 58.8772% [26] {min=1.253, max=1.29919, std dev=0.00908844}
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu27UncoupledAggregationFactoryIixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Build (total): 0.68599 - 53.8212% [26] {min=0.667978, max=0.706913, std dev=0.00849826}
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu19CoalesceDropFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Build (total): 0.547314 - 79.7845% [26] {min=0.529699, max=0.568059, std dev=0.00837718}
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu19AmalgamationFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Build (total): 0.145991 - 26.6741% [26] {min=0.128302, max=0.167317, std dev=0.00833327}
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   Remainder: 0.401323 - 73.3259%
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu27UncoupledAggregationFactoryIixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Algo Phase - (Dirichlet) (sub, total): 0.0284666 - 4.14971% [26] {min=0.02726, max=0.0294779, std dev=0.000529833}
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu37PreserveDirichletAggregationAlgorithmIixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: BuildAggregates (total): 0.000764697 - 2.6863% [26] {min=0.000683312, max=0.000844496, std dev=3.00522e-05}
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   Remainder: 0.0277019 - 97.3137%
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu27UncoupledAggregationFactoryIixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Algo Phase 1 (main) (sub, total): 0.0204176 - 2.97637% [26] {min=0.0195761, max=0.0215197, std dev=0.000480835}
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu26AggregationPhase1AlgorithmIixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: BuildAggregates (total): 0.0092016 - 45.067% [26] {min=0.00835089, max=0.0101449, std dev=0.000353439}
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   Remainder: 0.011216 - 54.933%
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu27UncoupledAggregationFactoryIixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Algo Phase 2a (secondary) (sub, total): 0.0163144 - 2.37823% [26] {min=0.0151254, max=0.0165637, std dev=0.000114484}
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu27AggregationPhase2aAlgorithmIixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: BuildAggregates (total): 0.00403957 - 24.7607% [26] {min=0.00359363, max=0.00462865, std dev=0.000243236}
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   Remainder: 0.0122748 - 75.2393%
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu27UncoupledAggregationFactoryIixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Algo Phase 2b (expansion) (sub, total): 0.0144142 - 2.10122% [26] {min=0.0133913, max=0.014671, std dev=0.000114154}
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu27AggregationPhase2bAlgorithmIixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: BuildAggregates (total): 0.00410693 - 28.4924% [26] {min=0.0035403, max=0.0048899, std dev=0.000257588}
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   Remainder: 0.0103072 - 71.5076%
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu27UncoupledAggregationFactoryIixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Algo Phase 3 (cleanup) (sub, total): 0.0114575 - 1.67021% [26] {min=0.0105419, max=0.0118479, std dev=0.0002032}
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu26AggregationPhase3AlgorithmIixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: BuildAggregates (total): 0.000822332 - 7.17726% [26] {min=0.000651905, max=0.000948649, std dev=7.06002e-05}
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   Remainder: 0.0106351 - 92.8227%
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   Remainder: 0.0476064 - 6.93981%
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu16CoarseMapFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Build (total): 0.0854038 - 6.70059% [26] {min=0.0839582, max=0.0866894, std dev=0.0006675}
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   Remainder: 0.503178 - 39.4782%
+|   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu10SaPFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Eigenvalue estimate (sub, total): 0.492196 - 22.7364% [26] {min=0.456968, max=0.504539, std dev=0.0101328}
+|   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu10SaPFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Fused (I-omega*D^{-1} A)*Ptent (sub, total): 0.3667 - 16.9392% [26] {min=0.362305, max=0.372203, std dev=0.00170158}
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   UtilitiesBase::GetMatrixDiagonalInverse: 0.0433703 - 11.8272% [26] {min=0.0393894, max=0.0458813, std dev=0.00105924}
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   Remainder: 0.32333 - 88.1728%
+|   |   |   |   |   |   |   |   |   |   |   |   |   Remainder: 0.0313276 - 1.44714%
+|   |   |   |   |   |   |   |   |   |   |   |   Remainder: 0.0158026 - 0.72469%
+|   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu10RAPFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: MxM: A x P (sub, total): 0.666345 - 16.829% [26] {min=0.65034, max=0.680678, std dev=0.00635926}
+|   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu13TransPFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Transpose P (total): 0.406437 - 10.2649% [26] {min=0.390631, max=0.419964, std dev=0.00667716}
+|   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu10RAPFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: MxM: R x (AP) (explicit) (sub, total): 0.672629 - 16.9877% [26] {min=0.670646, max=0.673832, std dev=0.000517395}
+|   |   |   |   |   |   |   |   |   |   |   Remainder: 0.0334878 - 0.845759%
+|   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu10RAPFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Projections (sub, total): 0.0528559 - 1.10593% [26] {min=0.0458585, max=0.0535415, std dev=0.000529311}
+|   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu32ToggleCoordinatesTransferFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Coordinate transfer toggle (total): 0.0454081 - 85.9093% [26] {min=0.0369756, max=0.0458582, std dev=0.000606441}
+|   |   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu26CoordinatesTransferFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Build (total): 0.0349304 - 76.9254% [26] {min=0.025059, max=0.035709, std dev=0.000729871}
+|   |   |   |   |   |   |   |   |   |   |   |   Remainder: 0.0104777 - 23.0746%
+|   |   |   |   |   |   |   |   |   |   |   Remainder: 0.00744777 - 14.0907%
+|   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu27RepartitionHeuristicFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Build (total): 0.0168595 - 0.35276% [26] {min=0.016119, max=0.0183459, std dev=0.000538497}
+|   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu15ZoltanInterfaceIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Build (total): 0.374231 - 7.83022% [26] {min=0.37169, max=0.37488, std dev=0.000363289}
+|   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu15ZoltanInterfaceIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Zoltan RCB (sub, total): 0.35204 - 94.07% [26] {min=0.350293, max=0.352815, std dev=0.000315494}
+|   |   |   |   |   |   |   |   |   |   |   Remainder: 0.0221918 - 5.92996%
+|   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu18RepartitionFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: DeterminePartitionPlacement (sub, total): 0.0480928 - 1.00627% [26] {min=0.0304958, max=0.0768915, std dev=0.0145447}
+|   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu18RepartitionFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Import construction (sub, total): 0.161963 - 3.38883% [26] {min=0.159971, max=0.16276, std dev=0.000647844}
+|   |   |   |   |   |   |   |   |   |   Remainder: 0.165819 - 3.46951%
+|   |   |   |   |   |   |   |   |   MueLu: N5MueLu24RebalanceTransferFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Rebalancing prolongator (sub, total): 0.000480481 - 0.00965082% [26] {min=0.000440021, max=0.00118691, std dev=5.22577e-05}
+|   |   |   |   |   |   |   |   |   MueLu: N5MueLu24RebalanceTransferFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Rebalancing coordinates (sub, total): 0.0954537 - 1.91726% [26] {min=0.0909308, max=0.100999, std dev=0.00221883}
+|   |   |   |   |   |   |   |   |   MueLu: N5MueLu24RebalanceTransferFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Rebalancing nullspace (sub, total): 0.0893519 - 1.7947% [26] {min=0.0876948, max=0.0898914, std dev=0.000337605}
+|   |   |   |   |   |   |   |   |   Remainder: 0.0140565 - 0.282334%
+|   |   |   |   |   |   |   |   MueLu: N5MueLu13TransPFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Transpose P (total): 0.320754 - 5.2285% [26] {min=0.315761, max=0.323475, std dev=0.00164477}
+|   |   |   |   |   |   |   |   MueLu: N5MueLu18RebalanceAcFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Computing Ac (total): 0.76354 - 12.4462% [26] {min=0.701706, max=0.967837, std dev=0.09865}
+|   |   |   |   |   |   |   |   |   MueLu: N5MueLu18RebalanceAcFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Rebalancing existing Ac (sub, total): 0.759394 - 99.457% [26] {min=0.697361, max=0.963668, std dev=0.0986442}
+|   |   |   |   |   |   |   |   |   Remainder: 0.00414622 - 0.543026%
+|   |   |   |   |   |   |   |   MueLu: N5MueLu15Ifpack2SmootherIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Setup Smoother (total): 0.0284289 - 0.46341% [19] {min=0.0114815, max=0.0401972, std dev=0.0115316}
+|   |   |   |   |   |   |   |   |   MueLu: N5MueLu15Ifpack2SmootherIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: SetPrecParameters: 0.00637039 - 22.4081% [19] {min=0.00251898, max=0.00894363, std dev=0.00256292}
+|   |   |   |   |   |   |   |   |   Ifpack2::Relaxation::initialize: 0.00026687 - 0.938728% [19] {min=0.00010268, max=0.000418348, std dev=0.00010752}
+|   |   |   |   |   |   |   |   |   Ifpack2::Relaxation::compute: 0.016344 - 57.4908% [19] {min=0.00637981, max=0.0242619, std dev=0.00670478}
+|   |   |   |   |   |   |   |   |   Remainder: 0.00544766 - 19.1624%
+|   |   |   |   |   |   |   |   Remainder: 0.0433466 - 0.706578%
+|   |   |   |   |   |   |   MueLu: N5MueLu9HierarchyIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Setup (total, level=3): 4.40534 - 19.2274% [19] {min=1.83081, max=6.3507, std dev=1.75089}
+|   |   |   |   |   |   |   |   MueLu: N5MueLu24RebalanceTransferFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Build (total): 3.53116 - 80.1563% [19] {min=1.47555, max=4.82625, std dev=1.40549}
+|   |   |   |   |   |   |   |   |   MueLu: N5MueLu18RepartitionFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Build (total): 3.42728 - 97.0582% [19] {min=1.43176, max=4.68449, std dev=1.36439}
+|   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu10RAPFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Computing Ac (total): 3.11357 - 90.8466% [19] {min=1.3043, max=4.25578, std dev=1.23799}
+|   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu14TogglePFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Prolongator toggle (total): 1.41448 - 45.4295% [19] {min=0.63663, max=1.93306, std dev=0.54645}
+|   |   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu10SaPFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Prolongator smoothing (total): 1.40317 - 99.201% [19] {min=0.632005, max=1.91782, std dev=0.541873}
+|   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu17TentativePFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Build (total): 0.609805 - 43.4589% [19] {min=0.250758, max=0.910942, std dev=0.230354}
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu27UncoupledAggregationFactoryIixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Build (total): 0.454893 - 74.5965% [19] {min=0.199255, max=0.623118, std dev=0.177186}
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu19CoalesceDropFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Build (total): 0.386993 - 85.0735% [19] {min=0.171424, max=0.530265, std dev=0.149931}
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu19AmalgamationFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Build (total): 0.0746433 - 19.288% [19] {min=0.0303178, max=0.104736, std dev=0.0292633}
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   Remainder: 0.31235 - 80.712%
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu27UncoupledAggregationFactoryIixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Algo Phase - (Dirichlet) (sub, total): 0.0061497 - 1.3519% [19] {min=0.00242375, max=0.00917769, std dev=0.00247921}
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu37PreserveDirichletAggregationAlgorithmIixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: BuildAggregates (total): 0.000499788 - 8.12703% [19] {min=0.000185822, max=0.000744967, std dev=0.000203198}
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   Remainder: 0.00564991 - 91.873%
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu27UncoupledAggregationFactoryIixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Algo Phase 1 (main) (sub, total): 0.012321 - 2.70854% [19] {min=0.00497956, max=0.01696, std dev=0.00495719}
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu26AggregationPhase1AlgorithmIixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: BuildAggregates (total): 0.0048272 - 39.1788% [19] {min=0.00163193, max=0.00816294, std dev=0.00200982}
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   Remainder: 0.00749376 - 60.8212%
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu27UncoupledAggregationFactoryIixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Algo Phase 2a (secondary) (sub, total): 0.00976476 - 2.14661% [19] {min=0.00375264, max=0.0134763, std dev=0.00398828}
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu27AggregationPhase2aAlgorithmIixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: BuildAggregates (total): 0.00289767 - 29.6748% [19] {min=0.00107269, max=0.00465477, std dev=0.00119796}
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   Remainder: 0.00686709 - 70.3252%
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu27UncoupledAggregationFactoryIixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Algo Phase 2b (expansion) (sub, total): 0.00963336 - 2.11772% [19] {min=0.00368783, max=0.0132986, std dev=0.00394226}
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu27AggregationPhase2bAlgorithmIixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: BuildAggregates (total): 0.00312076 - 32.3953% [19] {min=0.0010897, max=0.00497153, std dev=0.00133266}
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   Remainder: 0.00651261 - 67.6047%
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu27UncoupledAggregationFactoryIixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Algo Phase 3 (cleanup) (sub, total): 0.00658233 - 1.447% [19] {min=0.00269861, max=0.00913085, std dev=0.00261446}
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu26AggregationPhase3AlgorithmIixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: BuildAggregates (total): 0.000529641 - 8.04641% [19] {min=0.000179172, max=0.000796536, std dev=0.000223085}
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   Remainder: 0.00605268 - 91.9536%
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   Remainder: 0.0234486 - 5.15475%
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu16CoarseMapFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Build (total): 0.0166403 - 2.72879% [19] {min=0.00658268, max=0.0231957, std dev=0.00673656}
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   Remainder: 0.138271 - 22.6747%
+|   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu10SaPFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Eigenvalue estimate (sub, total): 0.40207 - 28.6543% [19] {min=0.151981, max=0.615488, std dev=0.156229}
+|   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu10SaPFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Fused (I-omega*D^{-1} A)*Ptent (sub, total): 0.378249 - 26.9566% [19] {min=0.134426, max=0.52161, std dev=0.160126}
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   UtilitiesBase::GetMatrixDiagonalInverse: 0.0346355 - 9.1568% [19] {min=0.0132863, max=0.0510749, std dev=0.0140434}
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   Remainder: 0.343613 - 90.8432%
+|   |   |   |   |   |   |   |   |   |   |   |   |   Remainder: 0.0130512 - 0.930119%
+|   |   |   |   |   |   |   |   |   |   |   |   Remainder: 0.0113022 - 0.799037%
+|   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu10RAPFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: MxM: A x P (sub, total): 0.76508 - 24.5725% [19] {min=0.283804, max=1.08994, std dev=0.313042}
+|   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu13TransPFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Transpose P (total): 0.303279 - 9.74057% [19] {min=0.108683, max=0.461052, std dev=0.126334}
+|   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu10RAPFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: MxM: R x (AP) (explicit) (sub, total): 0.607177 - 19.501% [19] {min=0.2433, max=0.830653, std dev=0.245551}
+|   |   |   |   |   |   |   |   |   |   |   Remainder: 0.0235544 - 0.75651%
+|   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu10RAPFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Projections (sub, total): 0.0294081 - 0.85806% [19] {min=0.0119695, max=0.0410599, std dev=0.0117554}
+|   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu32ToggleCoordinatesTransferFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Coordinate transfer toggle (total): 0.024195 - 82.2732% [19] {min=0.00985118, max=0.0340321, std dev=0.00965338}
+|   |   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu26CoordinatesTransferFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Build (total): 0.0172598 - 71.3361% [19] {min=0.00704306, max=0.0245473, std dev=0.00691087}
+|   |   |   |   |   |   |   |   |   |   |   |   Remainder: 0.00693523 - 28.6639%
+|   |   |   |   |   |   |   |   |   |   |   Remainder: 0.00521311 - 17.7268%
+|   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu27RepartitionHeuristicFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Build (total): 0.0101006 - 0.294711% [19] {min=0.00357107, max=0.0145652, std dev=0.0042911}
+|   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu15ZoltanInterfaceIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Build (total): 0.118254 - 3.45037% [19] {min=0.0484826, max=0.161998, std dev=0.0473873}
+|   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu15ZoltanInterfaceIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Zoltan RCB (sub, total): 0.103375 - 87.4178% [19] {min=0.0429931, max=0.14149, std dev=0.0412049}
+|   |   |   |   |   |   |   |   |   |   |   Remainder: 0.0148789 - 12.5822%
+|   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu18RepartitionFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: DeterminePartitionPlacement (sub, total): 0.0119668 - 0.349164% [19] {min=0.00468517, max=0.0167633, std dev=0.00482847}
+|   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu18RepartitionFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Import construction (sub, total): 0.0556267 - 1.62306% [19] {min=0.0225393, max=0.0770822, std dev=0.0224149}
+|   |   |   |   |   |   |   |   |   |   Remainder: 0.0883549 - 2.57799%
+|   |   |   |   |   |   |   |   |   MueLu: N5MueLu24RebalanceTransferFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Rebalancing prolongator (sub, total): 0.000365903 - 0.0103621% [19] {min=0.0001561, max=0.00111866, std dev=0.000158751}
+|   |   |   |   |   |   |   |   |   MueLu: N5MueLu24RebalanceTransferFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Rebalancing coordinates (sub, total): 0.0665376 - 1.8843% [19] {min=0.0251363, max=0.0915929, std dev=0.0274038}
+|   |   |   |   |   |   |   |   |   MueLu: N5MueLu24RebalanceTransferFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Rebalancing nullspace (sub, total): 0.0266409 - 0.754451% [19] {min=0.0140531, max=0.0374808, std dev=0.00959722}
+|   |   |   |   |   |   |   |   |   Remainder: 0.0103363 - 0.292716%
+|   |   |   |   |   |   |   |   MueLu: N5MueLu13TransPFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Transpose P (total): 0.249288 - 5.65877% [19] {min=0.103301, max=0.342156, std dev=0.0995235}
+|   |   |   |   |   |   |   |   MueLu: N5MueLu18RebalanceAcFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Computing Ac (total): 0.577097 - 13.0999% [19] {min=0.232581, max=1.08344, std dev=0.234301}
+|   |   |   |   |   |   |   |   |   MueLu: N5MueLu18RebalanceAcFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Rebalancing existing Ac (sub, total): 0.574155 - 99.4902% [19] {min=0.231323, max=1.07961, std dev=0.233196}
+|   |   |   |   |   |   |   |   |   Remainder: 0.00294198 - 0.50979%
+|   |   |   |   |   |   |   |   MueLu: N5MueLu15Ifpack2SmootherIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Setup Smoother (total): 0.0244271 - 0.554488% [14] {min=0.0121978, max=0.0432979, std dev=0.0120271}
+|   |   |   |   |   |   |   |   |   MueLu: N5MueLu15Ifpack2SmootherIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: SetPrecParameters: 0.00460544 - 18.8538% [14] {min=0.00230119, max=0.00792761, std dev=0.00225151}
+|   |   |   |   |   |   |   |   |   Ifpack2::Relaxation::initialize: 0.000211709 - 0.866695% [14] {min=0.00010818, max=0.000360534, std dev=0.000101078}
+|   |   |   |   |   |   |   |   |   Ifpack2::Relaxation::compute: 0.0150819 - 61.7426% [14] {min=0.00719455, max=0.0278263, std dev=0.0076699}
+|   |   |   |   |   |   |   |   |   Remainder: 0.00452802 - 18.5368%
+|   |   |   |   |   |   |   |   Remainder: 0.0233699 - 0.530489%
+|   |   |   |   |   |   |   MueLu: N5MueLu9HierarchyIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Setup (total, level=4): 2.74325 - 11.9731% [14] {min=1.45174, max=4.92147, std dev=1.33481}
+|   |   |   |   |   |   |   |   MueLu: N5MueLu24RebalanceTransferFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Build (total): 2.39754 - 87.3979% [14] {min=1.27527, max=4.19762, std dev=1.14144}
+|   |   |   |   |   |   |   |   |   MueLu: N5MueLu18RepartitionFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Build (total): 2.35836 - 98.3657% [14] {min=1.25503, max=4.12902, std dev=1.12213}
+|   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu10RAPFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Computing Ac (total): 2.26415 - 96.0052% [14] {min=1.20603, max=3.96499, std dev=1.07646}
+|   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu14TogglePFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Prolongator toggle (total): 1.07646 - 47.5436% [14] {min=0.552279, max=1.88969, std dev=0.526605}
+|   |   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu10SaPFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Prolongator smoothing (total): 1.06787 - 99.2025% [14] {min=0.547569, max=1.87515, std dev=0.522476}
+|   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu17TentativePFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Build (total): 0.512389 - 47.9822% [14] {min=0.261632, max=0.899526, std dev=0.250901}
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu27UncoupledAggregationFactoryIixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Build (total): 0.394175 - 76.929% [14] {min=0.201383, max=0.693346, std dev=0.192374}
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu19CoalesceDropFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Build (total): 0.345798 - 87.7268% [14] {min=0.176861, max=0.609219, std dev=0.168202}
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu19AmalgamationFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Build (total): 0.0618774 - 17.8941% [14] {min=0.0257576, max=0.113627, std dev=0.0331785}
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   Remainder: 0.28392 - 82.1059%
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu27UncoupledAggregationFactoryIixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Algo Phase - (Dirichlet) (sub, total): 0.00434553 - 1.10244% [14] {min=0.00211489, max=0.0076422, std dev=0.00216907}
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu37PreserveDirichletAggregationAlgorithmIixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: BuildAggregates (total): 0.000391607 - 9.01172% [14] {min=0.00019319, max=0.000675505, std dev=0.000196149}
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   Remainder: 0.00395393 - 90.9883%
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu27UncoupledAggregationFactoryIixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Algo Phase 1 (main) (sub, total): 0.00900727 - 2.28509% [14] {min=0.00457865, max=0.015763, std dev=0.00442666}
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu26AggregationPhase1AlgorithmIixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: BuildAggregates (total): 0.00525799 - 58.375% [14] {min=0.00255642, max=0.00932242, std dev=0.00264518}
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   Remainder: 0.00374927 - 41.625%
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu27UncoupledAggregationFactoryIixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Algo Phase 2a (secondary) (sub, total): 0.00693113 - 1.75839% [14] {min=0.00318551, max=0.0123147, std dev=0.00349252}
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu27AggregationPhase2aAlgorithmIixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: BuildAggregates (total): 0.00241829 - 34.8903% [14] {min=0.00122538, max=0.00446487, std dev=0.00123193}
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   Remainder: 0.00451284 - 65.1097%
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu27UncoupledAggregationFactoryIixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Algo Phase 2b (expansion) (sub, total): 0.00749338 - 1.90103% [14] {min=0.00325422, max=0.0134148, std dev=0.00406612}
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu27AggregationPhase2bAlgorithmIixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: BuildAggregates (total): 0.00304471 - 40.632% [14] {min=0.00145849, max=0.00555495, std dev=0.00158364}
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   Remainder: 0.00444867 - 59.368%
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu27UncoupledAggregationFactoryIixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Algo Phase 3 (cleanup) (sub, total): 0.0042391 - 1.07544% [14] {min=0.00184418, max=0.00767835, std dev=0.00224646}
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu26AggregationPhase3AlgorithmIixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: BuildAggregates (total): 0.000428874 - 10.1171% [14] {min=0.00018789, max=0.000744896, std dev=0.000224464}
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   Remainder: 0.00381023 - 89.8829%
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   |   Remainder: 0.0163614 - 4.15078%
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu16CoarseMapFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Build (total): 0.00963508 - 1.88042% [14] {min=0.00440261, max=0.0176271, std dev=0.0047902}
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   Remainder: 0.108578 - 21.1906%
+|   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu10SaPFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Eigenvalue estimate (sub, total): 0.269827 - 25.2677% [14] {min=0.135651, max=0.473671, std dev=0.133531}
+|   |   |   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu10SaPFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Fused (I-omega*D^{-1} A)*Ptent (sub, total): 0.273502 - 25.6119% [14] {min=0.141698, max=0.482058, std dev=0.133198}
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   UtilitiesBase::GetMatrixDiagonalInverse: 0.0325717 - 11.9091% [14] {min=0.0166572, max=0.0592086, std dev=0.0160134}
+|   |   |   |   |   |   |   |   |   |   |   |   |   |   Remainder: 0.24093 - 88.0909%
+|   |   |   |   |   |   |   |   |   |   |   |   |   Remainder: 0.0121554 - 1.13828%
+|   |   |   |   |   |   |   |   |   |   |   |   Remainder: 0.00858484 - 0.797509%
+|   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu10RAPFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: MxM: A x P (sub, total): 0.610809 - 26.9774% [14] {min=0.321418, max=1.06962, std dev=0.290693}
+|   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu13TransPFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Transpose P (total): 0.207598 - 9.1689% [14] {min=0.116998, max=0.36098, std dev=0.0901413}
+|   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu10RAPFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: MxM: R x (AP) (explicit) (sub, total): 0.350898 - 15.498% [14] {min=0.194484, max=0.614199, std dev=0.161401}
+|   |   |   |   |   |   |   |   |   |   |   Remainder: 0.0183856 - 0.812031%
+|   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu10RAPFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Projections (sub, total): 0.0212451 - 0.900843% [14] {min=0.0107467, max=0.0377075, std dev=0.0103084}
+|   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu32ToggleCoordinatesTransferFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Coordinate transfer toggle (total): 0.0170753 - 80.3729% [14] {min=0.00786118, max=0.0311253, std dev=0.00858329}
+|   |   |   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu26CoordinatesTransferFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Build (total): 0.0118705 - 69.5187% [14] {min=0.00481939, max=0.0223734, std dev=0.00628416}
+|   |   |   |   |   |   |   |   |   |   |   |   Remainder: 0.00520478 - 30.4813%
+|   |   |   |   |   |   |   |   |   |   |   Remainder: 0.0041698 - 19.6271%
+|   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu27RepartitionHeuristicFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Build (total): 0.0058489 - 0.248007% [14] {min=0.00297228, max=0.00975871, std dev=0.0027572}
+|   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu15ZoltanInterfaceIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Build (total): 0.00324222 - 0.137478% [14] {min=0.0015017, max=0.00568977, std dev=0.00168384}
+|   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu18RepartitionFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: DeterminePartitionPlacement (sub, total): 0.00738925 - 0.313322% [14] {min=0.0022997, max=0.0143895, std dev=0.00432495}
+|   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu18RepartitionFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Import construction (sub, total): 0.0161691 - 0.685608% [14] {min=0.00815041, max=0.0278879, std dev=0.00771169}
+|   |   |   |   |   |   |   |   |   |   Remainder: 0.0403166 - 1.70952%
+|   |   |   |   |   |   |   |   |   MueLu: N5MueLu24RebalanceTransferFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Rebalancing prolongator (sub, total): 0.000349689 - 0.0145853% [14] {min=0.000148991, max=0.00074985, std dev=0.000202829}
+|   |   |   |   |   |   |   |   |   MueLu: N5MueLu24RebalanceTransferFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Rebalancing coordinates (sub, total): 0.0248902 - 1.03816% [14] {min=0.011879, max=0.0444365, std dev=0.0125524}
+|   |   |   |   |   |   |   |   |   MueLu: N5MueLu24RebalanceTransferFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Rebalancing nullspace (sub, total): 0.00607319 - 0.253309% [14] {min=0.00265954, max=0.0111225, std dev=0.00318233}
+|   |   |   |   |   |   |   |   |   Remainder: 0.0078707 - 0.328282%
+|   |   |   |   |   |   |   |   MueLu: N5MueLu13TransPFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Transpose P (total): 0.187344 - 6.82928% [14] {min=0.10306, max=0.328555, std dev=0.0867014}
+|   |   |   |   |   |   |   |   MueLu: N5MueLu18RebalanceAcFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Computing Ac (total): 0.116802 - 4.25779% [14] {min=0.0543663, max=0.282727, std dev=0.080859}
+|   |   |   |   |   |   |   |   |   MueLu: N5MueLu18RebalanceAcFactoryIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Rebalancing existing Ac (sub, total): 0.114605 - 98.1192% [14] {min=0.05301, max=0.279092, std dev=0.0799613}
+|   |   |   |   |   |   |   |   |   Remainder: 0.00219682 - 1.88081%
+|   |   |   |   |   |   |   |   MueLu: N5MueLu15Ifpack2SmootherIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Setup Smoother (total): 0.0272771 - 0.994335% [26]
+|   |   |   |   |   |   |   |   |   MueLu: N5MueLu15Ifpack2SmootherIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: SetPrecParameters: 0.0082639 - 30.2961% [26]
+|   |   |   |   |   |   |   |   |   Ifpack2::Relaxation::initialize: 0.000348155 - 1.27636% [26]
+|   |   |   |   |   |   |   |   |   Ifpack2::Relaxation::compute: 0.00911162 - 33.4039% [26]
+|   |   |   |   |   |   |   |   |   Remainder: 0.00955343 - 35.0236%
+|   |   |   |   |   |   |   |   Remainder: 0.0142842 - 0.520705%
+|   |   |   |   |   |   |   Remainder: -8.97993 - -39.1934%
+|   |   |   |   |   |   Remainder: 13.9508 - 37.3015%
+|   |   |   |   |   Remainder: 0.194496 - 0.517351%
+|   |   |   |   NOX Total Linear Solve: 61.6245 - 26.641% [26] {min=61.5362, max=61.6928, std dev=0.0302002}
+|   |   |   |   |   Stratimikos: BelosLOWS: 61.6228 - 99.9973% [26] {min=61.5338, max=61.6907, std dev=0.0300507}
+|   |   |   |   |   |   Belos: Operation Op*x: 0.180051 - 0.292182% [26] {min=0.0170421, max=0.357689, std dev=0.0798108}
+|   |   |   |   |   |   Belos::MVT::MvAddMv: 0.00338349 - 0.00549064% [26] {min=0.000945538, max=0.00530802, std dev=0.0013022}
+|   |   |   |   |   |   Belos: BlockGmresSolMgr total solve time: 61.3441 - 99.5478% [26] {min=61.1559, max=61.5713, std dev=0.107968}
+|   |   |   |   |   |   |   Belos: ICGS[2]: Orthogonalization: 11.5205 - 18.7801% [312] {min=1.88335, max=22.4738, std dev=4.23655}
+|   |   |   |   |   |   |   |   Belos: ICGS[2]: Ortho (Norm): 0.467807 - 4.06066% [312] {min=0.216071, max=0.789933, std dev=0.157628}
+|   |   |   |   |   |   |   |   |   Belos::MVT::MvDot: 0.460072 - 98.3465% [312] {min=0.206754, max=0.786087, std dev=0.159136}
+|   |   |   |   |   |   |   |   |   Remainder: 0.0077351 - 1.65348%
+|   |   |   |   |   |   |   |   Belos::MVT::MvScale: 0.04539 - 0.393995% [312] {min=0.00467556, max=0.0848631, std dev=0.0256854}
+|   |   |   |   |   |   |   |   Belos: ICGS[2]: Ortho (Inner Product): 10.7824 - 93.5933% [572] {min=1.2543, max=21.6625, std dev=4.2076}
+|   |   |   |   |   |   |   |   |   Belos::MVT::MvTransMv: 10.7671 - 99.8587% [572] {min=1.23643, max=21.652, std dev=4.20892}
+|   |   |   |   |   |   |   |   |   Remainder: 0.0152385 - 0.141328%
+|   |   |   |   |   |   |   |   Belos: ICGS[2]: Ortho (Update): 0.18315 - 1.58978% [572] {min=0.0316276, max=0.358153, std dev=0.0866172}
+|   |   |   |   |   |   |   |   |   Belos::MVT::MvTimesMatAddMv: 0.16862 - 92.0665% [572] {min=0.0246858, max=0.342614, std dev=0.0842322}
+|   |   |   |   |   |   |   |   |   Remainder: 0.0145303 - 7.93353%
+|   |   |   |   |   |   |   |   Remainder: 0.0417396 - 0.362309%
+|   |   |   |   |   |   |   Belos::MVT::MvAddMv: 0.0157272 - 0.0256377% [104] {min=0.00308091, max=0.0267325, std dev=0.00779648}
+|   |   |   |   |   |   |   Belos::MVT::MvNorm: 0.967776 - 1.57762% [52] {min=0.0538731, max=1.92936, std dev=0.397299}
+|   |   |   |   |   |   |   Belos: Operation Prec*x: 41.6143 - 67.8376% [312] {min=34.5165, max=55.4982, std dev=4.30077}
+|   |   |   |   |   |   |   |   MueLu: N5MueLu9HierarchyIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Solve (total): 41.5608 - 99.8713% [312] {min=34.4738, max=55.4496, std dev=4.29717}
+|   |   |   |   |   |   |   |   |   MueLu: N5MueLu9HierarchyIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Solve (level=0): 32.5132 - 78.2306% [488] {min=15.6885, max=55.4404, std dev=8.05913}
+|   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu9HierarchyIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Solve : smoothing (level=0): 13.9432 - 42.8845% [624] {min=0.545864, max=41.1251, std dev=8.3166}
+|   |   |   |   |   |   |   |   |   |   |   Ifpack2::BlockRelaxation::apply: 13.8714 - 99.4852% [624] {min=0.493876, max=41.0435, std dev=8.31122}
+|   |   |   |   |   |   |   |   |   |   |   Remainder: 0.0717731 - 0.514755%
+|   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu9HierarchyIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Solve : residual calculation (level=0): 6.20001 - 19.0692% [312] {min=1.12516, max=18.3322, std dev=3.87517}
+|   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu9HierarchyIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Solve : restriction (level=0): 0.133124 - 0.409445% [312] {min=0.0138671, max=0.388969, std dev=0.0737979}
+|   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu9HierarchyIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Solve : import (level=1): 1.94472 - 5.98132% [312] {min=0.0176188, max=16.3606, std dev=3.1517}
+|   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu9HierarchyIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Solve : export (level=1): 9.74689 - 29.9782% [312] {min=0.0372637, max=32.1497, std dev=11.4832}
+|   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu9HierarchyIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Solve : prolongation (level=0): 0.44619 - 1.37233% [312] {min=0.0158693, max=1.46657, std dev=0.276577}
+|   |   |   |   |   |   |   |   |   |   Remainder: 0.0991551 - 0.304968%
+|   |   |   |   |   |   |   |   |   MueLu: N5MueLu9HierarchyIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Solve (level=1): 14.4856 - 34.854% [382] {min=2.52266, max=23.4789, std dev=4.66265}
+|   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu9HierarchyIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Solve : smoothing (level=1): 7.22624 - 49.8857% [624] {min=1.20757, max=13.4392, std dev=4.074}
+|   |   |   |   |   |   |   |   |   |   |   Ifpack2::Relaxation::apply: 7.12731 - 98.631% [624] {min=1.10881, max=13.3381, std dev=4.07367}
+|   |   |   |   |   |   |   |   |   |   |   Remainder: 0.0989273 - 1.369%
+|   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu9HierarchyIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Solve : residual calculation (level=1): 0.871063 - 6.0133% [312] {min=0.136493, max=7.07016, std dev=1.24833}
+|   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu9HierarchyIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Solve : restriction (level=1): 0.745429 - 5.146% [312] {min=0.140511, max=4.64384, std dev=1.09383}
+|   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu9HierarchyIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Solve : import (level=2): 0.105906 - 0.731113% [312] {min=0.0227315, max=3.28697, std dev=0.309412}
+|   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu9HierarchyIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Solve : export (level=2): 5.27653 - 36.426% [312] {min=0.0535003, max=9.72301, std dev=2.62336}
+|   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu9HierarchyIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Solve : prolongation (level=1): 0.176094 - 1.21565% [312] {min=0.141816, max=0.230649, std dev=0.0173954}
+|   |   |   |   |   |   |   |   |   |   Remainder: 0.0843433 - 0.582256%
+|   |   |   |   |   |   |   |   |   MueLu: N5MueLu9HierarchyIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Solve (level=2): 4.43175 - 10.6633% [247] {min=0.748475, max=8.10109, std dev=2.02492}
+|   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu9HierarchyIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Solve : smoothing (level=2): 1.4458 - 32.6237% [456] {min=0.503974, max=3.68124, std dev=0.663107}
+|   |   |   |   |   |   |   |   |   |   |   Ifpack2::Relaxation::apply: 1.37356 - 95.0033% [456] {min=0.477688, max=3.58119, std dev=0.635218}
+|   |   |   |   |   |   |   |   |   |   |   Remainder: 0.072242 - 4.99669%
+|   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu9HierarchyIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Solve : residual calculation (level=2): 0.177868 - 4.01351% [228] {min=0.0643413, max=0.273708, std dev=0.073449}
+|   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu9HierarchyIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Solve : restriction (level=2): 0.116774 - 2.63494% [228] {min=0.0424436, max=0.171824, std dev=0.0483423}
+|   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu9HierarchyIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Solve : import (level=3): 0.0324735 - 0.732748% [228] {min=0.00727912, max=0.119919, std dev=0.0222537}
+|   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu9HierarchyIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Solve : export (level=3): 2.47462 - 55.8386% [228] {min=0.0229762, max=3.75204, std dev=1.27184}
+|   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu9HierarchyIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Solve : prolongation (level=2): 0.121469 - 2.74089% [228] {min=0.0406746, max=0.204334, std dev=0.0532416}
+|   |   |   |   |   |   |   |   |   |   Remainder: 0.0627394 - 1.41568%
+|   |   |   |   |   |   |   |   |   MueLu: N5MueLu9HierarchyIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Solve (level=3): 1.932 - 4.6486% [222] {min=0.983594, max=3.09431, std dev=0.911327}
+|   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu9HierarchyIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Solve : smoothing (level=3): 1.27982 - 66.2436% [356] {min=0.632636, max=2.23711, std dev=0.64374}
+|   |   |   |   |   |   |   |   |   |   |   Ifpack2::Relaxation::apply: 1.22225 - 95.5014% [356] {min=0.606273, max=2.13455, std dev=0.613247}
+|   |   |   |   |   |   |   |   |   |   |   Remainder: 0.0575741 - 4.4986%
+|   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu9HierarchyIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Solve : residual calculation (level=3): 0.15998 - 8.28058% [178] {min=0.0793178, max=0.280538, std dev=0.0805317}
+|   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu9HierarchyIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Solve : restriction (level=3): 0.0880849 - 4.55927% [178] {min=0.0428382, max=0.158729, std dev=0.0451965}
+|   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu9HierarchyIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Solve : import (level=4): 0.0280605 - 1.45241% [178] {min=0.0121054, max=0.0657352, std dev=0.0190949}
+|   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu9HierarchyIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Solve : export (level=4): 0.219072 - 11.3392% [178] {min=0.0620057, max=0.351708, std dev=0.125575}
+|   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu9HierarchyIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Solve : prolongation (level=3): 0.104696 - 5.41907% [178] {min=0.0496412, max=0.187319, std dev=0.0543798}
+|   |   |   |   |   |   |   |   |   |   Remainder: 0.0522783 - 2.70592%
+|   |   |   |   |   |   |   |   |   MueLu: N5MueLu9HierarchyIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Solve (level=4): 0.348974 - 0.839672% [312]
+|   |   |   |   |   |   |   |   |   |   MueLu: N5MueLu9HierarchyIdixN6Kokkos6Compat23KokkosDeviceWrapperNodeINS1_6SerialENS1_9HostSpaceEEEEE: Solve : coarse (level=4): 0.335714 - 96.2001% [312]
+|   |   |   |   |   |   |   |   |   |   |   Ifpack2::Relaxation::apply: 0.282947 - 84.2823% [312]
+|   |   |   |   |   |   |   |   |   |   |   Remainder: 0.0527665 - 15.7177%
+|   |   |   |   |   |   |   |   |   |   Remainder: 0.0132606 - 3.79989%
+|   |   |   |   |   |   |   |   |   Remainder: -12.1508 - -29.2362%
+|   |   |   |   |   |   |   |   Remainder: 0.0535564 - 0.128697%
+|   |   |   |   |   |   |   Belos: Operation Op*x: 6.94506 - 11.3215% [312] {min=1.65687, max=17.73, std dev=3.42631}
+|   |   |   |   |   |   |   Belos::MVT::MvTimesMatAddMv: 0.0112434 - 0.0183284% [26] {min=0.00171899, max=0.0267038, std dev=0.00564339}
+|   |   |   |   |   |   |   Remainder: 0.269495 - 0.439316%
+|   |   |   |   |   |   Remainder: 0.0952374 - 0.154549%
+|   |   |   |   |   Remainder: 0.00168349 - 0.00273186%
+|   |   |   |   Remainder: 6.00669 - 2.59676%
+|   |   |   Remainder: 0.0158605 - 0.00685621%
+|   |   Piro::SteadyStateSolver::evalConvergedModelResponsesAndSensitivities::calc g, df/dp, dg/dp, dg/dx: 0.000772492 - 0.000318389% [2] {min=0.00055528, max=0.00105477, std dev=9.17169e-05}
+|   |   |   Thyra::DefaultModelEvaluatorWithSolveFactory<double>::evalModel(...): 0.000316548 - 40.9775% [2] {min=0.00026464, max=0.000391142, std dev=2.47537e-05}
+|   |   |   |   Albany: Total Fill Time: 5.02049e-05 - 15.8601% [2] {min=4.224e-05, max=6.362e-05, std dev=3.30419e-06}
+|   |   |   |   Remainder: 0.000266343 - 84.1399%
+|   |   |   Remainder: 0.000455945 - 59.0225%
+|   |   Albany Fill: State Residual: 0.00549855 - 0.00226627% [2] {min=0.0023848, max=0.0122234, std dev=0.00242795}
+|   |   |   Phalanx::SortAndOrderEvaluators: 4.70306e-05 - 0.855327% [10] {min=4.286e-05, max=0.00010294, std dev=8.88125e-06}
+|   |   |   Remainder: 0.00545152 - 99.1447%
+|   |   Albany: Output to File: 0.0123479 - 0.00508929% [2] {min=0.00496735, max=0.0405564, std dev=0.00704835}
+|   |   Remainder: 11.276 - 4.64748%
+|   Remainder: 14.2178 - 5.1721%

@@ -1,0 +1,122 @@
+&velocity_solver
+    config_velocity_solver = 'FO'
+    config_sia_tangent_slope_calculation = 'from_vertex_barycentric'
+    config_flowParamA_calculation = 'PB1982'
+    config_do_velocity_reconstruction_for_external_dycore = .false.
+    config_simple_velocity_type = 'uniform'
+    config_use_glp = .false.
+    config_unrealistic_velocity = 00.01592356685
+    config_nonconvergence_error = .false.
+/
+&advection
+    config_thickness_advection = 'fo'
+    config_tracer_advection = 'fo'
+/
+&calving
+    config_calving = 'none'
+    config_data_calving = .false.
+    config_calving_timescale = 0.0
+    config_restore_calving_front = .false.
+    config_remove_icebergs = .false.
+    config_remove_small_islands = .true.
+/
+&thermal_solver
+    config_thermal_solver = 'none'
+    config_thermal_calculate_bmb = .true.
+    config_temperature_init = 'file'
+    config_thermal_thickness = 0.0
+    config_surface_air_temperature_source = 'file'
+    config_surface_air_temperature_value = 273.15
+    config_surface_air_temperature_lapse_rate = 0.01
+    config_basal_heat_flux_source = 'file'
+    config_basal_heat_flux_value = 0.0
+/
+&iceshelf_melt
+    config_basal_mass_bal_float = 'none'
+    config_front_mass_bal_grounded = 'none'
+    config_add_ocean_thermal_forcing = 0.0
+
+/
+&physical_parameters
+    config_ice_density = 910.0
+    config_ocean_density = 1028.0
+    config_sea_level = 0.0
+    config_default_flowParamA = 3.1709792e-24
+    config_flowLawExponent = 3.0
+    config_dynamic_thickness = 10.0
+/
+&time_integration
+    config_dt = '0000-01-00_00:00:00'
+    config_time_integration = 'forward_euler'
+    config_adaptive_timestep = .true.
+    config_min_adaptive_timestep = 60
+    config_max_adaptive_timestep = 3.154e7
+    config_adaptive_timestep_CFL_fraction = 0.8
+    config_adaptive_timestep_include_DCFL = .false.
+    config_adaptive_timestep_force_interval = '0001-00-00_00:00:00'
+/
+&time_management
+    config_do_restart = .false.
+    config_restart_timestamp_name = 'restart_timestamp'
+    config_start_time = 2007-07-01_00:00:00
+    config_stop_time = '2007-08-01_00:00:00'
+    !config_run_duration = '0100-00-00_00:00:00'
+    config_calendar_type = 'gregorian_noleap'
+/
+&io
+    config_stats_interval = 0
+    config_write_stats_on_startup = .false.
+    config_stats_cell_ID = 1
+    config_write_output_on_startup = .true.
+    config_pio_num_iotasks = 8
+    config_pio_stride = 32
+    config_year_digits = 4
+    config_output_external_velocity_solver_data = .false.
+    config_write_albany_ascii_mesh = .false.
+/
+&decomposition
+    config_num_halos = 3 
+    config_block_decomp_file_prefix = 'graph.info.part.'
+    config_number_of_blocks = 0
+    config_explicit_proc_decomp = .false.
+    config_proc_decomp_file_prefix = 'graph.info.part.'
+/
+&debug
+    config_print_thickness_advection_info = .false.
+    config_print_calving_info = .false.
+    config_print_thermal_info = .false.
+    config_always_compute_fem_grid = .true.
+    config_print_velocity_cleanup_details = .false.
+/
+&subglacial_hydro
+    config_ocean_connection_N = .false. 
+    config_SGH = .false.
+    config_SGH_tangent_slope_calculation = 'from_normal_slope'
+    config_SGH_pressure_calc = 'cavity'
+    !config_SGH_alpha = 1.0
+    !config_SGH_beta = 2.0
+    config_SGH_conduc_coeff = 1.6e-4
+    config_SGH_till_drainage = 0.0
+    config_SGH_advection = 'fo'
+    !config_SGH_bed_roughness = 0.5
+    !config_SGH_bed_roughness_max = 0.1
+    !config_SGH_creep_coefficient = 0.04
+    !config_SGH_englacial_porosity = 0.01
+    config_SGH_till_max = 0.0
+    !config_SGH_basal_melt = 'thermal'
+    config_SGH_basal_melt = 'basal_heat'
+/
+&AM_globalStats
+    config_AM_globalStats_enable = .true.
+    config_AM_globalStats_compute_interval = 'output_interval'
+    config_AM_globalStats_stream_name = 'globalStatsOutput'
+    config_AM_globalStats_compute_on_startup = .true.
+    config_AM_globalStats_write_on_startup = .true.
+/
+&AM_regionalStats
+    config_AM_regionalStats_enable = .false.
+    config_AM_regionalStats_compute_interval = 'output_interval'
+    config_AM_regionalStats_stream_name = 'regionalStatsOutput'
+    config_AM_regionalStats_compute_on_startup = .true.
+    config_AM_regionalStats_write_on_startup = .true.
+/

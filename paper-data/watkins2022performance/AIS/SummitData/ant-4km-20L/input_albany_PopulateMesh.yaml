@@ -1,0 +1,78 @@
+%YAML 1.1
+---
+ANONYMOUS:
+  Build Type: Tpetra
+
+# Problem Description
+  Problem: 
+    Solution Method: Steady
+    Name: Populate Mesh
+
+# Discretization Description
+  Discretization: 
+    Workset Size: -1
+    Number Of Time Derivatives: 0
+    Method: Extruded
+    NumLayers: 20
+    Element Shape: Hexahedron
+    Cubature Degree: 4
+    Columnwise Ordering: true
+    Use Glimmer Spacing: true
+
+#   Field Information
+    Thickness Field Name: ice_thickness
+
+#   Sideset Discretizations descriptions
+    Side Set Discretizations: 
+      Side Sets: [basalside, upperside]
+      basalside:
+        Number Of Time Derivatives: 0
+        Method: Ioss
+        Cubature Degree: 4
+        Exodus Input File Name: mesh-decomp/antarctica_2d.exo
+        Exodus Output File Name: mesh-pop/ais_basal_populated.exo
+        Required Fields Info:
+          Number Of Fields: 4
+          Field 0:
+            Field Name: basal_friction
+            Field Type: Node Scalar
+            Field Origin: File
+            File Name: mesh/basal_friction_reg.ascii
+          Field 1:
+            Field Name: ice_thickness
+            Field Type: Node Scalar
+            Field Origin: File
+            File Name: mesh/thickness.ascii
+          Field 2:
+            Field Name: surface_height
+            Field Type: Node Scalar
+            Field Origin: File
+            File Name: mesh/surface_height.ascii
+          Field 3:
+            Field Name: temperature
+            Field Type: Node Layered Scalar
+            Field Origin: File
+            Number Of Layers: 10
+            File Name: mesh/temperature.ascii
+      upperside: 
+        Number Of Time Derivatives: 0
+        Method: SideSetSTK
+        Cubature Degree: 4
+        Exodus Output File Name: mesh-pop/ais_upper_populated.exo
+        Required Fields Info:
+          Number Of Fields: 1
+          Field 0:
+            Field Name: surface_velocity
+            Field Type: Node Vector
+            Field Origin: File
+            Vector Dim: 2
+            File Name: mesh/surface_velocity.ascii
+  Piro:
+    NOX:
+      Status Tests:
+        Test Type: NormF
+        Tolerance: 1.0
+      Printing:
+        Output Information:
+          Details: false
+...

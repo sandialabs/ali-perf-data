@@ -1,0 +1,145 @@
+
+Executing:
+   /gpfs/alpine/cli115/scratch/jwatkins/LandIce/TrilinosBuilds/build-summit-serial-gcc/install/bin/nem_slice -e -S  -l inertial -c -o mesh/antarctica_2d.exo.nem -m mesh=672 mesh/antarctica_2d.exo
+
+nem_slice version 4.19
+Performing an elemental load balance with the following parameters...
+Machine Description
+	architecture: mesh
+	dimension(s): 672
+	total number of processors: 672
+Load Balance Parameters
+	type: inertial
+	refinement: none
+Weighting Parameters
+	no weighting
+Miscellaneous Options
+	SPHERES are being treated as concentrated mass - connectivity exists
+	WARNING: side id error checks turned off
+ExodusII mesh information
+	geometry dimension: 2
+	number of nodes: 841,340	number of elements: 831,171
+	number of element blocks: 1
+	number of node sets: 1	number of side sets: 1
+Time to read mesh parameters: 0.0003714540000000488s
+Time to read mesh: 0.11706594699999995s
+Time to generate graph: 0.07922043100000009s
+===================Call Chaco===========================
+Parameter file `User_Params' not found; using default parameters.
+
+
+           Input and Parameter Values
+
+# vertices = 831171, # edges = 0
+Global method: Inertial
+Local method: None
+Partitioning target: 1-dimensional mesh of size 672
+Partitioning mode: Bisection
+Random seed: 1
+Active Parameters:
+  CHECK_INPUT = True
+  OUTPUT_METRICS = 2
+  MAKE_VWGTS = False
+  REFINE_MAP = False
+  REFINE_PARTITION = 0
+  INTERNAL_VERTICES = False
+  DEBUG_PARAMS = 2
+
+
+
+Starting to partition ...
+
+========================================================
+Time in Chaco: 0.21320236699999995s
+Time to generate load balance: 0.23938324700000002s
+Time for elemental categorization: 0.13413035000000006s
+Nodal categorization: 0.011197696000000201s
+Find procs for border nodes: 0.013343015000000014s
+Order elem cmaps: 0.0071067500000001615s
+Make cmaps consistent: 0.005532193000000074s
+Time to generate load-balance maps: 0.17154185899999996s
+Outputting load balance to file mesh/antarctica_2d.exo.nem
+QA Record:
+	nem_slice
+	4.19
+	2022/01/07
+	22:38:45
+Time to write Nemesis file: 0.531014613s
+...nem_slice successful execution
+
+Executing:
+   /gpfs/alpine/cli115/scratch/jwatkins/LandIce/TrilinosBuilds/build-summit-serial-gcc/install/bin/nem_spread  mesh/antarctica_2d.exo.pex
+
+nem_spread version 7.01 (2021/03/19)
+Using 4 byte integers and 8 byte floating point values.
+Reading the command file, mesh/antarctica_2d.exo.pex
+
+Exodus file (mesh/antarctica_2d.exo)
+	Title of file: ''
+	Dimensionality of problem =              2
+	Number of nodes           =        841,340
+	Number of elements        =        831,171
+	Number of element blocks  =              1
+	Number of node sets       =              1
+	Number of side sets       =              1
+
+
+Start to read in and distribute the load balance info
+EXODUS II load-balance file: mesh/antarctica_2d.exo.nem
+
+Finished distributing load balance info
+
+Load load balance information time: 0.5275277349999999 (sec.)
+
+Load exoII restart param info to each proc.
+
+Load restart parameters time: 0.000346493999999975 (sec.)
+
+Load exoII mesh info to each proc.
+
+	Time to read element block IDs:            0.0001
+	Time to read node set IDs:                 0.0001
+	Time to read side set IDs:                 0.0001
+	Time to extract element block information: 0.0408
+	Time to read nodal coordinates:            0.0361
+	Time to read element blocks:               0.0572
+	Time to read node sets:                    0.0579
+	Time to categorize element types:          0.0011
+	Time to read side sets:                    0.0020
+0.........10.........20.........30.........40.........50.........60.........70.........80.........90.........100.........110.........120.........130.........140.........150.........160.........170.........180.........190.........200.........210.........220.........230.........240.........250.........260.........270.........280.........290.........300.........310.........320.........330.........340.........350.........360.........370.........380.........390.........400.........410.........420.........430.........440.........450.........460.........470.........480.........490.........500.........510.........520.........530.........540.........550.........560.........570.........580.........590.........600.........610.........620.........630.........640.........650.........660.........670671
+Load mesh time: 5.4997455330000005 (sec.)
+
+Load exoII restart data info to each proc.
+
+All output files opened simultaneously.
+	Time to read  vars for timestep 1: 4.4659999999474564e-05 (sec.)
+0.........10.........20.........30.........40.........50.........60.........70.........80.........90.........100.........110.........120.........130.........140.........150.........160.........170.........180.........190.........200.........210.........220.........230.........240.........250.........260.........270.........280.........290.........300.........310.........320.........330.........340.........350.........360.........370.........380.........390.........400.........410.........420.........430.........440.........450.........460.........470.........480.........490.........500.........510.........520.........530.........540.........550.........560.........570.........580.........590.........600.........610.........620.........630.........640.........650.........660.........670671
+	Time to write vars for timestep 1: 0.03145431499999951 (sec.)
+Load restart data time: 0.2704149219999996 (sec.)
+
+Write of parallel exodus complete
+The average run time was: 6.306037s
+...nem_spread successful execution
+DECOMP Successful Execution
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@batch4>
+Subject: Job 1746959: <MeshDecomp> in cluster <summit> Done
+
+Job <MeshDecomp> was submitted from host <login5> by user <jwatkins> in cluster <summit> at Fri Jan  7 22:37:00 2022
+Job was executed on host(s) <1*batch4>, in queue <batch>, as user <jwatkins> in cluster <summit> at Fri Jan  7 22:38:20 2022
+                            <42*b27n05>
+</ccs/home/jwatkins> was used as the home directory.
+</gpfs/alpine/scratch/jwatkins/cli115/LandIce/AIS/WeakScaling/Scale2D/ant-4km-20L> was used as the working directory.
+Started at Fri Jan  7 22:38:20 2022
+Terminated at Fri Jan  7 22:38:53 2022
+Results reported at Fri Jan  7 22:38:53 2022
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <MeshDecomp.1746959.err> for stderr output of this job.
+
