@@ -13,7 +13,9 @@ PWD=`pwd`
 dataDir="$PWD/${machineName}_nightly_data"
 if test -f "${dataDir}/${FILE}"; then
   echo "$FILE file exists"
+  echo "Replacing last entry..."
   i1=index1_$machineName
+  sed -i '$ d' $i1
   ee=""$machineName"_nightly_data/html_entry"
   cat $i1 $ee >& index11
   mv index11 $i1
