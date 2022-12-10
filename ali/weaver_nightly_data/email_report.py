@@ -357,7 +357,8 @@ if __name__ == "__main__":
              )
 
     # Specify number of processes to extract from ctest.json file
-    nps = 8
+    #nps = 8
+    nps = 4 # temp fix for weaver performance tests
 
     # Specify timers to extract from ctest.json file (note: must be unique names per test in file)
     timers = ('Albany Total Time:',
