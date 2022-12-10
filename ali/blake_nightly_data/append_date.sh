@@ -20,4 +20,5 @@ if test -f "$FILE"; then
   git push
 else  
   echo "$FILE does not exist! Jupyter notebook htmls will not be pushed."
+  rm Ali_PerfTestsBlake.html
 fi
