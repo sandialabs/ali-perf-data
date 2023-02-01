@@ -350,8 +350,7 @@ if __name__ == "__main__":
     files = sorted(glob.glob(os.path.join(dir,'ctest-*')))
 
     # Specify case to extract from ctest.json file
-    cases = ('green-1-10km_ent_muk_tet',
-             'green-1-7km_muk_ls_mem',
+    cases = (
              'green-3-20km_vel_muk_wdg',
              'green-3-20km_ent_muk_wdg'
              )
