@@ -351,8 +351,8 @@ if __name__ == "__main__":
 
     # Specify case to extract from ctest.json file
     cases = (
-             'green-3-20km_vel_muk_wdg',
-             'green-3-20km_ent_muk_wdg'
+             'green-3-20km_vel_muk',
+             'green-3-20km_ent_muk'
              )
 
     # Specify number of processes to extract from ctest.json file
