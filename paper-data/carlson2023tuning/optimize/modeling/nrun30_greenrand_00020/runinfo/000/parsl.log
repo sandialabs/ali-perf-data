@@ -1,0 +1,143 @@
+2022-09-22 09:08:42.218 parsl.dataflow.dflow:84 [DEBUG]  Starting DataFlowKernel with config
+Config(
+    app_cache=True, 
+    checkpoint_files=None, 
+    checkpoint_mode=None, 
+    checkpoint_period=None, 
+    executors=[ThreadPoolExecutor(
+        label='local_threads', 
+        managed=True, 
+        max_threads=4, 
+        storage_access=None, 
+        thread_name_prefix='', 
+        working_dir=None
+    ), HighThroughputExecutor(
+        address=None, 
+        address_probe_timeout=None, 
+        cores_per_worker=1.0, 
+        cpu_affinity='none', 
+        heartbeat_period=30, 
+        heartbeat_threshold=120, 
+        interchange_port_range=(55000, 56000), 
+        label='prlm_htex', 
+        launch_cmd='process_worker_pool.py {debug} {max_workers} -a {addresses} -p {prefetch_capacity} -c {cores_per_worker} -m {mem_per_worker} --poll {poll_period} --task_port={task_port} --result_port={result_port} --logdir={logdir} --block_id={{block_id}} --hb_period={heartbeat_period} {address_probe_timeout_string} --hb_threshold={heartbeat_threshold} --cpu-affinity {cpu_affinity} ', 
+        managed=True, 
+        max_workers=1, 
+        mem_per_worker=None, 
+        poll_period=10, 
+        prefetch_capacity=0, 
+        provider=SlurmProvider(
+            account='m1041_g', 
+            channel=LocalChannel(
+                envs={}, 
+                script_dir=None, 
+                userhome='/global/u1/m/mcarlson/LandIce/ALITune/optimize/modeling/nrun30_greenrand_00020'
+            ), 
+            cmd_timeout=60, 
+            cores_per_node=None, 
+            exclusive=True, 
+            init_blocks=1, 
+            launcher=SingleNodeLauncher(debug=True, fail_on_any=False), 
+            max_blocks=1, 
+            mem_per_node=None, 
+            min_blocks=1, 
+            move_files=True, 
+            nodes_per_block=1, 
+            parallelism=1, 
+            partition=None, 
+            scheduler_options='#SBATCH --constraint=gpu\n#SBATCH --ntasks-per-node=1\n#SBATCH --gpus-per-node=1 --qos=regular\n#SBATCH --exclusive\n#SBATCH --account=m1041_g\n', 
+            walltime='04:00:00', 
+            worker_init='source /global/homes/m/mcarlson/LandIce/ALITune/optimize/prepare_env.sh\n'
+        ), 
+        storage_access=None, 
+        worker_debug=False, 
+        worker_logdir_root=None, 
+        worker_port_range=(54000, 55000), 
+        worker_ports=None, 
+        working_dir=None
+    )], 
+    garbage_collect=True, 
+    initialize_logging=True, 
+    internal_tasks_max_threads=10, 
+    max_idletime=120.0, 
+    monitoring=None, 
+    retries=2, 
+    retry_handler=None, 
+    run_dir='runinfo', 
+    strategy='simple', 
+    usage_tracking=False
+)
+2022-09-22 09:08:42.218 parsl.dataflow.dflow:86 [INFO]  Parsl version: 1.2.0
+2022-09-22 09:08:42.218 parsl.dataflow.usage_tracking.usage:125 [DEBUG]  Tracking status: False
+2022-09-22 09:08:42.218 parsl.dataflow.dflow:114 [INFO]  Run id is: 04035d71-258c-4c86-a79d-be5c6857ba51
+2022-09-22 09:08:42.350 parsl.dataflow.memoization:164 [INFO]  App caching initialized
+2022-09-22 09:08:42.350 parsl.dataflow.strategy:125 [DEBUG]  Scaling strategy: simple
+2022-09-22 09:08:42.356 parsl.executors.high_throughput.executor:468 [DEBUG]  Starting queue management thread
+2022-09-22 09:08:42.356 parsl.executors.high_throughput.executor:356 [DEBUG]  [MTHREAD] queue management worker starting
+2022-09-22 09:08:42.356 parsl.executors.high_throughput.executor:472 [DEBUG]  Started queue management thread
+2022-09-22 09:08:42.362 parsl.executors.high_throughput.executor:317 [DEBUG]  Created management thread: <Thread(HTEX-Queue-Management-Thread, started daemon 22649358055168)>
+2022-09-22 09:08:42.362 parsl.executors.high_throughput.executor:289 [DEBUG]  Launch command: process_worker_pool.py  --max_workers=1 -a 127.0.0.1,128.55.64.43,login34,10.249.0.22,10.249.0.50,10.252.1.141 -p 0 -c 1.0 -m None --poll 10 --task_port=54032 --result_port=54921 --logdir=/global/u1/m/mcarlson/LandIce/ALITune/optimize/modeling/nrun30_greenrand_00020/runinfo/000/prlm_htex --block_id={block_id} --hb_period=30  --hb_threshold=120 --cpu-affinity none 
+2022-09-22 09:08:42.363 parsl.executors.high_throughput.executor:292 [DEBUG]  Starting HighThroughputExecutor with provider:
+SlurmProvider(
+    account='m1041_g', 
+    channel=LocalChannel(
+        envs={}, 
+        script_dir='/global/u1/m/mcarlson/LandIce/ALITune/optimize/modeling/nrun30_greenrand_00020/runinfo/000/submit_scripts', 
+        userhome='/global/u1/m/mcarlson/LandIce/ALITune/optimize/modeling/nrun30_greenrand_00020'
+    ), 
+    cmd_timeout=60, 
+    cores_per_node=None, 
+    exclusive=True, 
+    init_blocks=1, 
+    launcher=SingleNodeLauncher(debug=True, fail_on_any=False), 
+    max_blocks=1, 
+    mem_per_node=None, 
+    min_blocks=1, 
+    move_files=True, 
+    nodes_per_block=1, 
+    parallelism=1, 
+    partition=None, 
+    scheduler_options='#SBATCH --constraint=gpu\n#SBATCH --ntasks-per-node=1\n#SBATCH --gpus-per-node=1 --qos=regular\n#SBATCH --exclusive\n#SBATCH --account=m1041_g\n', 
+    walltime='04:00:00', 
+    worker_init='source /global/homes/m/mcarlson/LandIce/ALITune/optimize/prepare_env.sh\n'
+)
+2022-09-22 09:08:42.364 parsl.providers.slurm.slurm:200 [DEBUG]  Requesting one block with 1 nodes
+2022-09-22 09:08:42.364 parsl.providers.slurm.slurm:216 [DEBUG]  Writing submit script
+2022-09-22 09:08:42.364 parsl.providers.slurm.slurm:220 [DEBUG]  moving files
+2022-09-22 09:08:42.564 parsl.executors.status_handling:178 [DEBUG]  Launched block 0->3229185
+2022-09-22 09:08:42.565 parsl.dataflow.task_status_poller:114 [DEBUG]  Adding executor prlm_htex
+2022-09-22 09:08:42.571 parsl.dataflow.dflow:821 [DEBUG]  Task 0 will be sent to executor local_threads
+2022-09-22 09:08:42.571 parsl.data_provider.files:54 [DEBUG]  Making clean copy of File object <<class 'parsl.data_provider.files.File'> at 0x149977d45ca0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/modeling/nrun30_greenrand_00020/gptune.db/Albany_LandIce_PRLM.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/modeling/nrun30_greenrand_00020/gptune.db/Albany_LandIce_PRLM.json filename=Albany_LandIce_PRLM.json>
+2022-09-22 09:08:42.575 parsl.data_provider.data_manager:128 [DEBUG]  stage_in checking Staging provider NoOpFileStaging()
+2022-09-22 09:08:42.575 parsl.data_provider.file_noop:13 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x149977d51700 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/modeling/nrun30_greenrand_00020/gptune.db/Albany_LandIce_PRLM.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/modeling/nrun30_greenrand_00020/gptune.db/Albany_LandIce_PRLM.json filename=Albany_LandIce_PRLM.json>
+2022-09-22 09:08:42.575 parsl.data_provider.data_manager:87 [DEBUG]  stage_in checking Staging provider NoOpFileStaging()
+2022-09-22 09:08:42.575 parsl.data_provider.file_noop:13 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x149977d51700 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/modeling/nrun30_greenrand_00020/gptune.db/Albany_LandIce_PRLM.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/modeling/nrun30_greenrand_00020/gptune.db/Albany_LandIce_PRLM.json filename=Albany_LandIce_PRLM.json>
+2022-09-22 09:08:42.575 parsl.dataflow.dflow:647 [DEBUG]  Adding output dependencies
+2022-09-22 09:08:42.576 parsl.data_provider.files:54 [DEBUG]  Making clean copy of File object <<class 'parsl.data_provider.files.File'> at 0x149977d45850 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/modeling/nrun30_greenrand_00020/gptune.db/Albany_LandIce_PRLM.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/modeling/nrun30_greenrand_00020/gptune.db/Albany_LandIce_PRLM.json filename=Albany_LandIce_PRLM.json>
+2022-09-22 09:08:42.576 parsl.dataflow.dflow:661 [DEBUG]  Submitting stage out for output file <<class 'parsl.data_provider.files.File'> at 0x149977d45850 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/modeling/nrun30_greenrand_00020/gptune.db/Albany_LandIce_PRLM.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/modeling/nrun30_greenrand_00020/gptune.db/Albany_LandIce_PRLM.json filename=Albany_LandIce_PRLM.json>
+2022-09-22 09:08:42.576 parsl.data_provider.data_manager:160 [DEBUG]  stage_out checking Staging provider NoOpFileStaging()
+2022-09-22 09:08:42.576 parsl.data_provider.file_noop:17 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x149977d516d0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/modeling/nrun30_greenrand_00020/gptune.db/Albany_LandIce_PRLM.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/modeling/nrun30_greenrand_00020/gptune.db/Albany_LandIce_PRLM.json filename=Albany_LandIce_PRLM.json>
+2022-09-22 09:08:42.576 parsl.dataflow.dflow:667 [DEBUG]  No stageout dependency for <<class 'parsl.data_provider.files.File'> at 0x149977d45850 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/modeling/nrun30_greenrand_00020/gptune.db/Albany_LandIce_PRLM.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/modeling/nrun30_greenrand_00020/gptune.db/Albany_LandIce_PRLM.json filename=Albany_LandIce_PRLM.json>
+2022-09-22 09:08:42.576 parsl.app.futures:70 [DEBUG]  Creating DataFuture with parent: <AppFuture at 0x149977d515b0 state=pending> and file: <<class 'parsl.data_provider.files.File'> at 0x149977d45850 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/modeling/nrun30_greenrand_00020/gptune.db/Albany_LandIce_PRLM.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/modeling/nrun30_greenrand_00020/gptune.db/Albany_LandIce_PRLM.json filename=Albany_LandIce_PRLM.json>
+2022-09-22 09:08:42.576 parsl.data_provider.data_manager:46 [DEBUG]  stage_out checking Staging provider NoOpFileStaging()
+2022-09-22 09:08:42.576 parsl.data_provider.file_noop:17 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x149977d516d0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/modeling/nrun30_greenrand_00020/gptune.db/Albany_LandIce_PRLM.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/modeling/nrun30_greenrand_00020/gptune.db/Albany_LandIce_PRLM.json filename=Albany_LandIce_PRLM.json>
+2022-09-22 09:08:42.576 parsl.dataflow.dflow:901 [INFO]  Task 0 submitted for App get_num_function_evals, not waiting on any dependency
+2022-09-22 09:08:42.576 parsl.dataflow.dflow:909 [DEBUG]  Task 0 set to pending state with AppFuture: <AppFuture at 0x149977d515b0 state=pending>
+2022-09-22 09:08:42.576 parsl.dataflow.memoization:229 [DEBUG]  Task 0 will not be memoized
+2022-09-22 09:08:42.577 parsl.dataflow.dflow:610 [INFO]  Task 0 launched on executor local_threads
+2022-09-22 09:08:43.350 parsl.providers.slurm.slurm:143 [DEBUG]  Executing sqeueue
+2022-09-22 09:08:43.400 parsl.providers.slurm.slurm:145 [DEBUG]  sqeueue returned
+2022-09-22 09:08:43.400 parsl.providers.slurm.slurm:158 [DEBUG]  Updating job 3229185 with slurm status PD to parsl status 1
+2022-09-22 09:08:43.402 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 0 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-22 09:08:46.482 parsl.dataflow.dflow:461 [INFO]  Task 0 completed (launched -> exec_done)
+2022-09-22 09:08:46.483 parsl.dataflow.dflow:1057 [INFO]  DFK cleanup initiated
+2022-09-22 09:08:46.483 parsl.dataflow.dflow:947 [INFO]  Summary of tasks in DFK:
+2022-09-22 09:08:46.483 parsl.dataflow.dflow:961 [INFO]  Tasks in state States.exec_done: 1
+2022-09-22 09:08:46.483 parsl.dataflow.dflow:967 [INFO]  End of summary
+2022-09-22 09:08:46.483 parsl.dataflow.dflow:1081 [INFO]  Terminating flow_control and strategy threads
+2022-09-22 09:08:46.484 parsl.executors.threads:101 [DEBUG]  Done with executor shutdown
+2022-09-22 09:08:46.484 parsl.executors.high_throughput.executor:663 [DEBUG]  Current blocks : {'0': '3229185'}
+2022-09-22 09:08:46.527 parsl.executors.high_throughput.executor:698 [INFO]  Attempting HighThroughputExecutor shutdown
+2022-09-22 09:08:46.527 parsl.executors.high_throughput.executor:700 [INFO]  Finished HighThroughputExecutor shutdown attempt
+2022-09-22 09:08:46.527 parsl.executors.threads:101 [DEBUG]  Done with executor shutdown
+2022-09-22 09:08:46.527 parsl.dataflow.dflow:1111 [INFO]  DFK cleanup complete

@@ -1,0 +1,921 @@
+2022-09-25 11:51:40.553 parsl.dataflow.dflow:84 [DEBUG]  Starting DataFlowKernel with config
+Config(
+    app_cache=True, 
+    checkpoint_files=None, 
+    checkpoint_mode=None, 
+    checkpoint_period=None, 
+    executors=[ThreadPoolExecutor(
+        label='local_threads', 
+        managed=True, 
+        max_threads=4, 
+        storage_access=None, 
+        thread_name_prefix='', 
+        working_dir=None
+    ), HighThroughputExecutor(
+        address=None, 
+        address_probe_timeout=None, 
+        cores_per_worker=1.0, 
+        cpu_affinity='none', 
+        heartbeat_period=30, 
+        heartbeat_threshold=120, 
+        interchange_port_range=(55000, 56000), 
+        label='prlm_htex', 
+        launch_cmd='process_worker_pool.py {debug} {max_workers} -a {addresses} -p {prefetch_capacity} -c {cores_per_worker} -m {mem_per_worker} --poll {poll_period} --task_port={task_port} --result_port={result_port} --logdir={logdir} --block_id={{block_id}} --hb_period={heartbeat_period} {address_probe_timeout_string} --hb_threshold={heartbeat_threshold} --cpu-affinity {cpu_affinity} ', 
+        managed=True, 
+        max_workers=1, 
+        mem_per_worker=None, 
+        poll_period=10, 
+        prefetch_capacity=0, 
+        provider=SlurmProvider(
+            account='m1041_g', 
+            channel=LocalChannel(
+                envs={}, 
+                script_dir=None, 
+                userhome='/global/u1/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006'
+            ), 
+            cmd_timeout=60, 
+            cores_per_node=None, 
+            exclusive=True, 
+            init_blocks=1, 
+            launcher=SingleNodeLauncher(debug=True, fail_on_any=False), 
+            max_blocks=1, 
+            mem_per_node=None, 
+            min_blocks=1, 
+            move_files=True, 
+            nodes_per_block=1, 
+            parallelism=1, 
+            partition=None, 
+            scheduler_options='#SBATCH --constraint=gpu\n#SBATCH --ntasks-per-node=1\n#SBATCH --gpus-per-node=1 --qos=regular\n#SBATCH --exclusive\n#SBATCH --account=m1041_g\n', 
+            walltime='02:00:00', 
+            worker_init='source /global/homes/m/mcarlson/LandIce/ALITune/optimize/prepare_env.sh\n'
+        ), 
+        storage_access=None, 
+        worker_debug=False, 
+        worker_logdir_root=None, 
+        worker_port_range=(54000, 55000), 
+        worker_ports=None, 
+        working_dir=None
+    )], 
+    garbage_collect=True, 
+    initialize_logging=True, 
+    internal_tasks_max_threads=10, 
+    max_idletime=120.0, 
+    monitoring=None, 
+    retries=2, 
+    retry_handler=None, 
+    run_dir='runinfo', 
+    strategy='simple', 
+    usage_tracking=False
+)
+2022-09-25 11:51:40.554 parsl.dataflow.dflow:86 [INFO]  Parsl version: 1.2.0
+2022-09-25 11:51:40.554 parsl.dataflow.usage_tracking.usage:125 [DEBUG]  Tracking status: False
+2022-09-25 11:51:40.554 parsl.dataflow.dflow:114 [INFO]  Run id is: 9ed2057c-c72b-4f22-8fc1-404f7d06f174
+2022-09-25 11:51:40.660 parsl.dataflow.memoization:164 [INFO]  App caching initialized
+2022-09-25 11:51:40.660 parsl.dataflow.strategy:125 [DEBUG]  Scaling strategy: simple
+2022-09-25 11:51:40.669 parsl.executors.high_throughput.executor:468 [DEBUG]  Starting queue management thread
+2022-09-25 11:51:40.669 parsl.executors.high_throughput.executor:356 [DEBUG]  [MTHREAD] queue management worker starting
+2022-09-25 11:51:40.669 parsl.executors.high_throughput.executor:472 [DEBUG]  Started queue management thread
+2022-09-25 11:51:40.681 parsl.executors.high_throughput.executor:317 [DEBUG]  Created management thread: <Thread(HTEX-Queue-Management-Thread, started daemon 23221543888640)>
+2022-09-25 11:51:40.682 parsl.executors.high_throughput.executor:289 [DEBUG]  Launch command: process_worker_pool.py  --max_workers=1 -a 128.55.64.42,10.249.0.8,login33,10.249.0.36,127.0.0.1,10.252.1.211 -p 0 -c 1.0 -m None --poll 10 --task_port=54489 --result_port=54984 --logdir=/global/u1/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/runinfo/000/prlm_htex --block_id={block_id} --hb_period=30  --hb_threshold=120 --cpu-affinity none 
+2022-09-25 11:51:40.682 parsl.executors.high_throughput.executor:292 [DEBUG]  Starting HighThroughputExecutor with provider:
+SlurmProvider(
+    account='m1041_g', 
+    channel=LocalChannel(
+        envs={}, 
+        script_dir='/global/u1/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/runinfo/000/submit_scripts', 
+        userhome='/global/u1/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006'
+    ), 
+    cmd_timeout=60, 
+    cores_per_node=None, 
+    exclusive=True, 
+    init_blocks=1, 
+    launcher=SingleNodeLauncher(debug=True, fail_on_any=False), 
+    max_blocks=1, 
+    mem_per_node=None, 
+    min_blocks=1, 
+    move_files=True, 
+    nodes_per_block=1, 
+    parallelism=1, 
+    partition=None, 
+    scheduler_options='#SBATCH --constraint=gpu\n#SBATCH --ntasks-per-node=1\n#SBATCH --gpus-per-node=1 --qos=regular\n#SBATCH --exclusive\n#SBATCH --account=m1041_g\n', 
+    walltime='02:00:00', 
+    worker_init='source /global/homes/m/mcarlson/LandIce/ALITune/optimize/prepare_env.sh\n'
+)
+2022-09-25 11:51:40.683 parsl.providers.slurm.slurm:200 [DEBUG]  Requesting one block with 1 nodes
+2022-09-25 11:51:40.683 parsl.providers.slurm.slurm:216 [DEBUG]  Writing submit script
+2022-09-25 11:51:40.683 parsl.providers.slurm.slurm:220 [DEBUG]  moving files
+2022-09-25 11:51:40.802 parsl.executors.status_handling:178 [DEBUG]  Launched block 0->3254465
+2022-09-25 11:51:40.802 parsl.dataflow.task_status_poller:114 [DEBUG]  Adding executor prlm_htex
+2022-09-25 11:51:41.023 parsl.dataflow.dflow:821 [DEBUG]  Task 0 will be sent to executor local_threads
+2022-09-25 11:51:41.023 parsl.data_provider.files:54 [DEBUG]  Making clean copy of File object <<class 'parsl.data_provider.files.File'> at 0x151ebccb1d90 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/gptune.db/Albany_LandIce_PRLM.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/gptune.db/Albany_LandIce_PRLM.json filename=Albany_LandIce_PRLM.json>
+2022-09-25 11:51:41.027 parsl.data_provider.data_manager:128 [DEBUG]  stage_in checking Staging provider NoOpFileStaging()
+2022-09-25 11:51:41.027 parsl.data_provider.file_noop:13 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151ebccc27f0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/gptune.db/Albany_LandIce_PRLM.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/gptune.db/Albany_LandIce_PRLM.json filename=Albany_LandIce_PRLM.json>
+2022-09-25 11:51:41.027 parsl.data_provider.data_manager:87 [DEBUG]  stage_in checking Staging provider NoOpFileStaging()
+2022-09-25 11:51:41.027 parsl.data_provider.file_noop:13 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151ebccc27f0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/gptune.db/Albany_LandIce_PRLM.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/gptune.db/Albany_LandIce_PRLM.json filename=Albany_LandIce_PRLM.json>
+2022-09-25 11:51:41.027 parsl.dataflow.dflow:647 [DEBUG]  Adding output dependencies
+2022-09-25 11:51:41.027 parsl.data_provider.files:54 [DEBUG]  Making clean copy of File object <<class 'parsl.data_provider.files.File'> at 0x151ebccb1940 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/gptune.db/Albany_LandIce_PRLM.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/gptune.db/Albany_LandIce_PRLM.json filename=Albany_LandIce_PRLM.json>
+2022-09-25 11:51:41.027 parsl.dataflow.dflow:661 [DEBUG]  Submitting stage out for output file <<class 'parsl.data_provider.files.File'> at 0x151ebccb1940 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/gptune.db/Albany_LandIce_PRLM.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/gptune.db/Albany_LandIce_PRLM.json filename=Albany_LandIce_PRLM.json>
+2022-09-25 11:51:41.028 parsl.data_provider.data_manager:160 [DEBUG]  stage_out checking Staging provider NoOpFileStaging()
+2022-09-25 11:51:41.028 parsl.data_provider.file_noop:17 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151ebccc27c0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/gptune.db/Albany_LandIce_PRLM.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/gptune.db/Albany_LandIce_PRLM.json filename=Albany_LandIce_PRLM.json>
+2022-09-25 11:51:41.028 parsl.dataflow.dflow:667 [DEBUG]  No stageout dependency for <<class 'parsl.data_provider.files.File'> at 0x151ebccb1940 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/gptune.db/Albany_LandIce_PRLM.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/gptune.db/Albany_LandIce_PRLM.json filename=Albany_LandIce_PRLM.json>
+2022-09-25 11:51:41.028 parsl.app.futures:70 [DEBUG]  Creating DataFuture with parent: <AppFuture at 0x151ebccc26a0 state=pending> and file: <<class 'parsl.data_provider.files.File'> at 0x151ebccb1940 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/gptune.db/Albany_LandIce_PRLM.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/gptune.db/Albany_LandIce_PRLM.json filename=Albany_LandIce_PRLM.json>
+2022-09-25 11:51:41.028 parsl.data_provider.data_manager:46 [DEBUG]  stage_out checking Staging provider NoOpFileStaging()
+2022-09-25 11:51:41.028 parsl.data_provider.file_noop:17 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151ebccc27c0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/gptune.db/Albany_LandIce_PRLM.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/gptune.db/Albany_LandIce_PRLM.json filename=Albany_LandIce_PRLM.json>
+2022-09-25 11:51:41.028 parsl.dataflow.dflow:901 [INFO]  Task 0 submitted for App get_num_function_evals, not waiting on any dependency
+2022-09-25 11:51:41.028 parsl.dataflow.dflow:909 [DEBUG]  Task 0 set to pending state with AppFuture: <AppFuture at 0x151ebccc26a0 state=pending>
+2022-09-25 11:51:41.028 parsl.dataflow.memoization:229 [DEBUG]  Task 0 will not be memoized
+2022-09-25 11:51:41.029 parsl.dataflow.dflow:610 [INFO]  Task 0 launched on executor local_threads
+2022-09-25 11:51:41.661 parsl.providers.slurm.slurm:143 [DEBUG]  Executing sqeueue
+2022-09-25 11:51:41.700 parsl.providers.slurm.slurm:145 [DEBUG]  sqeueue returned
+2022-09-25 11:51:41.700 parsl.providers.slurm.slurm:158 [DEBUG]  Updating job 3254465 with slurm status PD to parsl status 1
+2022-09-25 11:51:41.701 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 0 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:51:46.662 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 0 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:51:51.662 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 0 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:51:56.662 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 0 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:52:01.662 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 0 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:52:06.663 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 0 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:52:11.663 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 0 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:52:16.663 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 0 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:52:21.663 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 0 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:52:26.662 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 0 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:52:31.663 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 0 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:52:36.663 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 0 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:52:41.662 parsl.providers.slurm.slurm:143 [DEBUG]  Executing sqeueue
+2022-09-25 11:52:41.706 parsl.providers.slurm.slurm:145 [DEBUG]  sqeueue returned
+2022-09-25 11:52:41.707 parsl.providers.slurm.slurm:158 [DEBUG]  Updating job 3254465 with slurm status PD to parsl status 1
+2022-09-25 11:52:41.708 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 0 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:52:46.663 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 0 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:52:51.663 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 0 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:52:56.664 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 0 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:53:01.664 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 0 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:53:06.664 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 0 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:53:11.665 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 0 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:53:16.664 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 0 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:53:21.664 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 0 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:53:26.665 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 0 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:53:31.665 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 0 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:53:36.665 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 0 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:53:39.722 parsl.dataflow.dflow:461 [INFO]  Task 0 completed (launched -> exec_done)
+2022-09-25 11:53:39.723 parsl.dataflow.dflow:821 [DEBUG]  Task 1 will be sent to executor local_threads
+2022-09-25 11:53:39.723 parsl.data_provider.files:54 [DEBUG]  Making clean copy of File object <<class 'parsl.data_provider.files.File'> at 0x151ebccb1940 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/gptune.db/Albany_LandIce_PRLM.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/gptune.db/Albany_LandIce_PRLM.json filename=Albany_LandIce_PRLM.json>
+2022-09-25 11:53:39.723 parsl.app.futures:70 [DEBUG]  Creating DataFuture with parent: <DataFuture at 0x151ebccc2820 state=finished with file <<class 'parsl.data_provider.files.File'> at 0x151ebccb1940 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/gptune.db/Albany_LandIce_PRLM.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/gptune.db/Albany_LandIce_PRLM.json filename=Albany_LandIce_PRLM.json>> and file: <<class 'parsl.data_provider.files.File'> at 0x151ebc059460 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/gptune.db/Albany_LandIce_PRLM.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/gptune.db/Albany_LandIce_PRLM.json filename=Albany_LandIce_PRLM.json>
+2022-09-25 11:53:39.724 parsl.data_provider.data_manager:128 [DEBUG]  stage_in checking Staging provider NoOpFileStaging()
+2022-09-25 11:53:39.724 parsl.data_provider.file_noop:13 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151ebc059460 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/gptune.db/Albany_LandIce_PRLM.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/gptune.db/Albany_LandIce_PRLM.json filename=Albany_LandIce_PRLM.json>
+2022-09-25 11:53:39.724 parsl.data_provider.data_manager:87 [DEBUG]  stage_in checking Staging provider NoOpFileStaging()
+2022-09-25 11:53:39.724 parsl.data_provider.file_noop:13 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151ebc059460 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/gptune.db/Albany_LandIce_PRLM.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/gptune.db/Albany_LandIce_PRLM.json filename=Albany_LandIce_PRLM.json>
+2022-09-25 11:53:39.724 parsl.dataflow.dflow:647 [DEBUG]  Adding output dependencies
+2022-09-25 11:53:39.724 parsl.data_provider.files:54 [DEBUG]  Making clean copy of File object <<class 'parsl.data_provider.files.File'> at 0x151ebccb1e20 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.0.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.0.json filename=eval_configs.0.json>
+2022-09-25 11:53:39.724 parsl.dataflow.dflow:661 [DEBUG]  Submitting stage out for output file <<class 'parsl.data_provider.files.File'> at 0x151ebccb1e20 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.0.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.0.json filename=eval_configs.0.json>
+2022-09-25 11:53:39.725 parsl.data_provider.data_manager:160 [DEBUG]  stage_out checking Staging provider NoOpFileStaging()
+2022-09-25 11:53:39.725 parsl.data_provider.file_noop:17 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151ebc059430 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.0.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.0.json filename=eval_configs.0.json>
+2022-09-25 11:53:39.725 parsl.dataflow.dflow:667 [DEBUG]  No stageout dependency for <<class 'parsl.data_provider.files.File'> at 0x151ebccb1e20 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.0.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.0.json filename=eval_configs.0.json>
+2022-09-25 11:53:39.725 parsl.app.futures:70 [DEBUG]  Creating DataFuture with parent: <AppFuture at 0x151ebc0592b0 state=pending> and file: <<class 'parsl.data_provider.files.File'> at 0x151ebccb1e20 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.0.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.0.json filename=eval_configs.0.json>
+2022-09-25 11:53:39.725 parsl.data_provider.data_manager:46 [DEBUG]  stage_out checking Staging provider NoOpFileStaging()
+2022-09-25 11:53:39.725 parsl.data_provider.file_noop:17 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151ebc059430 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.0.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.0.json filename=eval_configs.0.json>
+2022-09-25 11:53:39.725 parsl.data_provider.files:54 [DEBUG]  Making clean copy of File object <<class 'parsl.data_provider.files.File'> at 0x151ebccc2880 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.1.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.1.json filename=eval_configs.1.json>
+2022-09-25 11:53:39.725 parsl.dataflow.dflow:661 [DEBUG]  Submitting stage out for output file <<class 'parsl.data_provider.files.File'> at 0x151ebccc2880 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.1.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.1.json filename=eval_configs.1.json>
+2022-09-25 11:53:39.725 parsl.data_provider.data_manager:160 [DEBUG]  stage_out checking Staging provider NoOpFileStaging()
+2022-09-25 11:53:39.725 parsl.data_provider.file_noop:17 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151ebc059550 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.1.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.1.json filename=eval_configs.1.json>
+2022-09-25 11:53:39.725 parsl.dataflow.dflow:667 [DEBUG]  No stageout dependency for <<class 'parsl.data_provider.files.File'> at 0x151ebccc2880 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.1.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.1.json filename=eval_configs.1.json>
+2022-09-25 11:53:39.725 parsl.app.futures:70 [DEBUG]  Creating DataFuture with parent: <AppFuture at 0x151ebc0592b0 state=pending> and file: <<class 'parsl.data_provider.files.File'> at 0x151ebccc2880 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.1.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.1.json filename=eval_configs.1.json>
+2022-09-25 11:53:39.726 parsl.data_provider.data_manager:46 [DEBUG]  stage_out checking Staging provider NoOpFileStaging()
+2022-09-25 11:53:39.726 parsl.data_provider.file_noop:17 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151ebc059550 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.1.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.1.json filename=eval_configs.1.json>
+2022-09-25 11:53:39.726 parsl.data_provider.files:54 [DEBUG]  Making clean copy of File object <<class 'parsl.data_provider.files.File'> at 0x151ebccc2970 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.2.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.2.json filename=eval_configs.2.json>
+2022-09-25 11:53:39.726 parsl.dataflow.dflow:661 [DEBUG]  Submitting stage out for output file <<class 'parsl.data_provider.files.File'> at 0x151ebccc2970 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.2.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.2.json filename=eval_configs.2.json>
+2022-09-25 11:53:39.726 parsl.data_provider.data_manager:160 [DEBUG]  stage_out checking Staging provider NoOpFileStaging()
+2022-09-25 11:53:39.726 parsl.data_provider.file_noop:17 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151ebc059910 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.2.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.2.json filename=eval_configs.2.json>
+2022-09-25 11:53:39.726 parsl.dataflow.dflow:667 [DEBUG]  No stageout dependency for <<class 'parsl.data_provider.files.File'> at 0x151ebccc2970 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.2.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.2.json filename=eval_configs.2.json>
+2022-09-25 11:53:39.726 parsl.app.futures:70 [DEBUG]  Creating DataFuture with parent: <AppFuture at 0x151ebc0592b0 state=pending> and file: <<class 'parsl.data_provider.files.File'> at 0x151ebccc2970 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.2.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.2.json filename=eval_configs.2.json>
+2022-09-25 11:53:39.726 parsl.data_provider.data_manager:46 [DEBUG]  stage_out checking Staging provider NoOpFileStaging()
+2022-09-25 11:53:39.726 parsl.data_provider.file_noop:17 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151ebc059910 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.2.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.2.json filename=eval_configs.2.json>
+2022-09-25 11:53:39.726 parsl.data_provider.files:54 [DEBUG]  Making clean copy of File object <<class 'parsl.data_provider.files.File'> at 0x151ebccc2fa0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.3.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.3.json filename=eval_configs.3.json>
+2022-09-25 11:53:39.726 parsl.dataflow.dflow:661 [DEBUG]  Submitting stage out for output file <<class 'parsl.data_provider.files.File'> at 0x151ebccc2fa0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.3.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.3.json filename=eval_configs.3.json>
+2022-09-25 11:53:39.727 parsl.data_provider.data_manager:160 [DEBUG]  stage_out checking Staging provider NoOpFileStaging()
+2022-09-25 11:53:39.727 parsl.data_provider.file_noop:17 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151ebc059dc0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.3.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.3.json filename=eval_configs.3.json>
+2022-09-25 11:53:39.727 parsl.dataflow.dflow:667 [DEBUG]  No stageout dependency for <<class 'parsl.data_provider.files.File'> at 0x151ebccc2fa0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.3.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.3.json filename=eval_configs.3.json>
+2022-09-25 11:53:39.727 parsl.app.futures:70 [DEBUG]  Creating DataFuture with parent: <AppFuture at 0x151ebc0592b0 state=pending> and file: <<class 'parsl.data_provider.files.File'> at 0x151ebccc2fa0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.3.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.3.json filename=eval_configs.3.json>
+2022-09-25 11:53:39.727 parsl.data_provider.data_manager:46 [DEBUG]  stage_out checking Staging provider NoOpFileStaging()
+2022-09-25 11:53:39.727 parsl.data_provider.file_noop:17 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151ebc059dc0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.3.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.3.json filename=eval_configs.3.json>
+2022-09-25 11:53:39.727 parsl.data_provider.files:54 [DEBUG]  Making clean copy of File object <<class 'parsl.data_provider.files.File'> at 0x151ebccc2b80 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.4.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.4.json filename=eval_configs.4.json>
+2022-09-25 11:53:39.727 parsl.dataflow.dflow:661 [DEBUG]  Submitting stage out for output file <<class 'parsl.data_provider.files.File'> at 0x151ebccc2b80 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.4.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.4.json filename=eval_configs.4.json>
+2022-09-25 11:53:39.727 parsl.data_provider.data_manager:160 [DEBUG]  stage_out checking Staging provider NoOpFileStaging()
+2022-09-25 11:53:39.727 parsl.data_provider.file_noop:17 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151ebc059df0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.4.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.4.json filename=eval_configs.4.json>
+2022-09-25 11:53:39.727 parsl.dataflow.dflow:667 [DEBUG]  No stageout dependency for <<class 'parsl.data_provider.files.File'> at 0x151ebccc2b80 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.4.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.4.json filename=eval_configs.4.json>
+2022-09-25 11:53:39.728 parsl.app.futures:70 [DEBUG]  Creating DataFuture with parent: <AppFuture at 0x151ebc0592b0 state=pending> and file: <<class 'parsl.data_provider.files.File'> at 0x151ebccc2b80 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.4.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.4.json filename=eval_configs.4.json>
+2022-09-25 11:53:39.728 parsl.data_provider.data_manager:46 [DEBUG]  stage_out checking Staging provider NoOpFileStaging()
+2022-09-25 11:53:39.728 parsl.data_provider.file_noop:17 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151ebc059df0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.4.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.4.json filename=eval_configs.4.json>
+2022-09-25 11:53:39.728 parsl.dataflow.dflow:901 [INFO]  Task 1 submitted for App get_function_eval_configs, waiting on task 0
+2022-09-25 11:53:39.728 parsl.dataflow.dflow:909 [DEBUG]  Task 1 set to pending state with AppFuture: <AppFuture at 0x151ebc0592b0 state=pending>
+2022-09-25 11:53:39.728 parsl.dataflow.memoization:229 [DEBUG]  Task 1 will not be memoized
+2022-09-25 11:53:39.728 parsl.dataflow.dflow:610 [INFO]  Task 1 launched on executor local_threads
+2022-09-25 11:53:39.728 parsl.dataflow.dflow:821 [DEBUG]  Task 2 will be sent to executor prlm_htex
+2022-09-25 11:53:39.728 parsl.data_provider.files:54 [DEBUG]  Making clean copy of File object <<class 'parsl.data_provider.files.File'> at 0x151ebccb1e20 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.0.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.0.json filename=eval_configs.0.json>
+2022-09-25 11:53:39.728 parsl.app.futures:70 [DEBUG]  Creating DataFuture with parent: <DataFuture at 0x151ebc059580 state=pending> and file: <<class 'parsl.data_provider.files.File'> at 0x151ebc0705b0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.0.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.0.json filename=eval_configs.0.json>
+2022-09-25 11:53:39.728 parsl.data_provider.data_manager:128 [DEBUG]  stage_in checking Staging provider NoOpFileStaging()
+2022-09-25 11:53:39.728 parsl.data_provider.file_noop:13 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151ebc0705b0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.0.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.0.json filename=eval_configs.0.json>
+2022-09-25 11:53:39.729 parsl.data_provider.data_manager:87 [DEBUG]  stage_in checking Staging provider NoOpFileStaging()
+2022-09-25 11:53:39.729 parsl.data_provider.file_noop:13 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151ebc0705b0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.0.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.0.json filename=eval_configs.0.json>
+2022-09-25 11:53:39.729 parsl.dataflow.dflow:647 [DEBUG]  Adding output dependencies
+2022-09-25 11:53:39.729 parsl.data_provider.files:54 [DEBUG]  Making clean copy of File object <<class 'parsl.data_provider.files.File'> at 0x151ebccb1dc0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.0.txt scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.0.txt filename=solvetime.0.txt>
+2022-09-25 11:53:39.729 parsl.dataflow.dflow:661 [DEBUG]  Submitting stage out for output file <<class 'parsl.data_provider.files.File'> at 0x151ebccb1dc0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.0.txt scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.0.txt filename=solvetime.0.txt>
+2022-09-25 11:53:39.729 parsl.data_provider.data_manager:160 [DEBUG]  stage_out checking Staging provider NoOpFileStaging()
+2022-09-25 11:53:39.730 parsl.data_provider.file_noop:17 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151ebc070820 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.0.txt scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.0.txt filename=solvetime.0.txt>
+2022-09-25 11:53:39.730 parsl.dataflow.dflow:667 [DEBUG]  No stageout dependency for <<class 'parsl.data_provider.files.File'> at 0x151ebccb1dc0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.0.txt scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.0.txt filename=solvetime.0.txt>
+2022-09-25 11:53:39.730 parsl.app.futures:70 [DEBUG]  Creating DataFuture with parent: <AppFuture at 0x151ebc0705e0 state=pending> and file: <<class 'parsl.data_provider.files.File'> at 0x151ebccb1dc0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.0.txt scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.0.txt filename=solvetime.0.txt>
+2022-09-25 11:53:39.730 parsl.data_provider.data_manager:46 [DEBUG]  stage_out checking Staging provider NoOpFileStaging()
+2022-09-25 11:53:39.730 parsl.data_provider.file_noop:17 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151ebc070820 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.0.txt scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.0.txt filename=solvetime.0.txt>
+2022-09-25 11:53:39.730 parsl.dataflow.dflow:901 [INFO]  Task 2 submitted for App evaluate_function, waiting on task 1
+2022-09-25 11:53:39.731 parsl.dataflow.dflow:909 [DEBUG]  Task 2 set to pending state with AppFuture: <AppFuture at 0x151ebc0705e0 state=pending>
+2022-09-25 11:53:39.731 parsl.dataflow.dflow:821 [DEBUG]  Task 3 will be sent to executor prlm_htex
+2022-09-25 11:53:39.731 parsl.data_provider.files:54 [DEBUG]  Making clean copy of File object <<class 'parsl.data_provider.files.File'> at 0x151ebccc2880 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.1.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.1.json filename=eval_configs.1.json>
+2022-09-25 11:53:39.731 parsl.app.futures:70 [DEBUG]  Creating DataFuture with parent: <DataFuture at 0x151ebc0598e0 state=pending> and file: <<class 'parsl.data_provider.files.File'> at 0x151ebc070ca0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.1.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.1.json filename=eval_configs.1.json>
+2022-09-25 11:53:39.731 parsl.data_provider.data_manager:128 [DEBUG]  stage_in checking Staging provider NoOpFileStaging()
+2022-09-25 11:53:39.731 parsl.data_provider.file_noop:13 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151ebc070ca0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.1.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.1.json filename=eval_configs.1.json>
+2022-09-25 11:53:39.731 parsl.data_provider.data_manager:87 [DEBUG]  stage_in checking Staging provider NoOpFileStaging()
+2022-09-25 11:53:39.732 parsl.data_provider.file_noop:13 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151ebc070ca0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.1.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.1.json filename=eval_configs.1.json>
+2022-09-25 11:53:39.732 parsl.dataflow.dflow:647 [DEBUG]  Adding output dependencies
+2022-09-25 11:53:39.732 parsl.data_provider.files:54 [DEBUG]  Making clean copy of File object <<class 'parsl.data_provider.files.File'> at 0x151ebc070f70 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.1.txt scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.1.txt filename=solvetime.1.txt>
+2022-09-25 11:53:39.732 parsl.dataflow.dflow:661 [DEBUG]  Submitting stage out for output file <<class 'parsl.data_provider.files.File'> at 0x151ebc070f70 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.1.txt scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.1.txt filename=solvetime.1.txt>
+2022-09-25 11:53:39.732 parsl.data_provider.data_manager:160 [DEBUG]  stage_out checking Staging provider NoOpFileStaging()
+2022-09-25 11:53:39.732 parsl.data_provider.file_noop:17 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151ebc070970 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.1.txt scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.1.txt filename=solvetime.1.txt>
+2022-09-25 11:53:39.732 parsl.dataflow.dflow:667 [DEBUG]  No stageout dependency for <<class 'parsl.data_provider.files.File'> at 0x151ebc070f70 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.1.txt scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.1.txt filename=solvetime.1.txt>
+2022-09-25 11:53:39.732 parsl.app.futures:70 [DEBUG]  Creating DataFuture with parent: <AppFuture at 0x151ebc070670 state=pending> and file: <<class 'parsl.data_provider.files.File'> at 0x151ebc070f70 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.1.txt scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.1.txt filename=solvetime.1.txt>
+2022-09-25 11:53:39.732 parsl.dataflow.dflow:461 [INFO]  Task 1 completed (launched -> exec_done)
+2022-09-25 11:53:39.732 parsl.data_provider.data_manager:46 [DEBUG]  stage_out checking Staging provider NoOpFileStaging()
+2022-09-25 11:53:39.733 parsl.dataflow.memoization:229 [DEBUG]  Task 2 will not be memoized
+2022-09-25 11:53:39.733 parsl.data_provider.file_noop:17 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151ebc070970 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.1.txt scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.1.txt filename=solvetime.1.txt>
+2022-09-25 11:53:39.733 parsl.executors.high_throughput.executor:557 [DEBUG]  Pushing function <function wrap_error.<locals>.wrapper at 0x151ebccb4dc0> to queue with args ("'python /global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/albany_driver....", '/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/../../data')
+2022-09-25 11:53:39.733 parsl.dataflow.dflow:901 [INFO]  Task 3 submitted for App evaluate_function, waiting on task 1
+2022-09-25 11:53:39.733 parsl.dataflow.dflow:909 [DEBUG]  Task 3 set to pending state with AppFuture: <AppFuture at 0x151ebc070670 state=pending>
+2022-09-25 11:53:39.734 parsl.dataflow.dflow:821 [DEBUG]  Task 4 will be sent to executor prlm_htex
+2022-09-25 11:53:39.734 parsl.data_provider.files:54 [DEBUG]  Making clean copy of File object <<class 'parsl.data_provider.files.File'> at 0x151ebccc2970 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.2.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.2.json filename=eval_configs.2.json>
+2022-09-25 11:53:39.734 parsl.app.futures:70 [DEBUG]  Creating DataFuture with parent: <DataFuture at 0x151ebc059b80 state=finished with file <<class 'parsl.data_provider.files.File'> at 0x151ebccc2970 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.2.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.2.json filename=eval_configs.2.json>> and file: <<class 'parsl.data_provider.files.File'> at 0x151ebc078b50 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.2.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.2.json filename=eval_configs.2.json>
+2022-09-25 11:53:39.734 parsl.data_provider.data_manager:128 [DEBUG]  stage_in checking Staging provider NoOpFileStaging()
+2022-09-25 11:53:39.734 parsl.data_provider.file_noop:13 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151ebc078b50 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.2.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.2.json filename=eval_configs.2.json>
+2022-09-25 11:53:39.734 parsl.data_provider.data_manager:87 [DEBUG]  stage_in checking Staging provider NoOpFileStaging()
+2022-09-25 11:53:39.734 parsl.data_provider.file_noop:13 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151ebc078b50 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.2.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.2.json filename=eval_configs.2.json>
+2022-09-25 11:53:39.734 parsl.dataflow.dflow:647 [DEBUG]  Adding output dependencies
+2022-09-25 11:53:39.734 parsl.data_provider.files:54 [DEBUG]  Making clean copy of File object <<class 'parsl.data_provider.files.File'> at 0x151ebc070dc0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.2.txt scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.2.txt filename=solvetime.2.txt>
+2022-09-25 11:53:39.734 parsl.dataflow.dflow:661 [DEBUG]  Submitting stage out for output file <<class 'parsl.data_provider.files.File'> at 0x151ebc070dc0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.2.txt scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.2.txt filename=solvetime.2.txt>
+2022-09-25 11:53:39.735 parsl.data_provider.data_manager:160 [DEBUG]  stage_out checking Staging provider NoOpFileStaging()
+2022-09-25 11:53:39.735 parsl.data_provider.file_noop:17 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151ebc078bb0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.2.txt scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.2.txt filename=solvetime.2.txt>
+2022-09-25 11:53:39.735 parsl.dataflow.dflow:667 [DEBUG]  No stageout dependency for <<class 'parsl.data_provider.files.File'> at 0x151ebc070dc0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.2.txt scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.2.txt filename=solvetime.2.txt>
+2022-09-25 11:53:39.735 parsl.app.futures:70 [DEBUG]  Creating DataFuture with parent: <AppFuture at 0x151ebc078a90 state=pending> and file: <<class 'parsl.data_provider.files.File'> at 0x151ebc070dc0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.2.txt scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.2.txt filename=solvetime.2.txt>
+2022-09-25 11:53:39.735 parsl.data_provider.data_manager:46 [DEBUG]  stage_out checking Staging provider NoOpFileStaging()
+2022-09-25 11:53:39.736 parsl.data_provider.file_noop:17 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151ebc078bb0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.2.txt scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.2.txt filename=solvetime.2.txt>
+2022-09-25 11:53:39.736 parsl.dataflow.dflow:901 [INFO]  Task 4 submitted for App evaluate_function, waiting on task 1
+2022-09-25 11:53:39.736 parsl.dataflow.dflow:909 [DEBUG]  Task 4 set to pending state with AppFuture: <AppFuture at 0x151ebc078a90 state=pending>
+2022-09-25 11:53:39.736 parsl.dataflow.dflow:821 [DEBUG]  Task 5 will be sent to executor prlm_htex
+2022-09-25 11:53:39.736 parsl.data_provider.files:54 [DEBUG]  Making clean copy of File object <<class 'parsl.data_provider.files.File'> at 0x151ebccc2fa0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.3.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.3.json filename=eval_configs.3.json>
+2022-09-25 11:53:39.736 parsl.app.futures:70 [DEBUG]  Creating DataFuture with parent: <DataFuture at 0x151ebc059940 state=finished with file <<class 'parsl.data_provider.files.File'> at 0x151ebccc2fa0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.3.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.3.json filename=eval_configs.3.json>> and file: <<class 'parsl.data_provider.files.File'> at 0x151eaf9bec70 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.3.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.3.json filename=eval_configs.3.json>
+2022-09-25 11:53:39.737 parsl.data_provider.data_manager:128 [DEBUG]  stage_in checking Staging provider NoOpFileStaging()
+2022-09-25 11:53:39.737 parsl.data_provider.file_noop:13 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151eaf9bec70 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.3.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.3.json filename=eval_configs.3.json>
+2022-09-25 11:53:39.737 parsl.data_provider.data_manager:87 [DEBUG]  stage_in checking Staging provider NoOpFileStaging()
+2022-09-25 11:53:39.737 parsl.data_provider.file_noop:13 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151eaf9bec70 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.3.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.3.json filename=eval_configs.3.json>
+2022-09-25 11:53:39.737 parsl.dataflow.dflow:647 [DEBUG]  Adding output dependencies
+2022-09-25 11:53:39.737 parsl.data_provider.files:54 [DEBUG]  Making clean copy of File object <<class 'parsl.data_provider.files.File'> at 0x151ebc070cd0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.3.txt scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.3.txt filename=solvetime.3.txt>
+2022-09-25 11:53:39.737 parsl.dataflow.dflow:661 [DEBUG]  Submitting stage out for output file <<class 'parsl.data_provider.files.File'> at 0x151ebc070cd0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.3.txt scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.3.txt filename=solvetime.3.txt>
+2022-09-25 11:53:39.737 parsl.data_provider.data_manager:160 [DEBUG]  stage_out checking Staging provider NoOpFileStaging()
+2022-09-25 11:53:39.738 parsl.data_provider.file_noop:17 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151eaf9bed60 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.3.txt scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.3.txt filename=solvetime.3.txt>
+2022-09-25 11:53:39.738 parsl.dataflow.dflow:667 [DEBUG]  No stageout dependency for <<class 'parsl.data_provider.files.File'> at 0x151ebc070cd0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.3.txt scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.3.txt filename=solvetime.3.txt>
+2022-09-25 11:53:39.738 parsl.app.futures:70 [DEBUG]  Creating DataFuture with parent: <AppFuture at 0x151eaf9bebb0 state=pending> and file: <<class 'parsl.data_provider.files.File'> at 0x151ebc070cd0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.3.txt scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.3.txt filename=solvetime.3.txt>
+2022-09-25 11:53:39.738 parsl.data_provider.data_manager:46 [DEBUG]  stage_out checking Staging provider NoOpFileStaging()
+2022-09-25 11:53:39.738 parsl.data_provider.file_noop:17 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151eaf9bed60 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.3.txt scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.3.txt filename=solvetime.3.txt>
+2022-09-25 11:53:39.738 parsl.dataflow.dflow:901 [INFO]  Task 5 submitted for App evaluate_function, waiting on task 1
+2022-09-25 11:53:39.738 parsl.dataflow.dflow:909 [DEBUG]  Task 5 set to pending state with AppFuture: <AppFuture at 0x151eaf9bebb0 state=pending>
+2022-09-25 11:53:39.738 parsl.dataflow.dflow:821 [DEBUG]  Task 6 will be sent to executor prlm_htex
+2022-09-25 11:53:39.738 parsl.data_provider.files:54 [DEBUG]  Making clean copy of File object <<class 'parsl.data_provider.files.File'> at 0x151ebccc2b80 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.4.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.4.json filename=eval_configs.4.json>
+2022-09-25 11:53:39.738 parsl.app.futures:70 [DEBUG]  Creating DataFuture with parent: <DataFuture at 0x151ebc059d90 state=finished with file <<class 'parsl.data_provider.files.File'> at 0x151ebccc2b80 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.4.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.4.json filename=eval_configs.4.json>> and file: <<class 'parsl.data_provider.files.File'> at 0x151eaf9c4580 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.4.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.4.json filename=eval_configs.4.json>
+2022-09-25 11:53:39.739 parsl.data_provider.data_manager:128 [DEBUG]  stage_in checking Staging provider NoOpFileStaging()
+2022-09-25 11:53:39.739 parsl.data_provider.file_noop:13 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151eaf9c4580 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.4.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.4.json filename=eval_configs.4.json>
+2022-09-25 11:53:39.739 parsl.data_provider.data_manager:87 [DEBUG]  stage_in checking Staging provider NoOpFileStaging()
+2022-09-25 11:53:39.739 parsl.data_provider.file_noop:13 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151eaf9c4580 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.4.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.4.json filename=eval_configs.4.json>
+2022-09-25 11:53:39.739 parsl.dataflow.dflow:647 [DEBUG]  Adding output dependencies
+2022-09-25 11:53:39.739 parsl.data_provider.files:54 [DEBUG]  Making clean copy of File object <<class 'parsl.data_provider.files.File'> at 0x151ebc078ca0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.4.txt scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.4.txt filename=solvetime.4.txt>
+2022-09-25 11:53:39.739 parsl.dataflow.dflow:661 [DEBUG]  Submitting stage out for output file <<class 'parsl.data_provider.files.File'> at 0x151ebc078ca0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.4.txt scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.4.txt filename=solvetime.4.txt>
+2022-09-25 11:53:39.739 parsl.data_provider.data_manager:160 [DEBUG]  stage_out checking Staging provider NoOpFileStaging()
+2022-09-25 11:53:39.739 parsl.data_provider.file_noop:17 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151eaf9c4460 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.4.txt scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.4.txt filename=solvetime.4.txt>
+2022-09-25 11:53:39.739 parsl.dataflow.dflow:667 [DEBUG]  No stageout dependency for <<class 'parsl.data_provider.files.File'> at 0x151ebc078ca0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.4.txt scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.4.txt filename=solvetime.4.txt>
+2022-09-25 11:53:39.739 parsl.app.futures:70 [DEBUG]  Creating DataFuture with parent: <AppFuture at 0x151eaf9bef40 state=pending> and file: <<class 'parsl.data_provider.files.File'> at 0x151ebc078ca0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.4.txt scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.4.txt filename=solvetime.4.txt>
+2022-09-25 11:53:39.740 parsl.data_provider.data_manager:46 [DEBUG]  stage_out checking Staging provider NoOpFileStaging()
+2022-09-25 11:53:39.740 parsl.data_provider.file_noop:17 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151eaf9c4460 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.4.txt scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.4.txt filename=solvetime.4.txt>
+2022-09-25 11:53:39.740 parsl.dataflow.dflow:901 [INFO]  Task 6 submitted for App evaluate_function, waiting on task 1
+2022-09-25 11:53:39.740 parsl.dataflow.dflow:909 [DEBUG]  Task 6 set to pending state with AppFuture: <AppFuture at 0x151eaf9bef40 state=pending>
+2022-09-25 11:53:39.740 parsl.dataflow.dflow:821 [DEBUG]  Task 7 will be sent to executor local_threads
+2022-09-25 11:53:39.740 parsl.data_provider.files:54 [DEBUG]  Making clean copy of File object <<class 'parsl.data_provider.files.File'> at 0x151ebccb1e20 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.0.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.0.json filename=eval_configs.0.json>
+2022-09-25 11:53:39.740 parsl.app.futures:70 [DEBUG]  Creating DataFuture with parent: <DataFuture at 0x151ebc059580 state=finished with file <<class 'parsl.data_provider.files.File'> at 0x151ebccb1e20 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.0.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.0.json filename=eval_configs.0.json>> and file: <<class 'parsl.data_provider.files.File'> at 0x151eaf9c4af0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.0.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.0.json filename=eval_configs.0.json>
+2022-09-25 11:53:39.740 parsl.data_provider.data_manager:128 [DEBUG]  stage_in checking Staging provider NoOpFileStaging()
+2022-09-25 11:53:39.740 parsl.data_provider.file_noop:13 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151eaf9c4af0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.0.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.0.json filename=eval_configs.0.json>
+2022-09-25 11:53:39.740 parsl.data_provider.data_manager:87 [DEBUG]  stage_in checking Staging provider NoOpFileStaging()
+2022-09-25 11:53:39.740 parsl.data_provider.file_noop:13 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151eaf9c4af0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.0.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.0.json filename=eval_configs.0.json>
+2022-09-25 11:53:39.740 parsl.data_provider.files:54 [DEBUG]  Making clean copy of File object <<class 'parsl.data_provider.files.File'> at 0x151ebccb1dc0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.0.txt scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.0.txt filename=solvetime.0.txt>
+2022-09-25 11:53:39.741 parsl.app.futures:70 [DEBUG]  Creating DataFuture with parent: <DataFuture at 0x151ebc070f40 state=pending> and file: <<class 'parsl.data_provider.files.File'> at 0x151eaf9c48b0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.0.txt scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.0.txt filename=solvetime.0.txt>
+2022-09-25 11:53:39.741 parsl.data_provider.data_manager:128 [DEBUG]  stage_in checking Staging provider NoOpFileStaging()
+2022-09-25 11:53:39.741 parsl.data_provider.file_noop:13 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151eaf9c48b0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.0.txt scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.0.txt filename=solvetime.0.txt>
+2022-09-25 11:53:39.741 parsl.data_provider.data_manager:87 [DEBUG]  stage_in checking Staging provider NoOpFileStaging()
+2022-09-25 11:53:39.741 parsl.data_provider.file_noop:13 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151eaf9c48b0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.0.txt scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.0.txt filename=solvetime.0.txt>
+2022-09-25 11:53:39.741 parsl.dataflow.dflow:647 [DEBUG]  Adding output dependencies
+2022-09-25 11:53:39.741 parsl.data_provider.files:54 [DEBUG]  Making clean copy of File object <<class 'parsl.data_provider.files.File'> at 0x151ebc059490 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.0.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.0.json filename=fn_eval.0.json>
+2022-09-25 11:53:39.741 parsl.dataflow.dflow:661 [DEBUG]  Submitting stage out for output file <<class 'parsl.data_provider.files.File'> at 0x151ebc059490 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.0.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.0.json filename=fn_eval.0.json>
+2022-09-25 11:53:39.741 parsl.data_provider.data_manager:160 [DEBUG]  stage_out checking Staging provider NoOpFileStaging()
+2022-09-25 11:53:39.741 parsl.data_provider.file_noop:17 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151eaf9c4f70 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.0.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.0.json filename=fn_eval.0.json>
+2022-09-25 11:53:39.741 parsl.dataflow.dflow:667 [DEBUG]  No stageout dependency for <<class 'parsl.data_provider.files.File'> at 0x151ebc059490 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.0.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.0.json filename=fn_eval.0.json>
+2022-09-25 11:53:39.741 parsl.app.futures:70 [DEBUG]  Creating DataFuture with parent: <AppFuture at 0x151eaf9c4700 state=pending> and file: <<class 'parsl.data_provider.files.File'> at 0x151ebc059490 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.0.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.0.json filename=fn_eval.0.json>
+2022-09-25 11:53:39.742 parsl.data_provider.data_manager:46 [DEBUG]  stage_out checking Staging provider NoOpFileStaging()
+2022-09-25 11:53:39.742 parsl.data_provider.file_noop:17 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151eaf9c4f70 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.0.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.0.json filename=fn_eval.0.json>
+2022-09-25 11:53:39.742 parsl.dataflow.dflow:901 [INFO]  Task 7 submitted for App get_evaluation_result, waiting on task 1, task 2
+2022-09-25 11:53:39.742 parsl.dataflow.dflow:909 [DEBUG]  Task 7 set to pending state with AppFuture: <AppFuture at 0x151eaf9c4700 state=pending>
+2022-09-25 11:53:39.742 parsl.dataflow.dflow:821 [DEBUG]  Task 8 will be sent to executor local_threads
+2022-09-25 11:53:39.742 parsl.data_provider.files:54 [DEBUG]  Making clean copy of File object <<class 'parsl.data_provider.files.File'> at 0x151ebccc2880 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.1.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.1.json filename=eval_configs.1.json>
+2022-09-25 11:53:39.742 parsl.app.futures:70 [DEBUG]  Creating DataFuture with parent: <DataFuture at 0x151ebc0598e0 state=finished with file <<class 'parsl.data_provider.files.File'> at 0x151ebccc2880 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.1.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.1.json filename=eval_configs.1.json>> and file: <<class 'parsl.data_provider.files.File'> at 0x151eaf9c4cd0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.1.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.1.json filename=eval_configs.1.json>
+2022-09-25 11:53:39.743 parsl.data_provider.data_manager:128 [DEBUG]  stage_in checking Staging provider NoOpFileStaging()
+2022-09-25 11:53:39.743 parsl.data_provider.file_noop:13 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151eaf9c4cd0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.1.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.1.json filename=eval_configs.1.json>
+2022-09-25 11:53:39.743 parsl.data_provider.data_manager:87 [DEBUG]  stage_in checking Staging provider NoOpFileStaging()
+2022-09-25 11:53:39.743 parsl.data_provider.file_noop:13 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151eaf9c4cd0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.1.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.1.json filename=eval_configs.1.json>
+2022-09-25 11:53:39.743 parsl.data_provider.files:54 [DEBUG]  Making clean copy of File object <<class 'parsl.data_provider.files.File'> at 0x151ebc070f70 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.1.txt scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.1.txt filename=solvetime.1.txt>
+2022-09-25 11:53:39.743 parsl.app.futures:70 [DEBUG]  Creating DataFuture with parent: <DataFuture at 0x151ebc070ac0 state=pending> and file: <<class 'parsl.data_provider.files.File'> at 0x151eaf9c4b80 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.1.txt scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.1.txt filename=solvetime.1.txt>
+2022-09-25 11:53:39.743 parsl.data_provider.data_manager:128 [DEBUG]  stage_in checking Staging provider NoOpFileStaging()
+2022-09-25 11:53:39.743 parsl.data_provider.file_noop:13 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151eaf9c4b80 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.1.txt scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.1.txt filename=solvetime.1.txt>
+2022-09-25 11:53:39.744 parsl.data_provider.data_manager:87 [DEBUG]  stage_in checking Staging provider NoOpFileStaging()
+2022-09-25 11:53:39.744 parsl.data_provider.file_noop:13 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151eaf9c4b80 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.1.txt scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.1.txt filename=solvetime.1.txt>
+2022-09-25 11:53:39.744 parsl.dataflow.dflow:647 [DEBUG]  Adding output dependencies
+2022-09-25 11:53:39.744 parsl.data_provider.files:54 [DEBUG]  Making clean copy of File object <<class 'parsl.data_provider.files.File'> at 0x151eaf9c4eb0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.1.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.1.json filename=fn_eval.1.json>
+2022-09-25 11:53:39.744 parsl.dataflow.dflow:661 [DEBUG]  Submitting stage out for output file <<class 'parsl.data_provider.files.File'> at 0x151eaf9c4eb0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.1.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.1.json filename=fn_eval.1.json>
+2022-09-25 11:53:39.744 parsl.data_provider.data_manager:160 [DEBUG]  stage_out checking Staging provider NoOpFileStaging()
+2022-09-25 11:53:39.744 parsl.data_provider.file_noop:17 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151eaf9be370 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.1.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.1.json filename=fn_eval.1.json>
+2022-09-25 11:53:39.744 parsl.dataflow.dflow:667 [DEBUG]  No stageout dependency for <<class 'parsl.data_provider.files.File'> at 0x151eaf9c4eb0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.1.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.1.json filename=fn_eval.1.json>
+2022-09-25 11:53:39.744 parsl.app.futures:70 [DEBUG]  Creating DataFuture with parent: <AppFuture at 0x151eaf9c4e80 state=pending> and file: <<class 'parsl.data_provider.files.File'> at 0x151eaf9c4eb0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.1.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.1.json filename=fn_eval.1.json>
+2022-09-25 11:53:39.744 parsl.data_provider.data_manager:46 [DEBUG]  stage_out checking Staging provider NoOpFileStaging()
+2022-09-25 11:53:39.744 parsl.data_provider.file_noop:17 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151eaf9be370 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.1.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.1.json filename=fn_eval.1.json>
+2022-09-25 11:53:39.745 parsl.dataflow.dflow:901 [INFO]  Task 8 submitted for App get_evaluation_result, waiting on task 1, task 3
+2022-09-25 11:53:39.745 parsl.dataflow.dflow:909 [DEBUG]  Task 8 set to pending state with AppFuture: <AppFuture at 0x151eaf9c4e80 state=pending>
+2022-09-25 11:53:39.746 parsl.dataflow.dflow:821 [DEBUG]  Task 9 will be sent to executor local_threads
+2022-09-25 11:53:39.746 parsl.data_provider.files:54 [DEBUG]  Making clean copy of File object <<class 'parsl.data_provider.files.File'> at 0x151ebccc2970 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.2.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.2.json filename=eval_configs.2.json>
+2022-09-25 11:53:39.746 parsl.dataflow.dflow:610 [INFO]  Task 2 launched on executor prlm_htex
+2022-09-25 11:53:39.746 parsl.app.futures:70 [DEBUG]  Creating DataFuture with parent: <DataFuture at 0x151ebc059b80 state=finished with file <<class 'parsl.data_provider.files.File'> at 0x151ebccc2970 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.2.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.2.json filename=eval_configs.2.json>> and file: <<class 'parsl.data_provider.files.File'> at 0x151ebc078d00 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.2.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.2.json filename=eval_configs.2.json>
+2022-09-25 11:53:39.746 parsl.dataflow.dflow:1272 [INFO]  Standard output for task 2 available at /global/u1/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/runinfo/000/task_logs/0000/task_0002_evaluate_function.stdout
+2022-09-25 11:53:39.747 parsl.data_provider.data_manager:128 [DEBUG]  stage_in checking Staging provider NoOpFileStaging()
+2022-09-25 11:53:39.747 parsl.dataflow.dflow:1274 [INFO]  Standard error for task 2 available at /global/u1/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/runinfo/000/task_logs/0000/task_0002_evaluate_function.stderr
+2022-09-25 11:53:39.747 parsl.data_provider.file_noop:13 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151ebc078d00 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.2.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.2.json filename=eval_configs.2.json>
+2022-09-25 11:53:39.747 parsl.dataflow.memoization:229 [DEBUG]  Task 3 will not be memoized
+2022-09-25 11:53:39.747 parsl.data_provider.data_manager:87 [DEBUG]  stage_in checking Staging provider NoOpFileStaging()
+2022-09-25 11:53:39.747 parsl.executors.high_throughput.executor:557 [DEBUG]  Pushing function <function wrap_error.<locals>.wrapper at 0x151ebccb4dc0> to queue with args ("'python /global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/albany_driver....", '/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/../../data')
+2022-09-25 11:53:39.747 parsl.data_provider.file_noop:13 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151ebc078d00 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.2.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.2.json filename=eval_configs.2.json>
+2022-09-25 11:53:39.747 parsl.data_provider.files:54 [DEBUG]  Making clean copy of File object <<class 'parsl.data_provider.files.File'> at 0x151ebc070dc0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.2.txt scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.2.txt filename=solvetime.2.txt>
+2022-09-25 11:53:39.747 parsl.dataflow.dflow:610 [INFO]  Task 3 launched on executor prlm_htex
+2022-09-25 11:53:39.747 parsl.app.futures:70 [DEBUG]  Creating DataFuture with parent: <DataFuture at 0x151ebc078d30 state=pending> and file: <<class 'parsl.data_provider.files.File'> at 0x151ebc078f40 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.2.txt scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.2.txt filename=solvetime.2.txt>
+2022-09-25 11:53:39.748 parsl.dataflow.dflow:1272 [INFO]  Standard output for task 3 available at /global/u1/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/runinfo/000/task_logs/0000/task_0003_evaluate_function.stdout
+2022-09-25 11:53:39.748 parsl.data_provider.data_manager:128 [DEBUG]  stage_in checking Staging provider NoOpFileStaging()
+2022-09-25 11:53:39.748 parsl.dataflow.dflow:1274 [INFO]  Standard error for task 3 available at /global/u1/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/runinfo/000/task_logs/0000/task_0003_evaluate_function.stderr
+2022-09-25 11:53:39.748 parsl.data_provider.file_noop:13 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151ebc078f40 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.2.txt scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.2.txt filename=solvetime.2.txt>
+2022-09-25 11:53:39.748 parsl.dataflow.memoization:229 [DEBUG]  Task 4 will not be memoized
+2022-09-25 11:53:39.748 parsl.data_provider.data_manager:87 [DEBUG]  stage_in checking Staging provider NoOpFileStaging()
+2022-09-25 11:53:39.748 parsl.executors.high_throughput.executor:557 [DEBUG]  Pushing function <function wrap_error.<locals>.wrapper at 0x151ebccb4dc0> to queue with args ("'python /global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/albany_driver....", '/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/../../data')
+2022-09-25 11:53:39.748 parsl.data_provider.file_noop:13 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151ebc078f40 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.2.txt scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.2.txt filename=solvetime.2.txt>
+2022-09-25 11:53:39.748 parsl.dataflow.dflow:647 [DEBUG]  Adding output dependencies
+2022-09-25 11:53:39.748 parsl.dataflow.dflow:610 [INFO]  Task 4 launched on executor prlm_htex
+2022-09-25 11:53:39.748 parsl.data_provider.files:54 [DEBUG]  Making clean copy of File object <<class 'parsl.data_provider.files.File'> at 0x151eaf9be040 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.2.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.2.json filename=fn_eval.2.json>
+2022-09-25 11:53:39.748 parsl.dataflow.dflow:1272 [INFO]  Standard output for task 4 available at /global/u1/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/runinfo/000/task_logs/0000/task_0004_evaluate_function.stdout
+2022-09-25 11:53:39.748 parsl.dataflow.dflow:661 [DEBUG]  Submitting stage out for output file <<class 'parsl.data_provider.files.File'> at 0x151eaf9be040 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.2.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.2.json filename=fn_eval.2.json>
+2022-09-25 11:53:39.748 parsl.dataflow.dflow:1274 [INFO]  Standard error for task 4 available at /global/u1/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/runinfo/000/task_logs/0000/task_0004_evaluate_function.stderr
+2022-09-25 11:53:39.749 parsl.data_provider.data_manager:160 [DEBUG]  stage_out checking Staging provider NoOpFileStaging()
+2022-09-25 11:53:39.749 parsl.dataflow.memoization:229 [DEBUG]  Task 5 will not be memoized
+2022-09-25 11:53:39.749 parsl.data_provider.file_noop:17 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151eaf9c4610 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.2.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.2.json filename=fn_eval.2.json>
+2022-09-25 11:53:39.749 parsl.executors.high_throughput.executor:557 [DEBUG]  Pushing function <function wrap_error.<locals>.wrapper at 0x151ebccb4dc0> to queue with args ("'python /global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/albany_driver....", '/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/../../data')
+2022-09-25 11:53:39.749 parsl.dataflow.dflow:667 [DEBUG]  No stageout dependency for <<class 'parsl.data_provider.files.File'> at 0x151eaf9be040 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.2.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.2.json filename=fn_eval.2.json>
+2022-09-25 11:53:39.749 parsl.app.futures:70 [DEBUG]  Creating DataFuture with parent: <AppFuture at 0x151ebc078250 state=pending> and file: <<class 'parsl.data_provider.files.File'> at 0x151eaf9be040 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.2.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.2.json filename=fn_eval.2.json>
+2022-09-25 11:53:39.749 parsl.dataflow.dflow:610 [INFO]  Task 5 launched on executor prlm_htex
+2022-09-25 11:53:39.749 parsl.data_provider.data_manager:46 [DEBUG]  stage_out checking Staging provider NoOpFileStaging()
+2022-09-25 11:53:39.749 parsl.dataflow.dflow:1272 [INFO]  Standard output for task 5 available at /global/u1/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/runinfo/000/task_logs/0000/task_0005_evaluate_function.stdout
+2022-09-25 11:53:39.749 parsl.data_provider.file_noop:17 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151eaf9c4610 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.2.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.2.json filename=fn_eval.2.json>
+2022-09-25 11:53:39.749 parsl.dataflow.dflow:1274 [INFO]  Standard error for task 5 available at /global/u1/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/runinfo/000/task_logs/0000/task_0005_evaluate_function.stderr
+2022-09-25 11:53:39.749 parsl.dataflow.dflow:901 [INFO]  Task 9 submitted for App get_evaluation_result, waiting on task 1, task 4
+2022-09-25 11:53:39.749 parsl.dataflow.memoization:229 [DEBUG]  Task 6 will not be memoized
+2022-09-25 11:53:39.749 parsl.dataflow.dflow:909 [DEBUG]  Task 9 set to pending state with AppFuture: <AppFuture at 0x151ebc078250 state=pending>
+2022-09-25 11:53:39.749 parsl.executors.high_throughput.executor:557 [DEBUG]  Pushing function <function wrap_error.<locals>.wrapper at 0x151ebccb4dc0> to queue with args ("'python /global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/albany_driver....", '/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/../../data')
+2022-09-25 11:53:39.750 parsl.dataflow.dflow:821 [DEBUG]  Task 10 will be sent to executor local_threads
+2022-09-25 11:53:39.750 parsl.data_provider.files:54 [DEBUG]  Making clean copy of File object <<class 'parsl.data_provider.files.File'> at 0x151ebccc2fa0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.3.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.3.json filename=eval_configs.3.json>
+2022-09-25 11:53:39.750 parsl.dataflow.dflow:610 [INFO]  Task 6 launched on executor prlm_htex
+2022-09-25 11:53:39.750 parsl.app.futures:70 [DEBUG]  Creating DataFuture with parent: <DataFuture at 0x151ebc059940 state=finished with file <<class 'parsl.data_provider.files.File'> at 0x151ebccc2fa0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.3.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.3.json filename=eval_configs.3.json>> and file: <<class 'parsl.data_provider.files.File'> at 0x151ebc059a00 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.3.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.3.json filename=eval_configs.3.json>
+2022-09-25 11:53:39.750 parsl.dataflow.dflow:1272 [INFO]  Standard output for task 6 available at /global/u1/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/runinfo/000/task_logs/0000/task_0006_evaluate_function.stdout
+2022-09-25 11:53:39.750 parsl.data_provider.data_manager:128 [DEBUG]  stage_in checking Staging provider NoOpFileStaging()
+2022-09-25 11:53:39.750 parsl.dataflow.dflow:1274 [INFO]  Standard error for task 6 available at /global/u1/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/runinfo/000/task_logs/0000/task_0006_evaluate_function.stderr
+2022-09-25 11:53:39.750 parsl.data_provider.file_noop:13 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151ebc059a00 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.3.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.3.json filename=eval_configs.3.json>
+2022-09-25 11:53:39.750 parsl.data_provider.data_manager:87 [DEBUG]  stage_in checking Staging provider NoOpFileStaging()
+2022-09-25 11:53:39.750 parsl.data_provider.file_noop:13 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151ebc059a00 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.3.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.3.json filename=eval_configs.3.json>
+2022-09-25 11:53:39.750 parsl.data_provider.files:54 [DEBUG]  Making clean copy of File object <<class 'parsl.data_provider.files.File'> at 0x151ebc070cd0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.3.txt scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.3.txt filename=solvetime.3.txt>
+2022-09-25 11:53:39.750 parsl.app.futures:70 [DEBUG]  Creating DataFuture with parent: <DataFuture at 0x151eaf9bee20 state=pending> and file: <<class 'parsl.data_provider.files.File'> at 0x151ebccc2c40 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.3.txt scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.3.txt filename=solvetime.3.txt>
+2022-09-25 11:53:39.751 parsl.data_provider.data_manager:128 [DEBUG]  stage_in checking Staging provider NoOpFileStaging()
+2022-09-25 11:53:39.751 parsl.data_provider.file_noop:13 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151ebccc2c40 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.3.txt scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.3.txt filename=solvetime.3.txt>
+2022-09-25 11:53:39.751 parsl.data_provider.data_manager:87 [DEBUG]  stage_in checking Staging provider NoOpFileStaging()
+2022-09-25 11:53:39.751 parsl.data_provider.file_noop:13 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151ebccc2c40 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.3.txt scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.3.txt filename=solvetime.3.txt>
+2022-09-25 11:53:39.751 parsl.dataflow.dflow:647 [DEBUG]  Adding output dependencies
+2022-09-25 11:53:39.751 parsl.data_provider.files:54 [DEBUG]  Making clean copy of File object <<class 'parsl.data_provider.files.File'> at 0x151ebccc29d0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.3.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.3.json filename=fn_eval.3.json>
+2022-09-25 11:53:39.751 parsl.dataflow.dflow:661 [DEBUG]  Submitting stage out for output file <<class 'parsl.data_provider.files.File'> at 0x151ebccc29d0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.3.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.3.json filename=fn_eval.3.json>
+2022-09-25 11:53:39.751 parsl.data_provider.data_manager:160 [DEBUG]  stage_out checking Staging provider NoOpFileStaging()
+2022-09-25 11:53:39.751 parsl.data_provider.file_noop:17 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151ebc078cd0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.3.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.3.json filename=fn_eval.3.json>
+2022-09-25 11:53:39.751 parsl.dataflow.dflow:667 [DEBUG]  No stageout dependency for <<class 'parsl.data_provider.files.File'> at 0x151ebccc29d0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.3.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.3.json filename=fn_eval.3.json>
+2022-09-25 11:53:39.751 parsl.app.futures:70 [DEBUG]  Creating DataFuture with parent: <AppFuture at 0x151ebc059c40 state=pending> and file: <<class 'parsl.data_provider.files.File'> at 0x151ebccc29d0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.3.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.3.json filename=fn_eval.3.json>
+2022-09-25 11:53:39.751 parsl.data_provider.data_manager:46 [DEBUG]  stage_out checking Staging provider NoOpFileStaging()
+2022-09-25 11:53:39.751 parsl.data_provider.file_noop:17 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151ebc078cd0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.3.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.3.json filename=fn_eval.3.json>
+2022-09-25 11:53:39.751 parsl.dataflow.dflow:901 [INFO]  Task 10 submitted for App get_evaluation_result, waiting on task 1, task 5
+2022-09-25 11:53:39.752 parsl.dataflow.dflow:909 [DEBUG]  Task 10 set to pending state with AppFuture: <AppFuture at 0x151ebc059c40 state=pending>
+2022-09-25 11:53:39.752 parsl.dataflow.dflow:821 [DEBUG]  Task 11 will be sent to executor local_threads
+2022-09-25 11:53:39.752 parsl.data_provider.files:54 [DEBUG]  Making clean copy of File object <<class 'parsl.data_provider.files.File'> at 0x151ebccc2b80 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.4.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.4.json filename=eval_configs.4.json>
+2022-09-25 11:53:39.752 parsl.app.futures:70 [DEBUG]  Creating DataFuture with parent: <DataFuture at 0x151ebc059d90 state=finished with file <<class 'parsl.data_provider.files.File'> at 0x151ebccc2b80 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.4.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.4.json filename=eval_configs.4.json>> and file: <<class 'parsl.data_provider.files.File'> at 0x151eaf9cb4f0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.4.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.4.json filename=eval_configs.4.json>
+2022-09-25 11:53:39.752 parsl.data_provider.data_manager:128 [DEBUG]  stage_in checking Staging provider NoOpFileStaging()
+2022-09-25 11:53:39.752 parsl.data_provider.file_noop:13 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151eaf9cb4f0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.4.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.4.json filename=eval_configs.4.json>
+2022-09-25 11:53:39.752 parsl.data_provider.data_manager:87 [DEBUG]  stage_in checking Staging provider NoOpFileStaging()
+2022-09-25 11:53:39.752 parsl.data_provider.file_noop:13 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151eaf9cb4f0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.4.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/eval_configs.4.json filename=eval_configs.4.json>
+2022-09-25 11:53:39.752 parsl.data_provider.files:54 [DEBUG]  Making clean copy of File object <<class 'parsl.data_provider.files.File'> at 0x151ebc078ca0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.4.txt scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.4.txt filename=solvetime.4.txt>
+2022-09-25 11:53:39.752 parsl.app.futures:70 [DEBUG]  Creating DataFuture with parent: <DataFuture at 0x151eaf9c44f0 state=pending> and file: <<class 'parsl.data_provider.files.File'> at 0x151eaf9cb430 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.4.txt scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.4.txt filename=solvetime.4.txt>
+2022-09-25 11:53:39.753 parsl.data_provider.data_manager:128 [DEBUG]  stage_in checking Staging provider NoOpFileStaging()
+2022-09-25 11:53:39.753 parsl.data_provider.file_noop:13 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151eaf9cb430 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.4.txt scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.4.txt filename=solvetime.4.txt>
+2022-09-25 11:53:39.753 parsl.data_provider.data_manager:87 [DEBUG]  stage_in checking Staging provider NoOpFileStaging()
+2022-09-25 11:53:39.753 parsl.data_provider.file_noop:13 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151eaf9cb430 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.4.txt scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/solvetime.4.txt filename=solvetime.4.txt>
+2022-09-25 11:53:39.753 parsl.dataflow.dflow:647 [DEBUG]  Adding output dependencies
+2022-09-25 11:53:39.753 parsl.data_provider.files:54 [DEBUG]  Making clean copy of File object <<class 'parsl.data_provider.files.File'> at 0x151ebc070a00 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.4.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.4.json filename=fn_eval.4.json>
+2022-09-25 11:53:39.753 parsl.dataflow.dflow:661 [DEBUG]  Submitting stage out for output file <<class 'parsl.data_provider.files.File'> at 0x151ebc070a00 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.4.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.4.json filename=fn_eval.4.json>
+2022-09-25 11:53:39.753 parsl.data_provider.data_manager:160 [DEBUG]  stage_out checking Staging provider NoOpFileStaging()
+2022-09-25 11:53:39.753 parsl.data_provider.file_noop:17 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151eaf9cb400 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.4.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.4.json filename=fn_eval.4.json>
+2022-09-25 11:53:39.753 parsl.dataflow.dflow:667 [DEBUG]  No stageout dependency for <<class 'parsl.data_provider.files.File'> at 0x151ebc070a00 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.4.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.4.json filename=fn_eval.4.json>
+2022-09-25 11:53:39.753 parsl.app.futures:70 [DEBUG]  Creating DataFuture with parent: <AppFuture at 0x151ebc070460 state=pending> and file: <<class 'parsl.data_provider.files.File'> at 0x151ebc070a00 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.4.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.4.json filename=fn_eval.4.json>
+2022-09-25 11:53:39.754 parsl.data_provider.data_manager:46 [DEBUG]  stage_out checking Staging provider NoOpFileStaging()
+2022-09-25 11:53:39.754 parsl.data_provider.file_noop:17 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151eaf9cb400 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.4.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.4.json filename=fn_eval.4.json>
+2022-09-25 11:53:39.754 parsl.dataflow.dflow:901 [INFO]  Task 11 submitted for App get_evaluation_result, waiting on task 1, task 6
+2022-09-25 11:53:39.754 parsl.dataflow.dflow:909 [DEBUG]  Task 11 set to pending state with AppFuture: <AppFuture at 0x151ebc070460 state=pending>
+2022-09-25 11:53:39.754 parsl.dataflow.dflow:821 [DEBUG]  Task 12 will be sent to executor local_threads
+2022-09-25 11:53:39.754 parsl.data_provider.files:54 [DEBUG]  Making clean copy of File object <<class 'parsl.data_provider.files.File'> at 0x151ebc059490 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.0.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.0.json filename=fn_eval.0.json>
+2022-09-25 11:53:39.754 parsl.app.futures:70 [DEBUG]  Creating DataFuture with parent: <DataFuture at 0x151eaf9c4ee0 state=pending> and file: <<class 'parsl.data_provider.files.File'> at 0x151eaf9cb2e0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.0.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.0.json filename=fn_eval.0.json>
+2022-09-25 11:53:39.755 parsl.data_provider.data_manager:128 [DEBUG]  stage_in checking Staging provider NoOpFileStaging()
+2022-09-25 11:53:39.755 parsl.data_provider.file_noop:13 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151eaf9cb2e0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.0.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.0.json filename=fn_eval.0.json>
+2022-09-25 11:53:39.755 parsl.data_provider.data_manager:87 [DEBUG]  stage_in checking Staging provider NoOpFileStaging()
+2022-09-25 11:53:39.755 parsl.data_provider.file_noop:13 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151eaf9cb2e0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.0.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.0.json filename=fn_eval.0.json>
+2022-09-25 11:53:39.755 parsl.data_provider.files:54 [DEBUG]  Making clean copy of File object <<class 'parsl.data_provider.files.File'> at 0x151eaf9c4eb0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.1.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.1.json filename=fn_eval.1.json>
+2022-09-25 11:53:39.755 parsl.app.futures:70 [DEBUG]  Creating DataFuture with parent: <DataFuture at 0x151eaf9bef70 state=pending> and file: <<class 'parsl.data_provider.files.File'> at 0x151ebc078fd0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.1.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.1.json filename=fn_eval.1.json>
+2022-09-25 11:53:39.755 parsl.data_provider.data_manager:128 [DEBUG]  stage_in checking Staging provider NoOpFileStaging()
+2022-09-25 11:53:39.755 parsl.data_provider.file_noop:13 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151ebc078fd0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.1.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.1.json filename=fn_eval.1.json>
+2022-09-25 11:53:39.756 parsl.data_provider.data_manager:87 [DEBUG]  stage_in checking Staging provider NoOpFileStaging()
+2022-09-25 11:53:39.756 parsl.data_provider.file_noop:13 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151ebc078fd0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.1.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.1.json filename=fn_eval.1.json>
+2022-09-25 11:53:39.756 parsl.data_provider.files:54 [DEBUG]  Making clean copy of File object <<class 'parsl.data_provider.files.File'> at 0x151eaf9be040 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.2.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.2.json filename=fn_eval.2.json>
+2022-09-25 11:53:39.756 parsl.app.futures:70 [DEBUG]  Creating DataFuture with parent: <DataFuture at 0x151ebccc2d90 state=pending> and file: <<class 'parsl.data_provider.files.File'> at 0x151ebccc2f40 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.2.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.2.json filename=fn_eval.2.json>
+2022-09-25 11:53:39.756 parsl.data_provider.data_manager:128 [DEBUG]  stage_in checking Staging provider NoOpFileStaging()
+2022-09-25 11:53:39.756 parsl.data_provider.file_noop:13 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151ebccc2f40 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.2.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.2.json filename=fn_eval.2.json>
+2022-09-25 11:53:39.756 parsl.data_provider.data_manager:87 [DEBUG]  stage_in checking Staging provider NoOpFileStaging()
+2022-09-25 11:53:39.756 parsl.data_provider.file_noop:13 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151ebccc2f40 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.2.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.2.json filename=fn_eval.2.json>
+2022-09-25 11:53:39.756 parsl.data_provider.files:54 [DEBUG]  Making clean copy of File object <<class 'parsl.data_provider.files.File'> at 0x151ebccc29d0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.3.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.3.json filename=fn_eval.3.json>
+2022-09-25 11:53:39.756 parsl.app.futures:70 [DEBUG]  Creating DataFuture with parent: <DataFuture at 0x151ebc070e50 state=pending> and file: <<class 'parsl.data_provider.files.File'> at 0x151ebc059190 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.3.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.3.json filename=fn_eval.3.json>
+2022-09-25 11:53:39.757 parsl.data_provider.data_manager:128 [DEBUG]  stage_in checking Staging provider NoOpFileStaging()
+2022-09-25 11:53:39.757 parsl.data_provider.file_noop:13 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151ebc059190 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.3.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.3.json filename=fn_eval.3.json>
+2022-09-25 11:53:39.757 parsl.data_provider.data_manager:87 [DEBUG]  stage_in checking Staging provider NoOpFileStaging()
+2022-09-25 11:53:39.757 parsl.data_provider.file_noop:13 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151ebc059190 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.3.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.3.json filename=fn_eval.3.json>
+2022-09-25 11:53:39.757 parsl.data_provider.files:54 [DEBUG]  Making clean copy of File object <<class 'parsl.data_provider.files.File'> at 0x151ebc070a00 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.4.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.4.json filename=fn_eval.4.json>
+2022-09-25 11:53:39.757 parsl.app.futures:70 [DEBUG]  Creating DataFuture with parent: <DataFuture at 0x151eaf9cb0a0 state=pending> and file: <<class 'parsl.data_provider.files.File'> at 0x151ebc059f10 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.4.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.4.json filename=fn_eval.4.json>
+2022-09-25 11:53:39.757 parsl.data_provider.data_manager:128 [DEBUG]  stage_in checking Staging provider NoOpFileStaging()
+2022-09-25 11:53:39.757 parsl.data_provider.file_noop:13 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151ebc059f10 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.4.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.4.json filename=fn_eval.4.json>
+2022-09-25 11:53:39.757 parsl.data_provider.data_manager:87 [DEBUG]  stage_in checking Staging provider NoOpFileStaging()
+2022-09-25 11:53:39.757 parsl.data_provider.file_noop:13 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151ebc059f10 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.4.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/data/fn_eval.4.json filename=fn_eval.4.json>
+2022-09-25 11:53:39.757 parsl.dataflow.dflow:647 [DEBUG]  Adding output dependencies
+2022-09-25 11:53:39.758 parsl.data_provider.files:54 [DEBUG]  Making clean copy of File object <<class 'parsl.data_provider.files.File'> at 0x151eaf9bedc0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/gptune.db/Albany_LandIce_PRLM.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/gptune.db/Albany_LandIce_PRLM.json filename=Albany_LandIce_PRLM.json>
+2022-09-25 11:53:39.758 parsl.dataflow.dflow:661 [DEBUG]  Submitting stage out for output file <<class 'parsl.data_provider.files.File'> at 0x151eaf9bedc0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/gptune.db/Albany_LandIce_PRLM.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/gptune.db/Albany_LandIce_PRLM.json filename=Albany_LandIce_PRLM.json>
+2022-09-25 11:53:39.758 parsl.data_provider.data_manager:160 [DEBUG]  stage_out checking Staging provider NoOpFileStaging()
+2022-09-25 11:53:39.758 parsl.data_provider.file_noop:17 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151eaf9c4190 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/gptune.db/Albany_LandIce_PRLM.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/gptune.db/Albany_LandIce_PRLM.json filename=Albany_LandIce_PRLM.json>
+2022-09-25 11:53:39.758 parsl.dataflow.dflow:667 [DEBUG]  No stageout dependency for <<class 'parsl.data_provider.files.File'> at 0x151eaf9bedc0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/gptune.db/Albany_LandIce_PRLM.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/gptune.db/Albany_LandIce_PRLM.json filename=Albany_LandIce_PRLM.json>
+2022-09-25 11:53:39.758 parsl.app.futures:70 [DEBUG]  Creating DataFuture with parent: <AppFuture at 0x151eaf9cbc10 state=pending> and file: <<class 'parsl.data_provider.files.File'> at 0x151eaf9bedc0 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/gptune.db/Albany_LandIce_PRLM.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/gptune.db/Albany_LandIce_PRLM.json filename=Albany_LandIce_PRLM.json>
+2022-09-25 11:53:39.758 parsl.data_provider.data_manager:46 [DEBUG]  stage_out checking Staging provider NoOpFileStaging()
+2022-09-25 11:53:39.758 parsl.data_provider.file_noop:17 [DEBUG]  NoOpFileStaging checking file <<class 'parsl.data_provider.files.File'> at 0x151eaf9c4190 url=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/gptune.db/Albany_LandIce_PRLM.json scheme=file netloc= path=/global/homes/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/gptune.db/Albany_LandIce_PRLM.json filename=Albany_LandIce_PRLM.json>
+2022-09-25 11:53:39.758 parsl.dataflow.dflow:901 [INFO]  Task 12 submitted for App update_database, waiting on task 7, task 8, task 9, task 10, task 11
+2022-09-25 11:53:39.758 parsl.dataflow.dflow:909 [DEBUG]  Task 12 set to pending state with AppFuture: <AppFuture at 0x151eaf9cbc10 state=pending>
+2022-09-25 11:53:41.664 parsl.providers.slurm.slurm:143 [DEBUG]  Executing sqeueue
+2022-09-25 11:53:41.706 parsl.providers.slurm.slurm:145 [DEBUG]  sqeueue returned
+2022-09-25 11:53:41.706 parsl.providers.slurm.slurm:158 [DEBUG]  Updating job 3254465 with slurm status PD to parsl status 1
+2022-09-25 11:53:41.707 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:53:46.665 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:53:51.666 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:53:56.666 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:54:01.666 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:54:06.666 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:54:11.666 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:54:16.666 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:54:21.666 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:54:26.667 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:54:31.667 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:54:36.667 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:54:41.665 parsl.providers.slurm.slurm:143 [DEBUG]  Executing sqeueue
+2022-09-25 11:54:42.730 parsl.providers.slurm.slurm:145 [DEBUG]  sqeueue returned
+2022-09-25 11:54:42.730 parsl.providers.slurm.slurm:158 [DEBUG]  Updating job 3254465 with slurm status PD to parsl status 1
+2022-09-25 11:54:42.731 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:54:46.667 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:54:51.667 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:54:56.667 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:55:01.667 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:55:06.667 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:55:11.668 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:55:16.667 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:55:21.667 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:55:26.668 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:55:31.668 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:55:36.668 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:55:41.667 parsl.providers.slurm.slurm:143 [DEBUG]  Executing sqeueue
+2022-09-25 11:55:41.807 parsl.providers.slurm.slurm:145 [DEBUG]  sqeueue returned
+2022-09-25 11:55:41.807 parsl.providers.slurm.slurm:158 [DEBUG]  Updating job 3254465 with slurm status PD to parsl status 1
+2022-09-25 11:55:41.808 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:55:46.668 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:55:51.669 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:55:56.668 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:56:01.669 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:56:06.669 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:56:11.669 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:56:16.669 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:56:21.669 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:56:26.670 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:56:31.670 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:56:36.670 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:56:41.669 parsl.providers.slurm.slurm:143 [DEBUG]  Executing sqeueue
+2022-09-25 11:56:41.714 parsl.providers.slurm.slurm:145 [DEBUG]  sqeueue returned
+2022-09-25 11:56:41.714 parsl.providers.slurm.slurm:158 [DEBUG]  Updating job 3254465 with slurm status PD to parsl status 1
+2022-09-25 11:56:41.715 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:56:46.670 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:56:51.670 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:56:56.671 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:57:01.670 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:57:06.671 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:57:11.671 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:57:16.671 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:57:21.671 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:57:26.672 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:57:31.672 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:57:36.672 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:57:41.671 parsl.providers.slurm.slurm:143 [DEBUG]  Executing sqeueue
+2022-09-25 11:57:41.714 parsl.providers.slurm.slurm:145 [DEBUG]  sqeueue returned
+2022-09-25 11:57:41.714 parsl.providers.slurm.slurm:158 [DEBUG]  Updating job 3254465 with slurm status PD to parsl status 1
+2022-09-25 11:57:41.716 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:57:46.672 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:57:51.672 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:57:56.672 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:58:01.673 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:58:06.673 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:58:11.673 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:58:16.673 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:58:21.673 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:58:26.673 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:58:31.673 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:58:36.674 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:58:41.672 parsl.providers.slurm.slurm:143 [DEBUG]  Executing sqeueue
+2022-09-25 11:58:41.717 parsl.providers.slurm.slurm:145 [DEBUG]  sqeueue returned
+2022-09-25 11:58:41.717 parsl.providers.slurm.slurm:158 [DEBUG]  Updating job 3254465 with slurm status PD to parsl status 1
+2022-09-25 11:58:41.718 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:58:46.675 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:58:51.673 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:58:56.674 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:59:01.674 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:59:06.674 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:59:11.674 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:59:16.675 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:59:21.674 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:59:26.674 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:59:31.674 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:59:36.674 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:59:41.674 parsl.providers.slurm.slurm:143 [DEBUG]  Executing sqeueue
+2022-09-25 11:59:41.712 parsl.providers.slurm.slurm:145 [DEBUG]  sqeueue returned
+2022-09-25 11:59:41.713 parsl.providers.slurm.slurm:158 [DEBUG]  Updating job 3254465 with slurm status PD to parsl status 1
+2022-09-25 11:59:41.714 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:59:46.675 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:59:51.675 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 11:59:56.675 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:00:01.676 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:00:06.676 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:00:11.676 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:00:16.676 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:00:21.676 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:00:26.676 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:00:31.676 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:00:36.676 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:00:41.675 parsl.providers.slurm.slurm:143 [DEBUG]  Executing sqeueue
+2022-09-25 12:00:41.714 parsl.providers.slurm.slurm:145 [DEBUG]  sqeueue returned
+2022-09-25 12:00:41.714 parsl.providers.slurm.slurm:158 [DEBUG]  Updating job 3254465 with slurm status PD to parsl status 1
+2022-09-25 12:00:41.716 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:00:46.677 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:00:51.677 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:00:56.677 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:01:01.677 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:01:06.677 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:01:11.677 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:01:16.678 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:01:21.679 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:01:26.678 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:01:31.677 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:01:36.678 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:01:41.677 parsl.providers.slurm.slurm:143 [DEBUG]  Executing sqeueue
+2022-09-25 12:01:41.716 parsl.providers.slurm.slurm:145 [DEBUG]  sqeueue returned
+2022-09-25 12:01:41.717 parsl.providers.slurm.slurm:158 [DEBUG]  Updating job 3254465 with slurm status PD to parsl status 1
+2022-09-25 12:01:41.718 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:01:46.678 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:01:51.679 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:01:56.679 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:02:01.679 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:02:06.679 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:02:11.679 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:02:16.679 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:02:21.679 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:02:26.679 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:02:31.679 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:02:36.680 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:02:41.678 parsl.providers.slurm.slurm:143 [DEBUG]  Executing sqeueue
+2022-09-25 12:02:41.725 parsl.providers.slurm.slurm:145 [DEBUG]  sqeueue returned
+2022-09-25 12:02:41.726 parsl.providers.slurm.slurm:158 [DEBUG]  Updating job 3254465 with slurm status PD to parsl status 1
+2022-09-25 12:02:41.727 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:02:46.680 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:02:51.680 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:02:56.680 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:03:01.680 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:03:06.680 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:03:11.680 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:03:16.680 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:03:21.681 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:03:26.681 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:03:31.681 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:03:36.681 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:03:41.680 parsl.providers.slurm.slurm:143 [DEBUG]  Executing sqeueue
+2022-09-25 12:03:41.722 parsl.providers.slurm.slurm:145 [DEBUG]  sqeueue returned
+2022-09-25 12:03:41.722 parsl.providers.slurm.slurm:158 [DEBUG]  Updating job 3254465 with slurm status PD to parsl status 1
+2022-09-25 12:03:41.724 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:03:46.681 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:03:51.682 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:03:56.682 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:04:01.681 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:04:06.682 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:04:11.682 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:04:16.682 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:04:21.683 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:04:26.682 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:04:31.683 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:04:36.683 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:04:41.682 parsl.providers.slurm.slurm:143 [DEBUG]  Executing sqeueue
+2022-09-25 12:04:41.724 parsl.providers.slurm.slurm:145 [DEBUG]  sqeueue returned
+2022-09-25 12:04:41.724 parsl.providers.slurm.slurm:158 [DEBUG]  Updating job 3254465 with slurm status PD to parsl status 1
+2022-09-25 12:04:41.725 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:04:46.683 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:04:51.683 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:04:56.683 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:05:01.683 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:05:06.683 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:05:11.683 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:05:16.684 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:05:21.684 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:05:26.684 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:05:31.684 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:05:36.684 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:05:41.683 parsl.providers.slurm.slurm:143 [DEBUG]  Executing sqeueue
+2022-09-25 12:05:41.726 parsl.providers.slurm.slurm:145 [DEBUG]  sqeueue returned
+2022-09-25 12:05:41.726 parsl.providers.slurm.slurm:158 [DEBUG]  Updating job 3254465 with slurm status PD to parsl status 1
+2022-09-25 12:05:41.727 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:05:46.684 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:05:51.685 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:05:56.684 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:06:01.684 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:06:06.685 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:06:11.685 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:06:16.685 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:06:21.685 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:06:26.685 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:06:31.685 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:06:36.686 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 0/1 running/pending blocks, and 0 connected workers
+2022-09-25 12:06:41.685 parsl.providers.slurm.slurm:143 [DEBUG]  Executing sqeueue
+2022-09-25 12:06:41.728 parsl.providers.slurm.slurm:145 [DEBUG]  sqeueue returned
+2022-09-25 12:06:41.728 parsl.providers.slurm.slurm:158 [DEBUG]  Updating job 3254465 with slurm status R to parsl status 2
+2022-09-25 12:06:41.729 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 1/0 running/pending blocks, and 0 connected workers
+2022-09-25 12:06:46.686 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 1/0 running/pending blocks, and 0 connected workers
+2022-09-25 12:06:51.686 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 1/0 running/pending blocks, and 0 connected workers
+2022-09-25 12:06:56.686 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 1/0 running/pending blocks, and 0 connected workers
+2022-09-25 12:07:01.687 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 1/0 running/pending blocks, and 0 connected workers
+2022-09-25 12:07:06.687 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:07:11.687 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:07:16.687 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:07:21.687 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:07:26.687 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:07:31.688 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:07:36.688 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:07:41.687 parsl.providers.slurm.slurm:143 [DEBUG]  Executing sqeueue
+2022-09-25 12:07:41.733 parsl.providers.slurm.slurm:145 [DEBUG]  sqeueue returned
+2022-09-25 12:07:41.733 parsl.providers.slurm.slurm:158 [DEBUG]  Updating job 3254465 with slurm status R to parsl status 2
+2022-09-25 12:07:41.734 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:07:46.688 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:07:51.688 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:07:56.688 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:08:01.688 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:08:06.688 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:08:11.689 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:08:16.689 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:08:21.689 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:08:26.689 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 5 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:08:27.920 parsl.dataflow.dflow:461 [INFO]  Task 2 completed (launched -> exec_done)
+2022-09-25 12:08:27.920 parsl.dataflow.memoization:229 [DEBUG]  Task 7 will not be memoized
+2022-09-25 12:08:27.920 parsl.dataflow.dflow:610 [INFO]  Task 7 launched on executor local_threads
+2022-09-25 12:08:27.920 parsl.dataflow.dflow:1272 [INFO]  Standard output for task 2 available at /global/u1/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/runinfo/000/task_logs/0000/task_0002_evaluate_function.stdout
+2022-09-25 12:08:27.920 parsl.dataflow.dflow:1274 [INFO]  Standard error for task 2 available at /global/u1/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/runinfo/000/task_logs/0000/task_0002_evaluate_function.stderr
+2022-09-25 12:08:28.361 parsl.dataflow.dflow:461 [INFO]  Task 7 completed (launched -> exec_done)
+2022-09-25 12:08:31.689 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 4 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:08:36.690 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 4 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:08:41.688 parsl.providers.slurm.slurm:143 [DEBUG]  Executing sqeueue
+2022-09-25 12:08:41.771 parsl.providers.slurm.slurm:145 [DEBUG]  sqeueue returned
+2022-09-25 12:08:41.772 parsl.providers.slurm.slurm:158 [DEBUG]  Updating job 3254465 with slurm status R to parsl status 2
+2022-09-25 12:08:41.773 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 4 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:08:46.690 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 4 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:08:51.690 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 4 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:08:56.690 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 4 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:09:01.690 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 4 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:09:06.690 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 4 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:09:11.690 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 4 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:09:16.691 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 4 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:09:21.690 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 4 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:09:26.691 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 4 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:09:31.691 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 4 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:09:36.691 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 4 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:09:41.690 parsl.providers.slurm.slurm:143 [DEBUG]  Executing sqeueue
+2022-09-25 12:09:41.730 parsl.providers.slurm.slurm:145 [DEBUG]  sqeueue returned
+2022-09-25 12:09:41.730 parsl.providers.slurm.slurm:158 [DEBUG]  Updating job 3254465 with slurm status R to parsl status 2
+2022-09-25 12:09:41.732 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 4 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:09:46.691 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 4 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:09:51.691 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 4 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:09:56.691 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 4 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:10:01.691 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 4 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:10:06.692 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 4 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:10:11.692 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 4 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:10:16.692 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 4 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:10:21.692 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 4 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:10:26.692 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 4 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:10:31.692 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 4 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:10:36.693 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 4 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:10:41.691 parsl.providers.slurm.slurm:143 [DEBUG]  Executing sqeueue
+2022-09-25 12:10:41.733 parsl.providers.slurm.slurm:145 [DEBUG]  sqeueue returned
+2022-09-25 12:10:41.733 parsl.providers.slurm.slurm:158 [DEBUG]  Updating job 3254465 with slurm status R to parsl status 2
+2022-09-25 12:10:41.735 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 4 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:10:46.693 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 4 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:10:51.693 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 4 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:10:56.693 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 4 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:11:01.693 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 4 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:11:06.693 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 4 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:11:11.693 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 4 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:11:16.694 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 4 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:11:21.694 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 4 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:11:25.697 parsl.dataflow.dflow:461 [INFO]  Task 3 completed (launched -> exec_done)
+2022-09-25 12:11:25.698 parsl.dataflow.memoization:229 [DEBUG]  Task 8 will not be memoized
+2022-09-25 12:11:25.698 parsl.dataflow.dflow:610 [INFO]  Task 8 launched on executor local_threads
+2022-09-25 12:11:25.698 parsl.dataflow.dflow:1272 [INFO]  Standard output for task 3 available at /global/u1/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/runinfo/000/task_logs/0000/task_0003_evaluate_function.stdout
+2022-09-25 12:11:25.698 parsl.dataflow.dflow:1274 [INFO]  Standard error for task 3 available at /global/u1/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/runinfo/000/task_logs/0000/task_0003_evaluate_function.stderr
+2022-09-25 12:11:25.927 parsl.dataflow.dflow:461 [INFO]  Task 8 completed (launched -> exec_done)
+2022-09-25 12:11:26.694 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 3 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:11:31.694 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 3 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:11:36.694 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 3 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:11:41.693 parsl.providers.slurm.slurm:143 [DEBUG]  Executing sqeueue
+2022-09-25 12:11:41.736 parsl.providers.slurm.slurm:145 [DEBUG]  sqeueue returned
+2022-09-25 12:11:41.736 parsl.providers.slurm.slurm:158 [DEBUG]  Updating job 3254465 with slurm status R to parsl status 2
+2022-09-25 12:11:41.738 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 3 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:11:46.694 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 3 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:11:51.695 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 3 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:11:56.694 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 3 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:12:01.694 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 3 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:12:06.695 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 3 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:12:11.695 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 3 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:12:16.695 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 3 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:12:21.695 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 3 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:12:26.696 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 3 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:12:31.695 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 3 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:12:36.696 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 3 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:12:41.695 parsl.providers.slurm.slurm:143 [DEBUG]  Executing sqeueue
+2022-09-25 12:12:41.736 parsl.providers.slurm.slurm:145 [DEBUG]  sqeueue returned
+2022-09-25 12:12:41.736 parsl.providers.slurm.slurm:158 [DEBUG]  Updating job 3254465 with slurm status R to parsl status 2
+2022-09-25 12:12:41.737 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 3 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:12:46.166 parsl.dataflow.dflow:461 [INFO]  Task 4 completed (launched -> exec_done)
+2022-09-25 12:12:46.167 parsl.dataflow.memoization:229 [DEBUG]  Task 9 will not be memoized
+2022-09-25 12:12:46.167 parsl.dataflow.dflow:610 [INFO]  Task 9 launched on executor local_threads
+2022-09-25 12:12:46.167 parsl.dataflow.dflow:1272 [INFO]  Standard output for task 4 available at /global/u1/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/runinfo/000/task_logs/0000/task_0004_evaluate_function.stdout
+2022-09-25 12:12:46.167 parsl.dataflow.dflow:1274 [INFO]  Standard error for task 4 available at /global/u1/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/runinfo/000/task_logs/0000/task_0004_evaluate_function.stderr
+2022-09-25 12:12:46.232 parsl.dataflow.dflow:461 [INFO]  Task 9 completed (launched -> exec_done)
+2022-09-25 12:12:46.696 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 2 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:12:51.696 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 2 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:12:56.696 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 2 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:13:01.696 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 2 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:13:06.697 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 2 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:13:11.697 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 2 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:13:16.697 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 2 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:13:21.697 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 2 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:13:26.697 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 2 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:13:31.697 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 2 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:13:36.698 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 2 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:13:41.696 parsl.providers.slurm.slurm:143 [DEBUG]  Executing sqeueue
+2022-09-25 12:13:41.741 parsl.providers.slurm.slurm:145 [DEBUG]  sqeueue returned
+2022-09-25 12:13:41.741 parsl.providers.slurm.slurm:158 [DEBUG]  Updating job 3254465 with slurm status R to parsl status 2
+2022-09-25 12:13:41.743 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 2 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:13:46.698 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 2 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:13:51.698 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 2 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:13:56.698 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 2 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:14:01.699 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 2 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:14:06.699 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 2 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:14:11.699 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 2 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:14:16.699 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 2 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:14:21.699 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 2 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:14:26.699 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 2 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:14:31.700 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 2 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:14:36.699 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 2 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:14:41.699 parsl.providers.slurm.slurm:143 [DEBUG]  Executing sqeueue
+2022-09-25 12:14:41.742 parsl.providers.slurm.slurm:145 [DEBUG]  sqeueue returned
+2022-09-25 12:14:41.742 parsl.providers.slurm.slurm:158 [DEBUG]  Updating job 3254465 with slurm status R to parsl status 2
+2022-09-25 12:14:41.744 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 2 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:14:46.700 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 2 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:14:51.700 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 2 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:14:56.700 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 2 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:15:01.700 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 2 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:15:06.700 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 2 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:15:11.701 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 2 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:15:16.701 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 2 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:15:21.701 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 2 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:15:26.701 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 2 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:15:31.701 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 2 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:15:36.702 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 2 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:15:41.700 parsl.providers.slurm.slurm:143 [DEBUG]  Executing sqeueue
+2022-09-25 12:15:42.436 parsl.providers.slurm.slurm:145 [DEBUG]  sqeueue returned
+2022-09-25 12:15:42.436 parsl.providers.slurm.slurm:158 [DEBUG]  Updating job 3254465 with slurm status R to parsl status 2
+2022-09-25 12:15:42.438 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 2 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:15:46.701 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 2 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:15:51.702 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 2 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:15:56.702 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 2 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:16:01.703 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 2 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:16:06.703 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 2 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:16:11.702 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 2 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:16:16.703 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 2 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:16:19.593 parsl.dataflow.dflow:461 [INFO]  Task 5 completed (launched -> exec_done)
+2022-09-25 12:16:19.593 parsl.dataflow.memoization:229 [DEBUG]  Task 10 will not be memoized
+2022-09-25 12:16:19.594 parsl.dataflow.dflow:610 [INFO]  Task 10 launched on executor local_threads
+2022-09-25 12:16:19.594 parsl.dataflow.dflow:1272 [INFO]  Standard output for task 5 available at /global/u1/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/runinfo/000/task_logs/0000/task_0005_evaluate_function.stdout
+2022-09-25 12:16:19.594 parsl.dataflow.dflow:1274 [INFO]  Standard error for task 5 available at /global/u1/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/runinfo/000/task_logs/0000/task_0005_evaluate_function.stderr
+2022-09-25 12:16:19.843 parsl.dataflow.dflow:461 [INFO]  Task 10 completed (launched -> exec_done)
+2022-09-25 12:16:21.703 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 1 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:16:26.703 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 1 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:16:31.703 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 1 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:16:36.703 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 1 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:16:41.702 parsl.providers.slurm.slurm:143 [DEBUG]  Executing sqeueue
+2022-09-25 12:16:41.745 parsl.providers.slurm.slurm:145 [DEBUG]  sqeueue returned
+2022-09-25 12:16:41.745 parsl.providers.slurm.slurm:158 [DEBUG]  Updating job 3254465 with slurm status R to parsl status 2
+2022-09-25 12:16:41.747 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 1 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:16:46.704 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 1 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:16:51.704 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 1 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:16:56.704 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 1 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:17:01.704 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 1 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:17:06.704 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 1 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:17:11.704 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 1 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:17:16.704 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 1 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:17:21.704 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 1 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:17:26.704 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 1 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:17:31.704 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 1 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:17:36.705 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 1 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:17:41.704 parsl.providers.slurm.slurm:143 [DEBUG]  Executing sqeueue
+2022-09-25 12:17:41.746 parsl.providers.slurm.slurm:145 [DEBUG]  sqeueue returned
+2022-09-25 12:17:41.746 parsl.providers.slurm.slurm:158 [DEBUG]  Updating job 3254465 with slurm status R to parsl status 2
+2022-09-25 12:17:41.748 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 1 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:17:46.705 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 1 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:17:51.705 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 1 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:17:56.705 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 1 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:18:01.706 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 1 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:18:06.705 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 1 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:18:11.706 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 1 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:18:16.706 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 1 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:18:21.706 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 1 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:18:26.707 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 1 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:18:31.707 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 1 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:18:36.707 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 1 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:18:41.706 parsl.providers.slurm.slurm:143 [DEBUG]  Executing sqeueue
+2022-09-25 12:18:41.748 parsl.providers.slurm.slurm:145 [DEBUG]  sqeueue returned
+2022-09-25 12:18:41.748 parsl.providers.slurm.slurm:158 [DEBUG]  Updating job 3254465 with slurm status R to parsl status 2
+2022-09-25 12:18:41.749 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 1 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:18:46.707 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 1 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:18:51.707 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 1 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:18:56.707 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 1 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:19:01.707 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 1 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:19:06.707 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 1 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:19:11.708 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 1 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:19:16.707 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 1 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:19:21.708 parsl.dataflow.strategy:188 [DEBUG]  Executor prlm_htex has 1 active tasks, 1/0 running/pending blocks, and 1 connected workers
+2022-09-25 12:19:25.559 parsl.dataflow.dflow:461 [INFO]  Task 6 completed (launched -> exec_done)
+2022-09-25 12:19:25.560 parsl.dataflow.memoization:229 [DEBUG]  Task 11 will not be memoized
+2022-09-25 12:19:25.560 parsl.dataflow.dflow:610 [INFO]  Task 11 launched on executor local_threads
+2022-09-25 12:19:25.560 parsl.dataflow.dflow:1272 [INFO]  Standard output for task 6 available at /global/u1/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/runinfo/000/task_logs/0000/task_0006_evaluate_function.stdout
+2022-09-25 12:19:25.560 parsl.dataflow.dflow:1274 [INFO]  Standard error for task 6 available at /global/u1/m/mcarlson/LandIce/ALITune/optimize/sampling/nrun10_green_00006/runinfo/000/task_logs/0000/task_0006_evaluate_function.stderr
+2022-09-25 12:19:25.823 parsl.dataflow.dflow:461 [INFO]  Task 11 completed (launched -> exec_done)
+2022-09-25 12:19:25.823 parsl.dataflow.memoization:229 [DEBUG]  Task 12 will not be memoized
+2022-09-25 12:19:25.823 parsl.dataflow.dflow:610 [INFO]  Task 12 launched on executor local_threads
+2022-09-25 12:19:25.870 parsl.dataflow.dflow:461 [INFO]  Task 12 completed (launched -> exec_done)
+2022-09-25 12:19:25.871 parsl.dataflow.dflow:1057 [INFO]  DFK cleanup initiated
+2022-09-25 12:19:25.871 parsl.dataflow.dflow:947 [INFO]  Summary of tasks in DFK:
+2022-09-25 12:19:25.871 parsl.dataflow.dflow:961 [INFO]  Tasks in state States.exec_done: 13
+2022-09-25 12:19:25.871 parsl.dataflow.dflow:967 [INFO]  End of summary
+2022-09-25 12:19:25.871 parsl.dataflow.dflow:1081 [INFO]  Terminating flow_control and strategy threads
+2022-09-25 12:19:25.871 parsl.executors.threads:101 [DEBUG]  Done with executor shutdown
+2022-09-25 12:19:25.872 parsl.executors.high_throughput.executor:663 [DEBUG]  Current blocks : {'0': '3254465'}
+2022-09-25 12:19:25.872 parsl.executors.high_throughput.executor:521 [DEBUG]  [HOLD_BLOCK]: Sending hold to manager: f54a41503b3c
+2022-09-25 12:19:25.872 parsl.executors.high_throughput.executor:490 [DEBUG]  Sent hold request to worker: f54a41503b3c
+2022-09-25 12:19:25.915 parsl.executors.high_throughput.executor:698 [INFO]  Attempting HighThroughputExecutor shutdown
+2022-09-25 12:19:25.916 parsl.executors.high_throughput.executor:700 [INFO]  Finished HighThroughputExecutor shutdown attempt
+2022-09-25 12:19:25.916 parsl.executors.threads:101 [DEBUG]  Done with executor shutdown
+2022-09-25 12:19:25.916 parsl.dataflow.dflow:1111 [INFO]  DFK cleanup complete
