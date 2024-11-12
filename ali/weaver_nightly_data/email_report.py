@@ -54,7 +54,7 @@ def build_perf_tests(files, cases, nps, timers, metadata):
                 '''
                 <b>Error: Today's json file doesn't exist!</b>
                 <br><br>
-                Click 
+                Click <a href="https://sems-cdash-son.sandia.gov/cdash/index.php?project=Albany&filtercount=2&showfilters=1&filtercombine=and&field1=site&compare1=63&value1=weaver&field2=buildname&compare2=63&value2=AlbanyPerfTests">here</a> for test logs and
                 <a href="https://github.com/sandialabs/ali-perf-data/tree/master/ali/weaver_nightly_data">here</a> for the repo.
                 ''',
                 sender, recipients)
@@ -72,7 +72,7 @@ def build_perf_tests(files, cases, nps, timers, metadata):
                 '''
                 <b>Error: Today's json file is empty!</b>
                 <br><br>
-                Click 
+                Click <a href="https://sems-cdash-son.sandia.gov/cdash/index.php?project=Albany&filtercount=2&showfilters=1&filtercombine=and&field1=site&compare1=63&value1=weaver&field2=buildname&compare2=63&value2=AlbanyPerfTests">here</a> for test logs and
                 <a href="https://github.com/sandialabs/ali-perf-data/tree/master/ali/weaver_nightly_data">here</a> for the repo.
                 ''',
                 sender, recipients)
@@ -121,7 +121,7 @@ def build_perf_tests(files, cases, nps, timers, metadata):
                 '''
                 <b>Error: All performance tests failed to run!</b>
                 <br><br>
-                Click 
+                Click <a href="https://sems-cdash-son.sandia.gov/cdash/index.php?project=Albany&filtercount=2&showfilters=1&filtercombine=and&field1=site&compare1=63&value1=weaver&field2=buildname&compare2=63&value2=AlbanyPerfTests">here</a> for test logs and
                 <a href="https://github.com/sandialabs/ali-perf-data/tree/master/ali/weaver_nightly_data">here</a> for the repo.
                 ''',
                 sender, recipients)
@@ -320,7 +320,7 @@ def build_perf_tests_html(perfTests):
 
     # Links
     date = datetime.datetime.today().strftime('%m_%d_%Y')
-    testLogsLink = 'https://sems-cdash-son.sandia.gov/sems/index.php?project=Albany&filtercount=1&showfilters=1&field1=buildname&compare1=61&value1=weaver-CUDA-Albany-Perf-Tests'
+    testLogsLink = 'https://sems-cdash-son.sandia.gov/cdash/index.php?project=Albany&filtercount=2&showfilters=1&filtercombine=and&field1=site&compare1=63&value1=weaver&field2=buildname&compare2=63&value2=AlbanyPerfTests'
     notebookHtmlLink = 'https://sandialabs.github.io/ali-perf-data/ali/weaver_nightly_data/Ali_PerfTestsWeaver_' + date + '.html'
     notebookLink = 'https://mybinder.org/v2/gh/sandialabs/ali-perf-data/master?filepath=ali/weaver_nightly_data%2FAli_PerfTestsWeaver.ipynb'
     links = '''
@@ -351,26 +351,32 @@ if __name__ == "__main__":
 
     # Specify case to extract from ctest.json file
     cases = (
-             'green-3-20km_vel_muk',
-             'green-3-20km_ent_muk'
+             'ant-8-30km_vel_cheby_fixt',
+             'ant-8-30km_velopt',
+             'humboldt-1-10km_cop_fea',
+             'mali-ais8km_gpu'
              )
 
     # Specify number of processes to extract from ctest.json file
-    #nps = 8
-    nps = 4 # temp fix for weaver performance tests
+    nps = 4
 
     # Specify timers to extract from ctest.json file (note: must be unique names per test in file)
-    timers = ('Albany Total Time:',
+    timers = (
+              '1 total time',
+              'Albany Velocity Solver:',
+              'Albany: Extrude 3D Grid:',
+              'Albany: SolveFO:',
+              'Albany Total Time:',
               'Albany: Setup Time:',
-              'Albany: Total Fill Time:',
               'Albany Fill: Residual:',
-              'Albany Residual Fill: Evaluate:',
-              'Albany Residual Fill: Export:',
               'Albany Fill: Jacobian:',
-              'Albany Jacobian Fill: Evaluate:',
-              'Albany Jacobian Fill: Export:',
+              'Albany Fill: Distributed Parameter Derivative:',
+              'Albany Fill: Response Parameter Hessian Vector Product:',
+              'Albany Fill: Response Distributed Parameter Hessian Vector Product:',
+              'Albany Fill: Residual Distributed Parameter Hessian Vector Product:',
               'NOX Total Preconditioner Construction:',
-              'NOX Total Linear Solve:')
+              'NOX Total Linear Solve:'
+              )
 
     # Specify metadata to extract from ctest.json file
     metadata = ('max host memory',
